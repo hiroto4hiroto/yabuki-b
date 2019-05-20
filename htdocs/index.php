@@ -22,6 +22,7 @@ if(isset($_POST['logout'])){
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8"/>
     <title>トップページ</title>
 </head>
  
