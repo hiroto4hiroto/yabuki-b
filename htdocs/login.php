@@ -24,7 +24,7 @@
 
         try {
             //DBに接続
-            $db = new PDO("./yabukib.sql;dbname=yabukib;charset=utf8",'test','pass');    
+            $db = new PDO("host=./yabukib.sql;dbname=yabukib;charset=utf8",'test','pass');    
             //SQL作成・実行
             $sql = 'SELECT * FROM studentLoginTable WHERE student = '. $student;
             $prepare = $db->prepare($sql);
