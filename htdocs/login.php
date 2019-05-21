@@ -30,6 +30,7 @@
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
+            $message .= $result;
         
         } catch(PDOException $e) {
             echo $e->getMessage();
