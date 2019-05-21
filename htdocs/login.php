@@ -28,7 +28,7 @@
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行
             echo $sql = 'SELECT * FROM studentLoginTable';// WHERE student = '. $student;
-            echo $prepare = $db->prepare($sql);
+            $prepare = $db->prepare($sql);
             echo $prepare->execute();
             echo $result = $prepare->fetch(PDO::FETCH_ASSOC);
         
