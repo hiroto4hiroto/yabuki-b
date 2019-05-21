@@ -41,7 +41,7 @@ if(!empty($_GET['canselName']))
 <input type="button" onclick="location.href='リンク先url'"value="弁当予約"><br>
 <input type="button" onclick="location.href='./QRdisplay.php'"value="QRコード表示"><br>
 <br>
-<form method="post" action="top.php">
+<form method="post" action="login.php">
     <input type="submit" name="logout" value="ログアウト">
 </form>
  
