@@ -24,9 +24,8 @@
         $password = $_POST["password"];
 
         try {
-            //DB情報読込
-            require_once 'database_conf.php';
             //DBに接続
+            require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行
             $sql = 'SELECT * FROM studentLoginTable';
