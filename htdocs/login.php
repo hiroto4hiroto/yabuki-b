@@ -27,10 +27,10 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行
-            $sql = 'SELECT * FROM studentLoginTable';// WHERE student = '. $student;
-            $prepare = $db->prepare($sql);
-            $prepare->execute();
-            $result = $prepare->fetch(PDO::FETCH_ASSOC);
+            echo $sql = 'SELECT * FROM studentLoginTable';// WHERE student = '. $student;
+            echo $prepare = $db->prepare($sql);
+            echo $prepare->execute();
+            echo $result = $prepare->fetch(PDO::FETCH_ASSOC);
         
         } catch(PDOException $e) {
             echo $e->getMessage();
@@ -64,7 +64,6 @@
 <h1>弁当事前予約サービス</h1>
 <h2>ログインページ</h2>
 <p style="color: red"><?php echo $message ?></p>
-<?php echo (string)$prepare->execute(); ?>
 <form method="post" action="login.php">
     <label for="student">学生番号</label>
     <input id="student" type="text" name="student">
