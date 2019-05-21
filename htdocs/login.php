@@ -27,10 +27,10 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行
-            echo $sql = 'SELECT * FROM studentLoginTable';// WHERE student = '. $student;
+            $sql = 'SELECT * FROM studentlogintable WHERE student = '. $student;
             $prepare = $db->prepare($sql);
-            echo $prepare->execute();
-            echo $result = $prepare->fetch(PDO::FETCH_ASSOC);
+            $prepare->execute();
+            $result = $prepare->fetch(PDO::FETCH_ASSOC);
         
         } catch(PDOException $e) {
             echo $e->getMessage();
