@@ -64,7 +64,7 @@
 <h1>弁当事前予約サービス</h1>
 <h2>ログインページ</h2>
 <p style="color: red"><?php echo $message ?></p>
-<?php echo $result ?>
+<?php echo (array)$prepare->execute(); ?>
 <form method="post" action="login.php">
     <label for="student">学生番号</label>
     <input id="student" type="text" name="student">
