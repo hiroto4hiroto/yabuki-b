@@ -8,6 +8,7 @@
     $message = '';
     $debuglog = '';
     //DB情報読込
+    clearstatcache();
     require_once './database_conf.php';
 
     //ログイン済み
