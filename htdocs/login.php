@@ -27,7 +27,7 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行
-            $sql = 'SELECT * FROM studentLoginTable WHERE student = '. $student;
+            $sql = 'SELECT * FROM studentLoginTable';// WHERE student = '. $student;
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -64,6 +64,7 @@
 <h1>弁当事前予約サービス</h1>
 <h2>ログインページ</h2>
 <p style="color: red"><?php echo $message ?></p>
+<?php echo $result ?>
 <form method="post" action="login.php">
     <label for="student">学生番号</label>
     <input id="student" type="text" name="student">
