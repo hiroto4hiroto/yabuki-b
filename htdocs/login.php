@@ -31,6 +31,7 @@
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
+            $debuglog .= $result;
             $debuglog .= "hoge";
         
         } catch(PDOException $e) {
