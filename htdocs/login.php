@@ -49,11 +49,8 @@
         else if ($result['resumeDate'] != null) {
             $message = 'ペナルティがあるため、'.$result['resumeDate'].'　を過ぎるまでご利用いただけません。';
         }
-        else if (Count($result) == 0) {
-            $message = 'パスワードが間違っています。';
-        }
         else {
-            $message = '該当する学生番号が存在しません。';
+            $message = 'ログインに失敗しました。';
         }
     }
 ?>
