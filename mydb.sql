@@ -34,7 +34,7 @@ CREATE TABLE `bentotable` (
   `name` text NOT NULL,
   `price` int(8) NOT NULL,
   `stocks` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `bentotable`
@@ -58,7 +58,7 @@ CREATE TABLE `identifixtable` (
   `QRid` char(36) NOT NULL,
   `student` char(7) DEFAULT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `identifixtable`
@@ -78,7 +78,7 @@ CREATE TABLE `ordertable` (
   `QRid` char(36) NOT NULL,
   `bento` int(11) DEFAULT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `ordertable`
@@ -101,7 +101,7 @@ CREATE TABLE `studentlogintable` (
   `student` char(7) NOT NULL,
   `password` varchar(32) DEFAULT NULL,
   `resumeDate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `studentlogintable`
@@ -120,7 +120,7 @@ INSERT INTO `studentlogintable` (`student`, `password`, `resumeDate`) VALUES
 CREATE TABLE `vendorlogintable` (
   `vendor` char(7) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- テーブルのデータのダンプ `vendorlogintable`
