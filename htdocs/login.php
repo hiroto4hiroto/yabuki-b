@@ -41,7 +41,7 @@ $dsn = "mysql:host={$dbServer};dbname={$dbName};";
             echo $e->getMessage();
             die();
         }
-
+        
         //本人確認
         if ($password == $result['password'] && $result['resumeDate'] == null) 
         {
@@ -52,8 +52,11 @@ $dsn = "mysql:host={$dbServer};dbname={$dbName};";
         else if ($result['resumeDate'] != null) {
             $message = 'ペナルティがあるため、'.$result['resumeDate'].'　を過ぎるまでご利用いただけません。';
         }
+        else if (Count($result) == 0) {
+            $message = 'パスワードが間違っています。';
+        }
         else {
-            $message = '学生番号かパスワードが間違っています。';
+            $message = '該当する学生番号が存在しません。';
         }
     }
 ?>
