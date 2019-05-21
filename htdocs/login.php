@@ -8,7 +8,7 @@
     $message = '';
     $debuglog = '';
     //DB情報読込
-    require 'database_conf.php';
+    require_once 'database_conf.php';
 
     //ログイン済み
     if (isset($_SESSION['USER'])) {
