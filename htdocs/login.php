@@ -6,7 +6,6 @@
     $result = null;
     $db = null;
     $message = '';
-    $debuglog = '';
 
     //ログイン済み
     if (isset($_SESSION['USER'])) {
@@ -28,12 +27,10 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行
-            $sql = 'SELECT * FROM studentLoginTable';
+            $sql = 'SELECT * FROM studentLoginTable WHERE student = '. $student;
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
-            $debuglog .= $result;
-            $debuglog .= "hoge";
         
         } catch(PDOException $e) {
             echo $e->getMessage();
@@ -67,7 +64,6 @@
 <h1>弁当事前予約サービス</h1>
 <h2>ログインページ</h2>
 <p style="color: red"><?php echo $message ?></p>
-    <?php echo $debuglog ?>
 <form method="post" action="login.php">
     <label for="student">学生番号</label>
     <input id="student" type="text" name="student">
