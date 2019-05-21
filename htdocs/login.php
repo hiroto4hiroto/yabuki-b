@@ -9,7 +9,7 @@
     $debuglog = '';
     //DB情報読込
     clearstatcache();
-    require_once ('./database_conf.php');
+    require(dirname(__FILE__).'/database_conf.php');
 
     //ログイン済み
     if (isset($_SESSION['USER'])) {
