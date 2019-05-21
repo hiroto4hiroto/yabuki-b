@@ -24,8 +24,8 @@
         $password = $_POST["password"];
 
         try {
-                //DB情報読込
-    require_once 'database_conf.php';
+            //DB情報読込
+            require_once　__DIR__ . '/database_conf.php';
             //DBに接続
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行
