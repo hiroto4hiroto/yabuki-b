@@ -4,7 +4,7 @@
 $dbServer = '127.0.0.1';
 $dbUser = $_SERVER['MYSQL_USER'];
 $dbPass = $_SERVER['MYSQL_PASSWORD'];
-$dbName = $_SERVER['MYSQL_DB'];
+$dbName = 'mydb';
 $dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
  
     // 変数の初期化
