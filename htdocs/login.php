@@ -26,7 +26,7 @@
             //DBに接続
             $db = new PDO("mysql:host=127.0.0.1; dbname={$_SERVER['MYSQL_DB']}; charset=utf8;", $_SERVER['MYSQL_USER'], $_SERVER['MYSQL_PASSWORD']);
             //SQL作成・実行
-            $sql = 'SELECT *';
+            $sql = 'SELECT * FROM studentLoginTable';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
