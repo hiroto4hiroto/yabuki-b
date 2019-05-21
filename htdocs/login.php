@@ -8,8 +8,7 @@
     $message = '';
     $debuglog = '';
     //DB情報読込
-    clearstatcache();
-    require(dirname(__FILE__).'/database_conf.php');
+    require 'database_conf.php';
 
     //ログイン済み
     if (isset($_SESSION['USER'])) {
