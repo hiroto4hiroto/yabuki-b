@@ -5,5 +5,5 @@ $dbUser = $_SERVER['MYSQL_USER'];
 $dbPass = $_SERVER['MYSQL_PASSWORD'];
 $dbName = $_SERVER['MYSQL_DB'];
 # MySQL用のDSN文字列
-$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
+$dsn = "mysql:host={$dbServer};dbname={$dbName} "."a".";charset=utf8";
 ?>
