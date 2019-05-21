@@ -7,7 +7,7 @@
     $db = null;
     $message = '';
     $debuglog = '';
-    //
+    //DB情報読込
     require_once 'database_conf.php';
 
     //ログイン済み
