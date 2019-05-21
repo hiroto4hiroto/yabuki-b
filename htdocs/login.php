@@ -1,5 +1,11 @@
 <?php
     session_start();
+
+$dbServer = '127.0.0.1';
+$dbUser = $_SERVER['MYSQL_USER'];
+$dbPass = $_SERVER['MYSQL_PASSWORD'];
+$dbName = $_SERVER['MYSQL_DB'];;
+$dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
  
     // 変数の初期化
     $sql = null;
@@ -24,7 +30,7 @@
 
         try {
             //DBに接続
-            $db = new PDO("mysql:host=127.0.0.1; dbname=yabukib; charset=utf8",'test','pass');    
+            $db = new PDO($dsn ,'test','pass');    
             //SQL作成・実行
             $sql = 'SELECT * FROM studentLoginTable WHERE student = '. $student;
             $prepare = $db->prepare($sql);
