@@ -31,6 +31,7 @@
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
             $message .= $result;
+            $message .= "hoge";
         
         } catch(PDOException $e) {
             echo $e->getMessage();
