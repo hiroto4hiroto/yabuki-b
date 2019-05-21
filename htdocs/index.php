@@ -10,9 +10,8 @@ if (!isset($_SESSION['USER'])) {
 }
 
 //ログアウト機能
-if(isset($_POST['logout'])){
-    
-    $_SESSION = [];
+if(isset($_POST['logout'])){   
+    $_SESSION = array();
     session_destroy();
     header('Location: login.php');
     exit;
@@ -41,7 +40,7 @@ if(!empty($_GET['canselName']))
 <input type="button" onclick="location.href='リンク先url'"value="弁当予約"><br>
 <input type="button" onclick="location.href='./QRdisplay.php'"value="QRコード表示"><br>
 <br>
-<form method="post" action="login.php">
+<form method="post" action="index.php">
     <input type="submit" name="logout" value="ログアウト">
 </form>
  
