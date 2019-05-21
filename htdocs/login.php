@@ -7,8 +7,6 @@
     $db = null;
     $message = '';
     $debuglog = '';
-    //DB情報読込
-    require_once 'database_conf.php';
 
     //ログイン済み
     if (isset($_SESSION['USER'])) {
@@ -26,6 +24,8 @@
         $password = $_POST["password"];
 
         try {
+                //DB情報読込
+    require_once 'database_conf.php';
             //DBに接続
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行
