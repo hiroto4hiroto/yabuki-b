@@ -4,7 +4,7 @@
 $dbServer = '127.0.0.1';
 $dbUser = $_SERVER['MYSQL_USER'];
 $dbPass = $_SERVER['MYSQL_PASSWORD'];
-$dbName = 'mydb';
+$dbName = $_SERVER['MYSQL_DB'];
 $dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
  
     // 変数の初期化
@@ -51,6 +51,9 @@ $dsn = "mysql:host={$dbServer};dbname={$dbName};charset=utf8";
         }
         else if ($result['resumeDate'] != null) {
             $message = 'ペナルティがあるため、'.$result['resumeDate'].'　を過ぎるまでご利用いただけません。';
+        }
+        else {
+            $message = '学生番号かパスワードが間違っています。';
         }
     }
 ?>
