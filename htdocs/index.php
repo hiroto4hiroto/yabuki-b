@@ -22,13 +22,12 @@ if(isset($_POST['logout'])){
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>トップページ</title>
+    <title>弁当事前予約サービス トップページ</title>
      <link rel="stylesheet" type="text/css" href="style.css">
 </head>
  
 <body>
-<h1>弁当事前予約サービス</h1>
-<h2>トップページ</h2>
+<h1>トップページ</h1>
 <p>学生番号：<?php echo $_SESSION['USER'] ?>　ログイン中</p>
 
 <?php
