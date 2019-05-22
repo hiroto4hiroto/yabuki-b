@@ -65,11 +65,12 @@
 <h2>ログインページ</h2>
 <p style="color: red"><?php echo $message ?></p>
 <form method="post" action="login.php">
-    <label for="student">学生番号</label>
-    <input id="student" type="text" name="student">
-    <br>
-    <label for="password">パスワード</label>
-    <input id="password" type="password" name="password">
+    <table>
+        <tr><td><label for="student">学生番号</label>
+            <td><input id="student" type="text" name="student">
+        <tr><td><label for="password">パスワード</label>
+            <td><input id="password" type="password" name="password">
+    </table>
     <br>
     <input class="btn-sticky" type="submit" name="login" value="ログイン">
 </form>
