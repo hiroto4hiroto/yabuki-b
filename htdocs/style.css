@@ -28,6 +28,7 @@ h1 {
   display: inline-block;
   border: none;
   padding: 0.5em 1em;
+  margin: 0.05em 01em;
   text-decoration: none;
   background: #f7f7f7;
   border-left: solid 6px #ff4900;/*左線*/
