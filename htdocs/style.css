@@ -25,7 +25,7 @@ h1 {
 
 .btn-sticky {
   width: 80vw;
-  height: 20vw;
+  height: calc((1vw + 1vh) * 20);
   display: inline-block;
   border: none;
   padding: 0.5em 1em;
