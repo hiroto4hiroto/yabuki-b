@@ -57,12 +57,12 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>ログインページ</title>
+    <title>弁当事前予約サービス ログインページ</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <p>弁当事前予約サービス</p>
-<h2>ログインページ</h2>
+<h1>ログインページ</h1>
 <p style="color: red"><?php echo $message ?></p>
 <form method="post" action="login.php">
     <table>
