@@ -3,6 +3,11 @@
   font-size: 2vw + 2vh;
 }
 
+body {
+  width: 95vw;
+  height: 95vh;
+}
+
 table {
   margin: auto;
 }
