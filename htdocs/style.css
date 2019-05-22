@@ -12,7 +12,8 @@ table {
   margin: auto;
 }
 
-h2 {
+h1 {
+  font-size: calc(3vw + 3vh);
   color: #ff4900;
   text-align: center;
   padding: 0.25em;
