@@ -14,7 +14,7 @@ table {
 }
 
 h1 {
-  font-size: calc(1.5vw + 2vh);
+  font-size: calc((1.5vw + 2vh) * 1.5);
   color: #ff4900;
   padding: 0.25em;
   border-top: solid 2px #ff4900;
