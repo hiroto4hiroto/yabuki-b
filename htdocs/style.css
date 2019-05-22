@@ -24,7 +24,8 @@ h1 {
 }
 
 .btn-sticky {
-  size: 40vw 20vw;
+  width: 80vw;
+  height: 20vh;
   display: inline-block;
   border: none;
   padding: 0.5em 1em;
