@@ -1,6 +1,6 @@
 * {
   text-align: center;
-  font-size: calc(2vw + 2vh);
+  font-size: calc(1.5vw + 2vh);
 }
 
 body {
@@ -14,8 +14,8 @@ table {
 }
 
 h1 {
+  font-size: calc(1.5vw + 2vh);
   color: #ff4900;
-  text-align: center;
   padding: 0.25em;
   border-top: solid 2px #ff4900;
   border-bottom: solid 2px #ff4900;
