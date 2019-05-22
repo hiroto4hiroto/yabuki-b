@@ -1,6 +1,10 @@
+:root {
+  --fontRatio: calc(0.5vw + 2vh);
+}
+
 * {
   text-align: center;
-  font-size: calc(0.5vw + 2vh);
+  font-size: var(--fontRatio);
     margin: none;
   padding: none;
 }
@@ -16,7 +20,7 @@ table {
 }
 
 h1 {
-  font-size: calc(1vw + 4vh);
+  font-size: calc(var(--fontRatio) * 2);
   color: #ff4900;
   padding: 0.25em;
   border-top: solid 2px #ff4900;
@@ -26,9 +30,9 @@ h1 {
 }
 
 .btn-sticky {
-  font-size: calc(0.75fvw + 3vh);
-  width: 25vh;
-  height: calc((1vw + 4vh) * 1.75);
+  font-size: calc(var(--fontRatio) * 1.5);
+  width: 35vh;
+  height: calc(var(--fontRatio) * 2.5);
   display: inline-block;
   border: none;
   margin: 0.5vw 0;
