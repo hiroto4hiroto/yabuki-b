@@ -1,5 +1,6 @@
 .btn-sticky {
   display: inline-block;
+  border: none;
   padding: 0.5em 1em;
   text-decoration: none;
   background: #f7f7f7;
