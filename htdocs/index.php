@@ -23,6 +23,7 @@ if(isset($_POST['logout'])){
 <head>
     <meta charset="utf-8"/>
     <title>トップページ</title>
+     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
  
 <body>
