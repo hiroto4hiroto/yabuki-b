@@ -108,6 +108,7 @@ CREATE TABLE `studentlogintable` (
 --
 
 INSERT INTO `studentlogintable` (`student`, `password`, `resumeDate`) VALUES
+('1742111', 'murata', NULL),
 ('1742119', 'yamashita', NULL),
 ('1742120', 'yamada', NULL);
 
