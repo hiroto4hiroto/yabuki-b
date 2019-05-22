@@ -58,8 +58,8 @@
 <head>
     <meta charset="utf-8"/>
     <title>ログインページ</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
- 
 <body>
 <h1>弁当事前予約サービス</h1>
 <h2>ログインページ</h2>
@@ -71,7 +71,7 @@
     <label for="password">パスワード</label>
     <input id="password" type="password" name="password">
     <br>
-    <input type="submit" name="login" value="ログイン">
+    <input class="btn-sticky" type="submit" name="login" value="ログイン">
 </form>
  
 </body>
