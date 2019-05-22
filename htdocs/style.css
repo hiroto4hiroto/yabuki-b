@@ -5,6 +5,8 @@
 
 body {
   box-sizing: border-box;
+  margin: none;
+  padding: none;
   width: 100vw;
   height: 100vh;
 }
@@ -27,7 +29,7 @@ h1 {
   font-size: calc(2vw + 3vh);
   font-weight: bold;
   width: calc((0.7vw + 0.3vh) * 80);
-  height: calc((2vw + 3vh) * 1.25);
+  height: calc((2vw + 3vh) * 1.75);
   display: inline-block;
   border: none;
   margin: 1vw 0;
