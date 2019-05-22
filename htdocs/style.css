@@ -26,8 +26,8 @@ h1 {
 .btn-sticky {
   font-size: calc(2vw + 3vh);
   font-weight: bold;
-  width: calc((0.5vw + 0.5vh) * 80);
-  height: calc((0.5vw + 0.5vh) * 10);
+  width: calc((0.7vw + 0.3vh) * 80);
+  height: calc((2vw + 3vh) * 1.25);
   display: inline-block;
   border: none;
   margin: 1vw 0;
