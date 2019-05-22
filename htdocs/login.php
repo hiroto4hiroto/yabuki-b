@@ -61,7 +61,7 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<h1>弁当事前予約サービス</h1>
+<p>弁当事前予約サービス</p>
 <h2>ログインページ</h2>
 <p style="color: red"><?php echo $message ?></p>
 <form method="post" action="login.php">
