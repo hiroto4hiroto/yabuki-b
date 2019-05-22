@@ -27,6 +27,7 @@ if(isset($_POST['logout'])){
 </head>
  
 <body>
+<p>弁当事前予約サービス</p>
 <h1>トップページ</h1>
 <p>学生番号：<?php echo $_SESSION['USER'] ?>　ログイン中</p>
 
