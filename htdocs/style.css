@@ -24,7 +24,6 @@ table {
 h1 {
   font-size: calc(var(--fontRatio) * 2);
   color: #ff4900;
-  padding: 0.25em;
   border-top: solid 2px #ff4900;
   border-bottom: solid 2px #ff4900;
   background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 3px,#fff7a4 3px, #fff7a4 7px);
