@@ -22,7 +22,7 @@ table {
 h1 {
   font-size: calc(var(--fontRatio) * 2);
   color: #ff4900;
-  width: 80vw;
+  width: 100vw;
   border-top: solid 2px #ff4900;
   border-bottom: solid 2px #ff4900;
   background: -webkit-repeating-linear-gradient(-45deg, #f0f8ff, #f0f8ff 0.3vh,#fff7a4 0.3vh, #fff7a4 0.5vh);
