@@ -19,6 +19,10 @@ table {
   margin: auto;
 }
 
+.bentoInfoTable {
+  border-style: solid;
+}
+
 h1 {
   font-size: calc(var(--fontRatio) * 2);
   color: #ff4900;
