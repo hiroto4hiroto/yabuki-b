@@ -20,8 +20,8 @@ if (!isset($_SESSION['USER'])) {
 <p>弁当事前予約サービス</p>
 <h1>弁当閲覧・予約</h1>
     
-<table class='bentoInfoTable'>
-    <tr class='bentoInfoTable'><td class='bentoInfoTable' colspan="2">弁当名<td>値段
+<table class='bentoInfoTable' style='border-style: solid;'>
+    <tr calss='bentoInfoTable' style='border-style: solid;'><td class='bentoInfoTable' colspan="2">弁当名<td>値段
     <tr class='bentoInfoTable'><td class='bentoInfoTable'>弁当画像<td class='bentoInfoTable'>アレルギー表示<td class='bentoInfoTable'>注文ボタン
 </table>
     
