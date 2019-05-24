@@ -26,7 +26,7 @@ if (!isset($_SESSION['USER'])) {
 <h1>弁当閲覧・予約</h1>
 
 <table style="width: 80vw; height: 30vh;">
-    <tr style="width: 100%; min-height: 2em;">
+    <tr style="width: 100%; min-height: 1em;">
         <td style="width: 70%;">弁当名
         <td style="width: 70%;">値段
     <tr style="width: 100%; max-height: 100%">
