@@ -37,8 +37,8 @@ if(!empty($_GET['canselName']))
     echo "<p style='color:red;'>". $_GET['canselName'] ."の予約をキャンセルしました。<p>";
 ?>
 
-<input type="button" class="btn-sticky" onclick="location.href='./check.php'" value="予約確認"><br>
 <input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="弁当閲覧・予約" style="height: calc(var(--fontRatio) * 7.5);"><br>
+<input type="button" class="btn-sticky" onclick="location.href='./check.php'" value="予約確認"><br>
 <input type="button" class="btn-sticky" onclick="location.href='./QRdisplay.php'" value="QRコード表示" style="height: calc(var(--fontRatio) * 7.5);"><br>
 <br>
 <form method="post" action="index.php">
