@@ -21,7 +21,9 @@ if (!isset($_SESSION['USER'])) {
 <h1>弁当閲覧・予約</h1>
     
 <table class='bentoInfoTable' style='border-style: solid;'>
-    <tr calss='bentoInfoTable' style='border-style: solid;'><td class='bentoInfoTable' colspan="2">弁当名<td>値段
+    <tr calss='bentoInfoTable' style='border-style: solid;'>
+        <td class='bentoInfoTable' colspan="2" style='border-style: solid;'>弁当名
+        <td style='border-style: solid;'>値段
     <tr class='bentoInfoTable'><td class='bentoInfoTable'>弁当画像<td class='bentoInfoTable'>アレルギー表示<td class='bentoInfoTable'>注文ボタン
 </table>
     
