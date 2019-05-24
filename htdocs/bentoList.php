@@ -27,11 +27,11 @@ if (!isset($_SESSION['USER'])) {
 
 <table style="width: 80vw; height: 30vh;">
     <tr style="width: 100%; min-height: 2em;">
-        <td style="width: 70%; height: 100%;">弁当名
-        <td style="width: 70%; height: 100%;">値段
-    <tr style="width: 100%; max-height:100%">
-        <td style="width: 70%; height: 100%;">弁当画像
-        <td style="width: 30%; height: 100%;">注文ボタン
+        <td style="width: 70%;">弁当名
+        <td style="width: 70%;">値段
+    <tr style="width: 100%; max-height: 100%">
+        <td style="width: 70%;">弁当画像
+        <td style="width: 30%;">注文ボタン
 </table>
     
 </body>
