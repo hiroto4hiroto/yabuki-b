@@ -13,7 +13,12 @@ if (!isset($_SESSION['USER'])) {
 <head>
     <meta charset="utf-8"/>
     <title>弁当事前予約サービス 弁当閲覧・予約</title>
-     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <style type="text/css">
+    <!--
+    tr td {border-style: solid;}
+    -->
+    </style>
 </head>
  
 <body>
