@@ -25,13 +25,13 @@ if (!isset($_SESSION['USER'])) {
 <p>弁当事前予約サービス</p>
 <h1>弁当閲覧・予約</h1>
 
-<table style="width: 45vh; height: 25vh;">
+<table style="width: calc(30vh + 15vw); height: 25vh;">
     <tr style="width: 100%; height: 1.5em;">
-        <td style="min-width: 70%;">弁当名あいうえおかきくけこ
+        <td style="min-width: 70%;">１２３４５６７８弁当
         <td style="max-width: 30%;">1234円
     <tr style="width: 100%; max-height: 100%;">
         <td style="min-width: 70%;">弁当画像
-        <td style="max-width: 30%;">予約する
+        <td style="max-width: 30%;">予約<br>する
 </table>
     
 </body>
