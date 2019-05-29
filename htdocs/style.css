@@ -19,6 +19,11 @@ table {
   margin: auto;
 }
 
+td {
+  background-size: cover;
+  background-position: center;
+}
+
 .bentoInfoTable {
   border-style: solid;
 }
@@ -41,7 +46,7 @@ h1 {
   display: inline-block;
   margin: 0.5vh 0;
   background: #f7f7f7;
-  border-left: solid 0.5vh #ff9970;/*左線*/
+  border-left: solid 0.5vh #ff9970;/*左縁*/
   color: #000000;/*文字色*/
   box-shadow: 0px 0.1vh 0.1vh rgba(0, 0, 0, 0.29);
 }
