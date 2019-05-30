@@ -30,19 +30,20 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bentotable` (
   `date` date NOT NULL,
+  `number` int(11) NOT NULL,
   `name` text NOT NULL,
-  `price` int(8) NOT NULL,
+  `price` int(11) NOT NULL,
   `stocks` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- テーブルのデータのダンプ `bentotable`
 --
 
-INSERT INTO `bentotable` (`date`, `name`, `price`, `stocks`) VALUES
-('2019-05-31', 'スペシャル弁当', 10000, 200),
-('2019-05-31', 'A弁当', 300, 50),
-('2019-05-31', 'B弁当', 350, 30);
+INSERT INTO `bentotable` (`date`, `number`, `name`, `price`, `stocks`) VALUES
+('2019-05-30', 0, 'Ａ弁当', 300, 50),
+('2019-05-30', 1, 'Ｂ弁当', 350, 30),
+('2019-05-30', 2, 'スペシャル弁当', 10000, 200);
 
 -- --------------------------------------------------------
 
@@ -54,15 +55,15 @@ CREATE TABLE `identifixtable` (
   `QRid` char(36) NOT NULL,
   `student` char(7) DEFAULT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- テーブルのデータのダンプ `identifixtable`
 --
 
 INSERT INTO `identifixtable` (`QRid`, `student`, `date`) VALUES
-('254fc572-a766-4522-a013-ff6562026145', '1742120', '2019-05-31'),
-('fd91c4ee-7817-45df-b0dc-658ff39a9f45', '1742119', '2019-05-31');
+('254fc572-a766-4522-a013-ff6562026145', '1742120', '2019-05-20'),
+('fd91c4ee-7817-45df-b0dc-658ff39a9f45', '1742120', '2019-05-21');
 
 -- --------------------------------------------------------
 
@@ -72,18 +73,20 @@ INSERT INTO `identifixtable` (`QRid`, `student`, `date`) VALUES
 
 CREATE TABLE `ordertable` (
   `QRid` char(36) NOT NULL,
-  `name` text NOT NULL,
+  `bento` int(11) DEFAULT NULL,
   `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- テーブルのデータのダンプ `ordertable`
 --
 
-INSERT INTO `ordertable` (`QRid`, `name`, `date`) VALUES
-('254fc572-a766-4522-a013-ff6562026145', 'A弁当', '2019-05-31'),
-('254fc572-a766-4522-a013-ff6562026145', 'B弁当', '2019-05-31'),
-('fd91c4ee-7817-45df-b0dc-658ff39a9f45', 'スペシャル弁当', '2019-05-31');
+INSERT INTO `ordertable` (`QRid`, `bento`, `date`) VALUES
+('254fc572-a766-4522-a013-ff6562026145', 2, '2019-05-20'),
+('254fc572-a766-4522-a013-ff6562026145', 2, '2019-05-20'),
+('', 2, '2019-05-21'),
+('', 2, '2019-05-21'),
+('fd91c4ee-7817-45df-b0dc-658ff39a9f45', 0, '2019-05-21');
 
 -- --------------------------------------------------------
 
@@ -95,14 +98,13 @@ CREATE TABLE `studentlogintable` (
   `student` char(7) NOT NULL,
   `password` varchar(32) DEFAULT NULL,
   `resumeDate` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- テーブルのデータのダンプ `studentlogintable`
 --
 
 INSERT INTO `studentlogintable` (`student`, `password`, `resumeDate`) VALUES
-('1742111', 'murata', NULL),
 ('1742119', 'yamashita', NULL),
 ('1742120', 'yamada', NULL);
 
@@ -115,7 +117,7 @@ INSERT INTO `studentlogintable` (`student`, `password`, `resumeDate`) VALUES
 CREATE TABLE `vendorlogintable` (
   `vendor` char(7) DEFAULT NULL,
   `password` varchar(32) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- テーブルのデータのダンプ `vendorlogintable`
