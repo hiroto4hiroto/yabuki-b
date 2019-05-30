@@ -18,7 +18,7 @@ session_start();
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         //SQL作成・実行
-        $sql = 'SELECT * FROM bentotable ORDER BY date, price;';
+        $sql = 'SELECT * FROM bentotable ORDER BY date, price ASC;';
         $sql .= 'SELECT * FROM bentotable;';
         $prepare = $db->prepare($sql);
         $list = "";
@@ -63,18 +63,6 @@ session_start();
 <h1>弁当閲覧・予約</h1>
 
 <?php echo $list; ?>
-
-<table style="width: calc(30vh + 15vw); height: calc(20vh + 10vw)">
-        <tr style="width: 100%; height: 1.5em;">
-        <td style="min-width: 50%;">販売日:2019/07/07
-        <td style="max-width: 50%;">残り:99
-    <tr style="width: 100%; height: 1.5em;">
-        <td style="min-width: 70%;">１２３４５６７８弁当
-        <td style="max-width: 30%;">1234円
-    <tr style="width: 100%; max-height: 100%;">
-        <td style="min-width: 70%;">弁当画像
-        <td style="max-width: 30%;">予約<br>する
-</table>
     
 </body>
 </html>
