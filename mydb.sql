@@ -4,7 +4,7 @@
 --
 -- Host: 127.0.0.1
 -- Generation Time: 
--- ã‚µãƒ¼ãƒã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ï¼š 10.1.38-MariaDB
+-- ƒT[ƒo‚Ìƒo[ƒWƒ‡ƒ“F 10.1.38-MariaDB
 -- PHP Version: 7.3.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ§‹é€  `bentotable`
+-- ƒe[ƒuƒ‹‚Ì\‘¢ `bentotable`
 --
 
 CREATE TABLE `bentotable` (
@@ -36,18 +36,18 @@ CREATE TABLE `bentotable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ‡ãƒ¼ã‚¿ã®ãƒ€ãƒ³ãƒ— `bentotable`
+-- ƒe[ƒuƒ‹‚Ìƒf[ƒ^‚Ìƒ_ƒ“ƒv `bentotable`
 --
 
 INSERT INTO `bentotable` (`date`, `name`, `price`, `stocks`) VALUES
-('2019-05-21', 'ã‚¹ãƒšã‚·ãƒ£ãƒ«å¼å½“', 10000, 200),
-('2019-05-21', 'Aå¼å½“', 300, 50),
-('2019-05-21', 'Bå¼å½“', 350, 30),
+('2019-05-21', 'ƒXƒyƒVƒƒƒ‹•Ù“–', 10000, 200),
+('2019-05-21', 'A•Ù“–', 300, 50),
+('2019-05-21', 'B•Ù“–', 350, 30),
 
 -- --------------------------------------------------------
 
 --
--- ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ§‹é€  `identifixtable`
+-- ƒe[ƒuƒ‹‚Ì\‘¢ `identifixtable`
 --
 
 CREATE TABLE `identifixtable` (
@@ -57,7 +57,7 @@ CREATE TABLE `identifixtable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ‡ãƒ¼ã‚¿ã®ãƒ€ãƒ³ãƒ— `identifixtable`
+-- ƒe[ƒuƒ‹‚Ìƒf[ƒ^‚Ìƒ_ƒ“ƒv `identifixtable`
 --
 
 INSERT INTO `identifixtable` (`QRid`, `student`, `date`) VALUES
@@ -67,7 +67,7 @@ INSERT INTO `identifixtable` (`QRid`, `student`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ§‹é€  `ordertable`
+-- ƒe[ƒuƒ‹‚Ì\‘¢ `ordertable`
 --
 
 CREATE TABLE `ordertable` (
@@ -77,7 +77,7 @@ CREATE TABLE `ordertable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ‡ãƒ¼ã‚¿ã®ãƒ€ãƒ³ãƒ— `ordertable`
+-- ƒe[ƒuƒ‹‚Ìƒf[ƒ^‚Ìƒ_ƒ“ƒv `ordertable`
 --
 
 INSERT INTO `ordertable` (`QRid`, `bento`, `date`) VALUES
@@ -90,7 +90,7 @@ INSERT INTO `ordertable` (`QRid`, `bento`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ§‹é€  `studentlogintable`
+-- ƒe[ƒuƒ‹‚Ì\‘¢ `studentlogintable`
 --
 
 CREATE TABLE `studentlogintable` (
@@ -100,7 +100,7 @@ CREATE TABLE `studentlogintable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ‡ãƒ¼ã‚¿ã®ãƒ€ãƒ³ãƒ— `studentlogintable`
+-- ƒe[ƒuƒ‹‚Ìƒf[ƒ^‚Ìƒ_ƒ“ƒv `studentlogintable`
 --
 
 INSERT INTO `studentlogintable` (`student`, `password`, `resumeDate`) VALUES
@@ -111,7 +111,7 @@ INSERT INTO `studentlogintable` (`student`, `password`, `resumeDate`) VALUES
 -- --------------------------------------------------------
 
 --
--- ãƒ†ãƒ¼ãƒ–ãƒ«ã®æ§‹é€  `vendorlogintable`
+-- ƒe[ƒuƒ‹‚Ì\‘¢ `vendorlogintable`
 --
 
 CREATE TABLE `vendorlogintable` (
@@ -120,7 +120,7 @@ CREATE TABLE `vendorlogintable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- ãƒ†ãƒ¼ãƒ–ãƒ«ã®ãƒ‡ãƒ¼ã‚¿ã®ãƒ€ãƒ³ãƒ— `vendorlogintable`
+-- ƒe[ƒuƒ‹‚Ìƒf[ƒ^‚Ìƒ_ƒ“ƒv `vendorlogintable`
 --
 
 INSERT INTO `vendorlogintable` (`vendor`, `password`) VALUES
