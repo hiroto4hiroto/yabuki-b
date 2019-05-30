@@ -29,7 +29,6 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `bentotable` (
-  `bento` int(4) NOT NULL,
   `date` date NOT NULL,
   `name` text NOT NULL,
   `price` int(8) NOT NULL,
@@ -41,9 +40,9 @@ CREATE TABLE `bentotable` (
 --
 
 INSERT INTO `bentotable` (`date`, 'number', `name`, `price`, `stocks`) VALUES
-('2019-05-20', 2, 'スペシャル弁当', 10000, 200),
-('2019-05-21', 0, 'A弁当', 300, 50),
-('2019-05-21', 1, 'B弁当', 350, 30),
+('2019-05-20', 'スペシャル弁当', 10000, 200),
+('2019-05-21', 'A弁当', 300, 50),
+('2019-05-21', 'B弁当', 350, 30),
 
 -- --------------------------------------------------------
 
