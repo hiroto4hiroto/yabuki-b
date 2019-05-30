@@ -39,8 +39,8 @@ CREATE TABLE `bentotable` (
 -- テーブルのデータのダンプ `bentotable`
 --
 
-INSERT INTO `bentotable` (`date`, 'number', `name`, `price`, `stocks`) VALUES
-('2019-05-20', 'スペシャル弁当', 10000, 200),
+INSERT INTO `bentotable` (`date`, `name`, `price`, `stocks`) VALUES
+('2019-05-21', 'スペシャル弁当', 10000, 200),
 ('2019-05-21', 'A弁当', 300, 50),
 ('2019-05-21', 'B弁当', 350, 30),
 
