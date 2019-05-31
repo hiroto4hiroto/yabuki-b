@@ -1,5 +1,5 @@
 :root {
-  --fontRatio: calc(0.5vw + 2vh);
+  --fontRatio: calc(0.5vw + 2vh + 10000px);
 }
 
 * {
