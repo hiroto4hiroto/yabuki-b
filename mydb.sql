@@ -30,7 +30,6 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bentotable` (
   `date` date NOT NULL,
-  `number` int(11) NOT NULL,
   `name` text NOT NULL,
   `price` int(11) NOT NULL,
   `stocks` int(11) NOT NULL
@@ -40,10 +39,10 @@ CREATE TABLE `bentotable` (
 -- テーブルのデータのダンプ `bentotable`
 --
 
-INSERT INTO `bentotable` (`date`, `number`, `name`, `price`, `stocks`) VALUES
-('2019-05-30', 0, 'Ａ弁当', 300, 50),
-('2019-05-30', 1, 'Ｂ弁当', 350, 30),
-('2019-05-30', 2, 'スペシャル弁当', 10000, 200);
+INSERT INTO `bentotable` (`date`, `name`, `price`, `stocks`) VALUES
+('2019-05-30', 'Ａ弁当', 300, 50),
+('2019-05-30', 'Ｂ弁当', 350, 30),
+('2019-05-30', 'スペシャル弁当', 10000, 200);
 
 -- --------------------------------------------------------
 
