@@ -36,7 +36,7 @@ session_start();
             $list .= '<tr style="width: 100%; max-height: 100%;">';
             $list .= '<td style="min-width: 70%; background-image: url(\'bentoimages/'.$result["name"].'.jpg\'); background-size: cover; background-position: center;">';
             $list .= '<td style="max-width: 30%;">';
-            $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(' $result["name"] ');"';
+            $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick('. $result["name"] .');"';
             $list .= ' value="予約する" style="width: 100%; height: 100%">';
             $list .= '</table><br>';
         }
