@@ -47,7 +47,7 @@ session_start();
             $result->execute($params);
         
             //トップページに移動
-            header('Location: index.php');
+            header('Location: index.php?message='. $_GET['order']);
             exit;
         }
         
