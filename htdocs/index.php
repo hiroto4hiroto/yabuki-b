@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$canselMessage = "";
+$message = "";
 
     //学生でなければ弾く
 if (!isset($_SESSION['USER'])) {
@@ -33,8 +33,8 @@ if(isset($_POST['logout'])){
 
 <?php
 //キャンセル文
-if(!empty($_GET['canselName']))
-    echo "<p style='color:red;'>". $_GET['canselName'] ."の予約をキャンセルしました。<p>";
+if(!empty($_GET['message']))
+    echo "<p style='color:red;'>". $_GET['message'] ."</p>";
 ?>
 
 <input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="弁当閲覧・予約" style="height: calc(var(--fontRatio) * 7.5);"><br>
