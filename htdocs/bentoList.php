@@ -47,7 +47,7 @@ session_start();
             $result->execute($params);
         
             //トップページに移動
-            header('Location: index.php?message='. $_GET['order']);
+            header('Location: index.php?message='. $_GET['order'] .'を予約しました。');
             exit;
         }
         
@@ -97,7 +97,6 @@ session_start();
  
 <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
-        alert('ほげ');      
         var res = confirm('「' + name + '」を予約しますか？');
         if(res) {
             window.location.href =　location.href + '?order=' + name;
