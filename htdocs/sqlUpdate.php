@@ -10,7 +10,7 @@
         $sql = "
         
 
-drop select bentotable;
+drop table bentotable;
         
 
         ";
