@@ -17,6 +17,41 @@ session_start();
         //DBに接続
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
+        
+        //注文を受けたら
+        if (isset($_GET['order'])){
+            //既に注文しているか確認
+            $sql = 'SELECT * FROM identifixtable WHERE student = '. $_SESSION['USER'] .' AND date();
+            $prepare = $db->prepare($sql);
+            $prepare->execute();
+            $result = $prepare->fetch(PDO::FETCH_ASSOC);
+            
+            $UUID = null;
+              
+            //既に1件注文していたら
+            if (isset($result)) $UUID = $result["QRid"];
+            else {
+                $UUID = md5(uniqid(mt_rand(), true));
+                
+                //認証リストに一件追加
+                $sql = "insert into identifixtable (`QRid`, `student`, `date`) values (:QRid, :student, date())";
+                $result = $db->prepare($sql);
+                $params = array(':QRid' => $UUID, ':student' => $_GET['order']);
+                $result->execute($params);
+            }
+             
+            //注文リストに一件追加
+            $sql = "insert into ordertable (`QRid`, `name`, `date`) values (:QRid, :name, date())";
+            $result = $db->prepare($sql);
+            $params = array(':QRid' => $UUID, ':name' => $_SESSION['USER']);
+            $result->execute($params);
+        
+            //トップページに移動
+            header('Location: index.php');
+            exit;
+        }
+        
+        //一覧作成
         //SQL作成・実行
         $sql = 'SELECT * FROM bentotable ORDER BY date, price ASC;';
         $sql .= 'SELECT * FROM bentotable;';
