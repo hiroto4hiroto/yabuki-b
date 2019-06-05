@@ -10,7 +10,25 @@
         $sql = "
         
 
-drop table bentotable;
+--
+-- テーブルの構造 `bentotable`
+--
+
+CREATE TABLE `bentotable` (
+  `date` date NOT NULL,
+  `name` text NOT NULL,
+  `price` int(11) NOT NULL,
+  `stocks` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- テーブルのデータのダンプ `bentotable`
+--
+
+INSERT INTO `bentotable` (`date`, `name`, `price`, `stocks`) VALUES
+('2019-06-08', 'A弁当', 300, 50),
+('2019-06-08', 'B弁当', 350, 30),
+('2019-06-08', 'スペシャル弁当', 10000, 200);
         
 
         ";
