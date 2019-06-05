@@ -35,7 +35,7 @@ session_start();
             $list .= '<td style="max-width: 30%;">'. $result["price"] .'円';
             $list .= '<tr style="width: 100%; max-height: 100%;">';
             $list .= '<td style="min-width: 70%; background-image: url(\'bentoimages/'.$result["name"].'.jpg\'); background-size: cover; background-position: center;">';
-            $list .= '<td style="max-width: 30%;">予約<br>する';
+            $list .= '<td style="max-width: 30%;"><input type="button" class="btn-sticky" value="予約する" style="width: 100%; height: 100%"><br>';
             $list .= '</table><br>';
         }
     } catch(PDOException $e) {
