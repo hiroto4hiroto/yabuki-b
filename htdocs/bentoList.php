@@ -62,6 +62,7 @@ session_start();
  
 <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
+        alert(name);      
         var res = confirm('「' + name + '」を予約しますか？');
         if(res) {
             window.location.href =　location.href + '?order=' + name;
