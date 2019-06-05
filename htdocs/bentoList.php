@@ -29,7 +29,7 @@ session_start();
             $UUID = null;
               
             //既に1件注文していたら
-            if (isset($result)) $UUID = $result["QRid"];
+            if (!empty($result)) $UUID = $result["QRid"];
             else {
                 $UUID = md5(uniqid(mt_rand(), true));
                 
