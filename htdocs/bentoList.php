@@ -18,8 +18,9 @@ session_start();
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         //SQL作成・実行
-        $sql = 'SELECT * FROM bentotable ORDER BY date, price ASC;';
-        $sql .= 'SELECT * FROM bentotable;';
+        $sql = 'drop table bentotable;';
+        //$sql = 'SELECT * FROM bentotable ORDER BY date, price ASC;';
+        //$sql .= 'SELECT * FROM bentotable;';
         $prepare = $db->prepare($sql);
         $list = "";
         $prepare->execute();
