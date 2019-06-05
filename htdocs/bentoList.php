@@ -29,12 +29,12 @@ session_start();
             $UUID = null;
               
             //既に1件注文していたら
-            if (isset($result)){ $UUID = $result["QRid"]; }
+            if (isset($result)){ $UUID = $result['QRid']; }
             else {
                 $UUID = md5(uniqid(mt_rand(), true));
                 
                 //認証リストに一件追加
-                $sql = "insert into identifixtable (QRid, student, date) values (:QRid, :student, date() )";
+                $sql = "insert into identifixtable ('QRid', 'student', 'date') values (:QRid, :student, date() );";
                 $result = $db->prepare($sql);
                 $params = array(':QRid' => $UUID, ':student' => $_GET['order']);
                 $result->execute($params);
