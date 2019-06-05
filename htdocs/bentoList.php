@@ -61,7 +61,7 @@ session_start();
 </head>
  
 <script language="javascript" type="text/javascript">
-    function OnButtonClick(name) {
+    function OnButtonClick(var name) {
         alert('ほげ');      
         var res = confirm('「' + name + '」を予約しますか？');
         if(res) {
