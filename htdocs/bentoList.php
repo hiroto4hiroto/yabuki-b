@@ -34,7 +34,7 @@ session_start();
                 $UUID = md5(uniqid(mt_rand(), true));
                 
                 //認証リストに一件追加
-                $sql = "insert into identifixtable ('QRid', 'student', 'date') values (:QRid, :student, date() )";
+                $sql = "insert into identifixtable (QRid, student, date) values (:QRid, :student, date() )";
                 $result = $db->prepare($sql);
                 $params = array(':QRid' => $UUID, ':student' => $_GET['order']);
                 $result->execute($params);
