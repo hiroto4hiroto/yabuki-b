@@ -19,9 +19,9 @@ session_start();
         $db = new PDO($dsn, $dbUser, $dbPass);
         
         //注文を受けたら
-        if (isset($_GET['order'])){
+        if (isset($_GET['order'])) {
             //既に注文しているか確認
-            $sql = 'SELECT * FROM identifixtable WHERE student = '. $_SESSION['USER'] .' AND date();
+            $sql = 'SELECT * FROM identifixtable WHERE student = '. $_SESSION["USER"] .' AND date();
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -29,7 +29,7 @@ session_start();
             $UUID = null;
               
             //既に1件注文していたら
-            if (!empty($result)) $UUID = $result["QRid"];
+            if (isset($result)){ $UUID = $result["QRid"]; }
             else {
                 $UUID = md5(uniqid(mt_rand(), true));
                 
