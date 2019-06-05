@@ -61,9 +61,14 @@ session_start();
 </head>
  
 <script language="javascript" type="text/javascript">
-    function OnButtonClick() {
-        target = document.getElementById("output");
-        target.innerHTML = "Penguin";
+    function OnButtonClick(name) {
+        var res = confirm('「' + name + '」を予約しますか？');
+        if(res) {
+            window.location.href =　location.href + '?order=' + name;
+        }
+        else {
+            alert('予約はされませんでした。');
+        }
     }
 </script>
     
