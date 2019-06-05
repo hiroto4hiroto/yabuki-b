@@ -10,8 +10,19 @@
         $sql = "
 
 
+CREATE TABLE `bentotable` (
+  `date` date NOT NULL,
+  `name` text NOT NULL,
+  `price` int(11) NOT NULL,
+  `stocks` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-drop table bentotable;
+
+INSERT INTO `bentotable` (`date`, `name`, `price`, `stocks`) VALUES
+('2019-06-08', 'い弁当', 300, 50),
+('2019-06-08', 'ろ弁当', 300, 30),
+('2019-06-08', 'は弁当', 350, 20),
+('2019-06-08', 'スペシャル弁当', 10000, 200);
         
 
 
