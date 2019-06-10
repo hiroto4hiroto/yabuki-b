@@ -5,7 +5,7 @@
         $db = new PDO($dsn, $dbUser, $dbPass);
         //この""の中にSQL文を打つと反映される
         //ただし"を使ってはいけない
-        $sql = "
+        echo $sql = "
         
         
 
@@ -30,7 +30,7 @@ INSERT INTO `studentlogintable` (`id`, `password`, `resumeDate`, `isVender`) VAL
 
         ";
         $prepare = $db->prepare($sql);
-        $prepare->execute();
+        echo $prepare->execute();
         
         
         
