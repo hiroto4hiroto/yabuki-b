@@ -9,7 +9,7 @@
         
         
 
-select login table;
+select logintable;
 
 
 
