@@ -17,9 +17,9 @@
     }
 
     //ログイン機能
-    if(!empty($_POST['login']) && !empty($_POST["student"]) && !empty($_POST["password"])){
+    if(!empty($_POST['login']) && !empty($_POST["id"]) && !empty($_POST["password"])){
         
-        $student = $_POST["student"];
+        $id = $_POST["id"];
         $password = $_POST["password"];
 
         try {
@@ -27,7 +27,7 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行
-            $sql = 'SELECT * FROM studentlogintable WHERE student = '. $student;
+            $sql = 'SELECT * FROM logintable WHERE id = '. $id;
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -40,8 +40,14 @@
         //本人確認
         if ($password == $result['password'] && $result['resumeDate'] == null) 
         {
-            $_SESSION["USER"] = $_POST["student"];
-            header("Location: index.php");
+            if ($result['isVender']){
+                $_SESSION["VENDER"] = $_POST["id"];
+                header("Location: venderMenu.php");
+            }
+            else {
+                $_SESSION["USER"] = $_POST["id"];
+                header("Location: index.php");
+            }
             exit;
         }
         else if ($result['resumeDate'] != null) {
@@ -66,8 +72,8 @@
 <p style="color: red"><?php echo $message ?></p>
 <form method="post" action="login.php">
     <table>
-        <tr><td><label for="student">学生番号</label>
-            <td><input id="student" type="text" name="student">
+        <tr><td><label for="id">学生番号</label>
+            <td><input id="id" type="text" name="id">
         <tr><td><label for="password">パスワード</label>
             <td><input id="password" type="password" name="password">
     </table>
