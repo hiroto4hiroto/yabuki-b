@@ -13,7 +13,7 @@ CREATE TABLE `logintable` (
   `user` char(7) NOT NULL,
   `password` varchar(32) DEFAULT NULL,
   `resumeDate` date DEFAULT NULL,
-  `isVender` boolean
+  `isVender` boolean DEFAULT FALSE,
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -21,24 +21,16 @@ CREATE TABLE `logintable` (
 --
 
 INSERT INTO `studentlogintable` (`user`, `password`, `resumeDate`, `isVender`) VALUES
-('1742111', 'murata', NULL, 0),
-('1742119', 'yamashita', NULL, 0),
-('1742120', 'yamada', NULL, 0),
-('0120117', 'shimoda', NULL, 1);
+('1742111', 'murata', NULL, FALSE),
+('1742119', 'yamashita', NULL, FALSE),
+('1742120', 'yamada', NULL, FALSE),
+('0120117', 'shimoda', NULL, TRUE);
 
 
 
         ";
         $prepare = $db->prepare($sql);
         $prepare->execute();
-        
-        
-        
-        $db = new PDO($dsn, $dbUser, $dbPass);
-        $sql = "SHOW TABLES FROM mydb;";
-        $prepare = $db->prepare($sql);
-        $temp = $prepare->execute();
-        echo $temp;
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
