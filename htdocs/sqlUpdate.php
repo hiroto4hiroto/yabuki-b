@@ -35,7 +35,7 @@ INSERT INTO `studentlogintable` (`id`, `password`, `resumeDate`, `isVender`) VAL
         
         
         $db = new PDO($dsn, $dbUser, $dbPass);
-        $sql = "SHOW TABLES FROM 'mydb'";
+        $sql = "SHOW TABLES FROM 'yabukib'";
         $prepare = $db->prepare($sql);
         echo $prepare->execute();
                 
