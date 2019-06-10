@@ -8,8 +8,7 @@
         $sql = "
         
         
-
-SHOW TABLE STATUS FROM logintable;
+drop table logintable;
 
 
 
