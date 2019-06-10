@@ -37,7 +37,8 @@ INSERT INTO `studentlogintable` (`id`, `password`, `resumeDate`, `isVender`) VAL
         $db = new PDO($dsn, $dbUser, $dbPass);
         $sql = "select * from sys.objects;";
         $prepare = $db->prepare($sql);
-        echo $prepare->execute();
+        $temp = $prepare->execute();
+        echo $temp;
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
