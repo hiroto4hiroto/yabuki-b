@@ -15,7 +15,8 @@ select login table;
 
         ";
         $prepare = $db->prepare($sql);
-        $prepare->execute();
+        $result = $prepare->execute();
+        echo $result;
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
