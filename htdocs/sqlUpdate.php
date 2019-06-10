@@ -10,11 +10,7 @@
         $sql = "
 
 
-CREATE TABLE `ordertable` (
-  `QRid` char(36) NOT NULL,
-  'name' text DEFAULT NULL,
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+drop table studentlogintable;
 
 
         ";
