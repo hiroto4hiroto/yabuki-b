@@ -12,6 +12,7 @@ SHOW TABLES FROM yabukib;
 
 
         ";
+        echo $sql;
         $prepare = $db->prepare($sql);
         echo $prepare->execute();
 
