@@ -1,3 +1,4 @@
+<?php
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         //SQL作成・実行
