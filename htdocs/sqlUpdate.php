@@ -10,7 +10,7 @@
         
 
 CREATE TABLE `logintable` (
-  `id` char(7) NOT NULL,
+  `user` char(7) NOT NULL,
   `password` varchar(32) DEFAULT NULL,
   `resumeDate` date DEFAULT NULL,
   `isVender` boolean
@@ -20,7 +20,7 @@ CREATE TABLE `logintable` (
 -- テーブルのデータのダンプ `logintable`
 --
 
-INSERT INTO `studentlogintable` (`id`, `password`, `resumeDate`, `isVender`) VALUES
+INSERT INTO `studentlogintable` (`user`, `password`, `resumeDate`, `isVender`) VALUES
 ('1742111', 'murata', NULL, FALSE),
 ('1742119', 'yamashita', NULL, FALSE),
 ('1742120', 'yamada', NULL, FALSE),
@@ -35,7 +35,7 @@ INSERT INTO `studentlogintable` (`id`, `password`, `resumeDate`, `isVender`) VAL
         
         
         $db = new PDO($dsn, $dbUser, $dbPass);
-        $sql = "select * from sys.objects;";
+        $sql = "SHOW TABLES FROM mydb;";
         $prepare = $db->prepare($sql);
         $temp = $prepare->execute();
         echo $temp;
