@@ -13,8 +13,8 @@ SHOW TABLES FROM yabukib;
 
         ";
         $prepare = $db->prepare($sql);
-        $result = $prepare->execute();
-        echo $result;
+        echo $prepare->execute();
+
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
