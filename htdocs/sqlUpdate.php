@@ -21,10 +21,10 @@ CREATE TABLE `logintable` (
 --
 
 INSERT INTO `studentlogintable` (`user`, `password`, `resumeDate`, `isVender`) VALUES
-('1742111', 'murata', NULL, FALSE),
-('1742119', 'yamashita', NULL, FALSE),
-('1742120', 'yamada', NULL, FALSE),
-('0120117', 'shimoda', NULL, TRUE);
+('1742111', 'murata', NULL, 0),
+('1742119', 'yamashita', NULL, 0),
+('1742120', 'yamada', NULL, 0),
+('0120117', 'shimoda', NULL, 1);
 
 
 
