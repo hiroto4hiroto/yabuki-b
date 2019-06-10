@@ -8,7 +8,7 @@
         $sql = "
         
         
-SHOW TABLE STATUS FROM logintable;
+SHOW TABLES FROM yabukib;
 
 
         ";
