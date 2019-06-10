@@ -14,7 +14,7 @@ SHOW TABLES FROM yabukib;
         ";
         echo $sql + "<br>";
         $prepare = $db->prepare($sql);
-        var_dump($prepare->execute());
+        var_dump((Array)($prepare->execute()));
 
                 
     } catch(PDOException $e) {
