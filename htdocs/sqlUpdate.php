@@ -5,7 +5,7 @@
         $db = new PDO($dsn, $dbUser, $dbPass);
         //この""の中にSQL文を打つと反映される
         //ただし"を使ってはいけない
-        echo $sql = "
+        $sql = "
         
         
 
@@ -30,14 +30,14 @@ INSERT INTO `studentlogintable` (`id`, `password`, `resumeDate`, `isVender`) VAL
 
         ";
         $prepare = $db->prepare($sql);
-        echo $prepare->execute();
+        $prepare->execute();
         
         
         
         $db = new PDO($dsn, $dbUser, $dbPass);
-        $sql = "SHOW TABLES FROM 'yabukib'";
+        $sql = "select * from sys.objects;";
         $prepare = $db->prepare($sql);
-        echo $prepare->execute();
+        $prepare->execute();
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
