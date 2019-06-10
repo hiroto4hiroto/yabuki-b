@@ -32,10 +32,10 @@ INSERT INTO `studentlogintable` (`id`, `password`, `resumeDate`, `isVender`) VAL
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
+        
+        
         $db = new PDO($dsn, $dbUser, $dbPass);
-        //この""の中にSQL文を打つと反映される
-        //ただし"を使ってはいけない
-        $sql = "SHOW TABLES FROM mydb";
+        $sql = "SHOW TABLES FROM 'mydb'";
         $prepare = $db->prepare($sql);
         echo $prepare->execute();
                 
