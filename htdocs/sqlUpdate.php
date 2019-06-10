@@ -9,7 +9,7 @@
         
         
 
-select logintable;
+SHOW TABLE STATUS FROM logintable;
 
 
 
