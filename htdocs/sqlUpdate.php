@@ -8,7 +8,7 @@
         $sql = "
         
         
-SHOW TABLES FROM yabukib;
+SHOW TABLES FROM mydb;
 
 
         ";
