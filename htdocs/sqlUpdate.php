@@ -8,13 +8,13 @@
         $sql = "
         
         
-SHOW TABLES FROM mydb;
+SHOW TABLES FROM yabukib;
 
 
         ";
         echo $sql;
         $prepare = $db->prepare($sql);
-        echo $prepare->execute();
+        print_r $prepare->execute();
 
                 
     } catch(PDOException $e) {
