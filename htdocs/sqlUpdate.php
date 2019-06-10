@@ -8,7 +8,7 @@
         $sql = "
         
         
-SHOW TABLES FROM mydb;
+select logintable FROM *;
 
 
         ";
