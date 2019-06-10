@@ -1,3 +1,13 @@
+        require_once 'database_conf.php';
+        $db = new PDO($dsn, $dbUser, $dbPass);
+        //SQL作成・実行
+        
+        //この""の中にSQL文を打つと反映される
+        //ただし"を使ってはいけない
+        $sql = "
+
+
+
 CREATE TABLE `logintable` (
   `id` char(7) NOT NULL,
   `password` varchar(32) DEFAULT NULL,
@@ -14,3 +24,15 @@ INSERT INTO `studentlogintable` (`id`, `password`, `resumeDate`, `isVender`) VAL
 ('1742119', 'yamashita', NULL, FALSE),
 ('1742120', 'yamada', NULL, FALSE),
 ('0120117', 'shimoda', NULL, TRUE);
+
+
+
+        ";
+        $prepare = $db->prepare($sql);
+        $prepare->execute();
+                
+    } catch(PDOException $e) {
+        echo $e->getMessage();
+        die();
+    }
+?>
