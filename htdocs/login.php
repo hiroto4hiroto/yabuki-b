@@ -26,7 +26,7 @@
             //DBに接続
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
-            //SQL作成・実行
+            //SQL作成・実行    
             $sql = 'SELECT * FROM logintable WHERE user = '. $user;
             $prepare = $db->prepare($sql);
             $prepare->execute();
@@ -41,11 +41,11 @@
         if ($password == $result['password'] && $result['resumeDate'] == null) 
         {
             if (!$result['isVender']){
-                $_SESSION["VENDER"] = $_POST["user"];
+                $_SESSION["USER"] = $_POST["user"];
                 header("Location: index.php");
             }
             else {
-                $_SESSION["USER"] = $_POST["user"];
+                $_SESSION["VENDER"] = $_POST["user"];
                 header("Location: venderMenu.php");
             }
             exit;
