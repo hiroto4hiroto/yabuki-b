@@ -40,7 +40,7 @@
         //本人確認
         if ($password == $result['password'] && $result['resumeDate'] == null) 
         {
-            if ($result['isVender'] == 0){
+            if (!$result['isVender']){
                 $_SESSION["VENDER"] = $_POST["user"];
                 header("Location: index.php");
             }
