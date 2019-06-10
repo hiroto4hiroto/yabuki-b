@@ -12,9 +12,9 @@ SHOW TABLES FROM yabukib;
 
 
         ";
-        echo $sql;
+        echo $sql + "<br>";
         $prepare = $db->prepare($sql);
-        print_r ($prepare->execute());
+        var_dump($prepare->execute());
 
                 
     } catch(PDOException $e) {
