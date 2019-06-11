@@ -7,7 +7,7 @@
         //ただし"を使ってはいけない
         $sql = "
         
-
+drop table 'logintable';
 
         ";
         $prepare = $db->prepare($sql);
