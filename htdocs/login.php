@@ -25,14 +25,17 @@
         try {
             //DBに接続
             require_once 'database_conf.php';
-            $db = new PDO($dsn, $dbUser, $dbPass);
-            //SQL作成・実行    
-            $sql = 'SELECT * FROM studentlogintable WHERE user = '. $user;
-            //$sql = '$ DESCRIBE logintable';
+            $sql = 'SHOW COLUMNS FROM logintable';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
             echo $result;
+            $db = new PDO($dsn, $dbUser, $dbPass);
+            //SQL作成・実行    
+            $sql = 'SELECT * FROM logintable WHERE user = '. $user;
+            $prepare = $db->prepare($sql);
+            $prepare->execute();
+            $result = $prepare->fetch(PDO::FETCH_ASSOC);
         
         } catch(PDOException $e) {
             echo $e->getMessage();
