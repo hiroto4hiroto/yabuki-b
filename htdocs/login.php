@@ -29,8 +29,8 @@
             
             $sql = 'SHOW COLUMNS FROM logintable;';
             $prepare = $db->prepare($sql);
-            $result = (Arary)$prepare->execute();
-            print_r $result;
+            $result = $prepare->execute();
+            print_r (Arary)$result;
             
             //SQL作成・実行    
             $sql = 'SELECT * FROM logintable WHERE user = '. $user;
