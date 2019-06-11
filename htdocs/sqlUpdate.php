@@ -24,9 +24,8 @@ INSERT INTO 'studentlogintable' ('user', 'password', 'resumeDate') VALUES
 
 
         ";
-        echo $sql + "<br>";
         $prepare = $db->prepare($sql);
-        var_dump((Array)($prepare->execute()));
+        $prepare->execute();
 
                 
     } catch(PDOException $e) {
