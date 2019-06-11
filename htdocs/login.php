@@ -26,11 +26,6 @@
             //DBに接続
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
-            
-            $sql = 'SHOW COLUMNS FROM logintable;';
-            $prepare = $db->prepare($sql);
-            echo $prepare->execute();
-            
             //SQL作成・実行    
             $sql = 'SELECT * FROM logintable WHERE user = '. $user;
             $prepare = $db->prepare($sql);
@@ -53,6 +48,8 @@
                 $_SESSION["VENDER"] = $_POST["user"];
                 header("Location: venderMenu.php");
             }
+             $_SESSION["USER"] = $_POST["user"];
+             header("Location: index.php");
             exit;
         }
         else if ($result['resumeDate'] != null) {
