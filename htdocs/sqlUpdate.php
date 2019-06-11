@@ -7,10 +7,8 @@
         //ただし"を使ってはいけない
         $sql = "
         
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-        
-        
+          
 CREATE TABLE 'logintable' (
   'user' char(7) NOT NULL,
   'password' varchar(32) DEFAULT NULL,
