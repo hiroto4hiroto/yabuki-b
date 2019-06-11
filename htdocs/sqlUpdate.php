@@ -7,7 +7,20 @@
         //ただし"を使ってはいけない
         $sql = "
         
-        drop table logintable:
+CREATE TABLE 'logintable' (
+  'user' char(7) NOT NULL,
+  'password' varchar(32) DEFAULT NULL,
+  'resumeDate' date DEFAULT NULL,
+  'isVender' tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+--
+-- テーブルのデータのダンプ `logintable`
+--
+INSERT INTO 'studentlogintable' ('user', 'password', 'resumeDate', 'isVender') VALUES
+('1742111', 'murata', NULL, 0),
+('1742119', 'yamashita', NULL, 0),
+('1742120', 'yamada', NULL, 0),
+('0120117', 'shimoda', NULL, 1);
 
         ";
         $prepare = $db->prepare($sql);
