@@ -6,20 +6,8 @@
         //この""の中にSQL文を打つと反映される
         //ただし"を使ってはいけない
         $sql = "
-          
-CREATE TABLE 'logintable' (
-  'user' char(7) NOT NULL,
-  'password' varchar(32) DEFAULT NULL,
-  'resumeDate' date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
---
--- テーブルのデータのダンプ `logintable`
---
-INSERT INTO 'studentlogintable' ('user', 'password', 'resumeDate') VALUES
-('1742111', 'murata', NULL),
-('1742119', 'yamashita', NULL),
-('1742120', 'yamada', NULL),
-('0120117', 'shimoda', NULL);
+        
+        drop table logintable:
 
         ";
         $prepare = $db->prepare($sql);
