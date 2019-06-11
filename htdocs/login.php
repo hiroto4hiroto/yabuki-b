@@ -18,7 +18,7 @@
 
     //ログイン機能
     if(!empty($_POST['login']) && !empty($_POST["user"]) && !empty($_POST["password"])){
-        
+
         $user = $_POST["user"];
         $password = $_POST["password"];
 
@@ -27,7 +27,7 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行    
-            $sql = 'SELECT * FROM logintable WHERE user = '. $user;
+            $sql = 'SELECT * FROM logintable WHERE student = '. $user;
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
