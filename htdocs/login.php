@@ -36,7 +36,6 @@
         } catch(PDOException $e) {
             echo $e->getMessage();
             die();
-            echo "al;sdfkjasdl;fjas;dlkfjasl;fja;sldfjas;ldfkjasdf";
         }
         
         //本人確認
@@ -56,7 +55,8 @@
             $message = 'ペナルティがあるため、'.$result['resumeDate'].'　を過ぎるまでご利用いただけません。';
         }
         else {
-            $message = 'ログインに失敗しました。';
+            $message = $result['user'];
+            $message .= 'ログインに失敗しました。';
         }
     }
 ?>
