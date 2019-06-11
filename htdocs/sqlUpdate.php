@@ -6,8 +6,6 @@
         //この""の中にSQL文を打つと反映される
         //ただし"を使ってはいけない
         $sql = "
-        
-SET time_zone = "+00:00";
           
 CREATE TABLE 'logintable' (
   'user' char(7) NOT NULL,
