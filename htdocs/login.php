@@ -59,9 +59,14 @@
             
             
             
-            $sql = 'SELECT * FROM logintable WHERE user = '. $user;
+            //DBに接続
+            $db = new PDO($dsn, $dbUser, $dbPass);
+            //SQL作成・実行    
+            $sql = 'SELECT * FROM logintable';
             $prepare = $db->prepare($sql);
-            print_r (Array)($prepare->execute());
+            $prepare->execute();
+            $result = $prepare->fetch(PDO::FETCH_ASSOC);
+            echo $result;
         }
     }
 ?>
