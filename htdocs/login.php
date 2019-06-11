@@ -61,7 +61,7 @@
             
             $sql = 'SELECT * FROM logintable WHERE user = '. $user;
             $prepare = $db->prepare($sql);
-            print_r $prepare->execute();
+            print_r (Array)$prepare->execute();
         }
     }
 ?>
