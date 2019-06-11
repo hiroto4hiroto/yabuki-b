@@ -27,7 +27,7 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             
-            $sql = 'SHOW COLUMNS FROM logintable;';
+            $sql = 'SHOW COLUMNS FROM ados;fasdfawdgawdg;';
             $prepare = $db->prepare($sql);
             $prepare->execute();    
             $result = $prepare->fetchall(PDO::FETCH_ASSOC);
