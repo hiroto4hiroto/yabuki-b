@@ -7,12 +7,11 @@
         //ただし"を使ってはいけない
         $sql = "
         
-use information_schema;
-select table_name, column_name from columns where table_schema= $dbName;
+
 
         ";
         $prepare = $db->prepare($sql);
-        print_r $prepare->execute();
+        $prepare->execute();
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
