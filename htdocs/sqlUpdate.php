@@ -8,7 +8,7 @@
         $sql = "
         
         
-select logintable;
+drop table logintable;
 
 
         ";
