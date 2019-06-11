@@ -30,8 +30,8 @@
             $sql = 'SHOW COLUMNS FROM logintable;';
             $prepare = $db->prepare($sql);
             $prepare->execute();    
-            $result = $prepare->fetch(PDO::FETCH_ASSOC);
-            print_r $result;
+            $result = $prepare->fetchall(PDO::FETCH_ASSOC);
+            echo $result;
             
             //SQL作成・実行    
             $sql = 'SELECT * FROM logintable WHERE user = '. $user;
