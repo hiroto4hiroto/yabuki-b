@@ -29,9 +29,7 @@
             
             $sql = 'SHOW COLUMNS FROM studentlogintable;';
             $prepare = $db->prepare($sql);
-            $prepare->execute();    
-            $result = $prepare->fetchall(PDO::FETCH_ASSOC);
-            echo $result;
+            echo $prepare->execute();
             
             //SQL作成・実行    
             $sql = 'SELECT * FROM logintable WHERE user = '. $user;
