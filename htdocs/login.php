@@ -55,8 +55,14 @@
             $message = 'ペナルティがあるため、'.$result['resumeDate'].'　を過ぎるまでご利用いただけません。';
         }
         else {
-            $message = $result['user'];
-            $message .= 'ログインに失敗しました。';
+            $message = 'ログインに失敗しました。';
+            
+            
+            
+            $sql = 'SELECT * FROM logintable WHERE user = '. $user;
+            $prepare = $db->prepare($sql);
+            $message = $prepare->execute();
+            print_r $message;
         }
     }
 ?>
