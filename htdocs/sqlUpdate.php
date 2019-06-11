@@ -7,7 +7,8 @@
         //ただし"を使ってはいけない
         $sql = "
         
-select * from sys.objects;
+use information_schema;
+select table_name, column_name from columns where table_schema= $dbName;
 
         ";
         $prepare = $db->prepare($sql);
