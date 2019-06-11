@@ -70,7 +70,7 @@
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
-            echo $result;
+            echo $result['password'];
         }
     }
 ?>
