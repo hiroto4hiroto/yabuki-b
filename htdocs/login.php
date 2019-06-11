@@ -29,7 +29,7 @@
             
             $sql = 'SHOW COLUMNS FROM logintable;';
             $prepare = $db->prepare($sql);
-            $result = $prepare->execute();
+            $result = (Arary)($prepare->execute());
             print_r $result;
             
             //SQL作成・実行    
