@@ -11,8 +11,7 @@ select * from sys.objects;
 
         ";
         $prepare = $db->prepare($sql);
-        $prepare->execute();
-
+        print_r $prepare->execute();
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
