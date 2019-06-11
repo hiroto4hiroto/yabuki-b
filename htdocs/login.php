@@ -2,7 +2,7 @@
     session_start();
  
     // 変数の初期化
-    $sql = null;
+    $sql = '';
     $result = null;
     $db = null;
     $message = '';
@@ -25,12 +25,14 @@
         try {
             //DBに接続
             require_once 'database_conf.php';
-            $sql = 'SHOW COLUMNS FROM logintable';
+            $db = new PDO($dsn, $dbUser, $dbPass);
+            
+            $sql = 'SHOW COLUMNS FROM logintable;';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
             echo $result;
-            $db = new PDO($dsn, $dbUser, $dbPass);
+            
             //SQL作成・実行    
             $sql = 'SELECT * FROM logintable WHERE user = '. $user;
             $prepare = $db->prepare($sql);
