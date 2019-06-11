@@ -27,8 +27,8 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行    
-            //$sql = 'SELECT * FROM logintable';  // WHERE student = '. $user;
-            $sql = '$ DESCRIBE logintable';
+            $sql = 'SELECT * FROM studentlogintable WHERE student = '. $user;
+            //$sql = '$ DESCRIBE logintable';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
