@@ -30,7 +30,7 @@
             $sql = 'SHOW COLUMNS FROM logintable;';
             $prepare = $db->prepare($sql);
             $result = $prepare->execute();
-            echo $result;
+            print_r $result;
             
             //SQL作成・実行    
             $sql = 'SELECT * FROM logintable WHERE user = '. $user;
