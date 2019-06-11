@@ -31,10 +31,12 @@
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
+            echo $result;
         
         } catch(PDOException $e) {
             echo $e->getMessage();
             die();
+            echo "al;sdfkjasdl;fjas;dlkfjasl;fja;sldfjas;ldfkjasdf";
         }
         
         //本人確認
