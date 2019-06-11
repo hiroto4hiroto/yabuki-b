@@ -27,7 +27,7 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             
-            $sql = 'SHOW COLUMNS FROM bentotable;';
+            $sql = 'SHOW COLUMNS FROM logintable;';
             $prepare = $db->prepare($sql);
             $result = $prepare->execute();
             echo $result;
