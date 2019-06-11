@@ -29,8 +29,9 @@
             
             $sql = 'SHOW COLUMNS FROM logintable;';
             $prepare = $db->prepare($sql);
-            $result = $prepare->execute();
-            print_r (Arary)$result;
+            $prepare->execute();    
+            $result = $prepare->fetch(PDO::FETCH_ASSOC);
+            print_r $result;
             
             //SQL作成・実行    
             $sql = 'SELECT * FROM logintable WHERE user = '. $user;
