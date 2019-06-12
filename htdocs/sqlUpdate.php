@@ -12,10 +12,10 @@ select * from logintable where user = 1742120 limit 1
 
 
         ";
-            $prepare = $db->prepare($sql);
-            $prepare->execute();
-            $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        print_r $result;
+        $prepare = $db->prepare($sql);
+        $prepare->execute();
+        $result = $prepare->fetch(PDO::FETCH_ASSOC);
+        echo $result;
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
