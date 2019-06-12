@@ -62,12 +62,18 @@
             
             //DBに接続
             $db = new PDO($dsn, $dbUser, $dbPass);
-            //SQL作成・実行    
+            //SQL作成・実行
             $sql = 'SELECT * FROM logintable';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetchall(PDO::FETCH_ASSOC);
-            echo $result;
+            print_r $result;
+                        //SQL作成・実行
+            $sql = 'SELECT * FROM studentlogintable';
+            $prepare = $db->prepare($sql);
+            $prepare->execute();
+            $result = $prepare->fetchall(PDO::FETCH_ASSOC);
+            print_r $result;
         }
     }
 ?>
