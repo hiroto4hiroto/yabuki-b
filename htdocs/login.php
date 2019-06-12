@@ -40,13 +40,13 @@
         //本人確認
         if ($password == $result['password'] && $result['resumeDate'] == null) 
         {
-            if (substr($result["user"], 0, 4) == 'vend'){
-                $_SESSION["VENDER"] = $_POST["user"];
-                header("Location: venderMenu.php");
-            }
-            else {
+            if (strpos($result["user"], 'vend') === false){
                 $_SESSION["USER"] = $_POST["user"];
                 header("Location: index.php");
+            }
+            else {
+                $_SESSION["VENDER"] = $_POST["user"];
+                header("Location: venderMenu.php");
             }
             exit;
         }
