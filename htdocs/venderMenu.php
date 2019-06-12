@@ -1,7 +1,7 @@
 <?php
 session_start();
 $message = "";
-    //学生でなければ弾く
+    //業者でなければ弾く
 if (!isset($_SESSION['VENDER'])) {
     header('Location: login.php');
     exit;
@@ -35,9 +35,9 @@ if(!empty($_GET['message']))
 ?>
 <input type="button" class="btn-sticky" onclick="location.href='./update.php'" value="弁当情報の登録・更新" style="height: calc(var(--fontRatio) * 7.5);"><br>
 <input type="button" class="btn-sticky" onclick="location.href='./orderList.php'" value="予約数の確認" style="height: calc(var(--fontRatio) * 7.5);"><br>
-<input type="button" class="btn-sticky" onclick="location.href='./check.php'" value="ペナルティ操作"><br>
 <input type="button" class="btn-sticky" onclick="location.href='./QRdisplay.php'" value="引渡し操作" style="height: calc(var(--fontRatio) * 7.5);"><br>
 <br>
+<input type="button" class="btn-sticky" onclick="location.href='./check.php'" value="ペナルティ操作"><br>
 <form method="post" action="index.php">
     <input type="submit" class="btn-sticky" name="logout" value="ログアウト">
 </form>
