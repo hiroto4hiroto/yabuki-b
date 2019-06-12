@@ -7,7 +7,7 @@
         //ただし"を使ってはいけない
         $sql = "
         
-select * from bentotable where name = 'ろ弁当' limit 1;
+drop table logintable;
 
         ";
         $prepare = $db->prepare($sql);
