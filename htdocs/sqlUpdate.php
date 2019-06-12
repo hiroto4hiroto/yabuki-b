@@ -7,8 +7,7 @@
         //ただし"を使ってはいけない
         $sql = "
         
-SELECT 1 FROM logintable LIMIT 1;
-
+drop table logintable;
         ";
         $prepare = $db->prepare($sql);
         $prepare->execute();
