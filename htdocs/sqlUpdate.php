@@ -8,7 +8,7 @@
         $sql = "
         
 
-select * from logintable where user = 1742120 limit 1
+select * from 'logintable' where user = '1742120' limit 1;
 
 
         ";
