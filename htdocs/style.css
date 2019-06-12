@@ -4,6 +4,7 @@
 
 * {
   text-align: center;
+  word-wrap: normal;
   font-size: var(--fontRatio);
   margin: none;
   border: none;
@@ -40,7 +41,7 @@ h1 {
 }
 
 .btn-sticky {
-  font-size: calc(var(--fontRatio) * 1.5);
+  font-size: calc(var(--fontRatio) * 1.25);
   width: 35vh;
   height: calc(var(--fontRatio) * 2.5);
   display: inline-block;
