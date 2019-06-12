@@ -8,13 +8,13 @@
         $sql = "
         
 CREATE TABLE 'logintable' (
-  'user' char(7) NOT NULL,
-  'password' varchar(32) DEFAULT NULL,
-  'resumeDate' date DEFAULT NULL
+  `user` char(7) NOT NULL,
+  `password` varchar(32) DEFAULT NULL,
+  `resumeDate` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO 'studentlogintable' ('user', 'password', 'resumeDate') VALUES
-('1742111', 'murata', NULL);
+('1742111', 'murata', NULL),
 ('1742119', 'yamashita', NULL),
 ('1742120', 'yamada', NULL),
 ('vend001', 'shimoda', NULL);
