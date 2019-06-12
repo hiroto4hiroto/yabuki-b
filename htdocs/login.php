@@ -12,7 +12,7 @@
         header('Location: index.php');
         exit;
     } else if (isset($_SESSION['VENDER'])) {
-        header('Location: vendorMenu.php');
+        header('Location: Vindex.php');
         exit;
     }
 
@@ -46,7 +46,7 @@
             }
             else {
                 $_SESSION["VENDER"] = $_POST["user"];
-                header("Location: venderMenu.php");
+                header("Location: Vindex.php");
             }
             $message = 'なぜか、ログインに失敗しました。';
         }
