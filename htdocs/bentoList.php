@@ -21,7 +21,7 @@ session_start();
         //注文を受けたら
         if (isset($_GET['order'])) {
             //既に注文しているか確認
-            $sql = 'SELECT * FROM identifixtable WHERE student = '. $_SESSION["USER"] .' AND date = date() + 1;';
+            $sql = 'SELECT * FROM identifixtable WHERE user = '. $_SESSION["USER"] .' AND date = date() + 1;';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -34,9 +34,9 @@ session_start();
                 $UUID = md5(uniqid(mt_rand(), true));
                 
                 //認証リストに一件追加
-                $sql = "insert into identifixtable ('QRid', 'student', 'date') values (:QRid, :student, date() );";
+                $sql = "insert into identifixtable ('QRid', 'user', 'date') values (:QRid, :user, date() );";
                 $result = $db->prepare($sql);
-                $params = array(":QRid" => $UUID, ":student" => $_GET["order"]);
+                $params = array(":QRid" => $UUID, ":user" => $_GET["order"]);
                 $result->execute($params);
             }
              
