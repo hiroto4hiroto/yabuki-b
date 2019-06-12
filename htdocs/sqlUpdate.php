@@ -13,7 +13,7 @@ select * from bentotable where name = 'ろ弁当' limit 1;
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        print_r $result;
+        print_r (Array)$result;
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
