@@ -27,7 +27,7 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行    
-            $sql = 'select * from logintable where user = '. $user .' limit 1';
+            $sql = 'select * from logintable where user = "'. $user .'" limit 1';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -57,23 +57,6 @@
         }
         else {
             $message = 'ログインに失敗しました。';
-            
-            
-            
-            //DBに接続
-            $db = new PDO($dsn, $dbUser, $dbPass);
-            //SQL作成・実行
-            $sql = 'SELECT * FROM logintable';
-            $prepare = $db->prepare($sql);
-            $prepare->execute();
-            $result = $prepare->fetchall(PDO::FETCH_ASSOC);
-            echo $result;
-                        //SQL作成・実行
-            $sql = 'SELECT * FROM studentlogintable';
-            $prepare = $db->prepare($sql);
-            $prepare->execute();
-            $result = $prepare->fetchall(PDO::FETCH_ASSOC);
-            echo $result;
         }
     }
 ?>
