@@ -27,7 +27,7 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行    
-            $sql = 'SELECT * FROM logintable WHERE user = '. $user .' limit 1';
+            $sql = 'select * from logintable where user = '. $user .' limit 1';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -66,8 +66,8 @@
             $sql = 'SELECT * FROM logintable';
             $prepare = $db->prepare($sql);
             $prepare->execute();
-            $result = $prepare->fetch(PDO::FETCH_ASSOC);
-            echo $result['password'];
+            $result = $prepare->fetchall(PDO::FETCH_ASSOC);
+            echo $result;
         }
     }
 ?>
