@@ -8,18 +8,7 @@
         $sql = "
         
 
-CREATE TABLE 'logintable' (
-  'user' char(7) NOT NULL,
-  'password' varchar(32) DEFAULT NULL,
-  'resumeDate' date DEFAULT NULL,
-  'isVender' tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO 'studentlogintable' ('user', 'password', 'resumeDate', 'isVender') VALUES
-('1742111', 'murata', NULL, 0);
-('1742119', 'yamashita', NULL, 0),
-('1742120', 'yamada', NULL, 0),
-('9999999', 'shimoda', NULL, 1);
+drop table logintable;
 
 
         ";
