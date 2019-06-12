@@ -41,7 +41,7 @@ h1 {
 
 .btn-sticky {
   font-size: calc(var(--fontRatio) * 1.5);
-  width: 35vh;
+  width: 80vw;
   height: calc(var(--fontRatio) * 2.5);
   display: inline-block;
   margin: 0.5vh 0;
