@@ -23,7 +23,7 @@ if(isset($_POST['logout'])){
      <link rel="stylesheet" type="text/css" href="style.css">
 </head>
  
-<body style="background-color:#000;">
+<body style="background-color:#ff7;">
 <p>弁当事前予約サービス</p>
 <h1>業者トップページ</h1>
 <p>業者番号：<?php echo $_SESSION['VENDER'] ?>　ログイン中</p>
