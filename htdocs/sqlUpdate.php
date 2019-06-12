@@ -8,7 +8,7 @@
         $sql = "
         
 
-select * from bentotable where name = い弁当 limit 1;
+select * from bentotable where name = 'い弁当' limit 1;
 
 
         ";
