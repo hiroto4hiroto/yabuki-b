@@ -8,14 +8,14 @@
         $sql = "
         
 
-select * from bentotable where name = 'い弁当' limit 1;
+select * from bentotable where name = い弁当 limit 1;
 
 
         ";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        echo $result;
+        echo $result['price'];
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
