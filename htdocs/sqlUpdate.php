@@ -7,7 +7,7 @@
         //ただし"を使ってはいけない
         $sql = "
         
-select * from logintable where user = '1742120' limit 1;
+drop logintable;
 
         ";
         $prepare = $db->prepare($sql);
