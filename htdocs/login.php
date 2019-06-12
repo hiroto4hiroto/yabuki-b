@@ -27,7 +27,7 @@
             require_once 'database_conf.php';
             $db = new PDO($dsn, $dbUser, $dbPass);
             //SQL作成・実行    
-            $sql = 'select * from logintable where user = "'. $user .'" limit 1';
+            $sql = 'select * from logintable where user = '. $user .' limit 1';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -40,7 +40,7 @@
         //本人確認
         if ($password == $result['password'] && $result['resumeDate'] == null) 
         {
-            if ($result['isVender'] == 0){
+            if ($result["user"] == 0){
                 $_SESSION["USER"] = $_POST["user"];
                 header("Location: index.php");
             }
