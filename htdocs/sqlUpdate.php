@@ -8,7 +8,7 @@
         $sql = "
         
 
-select * from 'studentlogintable' where student = 1742120;
+select * from bentotable where name = 'い弁当' limit 1;
 
 
         ";
