@@ -7,7 +7,7 @@
         //ただし"を使ってはいけない
         $sql = "
         
-select * from logintable;
+SELECT 1 FROM logintable LIMIT 1;
 
         ";
         $prepare = $db->prepare($sql);
