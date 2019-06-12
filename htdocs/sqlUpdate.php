@@ -8,14 +8,14 @@
         $sql = "
         
 
-select * from bentotable where name = 'い弁当' limit 1;
+select * from logintable where user = '1742120' limit 1;
 
 
         ";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        echo $result['price'];
+        echo $result['password'];
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
