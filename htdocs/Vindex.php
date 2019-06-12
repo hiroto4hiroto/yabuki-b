@@ -38,7 +38,7 @@ if(!empty($_GET['message']))
 <input type="button" class="btn-sticky" onclick="location.href='./Vconfirmation.php'" value="引渡し操作" style="height: calc(var(--fontRatio) * 7.5);"><br>
 <br>
 <input type="button" class="btn-sticky" onclick="location.href='./VPenalty.php'" value="ペナルティ操作"><br>
-<form method="post" action="index.php">
+<form method="post" action="Vindex.php">
     <input type="submit" class="btn-sticky" name="logout" value="ログアウト">
 </form>
  
