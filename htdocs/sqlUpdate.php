@@ -17,7 +17,7 @@ INSERT INTO `logintable` (`user`, `password`, `resumeDate`) VALUES
 ('1742111', 'murata', NULL),
 ('1742119', 'yamashita', NULL),
 ('1742120', 'yamada', NULL),
-('0000001', 'shimoda', NULL);
+('vend001', 'shimoda', NULL);
 
         ";
         $prepare = $db->prepare($sql);
