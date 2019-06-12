@@ -7,13 +7,13 @@
         //ただし"を使ってはいけない
         $sql = "
         
-select * from logintable where password = 1742120 limit 1;
+select * from bentotable where name = 'ろ弁当' limit 1;
 
         ";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        echo $result['password'];
+        print_r $result;
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
