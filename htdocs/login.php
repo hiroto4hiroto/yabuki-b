@@ -67,13 +67,13 @@
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetchall(PDO::FETCH_ASSOC);
-            print_r $result;
+            echo $result;
                         //SQL作成・実行
             $sql = 'SELECT * FROM studentlogintable';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetchall(PDO::FETCH_ASSOC);
-            print_r $result;
+            echo $result;
         }
     }
 ?>
