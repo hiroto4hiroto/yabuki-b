@@ -2,7 +2,7 @@
 session_start();
 $message = "";
     //学生でなければ弾く
-if (!isset($_SESSION['USER'])) {
+if (!isset($_SESSION['VENDER'])) {
     header('Location: login.php');
     exit;
 }
@@ -26,7 +26,7 @@ if(isset($_POST['logout'])){
 <body style="background-color:#000;">
 <p>弁当事前予約サービス</p>
 <h1>業者トップページ</h1>
-<p>業者番号：<?php echo $_SESSION['USER'] ?>　ログイン中</p>
+<p>業者番号：<?php echo $_SESSION['VENDER'] ?>　ログイン中</p>
 
 <?php
 //キャンセル文
