@@ -48,13 +48,13 @@
                 $_SESSION["VENDER"] = $_POST["user"];
                 header("Location: venderMenu.php");
             }
-            exit;
+            $message .= 'なぜか、ログインに失敗しました。';
         }
         else if ($result['resumeDate'] != null) {
             $message = 'ペナルティがあるため、'.$result['resumeDate'].'　を過ぎるまでご利用いただけません。';
         }
         else {
-            $message = 'ログインに失敗しました。';
+            $message .= 'ログインに失敗しました。';
         }
     }
 ?>
