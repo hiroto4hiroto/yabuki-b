@@ -40,6 +40,11 @@
         //本人確認
         if ($password == $result['password'] && $result['resumeDate'] == null) 
         {
+            
+            $_SESSION["USER"] = $_POST["user"];
+            header("Location: index.php");
+            exit;
+            
             if (strpos($result["user"], 'vend') === false){
                 $_SESSION["USER"] = $_POST["user"];
                 header("Location: index.php");
