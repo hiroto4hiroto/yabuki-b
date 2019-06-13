@@ -12,8 +12,11 @@ SELECT * FROM ordertable ORDER BY date, price ASC;
         ";
         $prepare = $db->prepare($sql);
         $prepare->execute();
-        $result = $prepare->fetchall(PDO::FETCH_ASSOC);
-        var_dump($result);
+        
+        foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result){
+            var_dump($result);
+        }
+        
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
