@@ -52,7 +52,7 @@ if (!isset($_SESSION['VENDER'])) {
     <!--
     tr td {
         border-style: solid;
-        font-size:1vw;
+        font-size:1.5vw;
         }
     -->
     </style>
