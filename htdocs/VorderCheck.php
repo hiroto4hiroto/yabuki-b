@@ -7,6 +7,13 @@ if (!isset($_SESSION['VENDER'])) {
     exit;
 }
     try {
+        //予約リスト削除
+        if (isset($_GET['delete'])) {
+            $sql = 'DELETE * FROM ordertable;';
+            $prepare = $db->prepare($sql);
+            $prepare->execute();
+            window.location.href =　location.href + '?deleted=true';
+        }
         //DBに接続
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
@@ -83,7 +90,7 @@ if (!isset($_SESSION['VENDER'])) {
 </head>
  
 <script language="javascript" type="text/javascript">
-    function OnButtonClick(name) {
+    function OnButtonClick() {
         var res = confirm('すべての予約を削除しますか？');
         if(res) {
             window.location.href =　location.href + '?delete=true';
@@ -97,7 +104,9 @@ if (!isset($_SESSION['VENDER'])) {
 <body class="vender">
 <p>弁当事前予約サービス</p>
 <h1>予約数の確認</h1>
+<?php if(isset($_GET['deleted']) echo 'すべての予約を削除しました'; ?>
+<br>
 <?php echo $list; ?>
-
+<input type="button" class="btn-sticky" onclick="OnButtonClick();" value="すべての予約を削除">
 </body>
 </html>
