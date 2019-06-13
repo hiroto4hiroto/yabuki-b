@@ -11,7 +11,7 @@ if (!isset($_SESSION['VENDER'])) {
         $db = new PDO($dsn, $dbUser, $dbPass);
         //予約リスト削除
         if (isset($_GET['delete'])) {
-            $sql = 'DELETE * FROM ordertable;';
+            $sql = 'truncate table ordertable;';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             header('Location: VorderCheck.php?deleted=true');
@@ -105,8 +105,8 @@ if (!isset($_SESSION['VENDER'])) {
 <body class="vender">
 <p>弁当事前予約サービス</p>
 <h1>予約数の確認</h1>
+
 <?php if(isset($_GET['deleted'])) echo 'すべての予約を削除しました'; ?>
-<br>
 <?php echo $list; ?>
 <input type="button" class="btn-sticky" onclick="OnButtonClick();" value="すべての予約を削除">
 </body>
