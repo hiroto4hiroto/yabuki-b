@@ -12,7 +12,7 @@ SELECT * FROM ordertable ORDER BY date, price ASC limit 1;
         ";
         $prepare = $db->prepare($sql);
         $prepare->execute();
-        $result = $prepare->fetchAll(PDO::FETCH_ASSOC)
+        $result = $prepare->fetch(PDO::FETCH_ASSOC);
          var_dump($result);
                 
     } catch(PDOException $e) {
