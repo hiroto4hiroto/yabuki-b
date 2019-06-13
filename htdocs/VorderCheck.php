@@ -94,7 +94,7 @@ if (!isset($_SESSION['VENDER'])) {
     }
 </script>
     
-<body style="background-color:#ffb;">
+<body class="vender">
 <p>弁当事前予約サービス</p>
 <h1>予約数の確認</h1>
 <?php echo $list; ?>
