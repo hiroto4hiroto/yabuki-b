@@ -18,7 +18,7 @@ if (!isset($_SESSION['VENDER'])) {
         $list = "";
         $prepare->execute();
         
-        $list .= '<table style="width: 80vw; height: 2em;"><tr>';
+        $list .= '<table style="width: 80vw; height: 2em; font-size:1vw;"><tr>';
         $list .= '<td style="width: 5vw;">受取';
         $list .= '<td style="width: 10vw;">日付';
         $list .= '<td style="width: 10vw;">学生番号';
