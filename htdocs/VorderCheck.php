@@ -18,10 +18,10 @@ if (!isset($_SESSION['VENDER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
-        $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+        $list .= '<br><table style="width: 50vw; height: 2em;"><tr>';
         $list .= '<td style="width: 10vw;">日付';
         $list .= '<td style="width: 20vw;">弁当名';
-        $list .= '<td style="width: 35vw;">個数';
+        $list .= '<td style="width: 20vw;">個数';
 
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
@@ -49,11 +49,11 @@ if (!isset($_SESSION['VENDER'])) {
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
-            $list .= '<td>'. $result["check"];
-            $list .= '<td>'. $result["date"];
-            $list .= '<td>'. $result["user"];
-            $list .= '<td>'. $result["name"];
-            $list .= '<td>'. $result["QRid"];
+            $list .= '<td class="orderText">'. $result["check"];
+            $list .= '<td class="orderText">'. $result["date"];
+            $list .= '<td class="orderText">'. $result["user"];
+            $list .= '<td class="orderText">'. $result["name"];
+            $list .= '<td class="orderText">'. $result["QRid"];
         }
         $list .= '</table>';
 
@@ -73,6 +73,9 @@ if (!isset($_SESSION['VENDER'])) {
     <!--
     tr td {
         border-style: solid;
+        }
+        
+    .orderText {
         font-size:1.5vw;
         }
     -->
