@@ -7,21 +7,14 @@
         //ただし"を使ってはいけない
         $sql = "
         
---
--- テーブルの構造 `ordertable`
---
 
 CREATE TABLE `ordertable` (
-  `check` tinyint(1) DEFAULT 0,
-  `date` date NOT NULL,
-  `user` char(7) NOT NULL,
-  `name` text DEFAULT NULL,
-  `QRid` char(36) NOT NULL
+  'check' tinyint(1) DEFAULT 0,
+  'date' date NOT NULL,
+  'user' char(7) NOT NULL,
+  'name' text DEFAULT NULL,
+  'QRid' char(36) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- テーブルのデータのダンプ `ordertable`
---
 
 INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES
 (0, '2019-05-20', '1742120', 'い弁当', '254fc572-a766-4522-a013-ff6562026145'),
