@@ -13,7 +13,7 @@ if (!isset($_SESSION['VENDER'])) {
 
         //一覧作成
         //SQL作成・実行
-        $sql = 'SELECT * FROM ordertable ORDER BY date, price ASC;';
+        $sql = 'SELECT * FROM ordertable ORDER BY date;';
         $prepare = $db->prepare($sql);
         $list = "";
         $prepare->execute();
