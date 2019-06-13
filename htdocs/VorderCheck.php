@@ -10,12 +10,12 @@ if (!isset($_SESSION['VENDER'])) {
         //DBに接続
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
+        $list = "";
 
         //数量一覧作成
         //SQL作成・実行
-        $sql = 'SELECT date, name FROM ordertable ORDER BY date;';
+        $sql = 'SELECT date, name, count(name) as `count` FROM ordertable ORDER BY date;';
         $prepare = $db->prepare($sql);
-        $list = "";
         $prepare->execute();
         
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
@@ -37,7 +37,6 @@ if (!isset($_SESSION['VENDER'])) {
         //SQL作成・実行
         $sql = 'SELECT * FROM ordertable ORDER BY date;';
         $prepare = $db->prepare($sql);
-        $list = "";
         $prepare->execute();
         
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
