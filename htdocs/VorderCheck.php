@@ -13,7 +13,7 @@ if (!isset($_SESSION['VENDER'])) {
 
         //数量一覧作成
         //SQL作成・実行
-        $sql = 'SELECT date, name, count(name) as `count` FROM ordertable ORDER BY date;';
+        $sql = 'SELECT date, name FROM ordertable ORDER BY date;';
         $prepare = $db->prepare($sql);
         $list = "";
         $prepare->execute();
