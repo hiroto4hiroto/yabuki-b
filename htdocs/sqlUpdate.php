@@ -7,7 +7,7 @@
         //ただし"を使ってはいけない
         $sql = "
         
-SELECT * FROM ordertable ORDER BY date limit 1;
+SELECT * FROM ordertable ORDER BY date, price limit 1;
 
         ";
         $prepare = $db->prepare($sql);
