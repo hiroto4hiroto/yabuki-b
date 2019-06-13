@@ -19,11 +19,11 @@ if (!isset($_SESSION['VENDER'])) {
         $prepare->execute();
         
         $list .= '<table style="width: 80vw; height: 2em;"><tr>';
-        $list .= '<td style="width: 10%;">受取';
-        $list .= '<td style="width: 10%;">日付';
-        $list .= '<td style="width: 10%;">学生番号';
-        $list .= '<td style="width: 10%;">弁当名';
-        $list .= '<td style="width: 10%;">UUID';
+        $list .= '<td style="width: 5vw;">受取';
+        $list .= '<td style="width: 10vw;">日付';
+        $list .= '<td style="width: 10vw;">学生番号';
+        $list .= '<td style="width: 20vw;">弁当名';
+        $list .= '<td style="width: 35vw;">UUID';
 
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
@@ -67,7 +67,7 @@ if (!isset($_SESSION['VENDER'])) {
     }
 </script>
     
-<body style="background-color:#ff7;">
+<body style="background-color:#ffb;">
 <p>弁当事前予約サービス</p>
 <h1>予約数の確認</h1>
 <?php echo $list; ?>
