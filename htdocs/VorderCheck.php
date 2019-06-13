@@ -11,14 +11,36 @@ if (!isset($_SESSION['VENDER'])) {
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
 
-        //一覧作成
+        //数量一覧作成
+        //SQL作成・実行
+        $sql = 'SELECT date, name, count(name) as `count` FROM ordertable ORDER BY date;';
+        $prepare = $db->prepare($sql);
+        $list = "";
+        $prepare->execute();
+        
+        $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+        $list .= '<td style="width: 10vw;">日付';
+        $list .= '<td style="width: 20vw;">弁当名';
+        $list .= '<td style="width: 35vw;">個数';
+
+        foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
+        {
+            $list .= '<tr>';
+            $list .= '<td>'. $result["date"];
+            $list .= '<td>'. $result["name"];
+            $list .= '<td>'. $result["count"];
+        }
+        $list .= '</table>';
+        
+        
+        //予約一覧作成
         //SQL作成・実行
         $sql = 'SELECT * FROM ordertable ORDER BY date;';
         $prepare = $db->prepare($sql);
         $list = "";
         $prepare->execute();
         
-        $list .= '<table style="width: 80vw; height: 2em;"><tr>';
+        $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 5vw;">受取';
         $list .= '<td style="width: 10vw;">日付';
         $list .= '<td style="width: 10vw;">学生番号';
