@@ -1,11 +1,7 @@
 <?php
 session_start();
 
-    // 変数の初期化
-    $sql = null;
-    $result = null;
-    $db = null;
-    $message = '';
+bool $isDebug = true;
 
     //学生でなければ弾く
     if (!isset($_SESSION['USER'])) {
@@ -21,29 +17,21 @@ session_start();
         //注文を受けたら
         if (isset($_GET['order'])) {
             //既に注文しているか確認
-            $sql = 'SELECT * FROM identifixtable WHERE user = '. $_SESSION["USER"] .' AND date = date() + 1;';
+            $sql = 'SELECT * FROM ordertable WHERE user = '. $_SESSION["USER"];
+            if (!$isDebug) $sql .= ' AND date = date() + 1;';       //
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
             
             $UUID = null;
-              
             //既に1件注文していたら
-            if (isset($result)){ $UUID = $result["QRid"]; }
-            else {
-                $UUID = md5(uniqid(mt_rand(), true));
-                
-                //認証リストに一件追加
-                $sql = "insert into identifixtable ('QRid', 'user', 'date') values (:QRid, :user, date() );";
-                $result = $db->prepare($sql);
-                $params = array(":QRid" => $UUID, ":user" => $_GET["order"]);
-                $result->execute($params);
-            }
-             
+            if (isset($result)) $UUID = $result["QRid"];
+            else $UUID = md5(uniqid(mt_rand(), true));
+
             //注文リストに一件追加
-            $sql = "insert into ordertable ('QRid', 'name', 'date') values (:QRid, :name, date())";
+            $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, date(), :user, :name, :QRid)";
             $result = $db->prepare($sql);
-            $params = array(':QRid' => $UUID, ':name' => $_SESSION['USER']);
+            $params = array(':user' => $_SESSION['USER'], ':name' => $_GET['order'], ':QRid' => $UUID);
             $result->execute($params);
         
             //トップページに移動
@@ -70,9 +58,17 @@ session_start();
             $list .= '<td style="max-width: 30%;">'. $result["price"] .'円';
             $list .= '<tr style="width: 100%; max-height: 100%;">';
             $list .= '<td style="min-width: 70%; background-image: url(\'bentoimages/'.$result["name"].'.jpg\'); background-size: cover; background-position: center;">';
-            $list .= '<td style="max-width: 30%;">';
-            $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["name"].'\');" ';
-            $list .= 'value="予約する" style="width: 100%; height: 100%">';
+            //時間帯によって押せなくする
+            if (date("G") < 15 && (isDebug || date("Y-m-d", strtotime("+1 day")) == $result["date"]) ){
+                $list .= '<td style="max-width: 30%;">';
+                $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["name"].'\');" ';
+                $list .= 'value="予約する" style="width: 100%; height: 100%">';
+            } else{
+                $list .= '<td style="max-width: 30%;">';
+                $list .= '<input type="button" class="btn-sticky" disabled);" ';
+                $list .= 'value="予約不可" style="width: 100%; height: 100%">';
+            }
+
             $list .= '</table><br>';
         }
     } catch(PDOException $e) {
@@ -99,7 +95,13 @@ session_start();
     function OnButtonClick(name) {
         var res = confirm('「' + name + '」を予約しますか？');
         if(res) {
-            window.location.href =　location.href + '?order=' + name;
+            //予約可能時間前か
+            if (now.getHours() < 15){
+                window.location.href =　location.href + '?order=' + name;
+            }else{
+                alert('予約可能時間を過ぎたため予約できませんでした。');
+                window.location.href =　location.href + '?order=' + name;
+            }
         }
         else {
             alert('予約はされませんでした。');
