@@ -18,9 +18,9 @@ if (!isset($_SESSION['VENDER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
-        $list .= '<br><table style="width: 50vw; height: 2em;"><tr>';
-        $list .= '<td style="width: 10vw;">日付';
-        $list .= '<td style="width: 20vw;">弁当名';
+        $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+        $list .= '<td style="width: 30vw;">日付';
+        $list .= '<td style="width: 30vw;">弁当名';
         $list .= '<td style="width: 20vw;">個数';
 
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
