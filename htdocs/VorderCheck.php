@@ -12,7 +12,7 @@ if (!isset($_SESSION['VENDER'])) {
             $sql = 'DELETE * FROM ordertable;';
             $prepare = $db->prepare($sql);
             $prepare->execute();
-            window.location.href = location.href + '?deleted=true';
+            header('Location: VorderCheck.php?deleted=true');
         }
         //DBに接続
         require_once 'database_conf.php';
@@ -93,7 +93,7 @@ if (!isset($_SESSION['VENDER'])) {
     function OnButtonClick() {
         var res = confirm('すべての予約を削除しますか？');
         if(res) {
-            window.location.href =　location.href + '?delete=true';
+            window.location.href = location.href + '?delete=true';
         }
         else {
             alert('削除はされませんでした。');
