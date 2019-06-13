@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-bool $isDebug = true;
+$isDebug = true;
 
     //学生でなければ弾く
     if (!isset($_SESSION['USER'])) {
