@@ -12,7 +12,7 @@ if (!isset($_SESSION['VENDER'])) {
             $sql = 'DELETE * FROM ordertable;';
             $prepare = $db->prepare($sql);
             $prepare->execute();
-            window.location.href =　location.href + '?deleted=true';
+            window.location.href = location.href + '?deleted=true';
         }
         //DBに接続
         require_once 'database_conf.php';
