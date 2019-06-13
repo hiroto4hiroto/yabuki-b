@@ -96,7 +96,7 @@ $isDebug = true;
         var res = confirm('「' + name + '」を予約しますか？');
         if(res) {
             //予約可能時間前か
-            if (now.getHours() < 15){
+            if (new Date().getHours() < 15){
                 alert('わかりました');
                 window.location.href =　location.href + '?order=' + name;
             }else{
