@@ -15,6 +15,10 @@ body {
   max-height: 100vh;
 }
 
+body.vender {
+  background-color:ffb;
+}
+
 table {
   margin: auto;
 }
