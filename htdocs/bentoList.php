@@ -97,7 +97,6 @@ $isDebug = true;
         if(res) {
             //予約可能時間前か
             if (new Date().getHours() < 15){
-                alert('わかりました');
                 window.location.href =　location.href + '?order=' + name;
             }else{
                 alert('予約可能時間を過ぎたため予約できませんでした。');
