@@ -8,12 +8,15 @@
         $sql = "
         
 
+drop table ordertable;
+
+
 CREATE TABLE `ordertable` (
-  'check' tinyint(1) DEFAULT 0,
-  'date' date NOT NULL,
-  'user' char(7) NOT NULL,
-  'name' text DEFAULT NULL,
-  'QRid' char(36) NOT NULL
+  `check` tinyint(1) NOT NULL,
+  `date` date NOT NULL,
+  `user` char(7) NOT NULL,
+  `name` text DEFAULT NULL,
+  `QRid` char(36) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES
