@@ -7,16 +7,13 @@
         //ただし"を使ってはいけない
         $sql = "
         
-SELECT * FROM ordertable ORDER BY date, price ASC;
+SELECT * FROM ordertable ORDER BY date, price ASC limit 1;
 
         ";
         $prepare = $db->prepare($sql);
         $prepare->execute();
-        
-        foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result){
-            var_dump($result);
-        }
-        
+        $result = $prepare->fetchAll(PDO::FETCH_ASSOC)
+         var_dump($result);
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
