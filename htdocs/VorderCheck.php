@@ -7,6 +7,8 @@ if (!isset($_SESSION['VENDER'])) {
     exit;
 }
     try {
+        require_once 'database_conf.php';
+        $db = new PDO($dsn, $dbUser, $dbPass);
         //予約リスト削除
         if (isset($_GET['delete'])) {
             $sql = 'DELETE * FROM ordertable;';
@@ -15,7 +17,6 @@ if (!isset($_SESSION['VENDER'])) {
             header('Location: VorderCheck.php?deleted=true');
         }
         //DBに接続
-        require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         $list = "";
 
