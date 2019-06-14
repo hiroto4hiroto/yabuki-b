@@ -96,11 +96,11 @@ $isDebug = true;
         var res = confirm('「' + name + '」を予約しますか？');
         if(res) {
             //予約可能時間前か
-            if (new Date().getHours() < 15){
+            if (<?php echo $isDebug; ?> || new Date().getHours() < 15){
                 window.location.href =　location.href + '?order=' + name;
             }else{
                 alert('予約可能時間を過ぎたため予約できませんでした。');
-                window.location.href =　location.href + '?order=' + name;
+                window.location.href =　location.href;
             }
         }
         else {
