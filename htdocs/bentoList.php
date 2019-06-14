@@ -30,7 +30,7 @@ $isDebug = true;
 
             //注文リストに一件追加
             //$sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, '". $getdate ."' + 1, :user, :name, :QRid)";
-            $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, '2019-07-19', '1742120', 'とてもいい弁当', '0120-117-117');";
+            $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, '2019-07-19' + 1, '1742120', 'とてもいい弁当', '0120-117-117');";
             $result = $db->prepare($sql);
             //$params = array(':user' => $_SESSION['USER'], ':name' => $_GET['order'], ':QRid' => $UUID);
             $result->execute(); //$params);
