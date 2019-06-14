@@ -20,7 +20,7 @@ if (!isset($_SESSION['VENDER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = 'SELECT * FROM ordertable ORDER BY date old asc;
+        $sql = 'SELECT * FROM ordertable ORDER BY date;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -33,6 +33,7 @@ if (!isset($_SESSION['VENDER'])) {
         //$list .= '<td style="width: 35vw;">UUID';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
+            if ($result["date"] == date("Y-M-D"))
             if ($result["date"] == $getdate)
             {
                 $list .= '<tr>';
@@ -74,7 +75,6 @@ td{
 <body class="vender">
 <p>弁当事前予約サービス</p>
 <h1>引き渡し操作</h1>
-
 <form method="post" action="Vdelivery.php">
     <table>
         <tr><td><label for="user">学生番号</label>
