@@ -57,7 +57,9 @@ if (!isset($_SESSION['VENDER'])) {
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
-            $list .= '<td>'. $result["check"];
+            if ($result["check"] == 1)
+                $list .= '<td style="color:red;">完了';
+            else $list .= '<td style="color:red;">未了';
             $list .= '<td>'. $result["date"];
             $list .= '<td>'. $result["user"];
             $list .= '<td>'. $result["name"];
