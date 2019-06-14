@@ -17,7 +17,7 @@ $isDebug = true;
         //注文を受けたら
         if (isset($_GET['order'])) {
             //既に注文しているか確認
-            $sql = 'SELECT * FROM ordertable WHERE user = '. $_SESSION["USER"] .' AND date = str_to_date('. $getdate .', \'%Y-%M-%d\') + 1;'; 
+            $sql = "SELECT * FROM ordertable WHERE user = ". $_SESSION["USER"] ." AND date = '". $getdate ."' + 1;"; 
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -29,7 +29,7 @@ $isDebug = true;
             
 
             //注文リストに一件追加
-            $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, str_to_date(". $getdate .", '%Y-%M-%d') + 1, :user, :name, :QRid)";
+            $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES '". $getdate ."' + 1, :user, :name, :QRid)";
             $result = $db->prepare($sql);
             $params = array(':user' => $_SESSION['USER'], ':name' => $_GET['order'], ':QRid' => $UUID);
             $result->execute($params);
