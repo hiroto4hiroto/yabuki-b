@@ -36,7 +36,9 @@ if (!isset($_SESSION['VENDER'])) {
             if ($result["date"] == $getdate)
             {
                 $list .= '<tr>';
-                $list .= '<td class="orderText">'. $result["check"];
+            if ($result["check"] == 1)
+                $list .= '<td style="color:red;">完了';
+            else $list .= '<td style="color:red;">未了';
                 $list .= '<td class="orderText">'. $result["date"];
                 $list .= '<td class="orderText">'. $result["user"];
                 $list .= '<td class="orderText">'. $result["name"];
@@ -63,13 +65,6 @@ if (!isset($_SESSION['VENDER'])) {
     <meta charset="utf-8"/>
     <title>弁当事前予約サービス 引き渡し操作</title>
      <link rel="stylesheet" type="text/css" href="style.css">
-    <style type="text/css">
-<!--
-td{
-    border: solid 1px;
-        }
---> 
-</style>
 </head>
 <body class="vender">
 <p>弁当事前予約サービス</p>
