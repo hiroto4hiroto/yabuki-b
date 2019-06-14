@@ -28,8 +28,8 @@ if (!isset($_SESSION['USER'])) {
             $list .= '<tr>';
             $list .= '<td>'. $result["check"];
             $list .= '<td>'. $result["date"];
-            $list .= '<td style="text-align: left;">'. $result["name"];
-            $list .= '<td style="text-align:right;">'. $result["price"] .'円';
+            $list .= '<td>'. $result["name"];
+            $list .= '<td>'. $result["price"] .'円';
         }
         $list .= '</table>';
     } catch(PDOException $e) {
