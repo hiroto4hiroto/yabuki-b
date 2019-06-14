@@ -49,11 +49,6 @@ if (!isset($_SESSION['USER'])) {
     <meta charset="utf-8"/>
     <title>弁当事前予約サービス 予約確認・キャンセル</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <style type="text/css">
-    <!--
-        tr td {border-style: solid;}
-    -->
-    </style>
 </head>
  
 <script language="javascript" type="text/javascript">
