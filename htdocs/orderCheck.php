@@ -12,8 +12,8 @@ if (!isset($_SESSION['USER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = 'SELECT ordertable.check, ordertable.date, ordertable.name, bentotable.price FROM ordertable WHERE user = '. $_SESSION['USER'];
-        $sql .= ' RIGHT OUTER JOIN bentotable ON ordertable.name = bentotable.name';
+        $sql = 'SELECT ordertable.check as `check`, ordertable.date as `date`, ordertable.name as `name`, bentotable.price as `price` FROM ordertable WHERE user = '. $_SESSION['USER'];
+        $sql .= ' INNER JOIN bentotable ON ordertable.name = bentotable.name';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
