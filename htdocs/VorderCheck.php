@@ -13,6 +13,7 @@ if (!isset($_SESSION['VENDER'])) {
             $sql = 'DELETE FROM ordertable WHERE `date` <= date()'; //str_to_date('. $getdate .', \'%Y-%M-%d\');';
             $prepare = $db->prepare($sql);
             $prepare->execute();
+            header('Location: Vindex.php?message=今日までの予約リストを削除しました');
         }
         //DBに接続
         $db = new PDO($dsn, $dbUser, $dbPass);
