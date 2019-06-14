@@ -33,12 +33,18 @@ if (!isset($_SESSION['VENDER'])) {
         //$list .= '<td style="width: 35vw;">UUID';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
+            if ($result["date"] == '2019-07-19')
+            {
+                
+            }else{
+                
             $list .= '<tr>';
             $list .= '<td class="orderText">'. $result["check"];
             $list .= '<td class="orderText">'. $result["date"];
             $list .= '<td class="orderText">'. $result["user"];
             $list .= '<td class="orderText">'. $result["name"];
             //$list .= '<td class="orderText">'. $result["QRid"];
+            }
         }
         $list .= '</table>';
     } catch(PDOException $e) {
