@@ -26,10 +26,10 @@ if (!isset($_SESSION['USER'])) {
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
-            $list .= '<td class="orderText">'. $result["check"];
-            $list .= '<td class="orderText">'. $result["date"];
-            $list .= '<td class="orderText">'. $result["name"];
-            $list .= '<td class="orderText">'. $result["price"];
+            $list .= '<td>'. $result["check"];
+            $list .= '<td>'. $result["date"];
+            $list .= '<td style="text-align: left;">'. $result["name"];
+            $list .= '<td style="text-align:right;">'. $result["price"] .'円';
         }
         $list .= '</table>';
     } catch(PDOException $e) {
