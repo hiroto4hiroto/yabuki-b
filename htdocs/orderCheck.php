@@ -19,14 +19,15 @@ if (!isset($_SESSION['USER'])) {
         
         $list .= '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $list .= '<td style="width: 10vw;">受取済';
+        $list .= '<td style="width: 10vw;">受取';
         $list .= '<td style="width: 15vw;">日付';
         $list .= '<td style="width: 35vw;">弁当名';
         $list .= '<td style="width: 20vw;">値段';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
-            $list .= '<td>'. $result["check"];
+            if ($result["check"] == 1) $list .= '<td>完了';
+            else $list .= '<td style="color:red;">未了';
             $list .= '<td>'. $result["date"];
             $list .= '<td>'. $result["name"];
             $list .= '<td>'. $result["price"] .'円';
