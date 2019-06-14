@@ -11,8 +11,8 @@
 <p>弁当事前予約サービス</p>
 <h1>引き渡し操作</h1>
 
-<form method="post" action="login.php">
-    <table>
+<form method="post" action="Vdelivery.php">
+    <table style="border border: solid 1px;">
         <tr><td><label for="user">学生番号</label>
             <td><input id="user" type="text" name="user">
     </table>
