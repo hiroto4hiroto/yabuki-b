@@ -11,7 +11,7 @@ if (!isset($_SESSION['VENDER'])) {
         $db = new PDO($dsn, $dbUser, $dbPass);
         //今日までの予約リストを削除
         if (isset($_GET['delete'])) {
-            $sql = "DELETE FROM `ordertable` WHERE date <= STR_TO_DATE('". $getdate ."','%Y-%M-%D');";
+            $sql = "DELETE FROM `ordertable` WHERE date = '2019-07-';";// <= STR_TO_DATE('". $getdate ."','%Y-%M-%D');";
             $prepare = $db->prepare($sql);
             $prepare->execute();
             header('Location: Vindex.php?message=今日までの予約リストを削除しました');
@@ -57,11 +57,11 @@ if (!isset($_SESSION['VENDER'])) {
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
-            $list .= '<td class="orderText">'. $result["check"];
-            $list .= '<td class="orderText">'. $result["date"];
-            $list .= '<td class="orderText">'. $result["user"];
-            $list .= '<td class="orderText">'. $result["name"];
-            $list .= '<td class="orderText">'. $result["QRid"];
+            $list .= '<td>'. $result["check"];
+            $list .= '<td>'. $result["date"];
+            $list .= '<td>'. $result["user"];
+            $list .= '<td>'. $result["name"];
+            $list .= '<td>'. $result["QRid"];
         }
         $list .= '</table>';
 
