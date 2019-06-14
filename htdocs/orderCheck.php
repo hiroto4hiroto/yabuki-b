@@ -12,23 +12,22 @@ if (!isset($_SESSION['USER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = 'SELECT * FROM ordertable WHERE user = '. $_SESSION['USER'];
+        $sql = 'SELECT ordertable.check, ordertable.date, ordertable.name, bentotable.price FROM ordertable WHERE user = '. $_SESSION['USER'];
+        $sql .= ' RIGHT JOIN bentotable ON ordertable.name = bentotable.name';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
         $list .= '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $list .= '<td style="width: 5vw;">受取';
-        $list .= '<td style="width: 10vw;">日付';
-        $list .= '<td style="width: 10vw;">学生番号';
-        $list .= '<td style="width: 20vw;">弁当名';
-        $list .= '<td style="width: 35vw;">UUID';
+        $list .= '<td style="width: 10vw;">受取済';
+        $list .= '<td style="width: 15vw;">日付';
+        $list .= '<td style="width: 35vw;">弁当名';
+        $list .= '<td style="width: 20vw;">値段';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
             $list .= '<td class="orderText">'. $result["check"];
             $list .= '<td class="orderText">'. $result["date"];
-            $list .= '<td class="orderText">'. $result["user"];
             $list .= '<td class="orderText">'. $result["name"];
             $list .= '<td class="orderText">'. $result["QRid"];
         }
