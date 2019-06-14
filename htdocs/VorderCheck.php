@@ -11,7 +11,7 @@ if (!isset($_SESSION['VENDER'])) {
         $db = new PDO($dsn, $dbUser, $dbPass);
         //今日まで予約リスト削除
         if (isset($_GET['delete'])) {
-            $sql = 'delete from ordertable where date <= date();';
+            $sql = 'DELETE FROM ordertable WHERE date <= date();';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             header('Location: VorderCheck.php?deleted=true');
@@ -26,6 +26,7 @@ if (!isset($_SESSION['VENDER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
+        $list .= '各弁当の予約数';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 30vw;">日付';
         $list .= '<td style="width: 30vw;">弁当名';
@@ -47,6 +48,7 @@ if (!isset($_SESSION['VENDER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
+        $list .= '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 5vw;">受取';
         $list .= '<td style="width: 10vw;">日付';
