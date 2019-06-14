@@ -29,7 +29,7 @@ $isDebug = true;
             
 
             //注文リストに一件追加
-            $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, '". $getdate ."' + INTERVAL 1 DAY, '1742120', 'adsfadfasdfasdf', 'UUID');";
+            $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, '". $getdate ."' + INTERVAL 1 DAY, :user, :name, :QRid);";
             //$sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, '". $getdate ."' + INTERVAL 1 DAY, '1742120', 'とてもいい弁当', '0120-117-117');";
             $result = $db->prepare($sql);
             $params = array(':user' => '1742120', ':name' => 'ほげ', ':QRid' => $UUID);
