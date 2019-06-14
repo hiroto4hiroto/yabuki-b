@@ -19,7 +19,7 @@ if (!isset($_SESSION['USER'])) {
         
         $sum = 0;
         $list .= '予約一覧';
-        $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+        $list .= '<br><table border="3" style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 10vw;">受取';
         $list .= '<td style="width: 15vw;">日付';
         $list .= '<td style="width: 35vw;">弁当名';
@@ -50,7 +50,7 @@ if (!isset($_SESSION['USER'])) {
     <link rel="stylesheet" type="text/css" href="style.css">
     <style type="text/css">
     <!--
-    tr td {border-style: solid;}
+    
     -->
     </style>
 </head>
