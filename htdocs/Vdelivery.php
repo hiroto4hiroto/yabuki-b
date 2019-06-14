@@ -16,7 +16,7 @@ if (!isset($_SESSION['VENDER'])) {
             $sql = 'UPDATE ordertable SET check = 1 WHERE user = '. $_POST['delivery'];
             $prepare = $db->prepare($sql);
             $prepare->execute();
-            echo $_POST['delivery']);
+            echo $_POST['delivery'];
         }
         
         //予約一覧作成
