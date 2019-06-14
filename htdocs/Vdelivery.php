@@ -44,16 +44,22 @@ if (!isset($_SESSION['VENDER'])) {
     <meta charset="utf-8"/>
     <title>弁当事前予約サービス 引き渡し操作</title>
      <link rel="stylesheet" type="text/css" href="style.css">
+    <style type="text/css">
+<!--
+td{
+    border: solid 1px;
+        }
+--> 
+</style>
 </head>
- 
 <body class="vender">
 <p>弁当事前予約サービス</p>
 <h1>引き渡し操作</h1>
 
 <form method="post" action="Vdelivery.php">
     <table>
-        <tr><td style="border: solid 1px;"><label for="user">学生番号</label>
-            <td style="border: solid 1px;"><input id="user" type="text" name="user">
+        <tr><td><label for="user">学生番号</label>
+            <td><input id="user" type="text" name="user">
     </table>
     <br>
     <input class="btn-sticky" type="submit" name="delivery" value="引き渡し">
