@@ -10,17 +10,9 @@ if (!isset($_SESSION['USER'])) {
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         
-        if( !empty($_POST['delivery']) ){
-            //予約一覧作成
-            //SQL作成・実行
-            $sql = 'UPDATE ordertable SET `check` = 1 WHERE user = '. $_POST['user'];
-            $prepare = $db->prepare($sql);
-            $prepare->execute();
-        }
-        
         //予約一覧作成
         //SQL作成・実行
-        $sql = 'SELECT * FROM ordertable ORDER BY date;';
+        $sql = 'SELECT * FROM ordertable WHERE user = '. $_SESSION['USER'];
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -82,7 +74,7 @@ if (!isset($_SESSION['USER'])) {
 <h1>予約確認・キャンセル</h1>
 <p>あなたの予約した弁当はこちらになります。</p>
 <?php echo $list; ?>
-<hr style="border: solid 1px;">
+<hr>
 <p>キャンセル可能時間は前日の15:00までとなります．</p>
 </body>
 </html>
