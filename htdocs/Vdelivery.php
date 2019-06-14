@@ -46,7 +46,8 @@ if (!isset($_SESSION['VENDER'])) {
             }
             else {
                 $list .= '<tr>';
-                $list .= '<td style="color:blue;">完了';
+                if ($result["check"] == 1)
+                    $list .= '<td style="color:blue;">完了';
                 else $list .= '<td style="color:red;">未了';
                 $list .= '<td>'. $result["date"];
                 $list .= '<td>'. $result["user"];
