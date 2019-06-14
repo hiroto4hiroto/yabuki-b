@@ -36,8 +36,8 @@ if (!isset($_SESSION['VENDER'])) {
             if ($result["date"] == '2019-07-19')
             {
                 $list .= '<tr>';
-                $list .= '<tr>'. $result["check"];
-                $list .= '<tr>'. $result["date"];
+                $list .= '<td>'. $result["check"];
+                $list .= '<td>'. $result["date"];
                 $list .= '<td>'. $result["user"];
                 $list .= '<td>'. $result["name"];
             //$list .= '<td class="orderText">'. $result["QRid"];
