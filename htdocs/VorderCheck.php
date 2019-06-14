@@ -13,7 +13,7 @@ if (!isset($_SESSION['VENDER'])) {
             $sql = 'DELETE FROM ordertable WHERE date <= str_to_date('. $getdate .', \'%Y-%M-%d\');';
             $prepare = $db->prepare($sql);
             $prepare->execute();
-            header('Location: VorderCheck.php?deleted=true');
+            //header('Location: VorderCheck.php?deleted=true');
         }
         //DBに接続
         $db = new PDO($dsn, $dbUser, $dbPass);
