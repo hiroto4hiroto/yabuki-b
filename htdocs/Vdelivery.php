@@ -12,9 +12,9 @@
 <h1>引き渡し操作</h1>
 
 <form method="post" action="Vdelivery.php">
-    <table style="border border: solid 1px;">
-        <tr><td><label for="user">学生番号</label>
-            <td><input id="user" type="text" name="user">
+    <table>
+        <tr><td style="border: solid 1px;"><label for="user">学生番号</label>
+            <td style="border: solid 1px;"><input id="user" type="text" name="user">
     </table>
     <br>
     <input class="btn-sticky" type="submit" name="delivery" value="引き渡し">
