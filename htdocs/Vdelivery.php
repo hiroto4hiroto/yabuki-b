@@ -37,12 +37,12 @@ if (!isset($_SESSION['VENDER'])) {
             {
                 $list .= '<tr>';
             if ($result["check"] == 1)
-                $list .= '<td style="color:red;">完了';
-            else $list .= '<td style="color:red;">未了';
-                $list .= '<td class="orderText">'. $result["date"];
-                $list .= '<td class="orderText">'. $result["user"];
-                $list .= '<td class="orderText">'. $result["name"];
-                //$list .= '<td class="orderText">'. $result["QRid"];
+                $list .= '<td class="todayOrder" style="color:red;">完了';
+            else $list .= '<td class="todayOrder" style="color:red;">未了';
+                $list .= '<td class="todayOrder">'. $result["date"];
+                $list .= '<td class="todayOrder">'. $result["user"];
+                $list .= '<td class="todayOrder">'. $result["name"];
+                //$list .= '<td class="todayOrder">'. $result["QRid"];
             }
             else {
                 $list .= '<tr>';
