@@ -11,7 +11,7 @@ if (!isset($_SESSION['VENDER'])) {
         $db = new PDO($dsn, $dbUser, $dbPass);
         //今日までの予約リストを削除
         if (isset($_GET['delete'])) {
-            $sql = "DELETE FROM `ordertable` WHERE date <= 2019-07-19;";
+            $sql = "DELETE FROM `ordertable` WHERE date <= '2019-07-19';";
             $prepare = $db->prepare($sql);
             $prepare->execute();
             header('Location: Vindex.php?message=今日までの予約リストを削除しました');
