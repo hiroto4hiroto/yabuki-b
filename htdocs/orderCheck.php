@@ -13,7 +13,7 @@ if (!isset($_SESSION['USER'])) {
         //予約一覧作成
         //SQL作成・実行
         $sql = 'SELECT ordertable.check, ordertable.date, ordertable.name, bentotable.price FROM ordertable WHERE user = '. $_SESSION['USER'];
-        $sql .= ' RIGHT JOIN bentotable ON ordertable.name = bentotable.name';
+        $sql .= ' INNER JOIN bentotable ON ordertable.name = bentotable.name';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -29,7 +29,7 @@ if (!isset($_SESSION['USER'])) {
             $list .= '<td class="orderText">'. $result["check"];
             $list .= '<td class="orderText">'. $result["date"];
             $list .= '<td class="orderText">'. $result["name"];
-            $list .= '<td class="orderText">'. $result["QRid"];
+            $list .= '<td class="orderText">'. $result["price"];
         }
         $list .= '</table>';
     } catch(PDOException $e) {
