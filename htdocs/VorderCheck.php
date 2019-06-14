@@ -1,6 +1,5 @@
 <?php
 session_start();
-$isDebug = true;
     //業者でなければ弾く
 if (!isset($_SESSION['VENDER'])) {
     header('Location: login.php');
@@ -11,7 +10,7 @@ if (!isset($_SESSION['VENDER'])) {
         $db = new PDO($dsn, $dbUser, $dbPass);
         //今日まで予約リスト削除
         if (isset($_GET['delete'])) {
-            $sql = 'DELETE FROM ordertable WHERE date <= date();';
+            $sql = 'DELETE FROM ordertable WHERE '. $getdate .' <= date();';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             header('Location: VorderCheck.php?deleted=true');
