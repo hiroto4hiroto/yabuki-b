@@ -10,6 +10,14 @@ if (!isset($_SESSION['VENDER'])) {
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         
+        if(!empty($_POST['delivery']){
+            //予約一覧作成
+            //SQL作成・実行
+            $sql = 'UPDATE ordertable SET check = 1 WHERE user = '. $_POST['delivery'];
+            $prepare = $db->prepare($sql);
+            $prepare->execute();
+        }
+        
         //予約一覧作成
         //SQL作成・実行
         $sql = 'SELECT * FROM ordertable ORDER BY date;';
