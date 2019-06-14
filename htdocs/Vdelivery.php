@@ -37,7 +37,7 @@ if (!isset($_SESSION['VENDER'])) {
             {
                 $list .= '<tr>';
             if ($result["check"] == 1)
-                $list .= '<td class="todayOrder" style="color:red;">完了';
+                $list .= '<td class="todayOrder" style="color:blue;">完了';
             else $list .= '<td class="todayOrder" style="color:red;">未了';
                 $list .= '<td class="todayOrder">'. $result["date"];
                 $list .= '<td class="todayOrder">'. $result["user"];
@@ -46,7 +46,8 @@ if (!isset($_SESSION['VENDER'])) {
             }
             else {
                 $list .= '<tr>';
-                $list .= '<td>'. $result["check"];
+                $list .= '<td style="color:blue;">完了';
+                else $list .= '<td style="color:red;">未了';
                 $list .= '<td>'. $result["date"];
                 $list .= '<td>'. $result["user"];
                 $list .= '<td>'. $result["name"];
