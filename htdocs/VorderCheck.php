@@ -94,7 +94,7 @@ if (!isset($_SESSION['VENDER'])) {
     function OnButtonClick() {
         var res = confirm('今日までの予約を削除しますか？');
         if(res) {
-            window.location.href = location.href + '?delete=true';
+            window.location.href = 'http://yabukib.pm-chiba.tech/VorderCheck.php?delete=true';
         }
         else {
             alert('削除はされませんでした。');
