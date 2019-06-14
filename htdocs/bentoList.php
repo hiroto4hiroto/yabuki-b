@@ -59,7 +59,7 @@ $isDebug = true;
             $list .= '<tr style="width: 100%; max-height: 100%;">';
             $list .= '<td style="min-width: 70%; background-image: url(\'bentoimages/'.$result["name"].'.jpg\'); background-size: cover; background-position: center;">';
             //時間帯によって押せなくする
-            if (date("G") < 15 && ($isDebug || date("Y-m-d", strtotime("+1 day")) == $result["date"]) ){
+            if ($isDebug || date("G") < 15 && date("Y-m-d", strtotime("+1 day")) == $result["date"] ){
                 $list .= '<td style="max-width: 30%;">';
                 $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["name"].'\');" ';
                 $list .= 'value="予約する" style="width: 100%; height: 100%">';
@@ -113,7 +113,6 @@ $isDebug = true;
 <p>弁当事前予約サービス</p>
 <h1>弁当閲覧・予約</h1>
 
-<?php echo md5(uniqid(mt_rand(), true)); ?>
 <?php echo $list; ?>
     
 </body>
