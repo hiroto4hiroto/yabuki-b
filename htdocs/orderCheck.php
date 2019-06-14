@@ -82,7 +82,7 @@ if (!isset($_SESSION['USER'])) {
 <h1>予約確認・キャンセル</h1>
 <p>あなたの予約した弁当はこちらになります。</p>
 <?php echo $list; ?>
-<hr>
+<hr style="border: solid 1px;">
 <p>キャンセル可能時間は前日の15:00までとなります．</p>
 </body>
 </html>
