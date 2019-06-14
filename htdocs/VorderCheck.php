@@ -12,7 +12,7 @@ if (!isset($_SESSION['VENDER'])) {
         //今日までの予約リストを削除
         if (isset($_GET['delete'])) {
             //$sql = 'DELETE FROM ordertable WHERE `date` <= str_to_date('. $getdate .', \'%Y-%M-%d\');';
-            $sql = 'DELETE FROM ordertable WHERE check = 1;';
+            $sql = 'DELETE FROM ordertable';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             header('Location: Vindex.php?message=今日までの予約リストを削除しました');
