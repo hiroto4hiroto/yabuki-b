@@ -30,7 +30,7 @@ $isDebug = true;
             
 
             //注文リストに一件追加
-            $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, ". $getdate .", :user, :name, :QRid)";
+            $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, ". str_to_date(". $getdate ."", '%Y-%M-%d') + 1 ." + 1, :user, :name, :QRid)";
             $result = $db->prepare($sql);
             $params = array(':user' => $_SESSION['USER'], ':name' => $_GET['order'], ':QRid' => $UUID);
             $result->execute($params);
