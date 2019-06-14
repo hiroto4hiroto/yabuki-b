@@ -30,7 +30,7 @@ $isDebug = true;
 
             //注文リストに一件追加
             $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`)";
-            $sql .= "VALUES (0, '". $getdate ."' + INTERVAL 1 DAY, ".$_SESSION['USER'].", ".$_GET['order'].", ".$UUID.");";
+            $sql .= "VALUES (0, '". $getdate ."' + INTERVAL 1 DAY, '".$_SESSION['USER']."', '".$_GET['order']."', '".$UUID."');";
             $result = $db->prepare($sql);
             $result->execute();
         
