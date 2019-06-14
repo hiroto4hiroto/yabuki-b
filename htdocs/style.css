@@ -26,6 +26,7 @@ table {
 td {
   background-size: cover;
   background-position: center;
+  border-style: solid;
 }
 
 .orderText{
