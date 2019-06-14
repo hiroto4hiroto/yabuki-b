@@ -33,7 +33,7 @@ if (!isset($_SESSION['VENDER'])) {
         //$list .= '<td style="width: 35vw;">UUID';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
-            if ($result["date"] == '2019-07-19')
+            if ($result["date"] == date)
             {
                 $list .= '<tr>';
                 $list .= '<td class="orderText">'. $result["check"];
