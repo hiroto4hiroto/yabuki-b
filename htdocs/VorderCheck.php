@@ -11,8 +11,7 @@ if (!isset($_SESSION['VENDER'])) {
         $db = new PDO($dsn, $dbUser, $dbPass);
         //今日までの予約リストを削除
         if (isset($_GET['delete'])) {
-            $sql = 'DELETE FROM ordertable WHERE date <= str_to_date('. $getdate .', \'%Y-%M-%d\');';
-            //$sql = 'DELETE FROM ordertable WHERE date;';
+            $sql = "DELETE FROM `ordertable` WHERE date <= STR_TO_DATE('". $getdate .",'%Y-%M-%D');";
             $prepare = $db->prepare($sql);
             $prepare->execute();
             header('Location: Vindex.php?message=今日までの予約リストを削除しました');
