@@ -33,7 +33,7 @@ $isDebug = true;
             $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, '2019-07-19' + 1, :user, :name, :QRid)";
             $result = $db->prepare($sql);
             $params = array(':user' => $_SESSION['USER'], ':name' => $_GET['order'], ':QRid' => $UUID);
-            $result->execute(); //$params);
+            $result->execute($params);
         
             //トップページに移動
             header('Location: index.php?message='. $_GET['order'] .'を予約しました。');
