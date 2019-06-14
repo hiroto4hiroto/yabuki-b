@@ -58,6 +58,8 @@ if (!isset($_SESSION['VENDER'])) {
     <br>
     <input class="btn-sticky" type="submit" name="delivery" value="引き渡し">
 </form>
+    <br>
+    <?php echo $list; ?>
  
 </body>
 </html>
