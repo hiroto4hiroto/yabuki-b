@@ -28,6 +28,10 @@ td {
   background-position: center;
 }
 
+.orderText{
+  background-color: #fff;
+}
+
 .bentoInfoTable {
   border-style: solid;
 }
