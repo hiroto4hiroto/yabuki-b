@@ -18,7 +18,7 @@ $isDebug = true;
         if (isset($_GET['order'])) {
             //既に注文しているか確認
             $sql = 'SELECT * FROM ordertable WHERE user = '. $_SESSION["USER"];
-            if (!$isDebug) $sql .= ' AND date = '. $getdate .' + 1;';       //
+            if (!$isDebug) $sql .= ' AND date = str_to_date('. $getdate .', '%Y-%M-%d') + 1;';       //
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -27,6 +27,7 @@ $isDebug = true;
             //既に1件注文していたら
             if (isset($result)) $UUID = $result["QRid"];
             else $UUID = md5(uniqid(mt_rand(), true));
+            
 
             //注文リストに一件追加
             $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES (0, ". $getdate .", :user, :name, :QRid)";
@@ -113,6 +114,7 @@ $isDebug = true;
 <p>弁当事前予約サービス</p>
 <h1>弁当閲覧・予約</h1>
 
+<?php echo md5(uniqid(mt_rand(), true)); ?>
 <?php echo $list; ?>
     
 </body>
