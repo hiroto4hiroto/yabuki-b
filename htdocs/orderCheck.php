@@ -17,6 +17,7 @@ if (!isset($_SESSION['USER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
+        $sum = 0;
         $list .= '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 10vw;">受取';
@@ -31,7 +32,10 @@ if (!isset($_SESSION['USER'])) {
             $list .= '<td>'. $result["date"];
             $list .= '<td>'. $result["name"];
             $list .= '<td>'. $result["price"] .'円';
+            $sum += $result["price"];
         }
+        $list .= '<td><td><td>';
+        $list .= '<td style="color:blue;">合計金額：'.$sum.'円';
         $list .= '</table>';
     } catch(PDOException $e) {
         echo $e->getMessage();
