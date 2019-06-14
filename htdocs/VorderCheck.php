@@ -13,7 +13,6 @@ if (!isset($_SESSION['VENDER'])) {
             $sql = 'DELETE FROM ordertable WHERE date <= str_to_date('. $getdate .', \'%Y-%M-%d\');';
             $prepare = $db->prepare($sql);
             $prepare->execute();
-            //header('Location: VorderCheck.php?deleted=true');
         }
         //DBに接続
         $db = new PDO($dsn, $dbUser, $dbPass);
@@ -107,8 +106,9 @@ if (!isset($_SESSION['VENDER'])) {
 <p>弁当事前予約サービス</p>
 <h1>予約数の確認</h1>
 
-<?php if(isset($_GET['deleted'])) echo '<p>今日までの予約を削除しました</p>'; ?>
+<?php if(isset($_GET['delete'])) echo '<p>今日までの予約を削除しました</p>'; ?>
 <?php echo $list; ?>
 <input type="button" class="btn-sticky" onclick="OnButtonClick();" value="今日までの予約を削除">
 </body>
+    
 </html>
