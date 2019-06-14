@@ -7,7 +7,7 @@
         //ただし"を使ってはいけない
         $sql = "
 
-        delete from ordertable where date < 2099-09-09;
+        delete from ordertable where date < '2099-09-09';
 
 
 /*
