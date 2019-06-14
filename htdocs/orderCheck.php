@@ -34,7 +34,7 @@ if (!isset($_SESSION['USER'])) {
             $list .= '<td>'. $result["price"] .'円';
             $sum += $result["price"];
         }
-        $list .= '<tr><td　colspan="" style="border-style:none;"><td><td>';
+        $list .= '<tr><td　colspan="3" style="border-style:none;">';
         $list .= '<td style="color:blue;">合計金額：'.$sum.'円';
         $list .= '</table>';
     } catch(PDOException $e) {
