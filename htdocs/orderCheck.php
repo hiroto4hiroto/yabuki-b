@@ -12,7 +12,7 @@ if (!isset($_SESSION['USER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = 'SELECT * FROM ordertable WHERE user = 1742120';//'. $_SESSION['USER'];
+        $sql = 'SELECT * FROM ordertable WHERE user = '. $_SESSION['USER'];
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
