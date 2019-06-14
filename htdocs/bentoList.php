@@ -17,7 +17,7 @@ $isDebug = true;
         //注文を受けたら
         if (isset($_GET['order'])) {
             //既に注文しているか確認
-            $sql = "SELECT * FROM ordertable WHERE user = ". $_SESSION["USER"] ." AND date = '". $getdate ."' + 1;"; 
+            $sql = "SELECT * FROM ordertable WHERE user = ". $_SESSION["USER"] ." AND date = '". $getdate ."' + 1 limit 1;"; 
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
