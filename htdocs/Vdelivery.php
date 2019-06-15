@@ -20,7 +20,7 @@ if (!isset($_SESSION['VENDER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = 'SELECT * FROM ordertable ORDER BY date;';
+        $sql = 'SELECT * FROM ordertable ORDER BY `check`, `date`;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -71,6 +71,7 @@ if (!isset($_SESSION['VENDER'])) {
 <body class="vender">
 <p>弁当事前予約サービス</p>
 <h1>引き渡し操作</h1>
+<br>
 <form method="post" action="Vdelivery.php">
     <table>
         <tr><td><label for="user">学生番号</label>
