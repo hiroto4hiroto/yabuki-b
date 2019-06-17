@@ -23,7 +23,7 @@ INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        echo $result;
+        print_r $result;
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
