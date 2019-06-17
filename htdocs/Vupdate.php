@@ -37,7 +37,7 @@ if (!isset($_SESSION['VENDER'])) {
             $list .= '<td'. $plusClass .'>'. $result["name"];
             $list .= '<td'. $plusClass .'>'. $result["price"];
             $list .= '<td'. $plusClass .'>'. $result["stocks"];
-            $list .= '<td style="background-image:url("bentoimages/'.$result["name"].'.jpg")" background-size: cover;>';
+            $list .= '<td style=\'background-image:url("bentoimages/'.$result["name"].'.jpg"); background-size: cover;\'>';
         }
         $list .= '</table>';
     } catch(PDOException $e) {
