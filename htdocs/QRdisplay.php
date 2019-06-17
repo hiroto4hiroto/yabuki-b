@@ -17,6 +17,7 @@ if (!isset($_SESSION['USER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
+        echo "ほげー";
         echo $result;
 
     } catch(PDOException $e) {
