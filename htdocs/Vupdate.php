@@ -23,7 +23,7 @@ if (!isset($_SESSION['VENDER'])) {
         $list .= '<td style="width: 20vw;">弁当名';
         $list .= '<td style="width: 10vw;">価格';
         $list .= '<td style="width: 10vw;">在庫';
-        $list .= '<td style="width: 35vw;">画像';
+        $list .= '<td style="width: 35vw;">jpg画像';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $plusClass = '';
@@ -34,9 +34,9 @@ if (!isset($_SESSION['VENDER'])) {
                 $list .= '<td'. $plusClass .'style="color:blue;">公開';
             else $list .= '<td'. $plusClass .' style="color:red;">未公開';
             $list .= '<td'. $plusClass .'>'. $result["date"];
-            $list .= '<td'. $plusClass .'>'. $result["user"];
             $list .= '<td'. $plusClass .'>'. $result["name"];
-            $list .= '<td'. $plusClass .' class="orderText">'. $result["QRid"];
+            $list .= '<td'. $plusClass .'>'. $result["price"];
+            $list .= '<td style="background-image:url(\"bentoimages/'.$result["name"].'\".jpg)" background-size: cover;>';
         }
         $list .= '</table>';
     } catch(PDOException $e) {
