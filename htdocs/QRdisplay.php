@@ -6,7 +6,9 @@ if (!isset($_SESSION['USER'])) {
     header('Location: login.php');
     exit;
 }
-require_once 'database_conf.php';
+
+    try {
+        require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         
         //予約一覧作成
