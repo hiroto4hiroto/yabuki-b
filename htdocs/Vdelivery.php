@@ -34,7 +34,8 @@ if (!isset($_SESSION['VENDER'])) {
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $plusClass = '';
-            if ($result["date"] == $getdate) $plusStyle = ' class="todayOrder" ';
+            if ($result["date"] == '2019-07-20') $plusStyle = ' class="todayOrder" ';
+            //if ($result["date"] == $getdate) $plusStyle = ' class="todayOrder" ';
                 
             $list .= '<tr>';
             if ($result["check"] == 1)
