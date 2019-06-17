@@ -26,8 +26,8 @@ if (!isset($_SESSION['VENDER'])) {
         $list .= '<td style="width: 35vw;">画像';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
-            $plusClass = ' class="todayOrder" ';
-            if ($result["date"] == $getdate)
+            $plusClass = '';
+            if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
             
             $list .= '<tr>';
             if ($result["view"] == 1)
