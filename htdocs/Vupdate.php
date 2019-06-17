@@ -72,16 +72,17 @@ if (!isset($_SESSION['VENDER'])) {
 <p>弁当事前予約サービス</p>
 <h1>弁当情報登録・更新</h1>
 <br>
-<form method="post" action="Vdelivery.php">
+<form method="post" action="Vindex.php">
     <table>
-        <tr><td><label for="user">学生番号</label>
-            <td><input id="user" type="text" name="user">
+        <tr.<td><input id="name" type="text" name="name" value="弁当名">
+        <tr><td><label for="view">販売表示</label>
+            <td><input id="view" type="checkbox" name="view">
     </table>
     <br>
-    <input class="btn-sticky" type="submit" name="delivery" value="引き渡し">
+    <input class="btn-sticky" type="submit" name="update" value="登録・更新">
 </form>
-    <br>
-    <?php echo $list; ?>
+<br>
+<?php echo $list; ?>
  
 </body>
 </html>
