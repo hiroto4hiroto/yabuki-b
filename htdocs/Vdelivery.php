@@ -38,11 +38,11 @@ if (!isset($_SESSION['VENDER'])) {
                 
             $list .= '<tr>';
             if ($result["check"] == 1)
-                $list .= '<td'.$plusClass.' style="color:blue;">完了';
-            else $list .= '<td'.$plusClass.' style="color:red;">未了';
-            $list .= '<td'.$plusClass.'>'. $result["date"];
-            $list .= '<td'.$plusClass.'>'. $result["user"];
-            $list .= '<td'.$plusClass.'>'. $result["name"];
+                $list .= '<td'. $plusClass .' style="color:blue;">完了';
+            else $list .= '<td'. $plusClass .' style="color:red;">未了';
+            $list .= '<td'. $plusClass .'>'. $result["date"];
+            $list .= '<td'. $plusClass .'>'. $result["user"];
+            $list .= '<td'. $plusClass .'>'. $result["name"];
         }
         $list .= '</table>';
     } catch(PDOException $e) {
