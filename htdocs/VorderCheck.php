@@ -108,7 +108,7 @@ if (!isset($_SESSION['VENDER'])) {
 <p>弁当事前予約サービス</p>
 <h1>予約数の確認</h1>
 
-<?php if(isset($_GET['delete'])) echo '<p>今日までの予約を削除しました</p>'; ?>
+<?php if(isset($_GET['delete'])) echo '<p>今日までの予約を削除しました</p><br>'; ?>
 <?php echo $list; ?>
 <input type="button" class="btn-sticky" onclick="OnButtonClick();" value="今日までの予約を削除">
 </body>
