@@ -6,20 +6,8 @@
         //この""の中にSQL文を打つと反映される
         //ただし"を使ってはいけない
         $sql = "
-
+drop table bentoinfotable;
 drop table bentotable;
-
-CREATE TABLE `bentoinfotable` (
-  `name` text NOT NULL,
-  `price` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-
-INSERT INTO `bentoinfotable` (`name`, `price`) VALUES
-('い弁当', 300),
-('ろ弁当', 300),
-('は弁当', 350),
-('スペシャル弁当', 10000);
 
 
 CREATE TABLE `bentotable` (
@@ -30,11 +18,12 @@ CREATE TABLE `bentotable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-INSERT INTO `bentotable` (`date`, `name`, `stocks`) VALUES
-('2019-07-20', 'い弁当', 50),
-('2019-07-20', 'ろ弁当', 30),
-('2019-07-20', 'は弁当', 20),
-('2019-07-20', 'スペシャル弁当', 200);
+INSERT INTO `bentotable` (`date`, `name`, `price`, `stocks`) VALUES
+('2019-07-20', 'い弁当', 300, 50),
+('2019-07-20', 'ろ弁当', 300, 30),
+('2019-07-20', 'は弁当', 350, 20),
+('2019-07-20', 'スペシャル弁当', 10000, 200);
+
 
 
 /*
@@ -50,7 +39,7 @@ INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        print_r $result;
+        echo $result;
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
