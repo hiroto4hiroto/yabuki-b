@@ -13,12 +13,12 @@ if (!isset($_SESSION['USER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = "SELECT QRid FROM ordertable WHERE user = ". $_SESSION['USER'] ." limit 1;";
+        $sql = "SELECT * FROM ordertable WHERE user = ". $_SESSION['USER'] ." limit 1;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
         echo "ほげー";
-        echo $result;
+        echo $result['QRid'];
 
     } catch(PDOException $e) {
         echo $e->getMessage();
