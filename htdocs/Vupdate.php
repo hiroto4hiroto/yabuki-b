@@ -20,7 +20,7 @@ if (!isset($_SESSION['VENDER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = 'SELECT * FROM ordertable ORDER BY `check`, `date`, `user`;';
+        $sql = 'SELECT * FROM bentotable ORDER BY `view`, `date`, `price`, `name`;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -72,11 +72,20 @@ if (!isset($_SESSION['VENDER'])) {
 <p>弁当事前予約サービス</p>
 <h1>弁当情報登録・更新</h1>
 <br>
-<form method="post" action="Vindex.php">
+<form method="post" action="Vupdate.php" enctype="multipart/form-data">
     <table>
-        <tr.<td><input id="name" type="text" name="name" value="弁当名">
+        <tr><td><label for="view">弁当名</label>
+            <td><input id="name" type="text" name="name">
         <tr><td><label for="view">販売表示</label>
             <td><input id="view" type="checkbox" name="view">
+        <tr><td><label for="date">販売日</label>
+            <td><input id="date" type="date" name="date">
+        <tr><td><label for="price">価格</label>
+            <td><input id="price" type="number" name="price">
+        <tr><td><label for="stocks">販売数</label>
+            <td><input id="stocks" type="number" name="stocks">
+        <tr><td><label for="image">画像</label>
+            <td><input id="image" type="file" accept="image/*.jpg">
     </table>
     <br>
     <input class="btn-sticky" type="submit" name="update" value="登録・更新">
