@@ -14,7 +14,7 @@ if (!isset($_SESSION['USER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = "SELECT * FROM ordertable WHERE user = 1742120 limit 1;"; //". $_SESSION['USER'] ." limit 1;";
+        $sql = "SELECT * FROM ordertable WHERE user = 1742111 limit 1;"; //". $_SESSION['USER'] ." limit 1;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
