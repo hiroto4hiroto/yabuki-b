@@ -23,7 +23,7 @@ if (!isset($_SESSION['VENDER'])) {
         $list .= '<td style="width: 20vw;">弁当名';
         $list .= '<td style="width: 10vw;">価格';
         $list .= '<td style="width: 10vw;">在庫';
-        $list .= '<td style="width: 20vw; height: 15vw;">jpg画像';
+        $list .= '<td style="width: 20vw;">jpg画像';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $plusClass = '';
@@ -37,7 +37,7 @@ if (!isset($_SESSION['VENDER'])) {
             $list .= '<td'. $plusClass .'>'. $result["name"];
             $list .= '<td'. $plusClass .'>'. $result["price"];
             $list .= '<td'. $plusClass .'>'. $result["stocks"];
-            $list .= '<td style=\'background-image:url("bentoimages/'.$result["name"].'.jpg"); background-size: cover;\'>';
+            $list .= '<td style=\'height:15vw; background-image:url("bentoimages/'.$result["name"].'.jpg"); background-size: cover;\'>';
         }
         $list .= '</table>';
     } catch(PDOException $e) {
