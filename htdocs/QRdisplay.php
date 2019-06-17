@@ -1,6 +1,7 @@
 <?php
 session_start();
 $message = "";
+
     //学生でなければ弾く
 if (!isset($_SESSION['USER'])) {
     header('Location: login.php');
@@ -13,13 +14,12 @@ if (!isset($_SESSION['USER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = "SELECT * FROM ordertable WHERE user = ". $_SESSION['USER'] ." limit 1;";
+        $sql = "SELECT QRid FROM ordertable WHERE user = ". $_SESSION['USER'] ." limit 1;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        echo "ほげー";
-        echo $result['QRid'];
-
+        $QRimage = '<img src="https://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=https://allabout.co.jp/" alt="'. $result .'">';
+        
     } catch(PDOException $e) {
         echo $e->getMessage();
         die();
@@ -37,14 +37,8 @@ if (!isset($_SESSION['USER'])) {
 <body>
 <p>弁当事前予約サービス</p>
 <h1>QRコード表示</h1>
-<img src="https://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=https://allabout.co.jp/" alt="QRコード">
-
-<?php
-//キャンセル文
-if(!empty($_GET['message']))
-    echo "<p style='color:red;'>". $_GET['message'] ."</p>";
-?>
-
+<br>
+<?php echo $QRimage; ?>
 
  
 </body>
