@@ -6,13 +6,21 @@ if (!isset($_SESSION['USER'])) {
     header('Location: login.php');
     exit;
 }
-//ログアウト機能
-if(isset($_POST['logout'])){   
-    $_SESSION = array();
-    session_destroy();
-    header('Location: login.php');
-    exit;
-}
+require_once 'database_conf.php';
+        $db = new PDO($dsn, $dbUser, $dbPass);
+        
+        //予約一覧作成
+        //SQL作成・実行
+        $sql = "SELECT QRid FROM ordertable WHERE user = ". $_SESSION['USER'] ." limit 1;";
+        $prepare = $db->prepare($sql);
+        $prepare->execute();
+        $result = $prepare->fetch(PDO::FETCH_ASSOC);
+        echo $result;
+
+    } catch(PDOException $e) {
+        echo $e->getMessage();
+        die();
+    }
 ?>
  
 <!DOCTYPE html>
