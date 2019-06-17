@@ -6,11 +6,10 @@
         //この""の中にSQL文を打つと反映される
         //ただし"を使ってはいけない
         $sql = "
-drop table bentoinfotable;
 drop table bentotable;
 
-
 CREATE TABLE `bentotable` (
+  `view` tinyint(1) DEFAULT 0,
   `date` date NOT NULL,
   `name` text NOT NULL,
   `price` int(11) NOT NULL,
@@ -18,12 +17,11 @@ CREATE TABLE `bentotable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
-INSERT INTO `bentotable` (`date`, `name`, `price`, `stocks`) VALUES
-('2019-07-20', 'い弁当', 300, 50),
-('2019-07-20', 'ろ弁当', 300, 30),
-('2019-07-20', 'は弁当', 350, 20),
-('2019-07-20', 'スペシャル弁当', 10000, 200);
-
+INSERT INTO `bentotable` (`view`, `date`, `name`, `price`, `stocks`) VALUES
+(0, '2019-07-20', 'い弁当', 300, 50),
+(0, '2019-07-20', 'ろ弁当', 300, 30),
+(0, '2019-07-20', 'は弁当', 350, 20),
+(0, '2019-07-20', 'スペシャル弁当', 10000, 200);
 
 
 /*
