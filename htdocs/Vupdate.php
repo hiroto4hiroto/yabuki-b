@@ -19,11 +19,11 @@ if (!isset($_SESSION['VENDER'])) {
         $list .= '登録弁当一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 10vw;">販売表示';
-        $list .= '<td style="width: 10vw;">販売日';
-        $list .= '<td style="width: 20vw;">弁当名';
+        $list .= '<td style="width: 15vw;">販売日';
+        $list .= '<td style="width: 25vw;">弁当名';
         $list .= '<td style="width: 10vw;">価格';
         $list .= '<td style="width: 10vw;">在庫';
-        $list .= '<td style="width: 20vw;">jpg画像';
+        $list .= '<td style="width: 10vw;">jpg画像';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $plusClass = '';
@@ -37,7 +37,7 @@ if (!isset($_SESSION['VENDER'])) {
             $list .= '<td'. $plusClass .'>'. $result["name"];
             $list .= '<td'. $plusClass .'>'. $result["price"];
             $list .= '<td'. $plusClass .'>'. $result["stocks"];
-            $list .= '<td style=\'height:15vw; background-image:url("bentoimages/'.$result["name"].'.jpg"); background-size: cover;\'>';
+            $list .= '<td style=\'height:7.5vw; background-image:url("bentoimages/'.$result["name"].'.jpg"); background-size: cover;\'>';
         }
         $list .= '</table>';
     } catch(PDOException $e) {
