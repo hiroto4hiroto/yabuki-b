@@ -7,7 +7,34 @@
         //ただし"を使ってはいけない
         $sql = "
 
-        SHOW COLUMNS FROM bentotable;
+drop table bentotable;
+
+CREATE TABLE `bentoinfotable` (
+  `name` text NOT NULL,
+  `price` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+INSERT INTO `bentoinfotable` (`name`, `price`) VALUES
+('い弁当', 300),
+('ろ弁当', 300),
+('は弁当', 350),
+('スペシャル弁当', 10000);
+
+
+CREATE TABLE `bentotable` (
+  `date` date NOT NULL,
+  `name` text NOT NULL,
+  `price` int(11) NOT NULL,
+  `stocks` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+INSERT INTO `bentotable` (`date`, `name`, `stocks`) VALUES
+('2019-07-20', 'い弁当', 50),
+('2019-07-20', 'ろ弁当', 30),
+('2019-07-20', 'は弁当', 20),
+('2019-07-20', 'スペシャル弁当', 200);
 
 
 /*
