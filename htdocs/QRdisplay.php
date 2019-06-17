@@ -14,11 +14,11 @@ if (!isset($_SESSION['USER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = "SELECT QRid FROM ordertable WHERE user = ". $_SESSION['USER'] ." limit 1;";
+        $sql = "SELECT * FROM ordertable WHERE user = ". $_SESSION['USER'] ." limit 1;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        $QRimage = '<img src="https://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=https://allabout.co.jp/" alt="'. (string)$result .'">';
+        $QRimage = '<img src="https://chart.apis.google.com/chart?chs=150x150&cht=qr&chl=https://allabout.co.jp/" alt="'. $result['QRid'] .'">';
         
     } catch(PDOException $e) {
         echo $e->getMessage();
