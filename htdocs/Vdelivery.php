@@ -33,27 +33,16 @@ if (!isset($_SESSION['VENDER'])) {
         //$list .= '<td style="width: 35vw;">UUID';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
-            if ($result["date"] == $getdate)
-            {
-                $list .= '<tr>';
+            $plusClass = '';
+            if ($result["date"] == $getdate) $plusStyle = ' class="todayOrder" ';
+                
+            $list .= '<tr>';
             if ($result["check"] == 1)
-                $list .= '<td class="todayOrder" style="color:blue;">完了';
-            else $list .= '<td class="todayOrder" style="color:red;">未了';
-                $list .= '<td class="todayOrder">'. $result["date"];
-                $list .= '<td class="todayOrder">'. $result["user"];
-                $list .= '<td class="todayOrder">'. $result["name"];
-                //$list .= '<td class="todayOrder">'. $result["QRid"];
-            }
-            else {
-                $list .= '<tr>';
-                if ($result["check"] == 1)
-                    $list .= '<td style="color:blue;">完了';
-                else $list .= '<td style="color:red;">未了';
-                $list .= '<td>'. $result["date"];
-                $list .= '<td>'. $result["user"];
-                $list .= '<td>'. $result["name"];
-                //$list .= '<td class="orderText">'. $result["QRid"];
-            }
+                $list .= '<td'.$plusClass.' style="color:blue;">完了';
+            else $list .= '<td'.$plusClass.' style="color:red;">未了';
+            $list .= '<td'.$plusClass.'>'. $result["date"];
+            $list .= '<td'.$plusClass.'>'. $result["user"];
+            $list .= '<td'.$plusClass.'>'. $result["name"];
         }
         $list .= '</table>';
     } catch(PDOException $e) {
