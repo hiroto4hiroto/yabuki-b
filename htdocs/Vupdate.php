@@ -22,10 +22,10 @@ if (!isset($_SESSION['VENDER'])) {
         $list .= '<td style="width: 10vw;">販売表示';
         $list .= '<td style="width: 15vw;">販売日';
         $list .= '<td style="width: 25vw;">弁当名';
-        $list .= '<td style="width: 10vw;">価格';
-        $list .= '<td style="width: 10vw;">販売数';
+        $list .= '<td style="width: 7vw;">価格';
+        $list .= '<td style="width: 6vw;">販売数';
         $list .= '<td style="width: 10vw;">jpg画像';
-        $list .= '<td style="width: 10vw;">削除';
+        $list .= '<td style="width: 7vw;">削除';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $plusClass = '';
