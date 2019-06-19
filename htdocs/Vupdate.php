@@ -8,11 +8,10 @@ if (!isset($_SESSION['VENDER'])) {
 }
     try {
         require_once 'database_conf.php';
-        $db = new PDO($dsn, $dbUser, $dbPass);
-        
+       
         //該当番号を1件削除
         if (isset($_GET['delete'])) {
-                //delete from accesslog where type='direct';
+            $db = new PDO($dsn, $dbUser, $dbPass);
             $sql = "DELETE FROM `bentotable` where id = ". $_GET['delete'];
             $result = $db->prepare($sql);
             $result->execute();
@@ -26,6 +25,7 @@ if (!isset($_SESSION['VENDER'])) {
         {
             $message = "";
             //番号のレコードがない場合、新規作成
+            $db = new PDO($dsn, $dbUser, $dbPass);
             $sql = 'SELECT * FROM bentoTable WHERE bento = '. $_POST['id'];
             $prepare = $db->prepare($sql);
             $prepare->execute();
@@ -40,6 +40,7 @@ if (!isset($_SESSION['VENDER'])) {
             //販売日の更新
             if ($_POST['date'])
             {
+                $db = new PDO($dsn, $dbUser, $dbPass);
                 $sql = 'UPDATE bentoTable SET date = "'.$_POST["bentoDate"].'" WHERE bento = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
@@ -48,6 +49,7 @@ if (!isset($_SESSION['VENDER'])) {
             //弁当名の更新
             if ($_POST['name'] != "")
             {
+                $db = new PDO($dsn, $dbUser, $dbPass);
                 $sql = 'UPDATE bentoTable SET name = "'.$_POST["bentoName"].'" WHERE bento = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
@@ -56,6 +58,7 @@ if (!isset($_SESSION['VENDER'])) {
             //価格の更新
             if ($_POST['price'] != null)
             {
+                $db = new PDO($dsn, $dbUser, $dbPass);
                 $sql = 'UPDATE bentoTable SET price = '.$_POST["bnetoValue"].' WHERE bento = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
@@ -64,6 +67,7 @@ if (!isset($_SESSION['VENDER'])) {
             //在庫数の更新
             if ($_POST['stocks'] != null)
             {
+                $db = new PDO($dsn, $dbUser, $dbPass);
                 $sql = 'UPDATE bentoTable SET stocks = '.$_POST["bnetoStocks"].' WHERE bento = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
@@ -74,8 +78,10 @@ if (!isset($_SESSION['VENDER'])) {
             $tmp = pathinfo($_FILES["image"]["name"]);
             $extension = $tmp["extension"];
             if ($_FILES['image']['tmp_name'] != null && $_FILES['upfile']['error'] == UPLOAD_ERR_OK &&
-                $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG"){
-                $sql = 'UPDATE imagetable SET image = '. file_get_contents($_FILES['image']['tmp_name']) .' WHERE id = '.$_POST['id'].' ;
+                $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG")
+            {
+                $db = new PDO($dsn, $dbUser, $dbPass);
+                $sql = 'UPDATE imagetable SET image = '. file_get_contents($_FILES['image']['tmp_name']) .' WHERE id = '.$_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "画像を更新しました<br>";
@@ -86,7 +92,8 @@ if (!isset($_SESSION['VENDER'])) {
         
         //弁当一覧作成
         //SQL作成・実行
-        $sql = 'SELECT * FROM bentotable ORDER BY `id`;';
+        $db = new PDO($dsn, $dbUser, $dbPass);
+        $sql = 'SELECT * FROM bentotable ORDER BY id;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
