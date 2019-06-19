@@ -30,7 +30,7 @@ if (!isset($_SESSION['VENDER'])) {
             $sql = 'SELECT * FROM bentoTable WHERE bento = '. $_POST['id'];
             $prepare = $db->prepare($sql);
             $prepare->execute();
-            if ($prepare->fetch(PDO::FETCH_ASSOC) == null)
+            if (empty($prepare->fetch(PDO::FETCH_ASSOC)))
             {
                 $sql = 'INSERT INTO bentotable (`id`, `view`, `date`, `name`, `price`, `stocks`) VALUES ( '.$_POST["id"].', 0, "noName", 9999, 0)';
                 $sql .= 'INSERT INTO imagetable (`id`, `image`) VALUES ('.$_POST["id"].', 0)';
@@ -38,6 +38,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $prepare->execute();
                 $message .= "1件追加しました<br>";
             }
+            
             //販売日の更新
             if ($_POST['date'])
             {
