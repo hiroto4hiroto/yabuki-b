@@ -13,7 +13,7 @@ if (!isset($_SESSION['VENDER'])) {
         //該当番号を1件削除
         if (isset($_GET['delete'])) {
                 //delete from accesslog where type='direct';
-            $sql = "DELETE FROM `bentotable` where id = ". $_GET['delete']);
+            $sql = "DELETE FROM `bentotable` where id = ". $_GET['delete'];
             $result = $db->prepare($sql);
             $result->execute();
         
