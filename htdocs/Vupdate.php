@@ -92,6 +92,7 @@ if (!isset($_SESSION['VENDER'])) {
                     $message .= "画像を更新しました<br>";
                 } else {
                     $message .= "画像は何らかの理由で更新できませんでした<br>";
+                }
             }
         }
         
