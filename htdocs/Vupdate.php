@@ -22,12 +22,12 @@ if (!isset($_SESSION['VENDER'])) {
             exit;
         }
 
-        if (isset($_POST['update']) && $_POST['id'] != null)
+        if (isset($_POST['update']) && $_POST['number'] != null)
         {
-            $message = (string)$_POST["id"] .' 番の登録・更新<br>';
+            $message = (string)$_POST["number"] .' 番の登録・更新<br>';
             //番号のレコードがない場合、新規作成
             $db = new PDO($dsn, $dbUser, $dbPass);
-            $sql = 'SELECT * FROM bentotable WHERE id = '. $_POST['id'];
+            $sql = 'SELECT * FROM bentotable WHERE id = '. $_POST['number'];
             $prepare = $db->prepare($sql);
             $prepare->execute();
             if (empty($prepare->fetch(PDO::FETCH_ASSOC)))
@@ -43,7 +43,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['date'])
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET date = "'.$_POST["date"].'" WHERE `id` = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET date = "'.$_POST["date"].'" WHERE `id` = '. $_POST['number'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "販売日を更新しました<br>";
@@ -52,7 +52,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['name'] != "")
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET name = "'.$_POST["name"].'" WHERE `id` = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET name = "'.$_POST["name"].'" WHERE `id` = '. $_POST['number'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "名前を更新しました<br>";
@@ -61,7 +61,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['price'] != null)
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET price = '.$_POST["price"].' WHERE `id` = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET price = '.$_POST["price"].' WHERE `id` = '. $_POST['number'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "価格を更新しました<br>";
@@ -70,7 +70,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['stocks'] != null)
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET stocks = '.$_POST["stocks"].' WHERE `id` = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET stocks = '.$_POST["stocks"].' WHERE `id` = '. $_POST['number'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "在庫数を更新しました<br>";
@@ -86,7 +86,7 @@ if (!isset($_SESSION['VENDER'])) {
                     $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG")
                 {
                     $db = new PDO($dsn, $dbUser, $dbPass);                
-                    $sql = "UPDATE INTO imagetable (`id, `image`) VALUES (". $_POST['id'] .", :raw_data) WHERE `id` = ". $_POST['id'];
+                    $sql = "UPDATE INTO imagetable (`id, `image`) VALUES (". $_POST['number'] .", :raw_data) WHERE `id` = ". $_POST['number'];
                     $stmt = $db->prepare($sql);
                     $stmt->bindValue(":raw_data", $raw_data, PDO::PARAM_STR);
                     $stmt->execute();
@@ -162,13 +162,13 @@ if (!isset($_SESSION['VENDER'])) {
 <p>弁当事前予約サービス</p>
 <h1>弁当情報登録・更新</h1>
 
-<?php echo $message; ?>
+<?php echo if (!empty($message) echo $message; ?>
     
 <p>新規IDを入力すると登録、既存IDを入力すると更新されます。</p>
 <form method="post" action="Vupdate.php" enctype="multipart/form-data">
     <table  style="width: 50vw;">
-        <tr><td><label for="id">ID*</label>
-            <td><input id="id" type="number" name="id" value="0">
+        <tr><td><label for="number">ID*</label>
+            <td><input id="number" type="number" name="number" value="0">
         <label for="name"><tr><td>弁当名</label>
             <td><input id="name" type="text" name="name">
         <tr><td><label for="view">販売表示</label>
