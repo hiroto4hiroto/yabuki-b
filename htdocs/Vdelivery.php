@@ -40,7 +40,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($result["check"] == 1)
                 $list .= '<td'. $plusClass .' style="color:blue;">完了';
             else $list .= '<td'. $plusClass .' style="color:red;">未了';
-            $list .= '<td class="todayOrder" >'. $result["date"];
+            $list .= '<td'. $plusClass .'>'. $result["date"];
             $list .= '<td'. $plusClass .'>'. $result["user"];
             $list .= '<td'. $plusClass .'>'. $result["name"];
         }
