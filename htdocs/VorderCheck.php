@@ -31,11 +31,14 @@ if (!isset($_SESSION['VENDER'])) {
         $list .= '<td style="width: 20vw;">個数';
 
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
-        {
+        {         
+             $plusClass = '';
+            if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
+            
             $list .= '<tr>';
-            $list .= '<td>'. $result["date"];
-            $list .= '<td>'. $result["name"];
-            $list .= '<td>'. $result["count"];
+            $list .= '<td'. $plusClass .'>'. $result["date"];
+            $list .= '<td'. $plusClass .'>'. $result["name"];
+            $list .= '<td'. $plusClass .'>'. $result["count"];
         }
         $list .= '</table>';
         
@@ -56,14 +59,17 @@ if (!isset($_SESSION['VENDER'])) {
 
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
+            $plusClass = '';
+            if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
+
             $list .= '<tr>';
             if ($result["check"] == 1)
-                $list .= '<td style="color:blue;">完了';
-            else $list .= '<td style="color:red;">未了';
-            $list .= '<td>'. $result["date"];
-            $list .= '<td>'. $result["user"];
-            $list .= '<td>'. $result["name"];
-            $list .= '<td>'. $result["QRid"];
+                $list .= '<td'. $plusClass .' style="color:blue;">完了';
+            else $list .= '<td'. $plusClass .' style="color:red;">未了';
+            $list .= '<td'. $plusClass .'>'. $result["date"];
+            $list .= '<td'. $plusClass .'>'. $result["user"];
+            $list .= '<td'. $plusClass .'>'. $result["name"];
+            $list .= '<td'. $plusClass .'>'. $result["QRid"];
         }
         $list .= '</table>';
 
