@@ -54,7 +54,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $message .= "名前を更新しました<br>";
             }
             //価格の更新
-            if ($_POST['value'] != 0)
+            if ($_POST['value'] != null)
             {
                 $sql = 'UPDATE bentoTable SET price = '.$_POST["bnetoValue"].' WHERE bento = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
@@ -62,7 +62,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $message .= "価格を更新しました<br>";
             }
             //在庫数の更新
-            if ($_POST['stocks'] != 0)
+            if ($_POST['stocks'] != null)
             {
                 $sql = 'UPDATE bentoTable SET stocks = '.$_POST["bnetoStocks"].' WHERE bento = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
@@ -71,7 +71,7 @@ if (!isset($_SESSION['VENDER'])) {
             }
 
             //画像を保存
-            if ($_FILES['image']['tmp_name']){
+            if ($_FILES['image']['tmp_name'] != null){
                 move_uploaded_file($_FILES['image']['tmp_name'], './bentoImages/' . (string)$_POST["id"] .'.jpg');
                 $message .= "画像を更新しました<br>";
             }
