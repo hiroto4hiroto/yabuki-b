@@ -162,7 +162,7 @@ if (!isset($_SESSION['VENDER'])) {
 <p>弁当事前予約サービス</p>
 <h1>弁当情報登録・更新</h1>
 
-<?php echo if (!empty($message) echo $message; ?>
+<?php if (!empty($message) echo $message; ?>
     
 <p>新規IDを入力すると登録、既存IDを入力すると更新されます。</p>
 <form method="post" action="Vupdate.php" enctype="multipart/form-data">
