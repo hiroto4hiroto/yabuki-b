@@ -85,7 +85,7 @@ if (!isset($_SESSION['VENDER'])) {
                     $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG")
                 {
                     $db = new PDO($dsn, $dbUser, $dbPass);                
-                    $sql = "UPDATE INTO imagetable (`id, `image`) VALUES (". $_POST['id'] .", :raw_data) WHERE `id` = '. $_POST['id'];
+                    $sql = "UPDATE INTO imagetable (`id, `image`) VALUES (". $_POST['id'] .", :raw_data) WHERE `id` = ". $_POST['id'];
                     $stmt = $db->prepare($sql);
                     $stmt->bindValue(":raw_data", $raw_data, PDO::PARAM_STR);
                     $stmt->execute();
