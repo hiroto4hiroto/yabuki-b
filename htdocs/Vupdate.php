@@ -39,14 +39,14 @@ if (!isset($_SESSION['VENDER'])) {
                 $message .= "1件追加しました<br>";
             }
             
-            //販売日の更新
-            if ($_POST['date'])
+            //販売表示の更新
+            if ($_POST['view'] != "")
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentotable SET date = "'.$_POST["date"].'" WHERE `id` = '. $_POST['number'];
+                $sql = 'UPDATE bentotable SET name = "'.$_POST["view"].'" WHERE `id` = '. $_POST['number'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
-                $message .= "販売日を更新しました<br>";
+                $message .= "販売表示を更新しました<br>";
             }
             //弁当名の更新
             if ($_POST['name'] != "")
@@ -56,6 +56,15 @@ if (!isset($_SESSION['VENDER'])) {
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "名前を更新しました<br>";
+            }
+            //販売日の更新
+            if ($_POST['date'])
+            {
+                $db = new PDO($dsn, $dbUser, $dbPass);
+                $sql = 'UPDATE bentotable SET date = "'.$_POST["date"].'" WHERE `id` = '. $_POST['number'];
+                $prepare = $db->prepare($sql);
+                $prepare->execute();
+                $message .= "販売日を更新しました<br>";
             }
             //価格の更新
             if ($_POST['price'] != null)
@@ -169,10 +178,14 @@ if (!isset($_SESSION['VENDER'])) {
     <table  style="width: 50vw;">
         <tr><td><label for="number">ID*</label>
             <td><input id="number" type="number" name="number" value="0">
+            <tr><td><label for="view">販売表示</label>
+            <td><select id="view" name="view">
+                    <option value="">選択</option>
+                    <option value="0">公開</option>
+                    <option value="1">未公開</option>
+                </select>
         <label for="name"><tr><td>弁当名</label>
             <td><input id="name" type="text" name="name">
-        <tr><td><label for="view">販売表示</label>
-            <td><input id="view" type="checkbox" name="view" checked="checked">
         <tr><td><label for="date">販売日</label>
             <td><input id="date" type="date" name="date">
         <tr><td><label for="price">価格</label>
