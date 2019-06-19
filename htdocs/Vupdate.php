@@ -89,10 +89,9 @@ if (!isset($_SESSION['VENDER'])) {
                     $stmt = $db->prepare($sql);
                     $stmt->bindValue(":raw_data", $raw_data, PDO::PARAM_STR);
                     $stmt->execute();
-                }
-                $message .= "画像を更新しました<br>";
-            } else {
-                $message .= "画像は何らかの理由で更新できませんでした<br>";
+                    $message .= "画像を更新しました<br>";
+                } else {
+                    $message .= "画像は何らかの理由で更新できませんでした<br>";
             }
         }
         
