@@ -12,12 +12,13 @@ if (!isset($_SESSION['VENDER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = 'SELECT * FROM bentotable ORDER BY `view`, `date`, `price`, `name`;';
+        $sql = 'SELECT * FROM bentotable ORDER BY `id`;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
         $list .= '登録弁当一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+        $list .= '<td style="width: 10vw;">id';
         $list .= '<td style="width: 10vw;">販売表示';
         $list .= '<td style="width: 15vw;">販売日';
         $list .= '<td style="width: 25vw;">弁当名';
@@ -30,6 +31,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
             
             $list .= '<tr>';
+            $list .= '<td'. $plusClass .'>'. $result["id"];
             if ($result["view"] == 1)
                 $list .= '<td'. $plusClass .'style="color:blue;">公開';
             else $list .= '<td'. $plusClass .' style="color:red;">未公開';
@@ -58,6 +60,8 @@ if (!isset($_SESSION['VENDER'])) {
 <br>
 <form method="post" action="Vupdate.php" enctype="multipart/form-data">
     <table>
+        <tr><td><label for="id">更新弁当番号</label>
+            <td><input id="id" type="number" name="id">
         <label for="name"><tr><td><弁当名</label>
             <td><input id="name" type="text" name="name">
         <tr><td><label for="view">販売表示</label>
