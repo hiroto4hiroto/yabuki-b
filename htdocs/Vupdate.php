@@ -32,8 +32,8 @@ if (!isset($_SESSION['VENDER'])) {
             $prepare->execute();
             if (empty($prepare->fetch(PDO::FETCH_ASSOC)))
             {
-                $sql = 'INSERT INTO bentotable (`id`, `view`, `date`, `name`, `price`, `stocks`) VALUES ( '.$_POST["number"].', 0, "noName", 9999, 0)';
-                $sql .= 'INSERT INTO imagetable (`id`, `image`) VALUES ('.$_POST["number"].', 0)';
+                $sql = 'INSERT INTO bentotable (`id`, `view`, `date`, `name`, `price`, `stocks`) VALUES ( '.$_POST["number"].', 0, "noName", 9999, 0);';
+                $sql .= 'INSERT INTO imagetable (`id`, `image`) VALUES ('.$_POST["number"].', 0);';
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "1件追加しました<br>";
