@@ -18,16 +18,16 @@ if (!isset($_SESSION['VENDER'])) {
             $result->execute();
         
             //トップページに移動
-            header('Location: index.php?message=弁当ID '. $_GET['order'] .' 番を削除しました。');
+            header('Location: index.php?message=弁当ID '. $_GET['delete'] .' 番を削除しました。');
             exit;
         }
 
         if (isset($_POST['update']) && $_POST['id'] != null)
         {
-            $message = (string)$_POST['id'] .' 番の登録・更新<br>';
+            $message = (string)$_POST["id"] .' 番の登録・更新<br>';
             //番号のレコードがない場合、新規作成
             $db = new PDO($dsn, $dbUser, $dbPass);
-            $sql = 'SELECT * FROM bentoTable WHERE id = '. $_POST['id'];
+            $sql = 'SELECT * FROM bentotable WHERE id = '. $_POST['id'];
             $prepare = $db->prepare($sql);
             $prepare->execute();
             if (empty($prepare->fetch(PDO::FETCH_ASSOC)))
