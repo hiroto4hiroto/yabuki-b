@@ -76,18 +76,20 @@ if (!isset($_SESSION['VENDER'])) {
             }
 
             //jpeg形式でエラーがなければ画像を保存
-            $raw_data = file_get_contents($_FILES['image']['tmp_name']);
-            $tmp = pathinfo($_FILES["image"]["name"]);
-            $extension = $tmp["extension"];
-            if ($_FILES['image']['tmp_name'] != null && $_FILES['image']['error'] == UPLOAD_ERR_OK &&
-                $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG")
+            if ($_FILES['image']['tmp_name'] != null)
             {
-                $db = new PDO($dsn, $dbUser, $dbPass);                
-                $sql = "UPDATE INTO imagetable (`id, `image`) VALUES (". $_POST['id'] .", :raw_data);";
-                $stmt = $db->prepare($sql);
-                $stmt->bindValue(":raw_data", $raw_data, PDO::PARAM_STR);
-                $stmt->execute();
-                
+                $raw_data = file_get_contents($_FILES['image']['tmp_name']);
+                $tmp = pathinfo($_FILES["image"]["name"]);
+                $extension = $tmp["extension"];
+                if ($_FILES['image']['error'] == UPLOAD_ERR_OK &&
+                    $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG")
+                {
+                    $db = new PDO($dsn, $dbUser, $dbPass);                
+                    $sql = "UPDATE INTO imagetable (`id, `image`) VALUES (". $_POST['id'] .", :raw_data);";
+                    $stmt = $db->prepare($sql);
+                    $stmt->bindValue(":raw_data", $raw_data, PDO::PARAM_STR);
+                    $stmt->execute();
+                }
                 $message .= "画像を更新しました<br>";
             } else {
                 $message .= "画像は何らかの理由で更新できませんでした<br>";
@@ -109,7 +111,7 @@ if (!isset($_SESSION['VENDER'])) {
         $list .= '<td style="width: 25vw;">弁当名';
         $list .= '<td style="width: 7vw;">価格';
         $list .= '<td style="width: 6vw;">販売数';
-        $list .= '<td style="width: 10vw;">jpg画像<br>1.6MBまで';
+        $list .= '<td style="width: 10vw;">画像';
         $list .= '<td style="width: 7vw;">削除';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
