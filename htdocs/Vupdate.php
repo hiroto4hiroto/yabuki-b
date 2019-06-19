@@ -78,7 +78,6 @@ if (!isset($_SESSION['VENDER'])) {
                 $sql = 'UPDATE imagetable SET image = '. file_get_contents($_FILES['image']['tmp_name']) .' WHERE id = '.$_POST['id'].' ;
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
-                move_uploaded_file($_FILES['image']['tmp_name'], './bentoImages/' . (string)$_POST["id"] .'.jpg');
                 $message .= "画像を更新しました<br>";
             } else {
                 $message .= "画像は何らかの理由で更新できませんでした<br>";
