@@ -70,12 +70,11 @@ if (!isset($_SESSION['VENDER'])) {
                 $message .= "在庫数を更新しました<br>";
             }
 
-            //画像を保存
+            //jpeg形式でエラーがなければ画像を保存
+            $tmp = pathinfo($_FILES["image"]["name"]);
+            $extension = $tmp["extension"];
             if ($_FILES['image']['tmp_name'] != null && $_FILES['upfile']['error'] == UPLOAD_ERR_OK &&
                 $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG"){
-                $tmp = pathinfo($_FILES["image"]["name"]);
-                $extension = $tmp["extension"];
-                if(){
                 $sql = 'UPDATE imagetable SET image = '. file_get_contents($_FILES['image']['tmp_name']) .' WHERE id = '.$_POST['id'].' ;
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
