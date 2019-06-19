@@ -89,9 +89,7 @@ $isDebug = true;
     tr td {border-style: solid;}
     -->
     </style>
-</head>
- 
-<script language="javascript" type="text/javascript">
+    <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
         var res = confirm('「' + name + '」を予約しますか？');
         if(res) {
@@ -108,7 +106,7 @@ $isDebug = true;
         }
     }
 </script>
-    
+</head>   
 <body>
 <p>弁当事前予約サービス</p>
 <h1>弁当閲覧・予約</h1>
