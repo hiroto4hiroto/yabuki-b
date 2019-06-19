@@ -71,9 +71,18 @@ if (!isset($_SESSION['VENDER'])) {
             }
 
             //画像を保存
-            if ($_FILES['image']['tmp_name'] != null){
+            if ($_FILES['image']['tmp_name'] != null && $_FILES['upfile']['error'] == UPLOAD_ERR_OK &&
+                $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG"){
+                $tmp = pathinfo($_FILES["image"]["name"]);
+                $extension = $tmp["extension"];
+                if(){
+                $sql = 'UPDATE imagetable SET image = '. file_get_contents($_FILES['image']['tmp_name']) .' WHERE id = '.$_POST['id'].' ;
+                $prepare = $db->prepare($sql);
+                $prepare->execute();
                 move_uploaded_file($_FILES['image']['tmp_name'], './bentoImages/' . (string)$_POST["id"] .'.jpg');
                 $message .= "画像を更新しました<br>";
+            } else {
+                $message .= "画像は何らかの理由で更新できませんでした<br>";
             }
         }
         
@@ -91,7 +100,7 @@ if (!isset($_SESSION['VENDER'])) {
         $list .= '<td style="width: 25vw;">弁当名';
         $list .= '<td style="width: 7vw;">価格';
         $list .= '<td style="width: 6vw;">販売数';
-        $list .= '<td style="width: 10vw;">jpg画像';
+        $list .= '<td style="width: 10vw;">jpg画像<br>1.6MBまで';
         $list .= '<td style="width: 7vw;">削除';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
