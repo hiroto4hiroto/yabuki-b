@@ -81,7 +81,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG")
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE imagetable SET image = '. file_get_contents($_FILES['image']['tmp_name']) .' WHERE id = '.$_POST['id'];
+                $sql = 'UPDATE imagetable SET image = "'. file_get_contents($_FILES['image']['tmp_name']) .'" WHERE id = '.$_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "画像を更新しました<br>";
