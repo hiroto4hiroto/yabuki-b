@@ -43,7 +43,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['date'])
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET date = "'.$_POST["date"].'" WHERE `id` = '. $_POST['number'];
+                $sql = 'UPDATE bentotable SET date = "'.$_POST["date"].'" WHERE `id` = '. $_POST['number'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "販売日を更新しました<br>";
@@ -52,7 +52,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['name'] != "")
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET name = "'.$_POST["name"].'" WHERE `id` = '. $_POST['number'];
+                $sql = 'UPDATE bentotable SET name = "'.$_POST["name"].'" WHERE `id` = '. $_POST['number'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "名前を更新しました<br>";
@@ -61,7 +61,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['price'] != null)
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET price = '.$_POST["price"].' WHERE `id` = '. $_POST['number'];
+                $sql = 'UPDATE bentotable SET price = '.$_POST["price"].' WHERE `id` = '. $_POST['number'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "価格を更新しました<br>";
@@ -70,7 +70,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['stocks'] != null)
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET stocks = '.$_POST["stocks"].' WHERE `id` = '. $_POST['number'];
+                $sql = 'UPDATE bentotable SET stocks = '.$_POST["stocks"].' WHERE `id` = '. $_POST['number'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "在庫数を更新しました<br>";
