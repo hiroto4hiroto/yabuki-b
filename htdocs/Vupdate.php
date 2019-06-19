@@ -169,7 +169,7 @@ if (!isset($_SESSION['VENDER'])) {
             <td><input id="price" type="number" name="price">
         <tr><td><label for="stocks">販売数</label>
             <td><input id="stocks" type="number" name="stocks">
-        <tr><td><label for="image">画像</label>
+        <tr><td><label for="image">jpg画像<br>1.6MBまで</label>
             <td><input id="image" type="file" name="image" accept="image/*.jpg">
         <tr><td colspan="2"><input class="btn-sticky" type="submit" name="update" value="登録・更新" style="width: 100%;">
     </table>
