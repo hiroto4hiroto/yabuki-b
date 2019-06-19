@@ -76,7 +76,7 @@ if (!isset($_SESSION['VENDER'])) {
 <br>
     <p>新規IDを入力すると登録、既存IDを入力すると更新されます。</p>
 <form method="post" action="Vupdate.php" enctype="multipart/form-data">
-    <table  style="width: 60vw;">
+    <table  style="width: 50vw;">
         <tr><td><label for="id">ID*</label>
             <td><input id="id" type="number" name="id">
         <label for="name"><tr><td><弁当名</label>
