@@ -43,7 +43,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['view'] != "")
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentotable SET name = "'.$_POST["view"].'" WHERE `id` = '. $_POST['number'];
+                $sql = 'UPDATE bentotable SET view = "'.$_POST["view"].'" WHERE `id` = '. $_POST['number'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "販売表示を更新しました<br>";
@@ -181,8 +181,8 @@ if (!isset($_SESSION['VENDER'])) {
             <tr><td><label for="view">販売表示</label>
             <td><select id="view" name="view">
                     <option value="">選択</option>
-                    <option value="0">公開</option>
-                    <option value="1">未公開</option>
+                    <option value="1">公開</option>
+                    <option value="0">未公開</option>
                 </select>
         <label for="name"><tr><td>弁当名</label>
             <td><input id="name" type="text" name="name">
