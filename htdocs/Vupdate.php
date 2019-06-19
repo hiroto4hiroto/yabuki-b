@@ -54,7 +54,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $message .= "名前を更新しました<br>";
             }
             //価格の更新
-            if ($_POST['value'] != null)
+            if ($_POST['price'] != null)
             {
                 $sql = 'UPDATE bentoTable SET price = '.$_POST["bnetoValue"].' WHERE bento = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
@@ -156,7 +156,7 @@ if (!isset($_SESSION['VENDER'])) {
         <tr><td><label for="stocks">販売数</label>
             <td><input id="stocks" type="number" name="stocks">
         <tr><td><label for="image">画像</label>
-            <td><input id="image" type="file" accept="image/*.jpg">
+            <td><input id="image" type="file" name="image" accept="image/*.jpg">
         <tr><td colspan="2"><input class="btn-sticky" type="submit" name="update" value="登録・更新" style="width: 100%;">
     </table>
 </form>
