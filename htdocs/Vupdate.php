@@ -131,7 +131,7 @@ if (!isset($_SESSION['VENDER'])) {
             $list .= '<tr>';
             $list .= '<td'. $plusClass .'>'. $result["id"];
             if ($result["view"] == 1)
-                $list .= '<td'. $plusClass .'style="color:blue;">公開';
+                $list .= '<td'. $plusClass .' style="color:blue;">公開';
             else $list .= '<td'. $plusClass .' style="color:red;">未公開';
             $list .= '<td'. $plusClass .'>'. $result["date"];
             $list .= '<td'. $plusClass .'>'. $result["name"];
