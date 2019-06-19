@@ -9,6 +9,7 @@
 drop table bentotable;
 
 CREATE TABLE `bentotable` (
+  `id` int(11) NOT NULL,
   `view` tinyint(1) DEFAULT 0,
   `date` date NOT NULL,
   `name` text NOT NULL,
@@ -16,22 +17,12 @@ CREATE TABLE `bentotable` (
   `stocks` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `bentotable` (`id`, `view`, `date`, `name`, `price`, `stocks`) VALUES
+(1, 0, '2019-07-20', 'い弁当', 300, 50),
+(2, 0, '2019-07-20', 'ろ弁当', 300, 30),
+(3, 0, '2019-07-20', 'は弁当', 350, 20),
+(4, 0, '2019-07-20', 'スペシャル弁当', 10000, 200);
 
-INSERT INTO `bentotable` (`view`, `date`, `name`, `price`, `stocks`) VALUES
-(0, '2019-07-20', 'い弁当', 300, 50),
-(0, '2019-07-20', 'ろ弁当', 300, 30),
-(0, '2019-07-20', 'は弁当', 350, 20),
-(0, '2019-07-20', 'スペシャル弁当', 10000, 200);
-
-
-/*
-INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`) VALUES
-(0, '2019-07-19', '1742120', 'い弁当', '154fc572-a766-4522-a013-ff6562026145'),
-(0, '2019-07-20', '1742120', 'い弁当', '254fc572-a766-4522-a013-ff6562026145'),
-(0, '2019-07-21', '1742120', 'は弁当', '354fc572-a766-4522-a013-ff6562026145'),
-(0, '2019-07-22', '1742120', 'に弁当', '454fc572-a766-4522-a013-ff6562026145'),
-(0, '2019-07-23', '1742119', 'ほ弁当', '5d91c4ee-7817-45df-b0dc-658ff39a9f4);
-*/
 
         ";
         $prepare = $db->prepare($sql);
