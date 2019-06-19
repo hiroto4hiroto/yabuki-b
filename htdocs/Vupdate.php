@@ -76,7 +76,7 @@ if (!isset($_SESSION['VENDER'])) {
 <br>
     <p>新規IDを入力すると登録、既存IDを入力すると更新されます。</p>
 <form method="post" action="Vupdate.php" enctype="multipart/form-data">
-    <table>
+    <table  style="width: 60vw;">
         <tr><td><label for="id">ID*</label>
             <td><input id="id" type="number" name="id">
         <label for="name"><tr><td><弁当名</label>
@@ -91,7 +91,7 @@ if (!isset($_SESSION['VENDER'])) {
             <td><input id="stocks" type="number" name="stocks">
         <tr><td><label for="image">画像</label>
             <td><input id="image" type="file" accept="image/*.jpg">
-        <tr><td colspan="2"><input class="btn-sticky" type="submit" name="update" value="登録・更新" style"width: 50vw;">
+        <tr><td colspan="2"><input class="btn-sticky" type="submit" name="update" value="登録・更新" style="width: 100%;">
     </table>
 </form>
 <br>
