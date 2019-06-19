@@ -31,8 +31,8 @@ if (!isset($_SESSION['VENDER'])) {
             $prepare->execute();
             if ($prepare->fetch(PDO::FETCH_ASSOC) == null)
             {
-                $sql = 'INSERT INTO bentoTable (bento, name, price) VALUES ( '.$_POST["id"].', "", 0)';
-                $sql = 'INSERT INTO `bentotable` (`id`, `view`, `date`, `name`, `price`, `stocks`) VALUES ( '.$_POST["id"].', 0, "noName", 9999, 0)';
+                $sql = 'INSERT INTO bentotable (`id`, `view`, `date`, `name`, `price`, `stocks`) VALUES ( '.$_POST["id"].', 0, "noName", 9999, 0)';
+                $sql .= 'INSERT INTO imagetable (`id`, `image`) VALUES ('.$_POST["id"].', 0)';
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "1件追加しました<br>";
@@ -75,15 +75,18 @@ if (!isset($_SESSION['VENDER'])) {
             }
 
             //jpeg形式でエラーがなければ画像を保存
+            $raw_data = file_get_contents($_FILES['upfile']['tmp_name']);
             $tmp = pathinfo($_FILES["image"]["name"]);
             $extension = $tmp["extension"];
             if ($_FILES['image']['tmp_name'] != null && $_FILES['image']['error'] == UPLOAD_ERR_OK &&
                 $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG")
             {
-                $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE imagetable SET image = "'. file_get_contents($_FILES['image']['tmp_name']) .'" WHERE id = '.$_POST['id'];
-                $prepare = $db->prepare($sql);
-                $prepare->execute();
+                $db = new PDO($dsn, $dbUser, $dbPass);                
+                $sql = "UPDATE INTO imagetable (`id, `image`) VALUES (". $_POST['id'] .", :raw_data);";
+                $stmt = $pdo->prepare($sql);
+                $stmt->bindValue(":raw_data", $raw_data, PDO::PARAM_STR);
+                $stmt->execute();
+                
                 $message .= "画像を更新しました<br>";
             } else {
                 $message .= "画像は何らかの理由で更新できませんでした<br>";
