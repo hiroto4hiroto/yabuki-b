@@ -42,7 +42,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['date'])
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET date = "'.$_POST["date"].'" WHERE bento = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET date = "'.$_POST["date"].'" WHERE `id` = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "販売日を更新しました<br>";
@@ -51,7 +51,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['name'] != "")
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET name = "'.$_POST["name"].'" WHERE bento = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET name = "'.$_POST["name"].'" WHERE `id` = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "名前を更新しました<br>";
@@ -60,7 +60,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['price'] != null)
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET price = '.$_POST["price"].' WHERE bento = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET price = '.$_POST["price"].' WHERE `id` = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "価格を更新しました<br>";
@@ -69,7 +69,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['stocks'] != null)
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET stocks = '.$_POST["stocks"].' WHERE bento = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET stocks = '.$_POST["stocks"].' WHERE `id` = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "在庫数を更新しました<br>";
@@ -85,7 +85,7 @@ if (!isset($_SESSION['VENDER'])) {
                     $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG")
                 {
                     $db = new PDO($dsn, $dbUser, $dbPass);                
-                    $sql = "UPDATE INTO imagetable (`id, `image`) VALUES (". $_POST['id'] .", :raw_data);";
+                    $sql = "UPDATE INTO imagetable (`id, `image`) VALUES (". $_POST['id'] .", :raw_data) WHERE `id` = '. $_POST['id'];
                     $stmt = $db->prepare($sql);
                     $stmt->bindValue(":raw_data", $raw_data, PDO::PARAM_STR);
                     $stmt->execute();
