@@ -24,7 +24,7 @@ if (!isset($_SESSION['VENDER'])) {
 
         if (isset($_POST['update']) && $_POST['id'] != null)
         {
-            $message = "";
+            $message = (string)$_POST['id'] .' 番の登録・更新<br>';
             //番号のレコードがない場合、新規作成
             $db = new PDO($dsn, $dbUser, $dbPass);
             $sql = 'SELECT * FROM bentoTable WHERE bento = '. $_POST['id'];
@@ -160,6 +160,9 @@ if (!isset($_SESSION['VENDER'])) {
 <body class="vender">
 <p>弁当事前予約サービス</p>
 <h1>弁当情報登録・更新</h1>
+
+<?php echo $messeage; ?>
+    
 <p>新規IDを入力すると登録、既存IDを入力すると更新されます。</p>
 <form method="post" action="Vupdate.php" enctype="multipart/form-data">
     <table  style="width: 50vw;">
