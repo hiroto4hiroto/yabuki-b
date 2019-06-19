@@ -27,7 +27,7 @@ if (!isset($_SESSION['VENDER'])) {
             $message = (string)$_POST['id'] .' 番の登録・更新<br>';
             //番号のレコードがない場合、新規作成
             $db = new PDO($dsn, $dbUser, $dbPass);
-            $sql = 'SELECT * FROM bentoTable WHERE bento = '. $_POST['id'];
+            $sql = 'SELECT * FROM bentoTable WHERE id = '. $_POST['id'];
             $prepare = $db->prepare($sql);
             $prepare->execute();
             if (empty($prepare->fetch(PDO::FETCH_ASSOC)))
