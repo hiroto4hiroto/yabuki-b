@@ -41,7 +41,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['date'])
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET date = "'.$_POST["bentoDate"].'" WHERE bento = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET date = "'.$_POST["date"].'" WHERE bento = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "販売日を更新しました<br>";
@@ -50,7 +50,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['name'] != "")
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET name = "'.$_POST["bentoName"].'" WHERE bento = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET name = "'.$_POST["name"].'" WHERE bento = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "名前を更新しました<br>";
@@ -59,7 +59,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['price'] != null)
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET price = '.$_POST["bnetoValue"].' WHERE bento = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET price = '.$_POST["price"].' WHERE bento = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "価格を更新しました<br>";
@@ -68,7 +68,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($_POST['stocks'] != null)
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
-                $sql = 'UPDATE bentoTable SET stocks = '.$_POST["bnetoStocks"].' WHERE bento = '. $_POST['id'];
+                $sql = 'UPDATE bentoTable SET stocks = '.$_POST["stocks"].' WHERE bento = '. $_POST['id'];
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "在庫数を更新しました<br>";
@@ -77,7 +77,7 @@ if (!isset($_SESSION['VENDER'])) {
             //jpeg形式でエラーがなければ画像を保存
             $tmp = pathinfo($_FILES["image"]["name"]);
             $extension = $tmp["extension"];
-            if ($_FILES['image']['tmp_name'] != null && $_FILES['upfile']['error'] == UPLOAD_ERR_OK &&
+            if ($_FILES['image']['tmp_name'] != null && $_FILES['image']['error'] == UPLOAD_ERR_OK &&
                 $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG")
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);
