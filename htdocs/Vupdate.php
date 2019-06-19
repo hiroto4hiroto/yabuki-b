@@ -83,7 +83,7 @@ if (!isset($_SESSION['VENDER'])) {
             {
                 $db = new PDO($dsn, $dbUser, $dbPass);                
                 $sql = "UPDATE INTO imagetable (`id, `image`) VALUES (". $_POST['id'] .", :raw_data);";
-                $stmt = $pdo->prepare($sql);
+                $stmt = $db->prepare($sql);
                 $stmt->bindValue(":raw_data", $raw_data, PDO::PARAM_STR);
                 $stmt->execute();
                 
