@@ -7,24 +7,13 @@
         //ただし"を使ってはいけない
         $sql = "
 
-drop table bentotable;
+drop table imagetable;
 
-CREATE TABLE `bentotable` (
+CREATE TABLE `imagetable` (
   `id` int(11) NOT NULL,
-  `view` tinyint(1) DEFAULT 0,
-  `date` date NOT NULL,
-  `name` text NOT NULL,
-  `price` int(11) NOT NULL,
-  `stocks` int(11) NOT NULL
+  `image`  MEDIUMBLOB DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 ALTER TABLE bentotable ADD PRIMARY KEY (`id`);
-
-INSERT INTO `bentotable` (`id`, `view`, `date`, `name`, `price`, `stocks`) VALUES
-(1, 0, '2019-07-20', 'い弁当', 300, 50),
-(2, 0, '2019-07-20', 'ろ弁当', 300, 30),
-(3, 0, '2019-07-20', 'は弁当', 350, 20),
-(4, 0, '2019-07-20', 'スペシャル弁当', 10000, 200);
-
 
 
         ";
