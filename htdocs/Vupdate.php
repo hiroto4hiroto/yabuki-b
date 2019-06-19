@@ -75,7 +75,7 @@ if (!isset($_SESSION['VENDER'])) {
             }
 
             //jpeg形式でエラーがなければ画像を保存
-            $raw_data = file_get_contents($_FILES['upfile']['tmp_name']);
+            $raw_data = file_get_contents($_FILES['image']['tmp_name']);
             $tmp = pathinfo($_FILES["image"]["name"]);
             $extension = $tmp["extension"];
             if ($_FILES['image']['tmp_name'] != null && $_FILES['image']['error'] == UPLOAD_ERR_OK &&
