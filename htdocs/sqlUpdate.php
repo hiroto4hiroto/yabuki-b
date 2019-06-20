@@ -7,14 +7,7 @@
         //ただし"を使ってはいけない
         $sql = "
 
-drop table imagetable;
-
-CREATE TABLE `imagetable` (
-  `id` int(11) NOT NULL,
-  `image`  MEDIUMBLOB DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-ALTER TABLE bentotable ADD PRIMARY KEY (`id`);
-
+        select * from imagetable;
 
         ";
         $prepare = $db->prepare($sql);
