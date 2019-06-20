@@ -16,8 +16,8 @@
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        header('Content-type: image/jpeg');
-        print $result['image'];
+        //header('Content-type: image/jpeg');
+        //print $result['image'];
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
@@ -25,9 +25,10 @@
     }
 ?>
 <html>
+    <div style="width: 50vw; height: 50vh; background-image:url(data:image/png;base64,<?php base64_encode($img['image']); ?>;"></div>
     <?php header('Content-type: image/jpeg'); ?>
-    <img src="<?php echo $result['image']; ?>">;
+    <div style="width: 50vw; height: 50vh; background-image:url(data:image/png;base64,<?php base64_encode($img['image']); ?>;"></div>
     <!--
-<div style="width: 50vw; height: 50vh; background-image:url(<?php echo $result['image'] ?>);"></div>
+
 -->
 </html>
