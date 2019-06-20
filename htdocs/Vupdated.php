@@ -2,7 +2,7 @@
 session_start();
 $message = "";
     //業者でなければ弾く
-if (!isset($_SESSION['USER'])) {
+if (!isset($_SESSION['VENDER'])) {
     header('Location: login.php');
     exit;
 }
