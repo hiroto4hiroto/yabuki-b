@@ -3,8 +3,8 @@ session_start();
 
 $isDebug = true;
 
-    //学生でなければ弾く
-    if (!isset($_SESSION['USER']) || !isset($_SESSION['VENDER'])) {
+    //学生か業者でなければ弾く
+    if (!isset($_SESSION['USER']) && !isset($_SESSION['VENDER'])) {
         header('Location: login.php');
         exit;
     }
@@ -91,21 +91,23 @@ $isDebug = true;
     </style>
     <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
-        if (!isset($_SESSION['VENDER'])){
-            
+        if (isset($_SESSION['VENDER'])){
+            alert('業者のため予約はできません。');
         }
-        var res = confirm('「' + name + '」を予約しますか？');
-        if(res) {
-            //予約可能時間前か
-            if (<?php echo $isDebug; ?> || new Date().getHours() < 15){
-                window.location.href =　location.href + '?order=' + name;
-            }else{
-                alert('予約可能時間を過ぎたため予約できませんでした。');
-                window.location.href =　location.href;
+        else{
+            var res = confirm('「' + name + '」を予約しますか？');
+            if(res) {
+                //予約可能時間前か
+                if (<?php echo $isDebug; ?> || new Date().getHours() < 15){
+                    window.location.href =　location.href + '?order=' + name;
+                }else{
+                    alert('予約可能時間を過ぎたため予約できませんでした。');
+                    window.location.href =　location.href;
+                }
             }
-        }
-        else {
-            alert('予約はされませんでした。');
+            else {
+                alert('予約はされませんでした。');
+            }
         }
     }
 </script>
