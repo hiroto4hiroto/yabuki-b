@@ -206,8 +206,9 @@ if (!isset($_SESSION['VENDER'])) {
         <tr><td colspan="2"><input class="btn-sticky" type="submit" name="update" value="登録・更新" style="width: 100%;">
     </table>
 </form>
-<input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="実際の表示を見る"><br>
 <?php echo $list; ?>
+<br>
+<input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="実際の表示を見る"><br>
 <br>
 </body>
 </html>
