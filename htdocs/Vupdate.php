@@ -109,7 +109,8 @@ if (!isset($_SESSION['VENDER'])) {
         //弁当一覧作成
         //SQL作成・実行
         $db = new PDO($dsn, $dbUser, $dbPass);
-        $sql = 'SELECT * FROM bentotable ORDER BY id;';
+        //$sql = 'SELECT * FROM bentotable ORDER BY id;';
+        $sql = 'select bento.id, bento.view, bento.date, bento.name, bento.price, bento.stocks, img.image from bentotable as bento right join imagetable as `img` on bento.id = img.id';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
