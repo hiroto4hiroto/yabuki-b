@@ -112,7 +112,7 @@ $isDebug = true;
     }
 </script>
 </head>
-<body <?php if (!isset($_SESSION['VENDER'])) echo 'class="vender"' ?>
+<body <?php if (isset($_SESSION['VENDER'])) echo 'class="vender"' ?>
 <p>弁当事前予約サービス</p>
 <h1>弁当一覧と予約</h1>
 
