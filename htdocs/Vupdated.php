@@ -24,7 +24,7 @@ if (!isset($_SESSION['VENDER'])) {
 if(!empty($_GET['message']))
     echo "<p style='color:red;'>". $_GET['message'] ."</p>";
 ?>
-<h5>※記述されない場合は更新されていません</h5>
+<p>※記述されない場合は更新されていません</p>
 <input type="submit" class="btn-sticky" onclick="location.href='./Vupdate.php'" value="戻る"><br>
 </body>
 </html>
