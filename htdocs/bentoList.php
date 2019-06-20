@@ -16,6 +16,16 @@ $isDebug = true;
         
         //注文を受けたら
         if (isset($_GET['order'])) {
+            //在庫があるか確認
+            $sql = "SELECT * FROM bentotable WHERE name = '".$_GET['order']."' AND date = '". $getdate ."' + INTERVAL 1 DAY limit 1;";
+            $prepare = $db->prepare($sql);
+            $prepare->execute();
+            $result = $prepare->fetch(PDO::FETCH_ASSOC);
+            if ($result['stocks'] <= 0){
+                //トップページに移動
+                header('Location: index.php?message='. $_GET['order'] .'は品切れのため注文できませんでした。');
+                exit;
+            }
             //既に注文しているか確認
             $sql = "SELECT * FROM ordertable WHERE user = ". $_SESSION["USER"] ." AND date = '". $getdate ."' + INTERVAL 1 DAY limit 1;"; 
             $prepare = $db->prepare($sql);
@@ -30,6 +40,11 @@ $isDebug = true;
 
             //注文リストに一件追加
             $sql = "INSERT INTO `ordertable` (`check`, `date`, `user`, `name`, `QRid`)";
+            $sql .= "VALUES (0, '". $getdate ."' + INTERVAL 1 DAY, '".$_SESSION['USER']."', '".$_GET['order']."', '".$UUID."');";
+            $result = $db->prepare($sql);
+            $result->execute();
+            $db = new PDO($dsn, $dbUser, $dbPass);
+            $sql = "UPDATE `bentotable` SET stocks = stocks - 1 WHERE `name` = ".$_GET['order'] ." and `date` = ". $getdate ." + INTERVAL 1 DAY;";
             $sql .= "VALUES (0, '". $getdate ."' + INTERVAL 1 DAY, '".$_SESSION['USER']."', '".$_GET['order']."', '".$UUID."');";
             $result = $db->prepare($sql);
             $result->execute();
@@ -58,8 +73,8 @@ $isDebug = true;
             $list .= '<td style="max-width: 30%;">'. $result["price"] .'円';
             $list .= '<tr style="width: 100%; max-height: 100%;">';
             $list .= '<td style="min-width: 70%; background-image: url(\'data:image/jpeg;base64,'. base64_encode($result["image"]) .'\'); background-size: cover; background-position: center;">';
-            //時間帯によって押せなくする
-            if ($isDebug || date("G") < 15 && date("Y-m-d", strtotime("+1 day")) == $result["date"] ){
+            //時間帯によって, 数量によって押せなくする
+            if (($isDebug || date("G") < 15 && date("Y-m-d", strtotime("+1 day")) == $result["date"] )&& $result["stocks"] > 0){
                 $list .= '<td style="max-width: 30%;">';
                 $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["name"].'\');" ';
                 $list .= 'value="予約する" style="width: 100%; height: 100%">';
