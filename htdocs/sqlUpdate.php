@@ -16,7 +16,7 @@
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-//echo $result['image'];
+        echo $result['image'];
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
