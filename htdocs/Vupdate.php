@@ -179,9 +179,8 @@ if (!isset($_SESSION['VENDER'])) {
 <body class="vender">
 <p>弁当事前予約サービス</p>
 <h1>弁当情報登録・更新</h1>
-
-<?php if (!empty($message)) echo $message; ?>
-
+<input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る"><br>
+    
 <p>新規IDを入力すると登録、既存IDを入力すると更新されます。</p>
 <form method="post" action="Vupdate.php" enctype="multipart/form-data">
     <table  style="width: 50vw;">
@@ -209,6 +208,7 @@ if (!isset($_SESSION['VENDER'])) {
 <?php echo $list; ?>
 <br>
 <input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="実際の弁当一覧を見る"><br>
+<input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る"><br>
 <br>
 </body>
 </html>
