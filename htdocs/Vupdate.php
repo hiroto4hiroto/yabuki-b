@@ -12,8 +12,10 @@ if (!isset($_SESSION['VENDER'])) {
         //該当番号を1件削除
         if (isset($_GET['delete'])) {
             $db = new PDO($dsn, $dbUser, $dbPass);
-            $sql = "DELETE FROM `bentotable` where id = ". $_GET['delete'] .";";
-            $sql .= "DELETE FROM `imagetable` where id = ". $_GET['delete'] .";";
+            $sql = "DELETE FROM `bentotable` where id = ". $_GET['delete'];
+            $result = $db->prepare($sql);
+            $result->execute();
+            $sql = "DELETE FROM `imagetable` where id = ". $_GET['delete'];
             $result = $db->prepare($sql);
             $result->execute();
         
@@ -24,7 +26,7 @@ if (!isset($_SESSION['VENDER'])) {
 
         if (isset($_POST['update']) && $_POST['number'] != null)
         {
-            $message = '弁当 '. (string)$_POST["number"] .' 番に関して<br><br>';
+            $message = '弁当 '. (string)$_POST["number"] .' 番を編集<br><br>';
             //番号のレコードがない場合、新規作成
             $db = new PDO($dsn, $dbUser, $dbPass);
             $sql = 'SELECT * FROM bentotable WHERE id = '. $_POST['number'];
