@@ -32,9 +32,7 @@ if(!empty($_GET['message']))
     echo "<p style='color:red;'>". $_GET['message'] ."</p>";
 ?>
 <p>※記述されない場合は更新されていません</p>
-<form name="form1">
-  <input type="" >
-</form>
-<input type="submit" class="btn-sticky" onkeypress="enter();" value="戻る"><br>
+<form name="form">
+<input type="button" class="btn-sticky" onkeypress="enter();" value="戻る"><br>
 </body>
 </html>
