@@ -17,8 +17,8 @@ if (!isset($_SESSION['VENDER'])) {
             $result = $db->prepare($sql);
             $result->execute();
         
-            //トップページに移動
-            header('Location: index.php?message=弁当ID '. $_GET['delete'] .' 番を削除しました。');
+            //更新完了に移動
+            header('Location: Vupdated.php?message=弁当ID '. $_GET['delete'] .' 番を削除しました。');
             exit;
         }
 
@@ -104,6 +104,10 @@ if (!isset($_SESSION['VENDER'])) {
                     $message .= "画像は更新できませんでした<br>";
                 }
             }
+            
+            //更新完了に移動
+            header('Location: Vupdated.php?message='. $message);
+            exit;
         }
         
         //弁当一覧作成
