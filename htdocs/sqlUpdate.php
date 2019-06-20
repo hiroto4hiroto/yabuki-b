@@ -8,7 +8,7 @@
         $sql = "
         
         
-        UPDATE `imagetable` SET `image` = 9768769 WHERE `id` = 5;
+        UPDATE `imagetable` SET `image` = '9768769' WHERE `id` = 5;
         SELECT * from `imagetable` WHERE `id` = 5;
         
         
