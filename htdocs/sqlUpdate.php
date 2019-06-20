@@ -17,10 +17,13 @@
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
 header('Content-type: image/jpeg');
-echo $result['image'];
+//echo $result['image'];
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
         die();
     }
 ?>
+<html>
+<div style="background-image:url('<?php echo $result['image'] ?>')"></div>
+</html>
