@@ -25,7 +25,7 @@
 ?>
 <html>
     <?php header('Content-type: image/jpeg'); ?>
-    <img src="<?php echo $result['image']; ?>">;
+    <img src="<?php header('Content-type: image/jpeg'); echo $result['image']; ?>">;
     <!--
 <div style="width: 50vw; height: 50vh; background-image:url(<?php echo $result['image'] ?>);"></div>
 -->
