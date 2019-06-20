@@ -4,7 +4,7 @@ session_start();
 $isDebug = true;
 
     //学生でなければ弾く
-    if (!isset($_SESSION['USER'])) {
+    if (!isset($_SESSION['USER']) || !isset($_SESSION['VENDER'])) {
         header('Location: login.php');
         exit;
     }
@@ -82,7 +82,7 @@ $isDebug = true;
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>弁当事前予約サービス 弁当閲覧・予約</title>
+    <title>弁当事前予約サービス 弁当一覧と予約</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <style type="text/css">
     <!--
@@ -91,6 +91,9 @@ $isDebug = true;
     </style>
     <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
+        if (!isset($_SESSION['VENDER'])){
+            
+        }
         var res = confirm('「' + name + '」を予約しますか？');
         if(res) {
             //予約可能時間前か
@@ -106,10 +109,10 @@ $isDebug = true;
         }
     }
 </script>
-</head>   
-<body>
+</head>
+<body <?php if (!isset($_SESSION['VENDER'])) echo 'class="vender"' ?>
 <p>弁当事前予約サービス</p>
-<h1>弁当閲覧・予約</h1>
+<h1>弁当一覧と予約</h1>
 
 <?php echo $list; ?>
     
