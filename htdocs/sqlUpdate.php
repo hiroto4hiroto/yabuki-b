@@ -7,8 +7,8 @@
         //ただし"を使ってはいけない
         $sql = "
         
-        UPDATE INTO `imagetable` (`id`, `image`) VALUES ( 5, '89768769') WHERE `id` = 5;
-
+        UPDATE `imagetable` SET `image` = '89768769' WHERE `id` = 5;
+        SELECT * `imagetable` WHERE `id` = 5;
         ";
         $prepare = $db->prepare($sql);
         $prepare->execute();
