@@ -41,7 +41,8 @@ $isDebug = true;
         
         //一覧作成
         //SQL作成・実行
-        $sql = 'SELECT * FROM bentotable ORDER BY date, price ASC;';
+        $sql = 'select bento.id, bento.view, bento.date, bento.name, bento.price, bento.stocks, img.image';
+        $sql .= 'from bentotable as bento right join imagetable as `img` on bento.id = img.id where bento.view = 1;';
         $sql .= 'SELECT * FROM bentotable;';
         $prepare = $db->prepare($sql);
         $list = "";
@@ -57,7 +58,7 @@ $isDebug = true;
             $list .= '<td style="min-width: 70%;">'. $result["name"] .'';
             $list .= '<td style="max-width: 30%;">'. $result["price"] .'円';
             $list .= '<tr style="width: 100%; max-height: 100%;">';
-            $list .= '<td style="min-width: 70%; background-image: url(\'bentoimages/'.$result["name"].'.jpg\'); background-size: cover; background-position: center;">';
+            $list .= '<td style="min-width: 70%; background-image: url(\'data:image/jpeg;base64,'. base64_encode($result["image"]) .'\'); background-size: cover; background-position: center;">';
             //時間帯によって押せなくする
             if ($isDebug || date("G") < 15 && date("Y-m-d", strtotime("+1 day")) == $result["date"] ){
                 $list .= '<td style="max-width: 30%;">';
