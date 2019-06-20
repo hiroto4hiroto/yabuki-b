@@ -77,11 +77,11 @@ $isDebug = true;
             if (($isDebug || date("G") < 15 && date("Y-m-d", strtotime("+1 day")) == $result["date"] )&& $result["stocks"] > 0){
                 $list .= '<td style="max-width: 30%;">';
                 $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["name"].'\');" ';
-                $list .= 'value="予約する" style="width: 100%; height: 100%">';
+                $list .= 'value="予約する" style="width: 100%; height: 100%"></input>';
             } else{
                 $list .= '<td style="max-width: 30%;">';
                 $list .= '<input type="button" class="btn-sticky" disabled);" ';
-                $list .= 'value="予約不可" style="width: 100%; height: 100%">';
+                $list .= 'value="予約不可" style="width: 100%; height: 100%"></input>';
             }
 
             $list .= '</table><br>';
@@ -106,7 +106,7 @@ $isDebug = true;
     </style>
     <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
-        if (<?php echo isset($_SESSION['VENDER']); ?> || <?php echo !isset($_SESSION['USER']); ?>){
+        if (<?php echo isset($_SESSION['VENDER']); ?>){
             alert('業者のため予約はできません。');
         }
         else {
