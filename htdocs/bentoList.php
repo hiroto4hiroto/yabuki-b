@@ -106,9 +106,7 @@ $isDebug = true;
     </style>
     <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
-        if ( <?php var_dump(isset($_SESSION['VENDER']) ) ?> ){
-            alert('業者のため予約はできません。');
-        }
+        if (<?php var_dump(isset($_SESSION['VENDER']))?>) alert('業者のため予約はできません。');
         else {
             var res = confirm('「' + name + '」を予約しますか？');
             if(res) {
