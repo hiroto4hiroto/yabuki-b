@@ -25,5 +25,5 @@ header('Content-type: image/jpeg');
     }
 ?>
 <html>
-<div style="background-image:url('<?php echo $result['image'] ?>'); width: 50vw; height: 50vh;"></div>
+<div style="width: 50vw; height: 50vh; background-image:url(<?php echo $result['image'] ?>);"></div>
 </html>
