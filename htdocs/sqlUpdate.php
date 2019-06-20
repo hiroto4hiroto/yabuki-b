@@ -16,7 +16,8 @@
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        var_dump($result);
+header('Content-type: image/jpeg');
+echo $result['image'];
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
