@@ -12,10 +12,11 @@ if (!isset($_SESSION['VENDER'])) {
         //該当番号を1件削除
         if (isset($_GET['delete'])) {
             $db = new PDO($dsn, $dbUser, $dbPass);
-            $sql = "DELETE FROM `bentotable` where id = ". $_GET['delete'];
+            $sql = "DELETE FROM `bentotable` WHERE id = ". $_GET['delete'];
             $result = $db->prepare($sql);
             $result->execute();
-            $sql = "DELETE FROM `imagetable` where id = ". $_GET['delete'];
+            $db = new PDO($dsn, $dbUser, $dbPass);
+            $sql = "DELETE FROM `imagetable` WHERE id = ". $_GET['delete'];
             $result = $db->prepare($sql);
             $result->execute();
         
@@ -167,7 +168,7 @@ if (!isset($_SESSION['VENDER'])) {
     function OnButtonClick(id) {
         var res = confirm('弁当ID ' + id + ' 番を削除しますか？');
         if(res) {
-            window.location.href =　location.href + '?delete=' + name;
+            window.location.href =　location.href + '?delete=' + id;
         }
         else {
             alert('削除はされませんでした。');
