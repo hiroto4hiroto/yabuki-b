@@ -91,6 +91,7 @@ $isDebug = true;
     </style>
     <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
+            alert('クリックされた');
         if (isset($_SESSION['VENDER'])){
             alert('業者のため予約はできません。');
         }
