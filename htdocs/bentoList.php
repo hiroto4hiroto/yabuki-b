@@ -41,9 +41,8 @@ $isDebug = true;
         
         //一覧作成
         //SQL作成・実行
-        $sql = 'select bento.id, bento.view, bento.date, bento.name, bento.price, bento.stocks, img.image';
+        $sql = 'select bento.id as `id`, bento.view as `view`, bento.date as `date`, bento.name as `name`, bento.price as `price`, bento.stocks as `stocks`, img.image as `image`';
         $sql .= 'from bentotable as bento right join imagetable as `img` on bento.id = img.id where bento.view = 1;';
-        $sql .= 'SELECT * FROM bentotable;';
         $prepare = $db->prepare($sql);
         $list = "";
         $prepare->execute();
