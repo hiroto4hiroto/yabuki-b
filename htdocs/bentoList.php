@@ -106,7 +106,7 @@ $isDebug = true;
     </style>
     <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
-        if (<?php print_r !isset($_SESSION['VENDER']); ?>) 
+        if (!<?php print_r isset($_SESSION['VENDER']); ?>) 
         {
             var res = confirm('「' + name + '」を予約しますか？');
             if(res) {
