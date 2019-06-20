@@ -9,6 +9,9 @@ $isDebug = true;
         exit;
     }
 
+$isVENDER = false;
+if (isset($_SESSION['VENDER'])) $isVENDER = true;
+
     try {
         //DBに接続
         require_once 'database_conf.php';
@@ -106,7 +109,8 @@ $isDebug = true;
     </style>
     <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
-        if (!<?php echo isset($_SESSION['VENDER']); ?>) 
+        if (<?php echo $isVENDER ?>) alert('業者のため予約はできません。');
+        else
         {
             var res = confirm('「' + name + '」を予約しますか？');
             if(res) {
@@ -122,7 +126,7 @@ $isDebug = true;
                 alert('予約はされませんでした。');
             }
         }
-        else alert('業者のため予約はできません。');
+
     }
 </script>
 </head>
