@@ -101,7 +101,7 @@ if (!isset($_SESSION['VENDER'])) {
                     $stmt->execute();
                     $message .= "画像を更新しました<br>";
                 } else {
-                    $message .= "画像は何らかの理由で更新できませんでした<br>";
+                    $message .= "画像は更新できませんでした<br>";
                 }
             }
         }
