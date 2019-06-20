@@ -208,7 +208,7 @@ if (!isset($_SESSION['VENDER'])) {
 </form>
 <?php echo $list; ?>
 <br>
-<input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="実際の弁当一覧表示を見る"><br>
+<input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="実際の弁当一覧を見る"><br>
 <br>
 </body>
 </html>
