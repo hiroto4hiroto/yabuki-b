@@ -7,7 +7,6 @@
         //ただし"を使ってはいけない
         $sql = "
         
-        UPDATE `imagetable` SET `image` = 9768769 WHERE `id` = 5;
         SELECT * `imagetable` WHERE `id` = 5;
         ";
         $prepare = $db->prepare($sql);
