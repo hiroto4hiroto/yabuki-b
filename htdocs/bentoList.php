@@ -9,8 +9,8 @@ $isDebug = true;
         exit;
     }
 
-$isVENDER = false;
-if (isset($_SESSION['VENDER'])) $isVENDER = true;
+$isVENDER = 'false';
+if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
 
     try {
         //DBに接続
