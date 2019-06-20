@@ -94,7 +94,7 @@ $isDebug = true;
         if (<?php echo isset($_SESSION['VENDER']); ?>){
             alert('業者のため予約はできません。');
         }
-        else{
+        else {
             var res = confirm('「' + name + '」を予約しますか？');
             if(res) {
                 //予約可能時間前か
