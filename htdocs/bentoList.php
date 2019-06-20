@@ -115,7 +115,7 @@ $isDebug = true;
 <body <?php if (isset($_SESSION['VENDER'])) echo 'class="vender"' ?>
 <p>弁当事前予約サービス</p>
 <h1>弁当一覧と予約</h1>
-
+<br>
 <?php echo $list; ?>
     
 </body>
