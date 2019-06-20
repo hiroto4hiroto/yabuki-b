@@ -7,7 +7,7 @@
         //ただし"を使ってはいけない
         $sql = "
 
-        select `image` from `imagetable` where id = 1 limit 1;
+        select `image` from `imagetable` where id = 5;
 
         ";
         $prepare = $db->prepare($sql);
