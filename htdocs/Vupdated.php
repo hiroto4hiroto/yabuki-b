@@ -33,6 +33,6 @@ if(!empty($_GET['message']))
 ?>
 <p>※記述されない場合は更新されていません</p>
 <form name="form">
-<input type="button" class="btn-sticky" onkeypress="enter();" value="戻る"><br>
+<input type="button" class="btn-sticky" onkeypress="enter();" onclick="location.href='./Vupdate.php'" value="戻る"><br>
 </body>
 </html>
