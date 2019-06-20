@@ -33,7 +33,7 @@ if (!isset($_SESSION['VENDER'])) {
             if (empty($prepare->fetch(PDO::FETCH_ASSOC)))
             {
                 $sql = 'INSERT INTO bentotable (`id`, `view`, `date`, `name`, `price`, `stocks`) VALUES ( '.$_POST["number"].', 0, 0000-00-00, "noName", 9999, 0);';
-                $sql .= 'INSERT INTO imagetable (`id`, `image`) VALUES ('.$_POST["number"].', 0);';
+                $sql .= 'INSERT INTO `imagetable` (`id`, `image`) VALUES ('.$_POST["number"].', '0');';
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $message .= "1件追加しました<br>";
@@ -95,7 +95,7 @@ if (!isset($_SESSION['VENDER'])) {
                     $extension === "jpg" || $extension === "jpeg" || $extension === "JPG" || $extension === "JPEG")
                 {
                     $db = new PDO($dsn, $dbUser, $dbPass);                
-                    $sql = "UPDATE INTO imagetable (`id, `image`) VALUES (". $_POST['number'] .", :raw_data) WHERE `id` = ". $_POST['number'];
+                    $sql = "UPDATE INTO `imagetable` (`id, `image`) VALUES (". $_POST['number'] .", :raw_data) WHERE `id` = ". $_POST['number'];
                     $stmt = $db->prepare($sql);
                     $stmt->bindValue(":raw_data", $raw_data, PDO::PARAM_STR);
                     $stmt->execute();
