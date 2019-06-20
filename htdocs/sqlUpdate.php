@@ -24,7 +24,7 @@
     }
 ?>
 <html>
-    <div style="background-image:url(data:image/png;base64, <?php echo $result['image'] ?> ;">;
+    <img src="<?php echo $result['image'] ?>">;
     <!--
 <?php header('Content-type: image/jpeg'); ?>
 <div style="width: 50vw; height: 50vh; background-image:url(<?php echo $result['image'] ?>);"></div>
