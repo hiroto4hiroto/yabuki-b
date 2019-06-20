@@ -16,7 +16,6 @@
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-header('Content-type: image/jpeg');
 //echo $result['image'];
                 
     } catch(PDOException $e) {
@@ -25,5 +24,6 @@ header('Content-type: image/jpeg');
     }
 ?>
 <html>
+<?php header('Content-type: image/jpeg'); ?>
 <div style="width: 50vw; height: 50vh; background-image:url(<?php echo $result['image'] ?>);"></div>
 </html>
