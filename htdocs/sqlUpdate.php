@@ -25,9 +25,9 @@
     }
 ?>
 <html>
-    <div style="width: 50vw; height: 50vh; background-image:url(data:image/png;base64,<?php base64_encode($img['image']); ?>;"></div>
+    <div style="width: 50vw; height: 50vh; background-image:url(data:image/png;base64,<?php base64_encode($result['image']); ?>;"></div>
     <?php header('Content-type: image/jpeg'); ?>
-    <div style="width: 50vw; height: 50vh; background-image:url(data:image/png;base64,<?php base64_encode($img['image']); ?>;"></div>
+    <div style="width: 50vw; height: 50vh; background-image:url(data:image/png;base64,<?php base64_encode($result['image']); ?>;"></div>
     <!--
 
 -->
