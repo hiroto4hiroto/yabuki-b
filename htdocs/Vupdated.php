@@ -23,7 +23,7 @@ function enter(){
 </script>
 </head>
  
-<body style="background-color:#ffb;">
+<body class="vender">
 <p>弁当事前予約サービス</p>
 <h1>更新完了</h1>
 
