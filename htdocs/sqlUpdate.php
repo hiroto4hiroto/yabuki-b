@@ -25,6 +25,6 @@
     }
 ?>
 <html>
-    <div style="width: 50vw; height: 50vh; background-image:url('data:image/jpeg;base64,<?php echo base64_encode($result["image"]); ?>;')"></div>
+    <div style="width: 50vw; height: 50vh; background-image:url('data:image/jpeg;base64,<?php echo base64_encode($result["image"]); ?>"></div>
     <img src="data:image/jpg;base64,<?php echo base64_encode($result['image']); ?>">
 </html>
