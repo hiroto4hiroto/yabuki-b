@@ -33,7 +33,7 @@ if(!empty($_GET['message']))
 ?>
 <p>※記述されない場合は更新されていません</p>
 <form name="form">
-<input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="弁当一覧を見る"><br>
+<input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="実際の表示を見る"><br>
 <input type="button" class="btn-sticky" onclick="location.href='./Vupdate.php'" value="戻る" style="height: calc(var(--fontRatio) * 7.5);">
 </body>
 </html>
