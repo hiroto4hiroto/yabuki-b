@@ -6,7 +6,8 @@
         //この""の中にSQL文を打つと反映される
         //ただし"を使ってはいけない
         $sql = "
-
+        
+        UPDATE INTO `imagetable` (`id`, `image`) VALUES ( 5, 89768769) WHERE `id` = 5;
         select * from `imagetable` where id = 5;
 
         ";
