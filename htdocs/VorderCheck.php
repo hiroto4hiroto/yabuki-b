@@ -77,7 +77,7 @@ if (!isset($_SESSION['VENDER'])) {
             $list .= '<td'. $plusClass .'>'. $result["date"];
             $list .= '<td'. $plusClass .'>'. $result["user"];
             $list .= '<td'. $plusClass .'>'. $result["name"];
-            $list .= '<td'. $plusClass .' style="word-wrap: break-word;">'. $result["QRid"];
+            $list .= '<td'. $plusClass .' style="word-break: break-all">'. $result["QRid"];
         }
         $list .= '</table>';
 
