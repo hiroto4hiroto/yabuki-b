@@ -20,13 +20,15 @@ if (!isset($_SESSION['VENDER'])) {
 
         //数量一覧作成
         //SQL作成・実行
-        $sql = 'SELECT date, name, count(name) as `count` FROM ordertable GROUP BY date, name ORDER BY date;';
+        //$sql = 'SELECT date, name, count(name) as `count` FROM ordertable GROUP BY date, name ORDER BY date;';
+        $sql = 'select bento.id as id, bento.date as date, bento.name as name, count(name) from bentotable as bento right join ordertable as order on bento.id = order.id GROUP BY id;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
         $list .= '各弁当の予約数';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $list .= '<td style="width: 30vw;">日付';
+        $list .= '<td style="width: 15vw;">ID';
+        $list .= '<td style="width: 15vw;">日付';
         $list .= '<td style="width: 30vw;">弁当名';
         $list .= '<td style="width: 20vw;">個数';
 
@@ -36,6 +38,7 @@ if (!isset($_SESSION['VENDER'])) {
             if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
             
             $list .= '<tr>';
+            $list .= '<td'. $plusClass .'>'. $result["id"];
             $list .= '<td'. $plusClass .'>'. $result["date"];
             $list .= '<td'. $plusClass .'>'. $result["name"];
             $list .= '<td'. $plusClass .'>'. $result["count"];
