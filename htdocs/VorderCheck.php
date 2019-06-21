@@ -50,8 +50,8 @@ if (!isset($_SESSION['VENDER'])) {
         //予約一覧作成
         //SQL作成・実行
         //$sql = 'SELECT * FROM ordertable ORDER BY date;';
-        $sql = 'select `order.check` as `check`, bento.date as date, `order.user` as user, bento.name as name, `order.QRid` as QRid ';
-        $sql .= 'from bentotable as bento right join `ordertable` as `order` on bento.id = `order`.id order by `order.user`;';
+        $sql = 'select `order.check` as `check`, `bento.date` as `date`, `order.user` as `user`, `bento.name` as `name`, `order.QRid` as `QRid` ';
+        $sql .= 'from bentotable as `bento` right join `ordertable` as `order` on `bento.id` = `order.id` order by `order.user`;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -69,6 +69,7 @@ if (!isset($_SESSION['VENDER'])) {
             $plusClass = '';
             if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
 
+            $list .= '<td'. $plusClass .'>'. $result["id"];
             $list .= '<tr>';
             if ($result["check"] == 1)
                 $list .= '<td'. $plusClass .' style="color:blue;">完了';
