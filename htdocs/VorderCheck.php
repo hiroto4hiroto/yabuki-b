@@ -14,7 +14,7 @@ if (!isset($_SESSION['VENDER'])) {
             $sql = "SELECT * FROM `ordertable` AS `O` RIGHT JOIN `bentotable` AS `B` ON `O`.id = `B`.id WHERE `B`.date <= '". $getdate ."'; ";
             $prepare = $db->prepare($sql);
             $result = $prepare->execute();
-            print (Array)$result;
+            var_dump($result);
             //header('Location: Vindex.php?message=今日までの予約リストを削除しました');
         }
         $list = "";
