@@ -8,7 +8,7 @@
         $sql = "
         
        
-       SELECT * FROM ordertable as order LEFT JOIN bentotable as bento ON order.id = bento.id limit 1;
+       SELECT * FROM ordertable limit 1;
         
         
         
