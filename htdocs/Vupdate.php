@@ -146,11 +146,9 @@ if (!isset($_SESSION['VENDER'])) {
             $list .= '<td'. $plusClass .'>'. $result["price"];
             $list .= '<td'. $plusClass .'>'. $result["stocks"];
             
-            $list .= '<td style=\'height:7.5vw;background-image:url("data:image/jpeg;base64,'. base64_encode($result["image"]) .'"); background-size: cover;\'>';
+            $list .= '<td style=\'height:7.5vw;\'>';
             //削除ボタン
             $list .= '<td'. $plusClass .'>';
-            $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
-            $list .= 'value="削除" style="width: 100%; height: 100%">';
         }
         $list .= '</table>';
     } catch(PDOException $e) {
