@@ -69,8 +69,8 @@ if (!isset($_SESSION['VENDER'])) {
             $plusClass = '';
             if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
 
-            $list .= '<td'. $plusClass .'>'. $result["id"];
             $list .= '<tr>';
+            $list .= '<td'. $plusClass .'>'. $result["id"];
             if ($result["check"] == 1)
                 $list .= '<td'. $plusClass .' style="color:blue;">完了';
             else $list .= '<td'. $plusClass .' style="color:red;">未了';
