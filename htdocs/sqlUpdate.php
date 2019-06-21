@@ -16,7 +16,7 @@
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        print_r $result;
+        var_dump( $result );
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
