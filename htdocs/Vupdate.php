@@ -24,7 +24,6 @@ if (!isset($_SESSION['VENDER'])) {
             header('Location: Vupdated.php?message=弁当ID '. $_GET['delete'] .' 番を削除しました。');
             exit;
         }
-
         if (isset($_POST['update']) && $_POST['number'] != null)
         {
             $message = '弁当 '. (string)$_POST["number"] .' 番を編集<br><br>';
@@ -87,7 +86,6 @@ if (!isset($_SESSION['VENDER'])) {
                 $prepare->execute();
                 $message .= "在庫数を更新しました<br>";
             }
-
             //jpeg形式でエラーがなければ画像を保存
             if ($_FILES['image']['tmp_name'] != null)
             {
@@ -146,9 +144,11 @@ if (!isset($_SESSION['VENDER'])) {
             $list .= '<td'. $plusClass .'>'. $result["price"];
             $list .= '<td'. $plusClass .'>'. $result["stocks"];
             
-            $list .= '<td style=\'height:7.5vw;\'>';
+            $list .= '<td style=\'height:7.5vw;background-image:url("data:image/jpeg;base64,'. base64_encode($result["image"]) .'"); background-size: cover;\'>';
             //削除ボタン
             $list .= '<td'. $plusClass .'>';
+            $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
+            $list .= 'value="削除" style="width: 100%; height: 100%">';
         }
         $list .= '</table>';
     } catch(PDOException $e) {
