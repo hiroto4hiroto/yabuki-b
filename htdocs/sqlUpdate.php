@@ -8,8 +8,9 @@
         $sql = "
         
        
-INSERT INTO `bentotable` (`check`,`user`,`id`,`QRid`) VALUES
-(0, '1742120', 1, 'kokonihaQRidgahairuyo');
+       SELECT * FROM ordertable as order LEFT JOIN bentotable as bento ON order.id = bento.id;
+        
+        
         
         ";
         $prepare = $db->prepare($sql);
