@@ -20,7 +20,7 @@ if (!isset($_SESSION['VENDER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = 'SELECT * FROM ordertable ORDER BY `check`, `date`, `user`;';
+        $sql = 'SELECT * FROM ordertable ORDER BY `ordertable.check`, `bentotable.date`, `ordertable.user` , `bentotable.name`;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
