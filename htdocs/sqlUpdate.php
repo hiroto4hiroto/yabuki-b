@@ -8,8 +8,7 @@
         $sql = "
         
        INSERT INTO `ordertable` VALUES (`check`, `user`, `id`, `QRid`) VALUES (0, '1742120', 1, 'hogeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
-       SELECT * FROM ordertable;
-        
+
         
         
         ";
