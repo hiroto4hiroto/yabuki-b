@@ -20,14 +20,14 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         //注文を受けたら
         if (isset($_GET['order'])) {
             //在庫があるか確認
-            $sql = "SELECT * FROM bentotable WHERE id = '".$_GET['order']."' AND date = '". $getdate ."' + INTERVAL 1 DAY limit 1;";
+            $sql = "SELECT * FROM bentotable WHERE id = '".$_GET['order']."' limit 1;";
             $prepare = $db->prepare($sql);
             $prepare->execute();
-            $result = $prepare->fetch(PDO::FETCH_ASSOC);
-            if ($result['stocks'] <= 0){
+            $resultCheckStock = $prepare->fetch(PDO::FETCH_ASSOC);
+            if ($resultCheckStock['stocks'] <= 0){
                 //トップページに移動
-                //header('Location: index.php?message='. $_GET['order'] .'は品切れのため注文できませんでした。');
-                //exit;
+                header('Location: index.php?message=「'. $resultCheckStock['name'] .'」は品切れのため注文できませんでした。');
+                exit;
             }
             //既に注文しているか確認
             $sql = "SELECT * FROM bentotable LEFT OUTER JOIN ordertable ON WHERE ordertable.user = ". $_SESSION["USER"] ." AND bentotable.date = '". $getdate ."' + INTERVAL 1 DAY limit 1;"; 
@@ -54,7 +54,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             $result->execute();
         
             //トップページに移動
-            header('Location: index.php?message='. $_GET['order'] .'を予約しました。');
+            header('Location: index.php?message=「'. $resultCheckStock['name'] .'」を予約しました。');
             exit;
         }
         
@@ -113,7 +113,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         if (<?php echo $isVENDER ?>) alert('業者のため予約はできません。');
         else
         {
-            var res = confirm('「' + name + '」を予約しますか？');
+            var res = confirm('予約を確定しますか？');
             if(res) {
                 //予約可能時間前か
                 if (<?php echo $isDebug; ?> || new Date().getHours() < 15){
