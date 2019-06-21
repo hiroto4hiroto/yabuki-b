@@ -21,7 +21,7 @@ if (!isset($_SESSION['VENDER'])) {
         //数量一覧作成
         //SQL作成・実行
         //$sql = 'SELECT date, name, count(name) as `count` FROM ordertable GROUP BY date, name ORDER BY date;';
-        $sql = 'select bento.id as id, bento.date as date, bento.name as name, count(name) from bentotable as bento right OUTER join ordertable as order on bento.id = order.id GROUP BY id;';
+        $sql = 'select bento.id as id, bento.date as date, bento.name as name, count(name) as `count` from bentotable as bento right join ordertable as order on bento.id = order.id GROUP BY id;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
