@@ -6,18 +6,11 @@
         //この""の中にSQL文を打つと反映される
         //ただし"を使ってはいけない
         $sql = "
-        
-drop table `ordertable`;
-
-CREATE TABLE `ordertable` (
-  `check` tinyint(1) DEFAULT 0,
-  `user` char(7) NOT NULL,
-  `id` int(11) NOT NULL,
-  `QRid` char(36) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
-INSERT INTO `ordertable` VALUES (`check`, `user`, `id`, `QRid`) VALUES (0, '1742120', 1, 'hogeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
-        
+    
+    
+    select * from `ordertable`;
+    
+   
         ";
         $prepare = $db->prepare($sql);
         $prepare->execute();
