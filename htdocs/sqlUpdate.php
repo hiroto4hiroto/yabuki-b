@@ -8,7 +8,7 @@
         $sql = "
         
        
-       SELECT * FROM ordertable as order LEFT JOIN bentotable as bento ON order.id = bento.id;
+       SELECT * FROM ordertable as order LEFT JOIN bentotable as bento ON order.id = bento.id limit 1;
         
         
         
@@ -16,8 +16,7 @@
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        //header('Content-type: image/jpeg');
-        //print $result['image'];
+        echo $result;
                 
     } catch(PDOException $e) {
         echo $e->getMessage();
