@@ -8,7 +8,7 @@
         $sql = "
         
        
-       SELECT * FROM ordertable limit 1;
+       SELECT * FROM bentotable;
         
         
         
