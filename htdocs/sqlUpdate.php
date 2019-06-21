@@ -18,7 +18,6 @@ CREATE TABLE `ordertable` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ordertable` (`check`, `user`, `id`, `QRid`) VALUES (0, '1742120', 1, 'hogeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee');
-SELECT * FROM `ordertable`;
 
         ";
         $prepare = $db->prepare($sql);
