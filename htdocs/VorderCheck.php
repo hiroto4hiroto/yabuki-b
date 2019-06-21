@@ -50,16 +50,16 @@ if (!isset($_SESSION['VENDER'])) {
         //SQL作成・実行
         //$sql = 'SELECT * FROM ordertable ORDER BY date;';
         $sql = 'select `order`.id as `id`, `order`.check as `check`, bento.date as date, `order`.user as user, bento.name as name, `order`.QRid as QRid ';
-        $sql .= 'from bentotable as bento right join `ordertable` as `order` on bento.id = `order`.id order by `order`.check, `bento`.date, `order`.user;';
+        $sql .= 'from bentotable as bento right join `ordertable` as `order` on bento.id = `order`.id order by `order`.check, `bento`.date, `order`.user, `order`.id;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
         $list .= '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $list .= '<td style="width: 5vw;">ID';
         $list .= '<td style="width: 5vw;">受取';
         $list .= '<td style="width: 10vw;">日付';
         $list .= '<td style="width: 10vw;">学生番号';
+        $list .= '<td style="width: 5vw;">ID';
         $list .= '<td style="width: 20vw;">弁当名';
         $list .= '<td style="width: 30vw;">UUID';
 
@@ -69,12 +69,12 @@ if (!isset($_SESSION['VENDER'])) {
             if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
 
             $list .= '<tr>';
-            $list .= '<td'. $plusClass .'>'. $result["id"];
             if ($result["check"] == 1)
                 $list .= '<td'. $plusClass .' style="color:blue; min-width: 5vw;">完了';
             else $list .= '<td'. $plusClass .' style="color:red; min-width: 5vw;">未了';
             $list .= '<td'. $plusClass .'>'. $result["date"];
             $list .= '<td'. $plusClass .'>'. $result["user"];
+            $list .= '<td'. $plusClass .'>'. $result["id"];
             $list .= '<td'. $plusClass .' style="min-width: 20vw;">'. $result["name"];
             $list .= '<td'. $plusClass .' style="max-width: 30vw; overflow: hidden;">'. $result["QRid"];
         }
