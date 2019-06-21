@@ -7,7 +7,7 @@
         //ただし"を使ってはいけない
         $sql = "
     
-SELECT * FROM `bentotable`;
+SELECT * FROM `ordertable`;
 
         ";
         $prepare = $db->prepare($sql);
