@@ -13,8 +13,9 @@ if (!isset($_SESSION['VENDER'])) {
         if (isset($_GET['delete'])) {
             $sql = "SELECT * FROM `ordertable` AS `O` RIGHT JOIN `bentotable` AS `B` ON `O`.id = `B`.id WHERE `B`.date <= '". $getdate ."'; ";
             $prepare = $db->prepare($sql);
-            $result = $prepare->execute();
-            var_dump($result['sfgsdfgsdfgsdfgsfg']);
+            //$result = $prepare->execute();
+            $result = $prepare->fetch(PDO::FETCH_ASSOC);
+            var_dump($result[0]);
             //header('Location: Vindex.php?message=今日までの予約リストを削除しました');
         }
         $list = "";
