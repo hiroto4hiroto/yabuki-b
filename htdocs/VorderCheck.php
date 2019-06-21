@@ -62,7 +62,7 @@ if (!isset($_SESSION['VENDER'])) {
         $list .= '<td style="width: 10vw;">日付';
         $list .= '<td style="width: 10vw;">学生番号';
         $list .= '<td style="width: 20vw;">弁当名';
-        $list .= '<td style="width: 35vw;">UUID';
+        $list .= '<td style="max-width: 30vw;">UUID';
 
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
@@ -77,7 +77,7 @@ if (!isset($_SESSION['VENDER'])) {
             $list .= '<td'. $plusClass .'>'. $result["date"];
             $list .= '<td'. $plusClass .'>'. $result["user"];
             $list .= '<td'. $plusClass .'>'. $result["name"];
-            $list .= '<td'. $plusClass .'>'. $result["QRid"];
+            $list .= '<td'. $plusClass .'　style="word-wrap: break-word;">'. $result["QRid"];
         }
         $list .= '</table>';
 
