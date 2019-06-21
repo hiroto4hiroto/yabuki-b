@@ -76,7 +76,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             $list .= '<td style="min-width: 70%;">'. $result["name"] .'';
             $list .= '<td style="max-width: 30%;">'. $result["price"] .'円';
             $list .= '<tr style="width: 100%; max-height: 100%;">';
-            $list .= '<a helf"https://www.google.co.jp/"><td style="min-width: 70%; background-image: url(\'data:image/jpeg;base64,'. base64_encode($result["image"]) .'\'); background-size: cover; background-position: center;"></a>';
+            $list .= '<a helf="https://www.google.co.jp/"><td style="min-width: 70%; background-image: url(\'data:image/jpeg;base64,'. base64_encode($result["image"]) .'\'); background-size: cover; background-position: center;"></a>';
             //時間帯によって, 数量によって押せなくする
             if (($isDebug || date("G") < 15 && date("Y-m-d", strtotime("+1 day")) == $result["date"] )&& $result["stocks"] > 0){
                 $list .= '<td style="max-width: 30%;">';
