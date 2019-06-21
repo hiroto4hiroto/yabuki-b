@@ -13,7 +13,8 @@ if (!isset($_SESSION['VENDER'])) {
         if (isset($_GET['delete'])) {
             $sql = "SELECT * FROM `ordertable` AS O RIGHT JOIN `bentotable` AS B ON O.id = B.id WHERE date <= '". $getdate ."'; ";
             $prepare = $db->prepare($sql);
-            echo $prepare->execute();
+            $result = $prepare->execute();
+            print_r $result;
             //header('Location: Vindex.php?message=今日までの予約リストを削除しました');
         }
         $list = "";
