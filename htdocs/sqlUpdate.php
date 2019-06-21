@@ -8,9 +8,14 @@
         $sql = "
         
         
+drop table ordertable;
 
-        SELECT * from `imagetable` WHERE `id` = 2;
-        
+CREATE TABLE `ordertable` (
+  `check` tinyint(1) DEFAULT 0,
+  `user` char(7) NOT NULL,
+  `id` int(11) NOT NULL,
+  `QRid` char(36) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
         
         ";
         $prepare = $db->prepare($sql);
