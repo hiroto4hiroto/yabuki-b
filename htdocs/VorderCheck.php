@@ -56,6 +56,7 @@ if (!isset($_SESSION['VENDER'])) {
         
         $list .= '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+        $list .= '<td style="width: 5vw;">ID';
         $list .= '<td style="width: 5vw;">受取';
         $list .= '<td style="width: 10vw;">日付';
         $list .= '<td style="width: 10vw;">学生番号';
