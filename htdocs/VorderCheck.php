@@ -72,12 +72,12 @@ if (!isset($_SESSION['VENDER'])) {
             $list .= '<tr>';
             $list .= '<td'. $plusClass .'>'. $result["id"];
             if ($result["check"] == 1)
-                $list .= '<td'. $plusClass .' style="color:blue;">完了';
-            else $list .= '<td'. $plusClass .' style="color:red;">未了';
+                $list .= '<td'. $plusClass .' style="color:blue; width: 5vw;">完了';
+            else $list .= '<td'. $plusClass .' style="color:red; width: 5vw;">未了';
             $list .= '<td'. $plusClass .'>'. $result["date"];
             $list .= '<td'. $plusClass .'>'. $result["user"];
-            $list .= '<td'. $plusClass .'>'. $result["name"];
-            $list .= '<td'. $plusClass .' style="max-width: 30vw; overflow: hidden;">'. $result["QRid"];
+            $list .= '<td'. $plusClass .' style="width: 20vw;">'. $result["name"];
+            $list .= '<td'. $plusClass .' style="width: 30vw; overflow: hidden;">'. $result["QRid"];
         }
         $list .= '</table>';
 
