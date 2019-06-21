@@ -14,7 +14,6 @@ if (!isset($_SESSION['USER'])) {
         //SQL作成・実行
         //$sql = "SELECT ordertable.check as `check`, ordertable.date as `date`, ordertable.name as `name`, bentotable.price as `price`";
         //$sql .= " FROM ordertable INNER JOIN bentotable ON ordertable.name = bentotable.name AND user = '". $_SESSION['USER'] ."'";
-        7
         $sql = "SELECT * FROM ordertable as order LEFT JOIN bentotable as bento ON order.id = bento.id;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
