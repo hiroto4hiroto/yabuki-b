@@ -26,8 +26,8 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
             if ($result['stocks'] <= 0){
                 //トップページに移動
-                header('Location: index.php?message='. $_GET['order'] .'は品切れのため注文できませんでした。');
-                exit;
+                //header('Location: index.php?message='. $_GET['order'] .'は品切れのため注文できませんでした。');
+                //exit;
             }
             //既に注文しているか確認
             $sql = "SELECT * FROM ordertable WHERE user = ". $_SESSION["USER"] ." AND date = '". $getdate ."' + INTERVAL 1 DAY limit 1;"; 
