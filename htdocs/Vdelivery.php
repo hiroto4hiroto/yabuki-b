@@ -13,16 +13,15 @@ if (!isset($_SESSION['VENDER'])) {
         if( !empty($_POST['delivery']) ){
             //予約一覧作成
             //SQL作成・実行
-            $sql = 'UPDATE ordertable SET `check` = 1 WHERE user = '. $_POST['user'];
+            $sql = 'UPDATE `ordertable` SET `check` = 1 WHERE user = '. $_POST['user'];
             $prepare = $db->prepare($sql);
             $prepare->execute();
         }
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = 'SELECT `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name` ';
-        $sql = 'FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id ';
-        $sql = 'ORDER BY `order`.check, `bento`.date, `order`.id, `bento`.name;';
+        $sql = 'SELECT * FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id ';
+        $sql = 'ORDER BY `order`.check, `bento`.date, `order`.id';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -40,13 +39,13 @@ if (!isset($_SESSION['VENDER'])) {
             if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
                 
             $list .= '<tr>';
-            if ($result["check"] == 1)
+            if ($result["order.check"] == 1)
                 $list .= '<td'. $plusClass .' style="color:blue;">完了';
             else $list .= '<td'. $plusClass .' style="color:red;">未了';
-            $list .= '<td'. $plusClass .'>'. $result["date"];
-            $list .= '<td'. $plusClass .'>'. $result["user"];
-            $list .= '<td'. $plusClass .'>'. $result["id"];
-            $list .= '<td'. $plusClass .'>'. $result["name"];
+            $list .= '<td'. $plusClass .'>'. $result["bento.date"];
+            $list .= '<td'. $plusClass .'>'. $result["order.user"];
+            $list .= '<td'. $plusClass .'>'. $result["order.id"];
+            $list .= '<td'. $plusClass .'>'. $result["bento.name"];
         }
         $list .= '</table>';
     } catch(PDOException $e) {
