@@ -20,9 +20,9 @@ if (!isset($_SESSION['VENDER'])) {
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = 'SELECT `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name` ';
-        $sql .= 'FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id ';
-        $sql .= 'ORDER BY `order`.check, `bento`.date, `order`.id;`;
+        $sql = 'SELECT `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`';
+        $sql .= ' FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id';
+        $sql .= ' ORDER BY `order`.check, `bento`.date, `order`.id;`;
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -31,7 +31,7 @@ if (!isset($_SESSION['VENDER'])) {
         $list .= '<td style="width: 5vw;">受取';
         $list .= '<td style="width: 10vw;">日付';
         $list .= '<td style="width: 10vw;">学生番号'; 
-        $list .= '<td style="width: 10vw;">弁当ID';
+        $list .= '<td style="width: 5vw;">弁当ID';
         $list .= '<td style="width: 20vw;">弁当名';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
