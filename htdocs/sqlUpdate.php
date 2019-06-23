@@ -8,7 +8,9 @@
         $sql = "
     
     
-SELECT * FROM `ordertable`;
+SELECT `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name` 
+FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id 
+ORDER BY `order`.check, `bento`.date, `order`.id;
 
         ";
         $prepare = $db->prepare($sql);
