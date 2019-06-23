@@ -13,16 +13,14 @@ if (!isset($_SESSION['VENDER'])) {
         if( !empty($_POST['delivery']) ){
             //予約一覧作成
             //SQL作成・実行
-            $sql = 'UPDATE `ordertable` SET `check` = 1 WHERE user = '. $_POST['user'];
+            $sql = 'UPDATE ordertable SET `check` = 1 WHERE user = '. $_POST['user'];
             $prepare = $db->prepare($sql);
             $prepare->execute();
         }
         
         //予約一覧作成
         //SQL作成・実行
-        $sql = "SELECT `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
-        $sql .= " FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id";
-        $sql .= " ORDER BY `order`.check, `bento`.date, `order`.id;";
+        $sql = 'SELECT * FROM ordertable ORDER BY `ordertable.check`, `bentotable.date`, `ordertable.user` , `bentotable.name`;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -30,9 +28,9 @@ if (!isset($_SESSION['VENDER'])) {
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 5vw;">受取';
         $list .= '<td style="width: 10vw;">日付';
-        $list .= '<td style="width: 10vw;">学生番号'; 
-        $list .= '<td style="width: 5vw;">弁当ID';
+        $list .= '<td style="width: 10vw;">学生番号';
         $list .= '<td style="width: 20vw;">弁当名';
+        //$list .= '<td style="width: 35vw;">UUID';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $plusClass = '';
@@ -44,7 +42,6 @@ if (!isset($_SESSION['VENDER'])) {
             else $list .= '<td'. $plusClass .' style="color:red;">未了';
             $list .= '<td'. $plusClass .'>'. $result["date"];
             $list .= '<td'. $plusClass .'>'. $result["user"];
-            $list .= '<td'. $plusClass .'>'. $result["id"];
             $list .= '<td'. $plusClass .'>'. $result["name"];
         }
         $list .= '</table>';
