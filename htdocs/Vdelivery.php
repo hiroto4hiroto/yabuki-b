@@ -21,7 +21,7 @@ if (!isset($_SESSION['VENDER'])) {
         //予約一覧作成
         //SQL作成・実行
         $sql = 'SELECT `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name` ';
-        $sql = 'FROM `order` as `order` RIGHT JOIN `bento` as `bento` ON `order`.id = `bento`.id ';
+        $sql = 'FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id ';
         $sql = 'ORDER BY `order`.check, `bento`.date, `order`.id, `bento`.name;';
         $prepare = $db->prepare($sql);
         $prepare->execute();
