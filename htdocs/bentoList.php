@@ -66,7 +66,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         $prepare = $db->prepare($sql);
         $list = "";
         $prepare->execute();
-        $hoge = date_format(date_modify($getdate, '+1 day'), 'Y-M-D');
+        $hoge = date_format(date_modify(DateTime::createFromFormat('Y-M-D', $getdate), '+1 day'), 'Y-M-D');
         
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
