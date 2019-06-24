@@ -1,5 +1,5 @@
 <?php
-$debug = true;
+$debug = false;
 $getdate = '2019-07-19'; //date();
 // データベース設定（サーバで公開するとき）
 $dbServer = '127.0.0.1';
