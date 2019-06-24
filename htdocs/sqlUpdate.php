@@ -8,7 +8,7 @@
         $sql = "
     
 SELECT `ordertaable`.QRid = `QRid` FROM `ordertable` LEFT OUTER JOIN `bentotable` ON `bentotable`.id = `ordertable`.id
-WHERE `ordertable`.user = '1742111' AND `bentotable`.date = '". $getdate ."' + INTERVAL 1 DAY limit 1;
+WHERE `ordertable`.user = '1742120' AND `bentotable`.date = '". $getdate ."' + INTERVAL 1 DAY limit 1;
 
 
         ";
