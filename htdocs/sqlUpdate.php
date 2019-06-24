@@ -8,7 +8,7 @@
         $sql = "
     
     
-SELECT * FROM bentotable LEFT OUTER JOIN ordertable ON WHERE ordertable.user = ". $_SESSION["USER"] ." AND bentotable.date = '". $getdate ."' + INTERVAL 1 DAY limit 1;
+SELECT * FROM bentotable LEFT OUTER JOIN ordertable ON WHERE ordertable.user = "1742120 AND bentotable.date = '". $getdate ."' + INTERVAL 1 DAY limit 1;
 
         ";
         $prepare = $db->prepare($sql);
