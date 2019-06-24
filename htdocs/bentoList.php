@@ -30,7 +30,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
                 exit;
             }
             //既に注文しているか確認
-            $sql = "SELECT * FROM `bentotable` LEFT OUTER JOIN `ordertable` ON `bentotable`.id = `ordertable`.id ";
+            $sql = "SELECT `ordertaable`.QRid = `QRid` FROM `ordertable` LEFT OUTER JOIN `bentotable` ON `bentotable`.id = `ordertable`.id ";
             $sql .= "WHERE `ordertable`.user = '". $_SESSION["USER"] ."' AND `bentotable`.date = '". $getdate ."' + INTERVAL 1 DAY limit 1;"; 
             $prepare = $db->prepare($sql);
             $prepare->execute();
@@ -38,7 +38,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             
             $UUID = null;
             //既に1件注文していたら
-            if (!empty($result)) $UUID = $result["ordertable.QRid"];
+            if (!empty($result)) $UUID = $result["QRid"];
             else $UUID = md5(uniqid(mt_rand(), true));
             
 
