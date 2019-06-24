@@ -30,7 +30,8 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
                 exit;
             }
             //既に注文しているか確認
-            $sql = "SELECT * FROM bentotable LEFT OUTER JOIN ordertable ON WHERE ordertable.user = ". $_SESSION["USER"] ." AND bentotable.date = '". $getdate ."' + INTERVAL 1 DAY limit 1;"; 
+            $sql = "SELECT * FROM `bentotable` LEFT OUTER JOIN `ordertable` ON `bentotable`.id = `ordertable`.id ";
+            $sql .= "WHERE `ordertable`.user = '". $_SESSION["USER"] ."' AND `bentotable`.date = '". $getdate ."' + INTERVAL 1 DAY limit 1;"; 
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $result = $prepare->fetch(PDO::FETCH_ASSOC);
