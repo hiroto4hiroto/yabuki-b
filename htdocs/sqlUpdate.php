@@ -8,9 +8,7 @@
         $sql = "
     
     
-SELECT `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name` 
-FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id 
-ORDER BY `order`.check, `bento`.date, `order`.id;
+SELECT * FROM bentotable LEFT OUTER JOIN ordertable ON WHERE ordertable.user = ". $_SESSION["USER"] ." AND bentotable.date = '". $getdate ."' + INTERVAL 1 DAY limit 1;
 
         ";
         $prepare = $db->prepare($sql);
