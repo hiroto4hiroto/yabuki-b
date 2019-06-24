@@ -66,6 +66,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         $prepare = $db->prepare($sql);
         $list = "";
         $prepare->execute();
+        $hoge = format(modify(DateTime( $getdate ), '+1 day'), 'Y-M-D');
         
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
@@ -81,7 +82,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             
             //日付と時間帯によって, 数量によって押せなくする
             //if ($isDebug || (date("G") < 15 && (string)date("Y-m-d", strtotime( $getdate )) == $result["date"] && $result["stocks"] > 0) ){
-            if ($isDebug || (date("G") < 15 && new DateTime( $getdate )->modify('+1 day')->format('Y-M-D') == $result["date"] && $result["stocks"] > 0) ){
+            if ($isDebug || (date("G") < 15 && $hoge == $result["date"] && $result["stocks"] > 0) ){
                 $list .= '<td style="max-width: 30%;">';
                 $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
                 $list .= 'value="予約する" style="width: 100%; height: 100%"></input>';
