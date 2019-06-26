@@ -32,6 +32,9 @@ td {
 .todayOrder{
   background-color: #fff;
 }
+.yesterdayOrder{
+  background-color: #bbb;
+}
 
 .bentoInfoTable {
   border-style: solid;
