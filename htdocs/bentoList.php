@@ -83,7 +83,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             
             //日付と時間帯によって, 数量によって押せなくする
             //if ($isDebug || (date("G") < 15 && (string)date("Y-m-d", strtotime( $getdate )) == $result["date"] && $result["stocks"] > 0) ){
-            if ($isDebug || (date("G") < 15 && $hoge == $result["date"] && $result["stocks"] > 0) )
+            if ($isDebug || (date("G") < 15 && $hoge > $result["date"] && $result["stocks"] > 0) )
             {
                 $list .= '<td style="max-width: 30%;">';
                 $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
