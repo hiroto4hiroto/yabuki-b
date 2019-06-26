@@ -66,9 +66,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         $prepare = $db->prepare($sql);
         $list = "";
         $prepare->execute();
-        
-        echo $debug;
-        
+
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<table style="width: calc(30vh + 15vw); height: calc(20vh + 10vw)">';
@@ -138,6 +136,8 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
 <body <?php if (isset($_SESSION['VENDER'])) echo 'class="vender"' ?>
 <p>弁当事前予約サービス</p>
 <h1>弁当一覧と予約</h1>
+<br>
+予約は前日の15:00まで可能です。
 <br>
 <?php echo $list; ?>
     
