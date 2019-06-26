@@ -69,9 +69,13 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
 
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
-            //yesterdayOrder
-            $plusStyle = '';
-            if ($result["date"] != date( "Y-m-d", strtotime( $getdate ." + 1 day" ) )) $plusClass = ' class="notTodayOrder" ';
+            //15時前で前日で在庫があれば注文可能にする
+            $canOrder = 0;
+            if ($debug || (date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) && $result["stocks"] > 0) )
+                $canOrder = 1;
+
+            $plusClass = '';
+            if ($canOrder) $plusClass = ' class="notTodayOrder" ';
             
             $list .= '<table style="width: calc(30vh + 15vw); height: calc(20vh + 10vw)">';
             $list .= '<tr style="width: 100%; height: 1.5em;">';
@@ -84,8 +88,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             $list .= '<td'.$plusClass.' style="min-width: 70%; background-image: url(\'data:image/jpeg;base64,'. base64_encode($result["image"]) .'\'); background-size: cover; background-position: center;">';
             $list .= '<td'.$plusClass.' style="max-width: 30%;">';
             
-            //15時前で前日で在庫があれば押せる
-            if ($debug || (date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) && $result["stocks"] > 0) )
+            if ($canOrder)
             {
                 $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
                 $list .= 'value="予約する" style="width: 100%; height: 100%"></input>';
