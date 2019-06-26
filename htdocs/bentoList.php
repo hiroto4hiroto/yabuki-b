@@ -136,9 +136,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
 <body <?php if (isset($_SESSION['VENDER'])) echo 'class="vender"' ?>
 <p>弁当事前予約サービス</p>
 <h1>弁当一覧と予約</h1>
-<br>
-予約は前日の15:00まで可能です。
-<br>
+<p>予約は前日の15:00まで可能です。</p>
 <?php echo $list; ?>
     
 </body>
