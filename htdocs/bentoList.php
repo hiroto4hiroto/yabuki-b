@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>弁当事前予約サービス 弁当一覧と予約</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    
-    
-    
-    
-    
 <?php
 session_start();
 
@@ -86,7 +75,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
                 $canOrder = 1;
 
             $plusClass = '';
-            if ($canOrder) $plusClass = ' class="notTodayOrder" ';
+            if ($canOrder) $plusClass = ' style="background-color: #bbb;" ';
             
             $list .= '<table style="width: calc(30vh + 15vw); height: calc(20vh + 10vw)">';
             $list .= '<tr style="width: 100%; height: 1.5em;">';
@@ -116,6 +105,13 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
     }
 
 ?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>弁当事前予約サービス 弁当一覧と予約</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
     <style type="text/css">
     <!--
     tr td {border-style: solid;}
