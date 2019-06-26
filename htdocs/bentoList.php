@@ -76,7 +76,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             
             $list .= '<table style="width: calc(30vh + 15vw); height: calc(20vh + 10vw)">';
             $list .= '<tr style="width: 100%; height: 1.5em;">';
-            $list .= '<td  class="notTodayOrder" style="width: 70%;">販売日:'. $result["date"] .'';
+            $list .= '<td class="notTodayOrder">販売日:'. $result["date"] .'';
             $list .= '<tr style="width: 100%; height: 1.5em;">';
             $list .= '<td'.$plusStyle.' style="width: 70%;">販売日:'. $result["date"] .'';
             $list .= '<td'.$plusStyle.' style="width: 30%;">残り:'. $result["stocks"] .'個';
