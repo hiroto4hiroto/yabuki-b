@@ -81,9 +81,9 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             $list .= '<tr style="width: 100%; max-height: 100%;">';
             $list .= '<td style="min-width: 70%; background-image: url(\'data:image/jpeg;base64,'. base64_encode($result["image"]) .'\'); background-size: cover; background-position: center;">';
             
-            //日付と時間帯によって, 数量によって押せなくする
+            //15時前で前日で在庫があれば押せる
             //if ($isDebug || (date("G") < 15 && (string)date("Y-m-d", strtotime( $getdate )) == $result["date"] && $result["stocks"] > 0) ){
-            if ($isDebug || (date("G") < 15 && $hoge > $result["date"] && $result["stocks"] > 0) )
+            if ($isDebug || (date("G") < 15 && strtotime ($hoge) < strtotime ($result["date"]) && $result["stocks"] > 0) )
             {
                 $list .= '<td style="max-width: 30%;">';
                 $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
