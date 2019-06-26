@@ -74,8 +74,8 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             if ($debug || (date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) && $result["stocks"] > 0) )
                 $canOrder = 1;
 
-            $plusClass = '';
-            if ($canOrder == 0) $plusStyle = ' style="background-color: #bbb;" ';
+            $plusStyle = '';
+            if (!$canOrder) $plusStyle = ' style="background-color: #bbb;" ';
             
             $list .= '<table style="width: calc(30vh + 15vw); height: calc(20vh + 10vw)">';
             $list .= '<tr style="width: 100%; height: 1.5em;">';
