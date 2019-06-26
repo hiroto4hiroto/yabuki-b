@@ -32,7 +32,7 @@ td {
 .todayOrder{
   background-color: #fff;
 }
-.yesterdayOrder{
+.notTodayOrder{
   background-color: #bbb;
 }
 
