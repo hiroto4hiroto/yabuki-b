@@ -67,7 +67,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         $list = "";
         $prepare->execute();
         //$hoge = date_format(date_modify(DateTime::createFromFormat('Y-M-D', $getdate), '+1 day'), 'Y-M-D');
-        $hoge = '2019-07-19';
+        $hoge = date( "Y-M-D", strtotime( "2019-07-19 +1 day" ) );;
 
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
@@ -83,7 +83,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             
             //15時前で前日で在庫があれば押せる
             //if ($isDebug || (date("G") < 15 && (string)date("Y-m-d", strtotime( $getdate )) == $result["date"] && $result["stocks"] > 0) ){
-            if ($isDebug || (date("G") < 15 && strtotime ($hoge) < strtotime ($result["date"]) && $result["stocks"] > 0) )
+            if ($isDebug || (date("G") < 15 && $hoge == $result["date"] && $result["stocks"] > 0) )
             {
                 $list .= '<td style="max-width: 30%;">';
                 $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
