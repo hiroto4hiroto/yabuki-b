@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>弁当事前予約サービス 弁当一覧と予約</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    
+    
+    
+    
 <?php
 session_start();
 
@@ -105,13 +116,6 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
     }
 
 ?>
- 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>弁当事前予約サービス 弁当一覧と予約</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
     <style type="text/css">
     <!--
     tr td {border-style: solid;}
