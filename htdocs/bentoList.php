@@ -67,10 +67,6 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         $list = "";
         $prepare->execute();
         
-        echo $isDebug;
-        echo date("G") < 15;
-        echo  date( "Y-m-d", strtotime( $getdate .' + 1 day' ) );
-        
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<table style="width: calc(30vh + 15vw); height: calc(20vh + 10vw)">';
@@ -82,16 +78,15 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             $list .= '<td style="max-width: 30%;">'. $result["price"] .'円';
             $list .= '<tr style="width: 100%; max-height: 100%;">';
             $list .= '<td style="min-width: 70%; background-image: url(\'data:image/jpeg;base64,'. base64_encode($result["image"]) .'\'); background-size: cover; background-position: center;">';
+            $list .= '<td style="max-width: 30%;">';
             
             //15時前で前日で在庫があれば押せる
             //if ($isDebug || (date("G") < 15 && (string)date("Y-m-d", strtotime( $getdate )) == $result["date"] && $result["stocks"] > 0) ){
             if ($isDebug || (date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) && $result["stocks"] > 0) )
             {
-                $list .= '<td style="max-width: 30%;">';
                 $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
                 $list .= 'value="予約する" style="width: 100%; height: 100%"></input>';
             } else {
-                $list .= '<td style="max-width: 30%;">';
                 $list .= '<input type="button" class="btn-sticky" disabled);" ';
                 $list .= 'value="予約不可" style="width: 100%; height: 100%"></input>';
             }
