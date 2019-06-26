@@ -71,21 +71,18 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         {
             //yesterdayOrder
             $plusStyle = '';
-            //if ($result["date"] != date( "Y-m-d", strtotime( $getdate ." + 1 day" ) )) $plusClass = ' class="notTodayOrder" ';
-            if ($result["date"] != date( "Y-m-d", strtotime( $getdate ." + 1 day" ) )) $plusStyle = ' class="notTodayOrder" ';
+            if ($result["date"] != date( "Y-m-d", strtotime( $getdate ." + 1 day" ) )) $plusClass = ' class="notTodayOrder" ';
             
             $list .= '<table style="width: calc(30vh + 15vw); height: calc(20vh + 10vw)">';
             $list .= '<tr style="width: 100%; height: 1.5em;">';
-            $list .= '<td class="notTodayOrder">販売日:'. $result["date"] .'';
+            $list .= '<td'.$plusClass.' style="width: 70%;">販売日:'. $result["date"] .'';
+            $list .= '<td'.$plusClass.' style="width: 30%;">残り:'. $result["stocks"] .'個';
             $list .= '<tr style="width: 100%; height: 1.5em;">';
-            $list .= '<td'.$plusStyle.' style="width: 70%;">販売日:'. $result["date"] .'';
-            $list .= '<td'.$plusStyle.' style="width: 30%;">残り:'. $result["stocks"] .'個';
-            $list .= '<tr style="width: 100%; height: 1.5em;">';
-            $list .= '<td'.$plusStyle.' style="min-width: 70%;">'. $result["name"] .'';
-            $list .= '<td'.$plusStyle.' style="max-width: 30%;">'. $result["price"] .'円';
+            $list .= '<td'.$plusClass.' style="min-width: 70%;">'. $result["name"] .'';
+            $list .= '<td'.$plusClass.' style="max-width: 30%;">'. $result["price"] .'円';
             $list .= '<tr style="width: 100%; max-height: 100%;">';
-            $list .= '<td'.$plusStyle.' style="min-width: 70%; background-image: url(\'data:image/jpeg;base64,'. base64_encode($result["image"]) .'\'); background-size: cover; background-position: center;">';
-            $list .= '<td'.$plusStyle.' style="max-width: 30%;">';
+            $list .= '<td'.$plusClass.' style="min-width: 70%; background-image: url(\'data:image/jpeg;base64,'. base64_encode($result["image"]) .'\'); background-size: cover; background-position: center;">';
+            $list .= '<td'.$plusClass.' style="max-width: 30%;">';
             
             //15時前で前日で在庫があれば押せる
             if ($debug || (date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) && $result["stocks"] > 0) )
