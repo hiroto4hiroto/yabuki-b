@@ -81,7 +81,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             
             //15時前で前日で在庫があれば押せる
             //if ($isDebug || (date("G") < 15 && (string)date("Y-m-d", strtotime( $getdate )) == $result["date"] && $result["stocks"] > 0) ){
-            if ($isDebug || (date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime("2019-07-19 +1 day") ) && $result["stocks"] > 0) )
+            if ($isDebug || (date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime($getdate + " +1 day") ) && $result["stocks"] > 0) )
             {
                 $list .= '<td style="max-width: 30%;">';
                 $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
