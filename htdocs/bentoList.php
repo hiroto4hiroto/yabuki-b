@@ -75,7 +75,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
                 $canOrder = 1;
 
             $plusClass = '';
-            if (!$canOrder) $plusStyle = ' style="background-color: #bbb;" ';
+            if ($canOrder == 0) $plusStyle = ' style="background-color: #bbb;" ';
             
             $list .= '<table style="width: calc(30vh + 15vw); height: calc(20vh + 10vw)">';
             $list .= '<tr style="width: 100%; height: 1.5em;">';
