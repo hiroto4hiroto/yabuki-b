@@ -66,7 +66,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         $prepare = $db->prepare($sql);
         $list = "";
         $prepare->execute();
-        echo  date( "Y-m-d", strtotime($getdate + " +1 day") );
+        echo  date( "Y-m-d", strtotime($getdate) );
         
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
