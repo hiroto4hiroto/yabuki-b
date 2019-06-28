@@ -35,12 +35,12 @@ if (!isset($_SESSION['USER'])) {
             }  
             else 
             {
+                $sum += $result["price"];
                 $list .= '<td style="color:blue;">完了';
             }
             $list .= '<td>'. $result["date"];
             $list .= '<td>'. $result["name"];
             $list .= '<td>'. $result["price"] .'円';
-                            $sum += $result["price"];
         }
         $list .= '<tr><td colspan="3" style="border-style:none;">';
         $list .= '<td style="color:blue;">未了合計金額<br>'.$sum.'円';
