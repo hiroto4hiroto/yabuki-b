@@ -23,9 +23,9 @@ $list = "";
             if ($result["check"] == 1)
                 $list .= '<td style="color:blue;">完了';
             else $list .= '<td style="color:red;">未了';
-            $list .= '<td $result["user"];
-            $list .= '<td $result["id"];
-            $list .= '<td $result["QRid"];
+            $list .= '<td>'. $result["user"];
+            $list .= '<td>'. $result["id"];
+            $list .= '<td>'. $result["QRid"];
         }
         $list .= '</table>';
     } catch(PDOException $e) {
