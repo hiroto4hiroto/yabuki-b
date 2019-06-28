@@ -8,7 +8,7 @@
         $sql = "
 
 
-delete * from `ordertable`;
+delete * from ordertable;
 
 
         ";
