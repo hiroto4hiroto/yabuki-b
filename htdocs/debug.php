@@ -97,7 +97,10 @@ $list = "";
 <br>
 <p>SQL</p>
 <form method="post" action="debug.php">
-    <input type="text" name="sqltext" style="width:80vw; height:235vh;">
+    <!--
+        <input type="text" name="sqltext" style="width:80vw; height:25vh;">
+    -->
+    <TEXTAREA rows="10" cols="50" name="body"></TEXTAREA>
     <input class="btn-sticky" type="submit" name="runsql" value="SQLを実行">
 </form>
 <br>
