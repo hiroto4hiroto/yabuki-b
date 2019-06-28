@@ -97,9 +97,6 @@ $list = "";
 <br>
 <p>SQL</p>
 <form method="post" action="debug.php">
-    <!--
-        <input type="text" name="sqltext" style="width:80vw; height:25vh;">
-    -->
     <input type="text" rows="5" cols="100" id="sqltext" name="sqltext"></input>
     <input class="btn-sticky" type="submit" name="runsql" value="SQLを実行">
 </form>
