@@ -1,7 +1,6 @@
-
 <?php
 $debug = 0;
-$getdate = date(new DateTime( date("Y-m-d"), new DateTimeZone('Asia/Tokyo') )); //'2019-07-19'
+$getdate = date("Y-m-d"); //'2019-07-19'
 // データベース設定（サーバで公開するとき）
 $dbServer = '127.0.0.1';
 $dbUser = $_SERVER['MYSQL_USER'];
