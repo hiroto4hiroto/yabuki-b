@@ -1,11 +1,6 @@
 <?php
 session_start();
 $list = "";
-    //業者でなければ弾く
-if (!isset($_SESSION['VENDER'])) {
-    header('Location: login.php');
-    exit;
-}
     try {
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
