@@ -195,9 +195,9 @@ if (!isset($_SESSION['VENDER'])) {
         <tr><td><label for="date">販売日</label>
             <td><input id="date" type="date" name="date">
         <tr><td><label for="price">価格</label>
-            <td><input id="price" type="number" name="price" min="0" maxlength="6">
+            <td><input id="price" type="number" min="0" max="99999" name="price">
         <tr><td><label for="stocks">販売数</label>
-            <td><input id="stocks" type="number" name="stocks" min="0" maxlength="6">
+            <td><input id="stocks" type="number" min="0" max="99999" name="stocks" min="0" maxlength="6">
         <tr><td><label for="image">jpg画像<br>1.6MBまで</label>
             <td><input id="image" type="file" name="image" accept="image/*.jpg">
         <tr><td colspan="2"><input class="btn-sticky" type="submit" name="update" value="登録・更新" style="width: 100%;">
