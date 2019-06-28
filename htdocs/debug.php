@@ -5,7 +5,7 @@ $list = "";
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         
-        $sql = "SELECT * FROM `logintable`;";
+        $sql = "SELECT * FROM `logintable` ORDER BY `id`;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -24,7 +24,7 @@ $list = "";
         $list .= '</table><br>';
         
         
-        $sql = "SELECT * FROM `bentotable`;";
+        $sql = "SELECT * FROM `bentotable` ORDER BY `id`;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -36,8 +36,6 @@ $list = "";
         $list .= '<td style="width: 25vw;">弁当名';
         $list .= '<td style="width: 7vw;">価格';
         $list .= '<td style="width: 6vw;">販売数';
-        $list .= '<td style="width: 10vw;">画像';
-        $list .= '<td style="width: 7vw;">削除';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
@@ -53,7 +51,7 @@ $list = "";
         $list .= '</table><br>';
         
         
-        $sql = "SELECT * FROM `ordertable`;";
+        $sql = "SELECT * FROM `ordertable` ORDER BY user;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -89,7 +87,9 @@ $list = "";
 <body style="background-color: #000; color:#fff;">
 <p>弁当事前予約サービス デバッグ用　テーブル一覧</p>
 <br>
-<form method="post" action="Vdelivery.php">
+<form method="post" action="debug.php">
+    
+</form>
 <br>
     <?php echo $list; ?>
 <br>
