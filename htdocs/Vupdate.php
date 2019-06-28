@@ -183,7 +183,7 @@ if (!isset($_SESSION['VENDER'])) {
 <form method="post" action="Vupdate.php" enctype="multipart/form-data">
     <table  style="width: 50vw;">
         <tr><td><label for="number">ID*</label>
-            <td><input id="number" type="number" name="number" value="0" min="0" maxlength="6">
+            <td><input id="number" type="number" min="0" max="99999" name="number" value="0">
             <tr><td><label for="view">販売表示</label>
             <td><select id="view" name="view">
                     <option value="">選択</option>
