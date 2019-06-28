@@ -32,10 +32,10 @@ if (!isset($_SESSION['USER'])) {
             if ($result["check"] == 0)
             {
                 $list .= '<td style="color:red;">未了';
+                                $sum += $result["price"];
             }  
             else 
             {
-                $sum += $result["price"];
                 $list .= '<td style="color:blue;">完了';
             }
             $list .= '<td>'. $result["date"];
