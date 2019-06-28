@@ -5,8 +5,25 @@ $list = "";
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         
-        //予約一覧作成
-        //SQL作成・実行
+        $sql = "SELECT * FROM `logintable`;";
+        $prepare = $db->prepare($sql);
+        $prepare->execute();
+        
+        $list .= '予約一覧';
+        $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+        $list .= '<td style="width: 10vw;">学生番号';
+        $list .= '<td style="width: 10vw;">password';
+        $list .= '<td style="width: 10vw;">ペナルティ解除日';
+        foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
+        {
+            $list .= '<tr>';
+            $list .= '<td>'. $result["user"];
+            $list .= '<td>'. $result["password"];
+            $list .= '<td>'. $result["resumeDate"];
+        }
+        $list .= '</table>';
+        
+        
         $sql = "SELECT * FROM `ordertable`;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
@@ -16,7 +33,7 @@ $list = "";
         $list .= '<td style="width: 5vw;">受取';
         $list .= '<td style="width: 10vw;">学生番号';
         $list .= '<td style="width: 10vw;">弁当番号';
-        //$list .= '<td style="width: 35vw;">UUID';
+        $list .= '<td style="width: 35vw;">UUID';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
