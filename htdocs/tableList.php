@@ -19,16 +19,13 @@ $list = "";
         //$list .= '<td style="width: 35vw;">UUID';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
-            $plusClass = '';
-            if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
-                
             $list .= '<tr>';
             if ($result["check"] == 1)
-                $list .= '<td'. $plusClass .' style="color:blue;">完了';
-            else $list .= '<td'. $plusClass .' style="color:red;">未了';
-            $list .= '<td'. $plusClass .'>'. $result["user"];
-            $list .= '<td'. $plusClass .'>'. $result["id"];
-            $list .= '<td'. $plusClass .'>'. $result["QRid"];
+                $list .= '<td style="color:blue;">完了';
+            else $list .= '<td style="color:red;">未了';
+            $list .= '<td $result["user"];
+            $list .= '<td $result["id"];
+            $list .= '<td $result["QRid"];
         }
         $list .= '</table>';
     } catch(PDOException $e) {
