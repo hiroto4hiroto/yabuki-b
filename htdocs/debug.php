@@ -3,7 +3,15 @@ session_start();
 $list = "";
     try {
         require_once 'database_conf.php';
-        $db = new PDO($dsn, $dbUser, $dbPass);
+        $db = new PDO($dsn, $dbUser, $dbPass);   
+        
+        if(!empty($_POST['runsql']) && !empty($_POST['sqltext'])
+        {
+            $sql = $_POST['sqltext'];
+            $prepare = $db->prepare($sql);
+            $prepare->execute();
+            $db = new PDO($dsn, $dbUser, $dbPass);
+        }
         
         $sql = "SELECT * FROM `logintable` ORDER BY user;";
         $prepare = $db->prepare($sql);
@@ -87,8 +95,10 @@ $list = "";
 <body style="background-color: #000; color:#fff;">
 <p>弁当事前予約サービス デバッグ用　テーブル一覧</p>
 <br>
+<p>SQL</p>
 <form method="post" action="debug.php">
-    
+    <input type="text" name="sqltext" rows="5">
+    <input class="btn-sticky" type="submit" name="runsql" value="SQLを実行">
 </form>
 <br>
     <?php echo $list; ?>
