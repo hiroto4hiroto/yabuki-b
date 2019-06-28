@@ -13,7 +13,8 @@ if (!isset($_SESSION['VENDER'])) {
         if( !empty($_POST['delivery']) ){
             //予約一覧作成
             //SQL作成・実行
-            $sql = 'UPDATE ordertable SET `check` = 1 WHERE user = '. $_POST['user'];
+            $sql = 'UPDATE `ordertable` LEFT JOIN `bnetotable` ON `ordertable`.id = `bentotable`.id';
+            $sql .= 'SET `ordertable`.check = 1 WHERE `ordertable`.user = '. $_POST['user'] .' and `bentotable`.date = '. $getdate;
             $prepare = $db->prepare($sql);
             $prepare->execute();
         }
