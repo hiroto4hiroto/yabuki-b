@@ -5,7 +5,7 @@ $list = "";
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         
-        $sql = "SELECT * FROM `logintable` ORDER BY id;";
+        $sql = "SELECT * FROM `logintable` ORDER BY user;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
