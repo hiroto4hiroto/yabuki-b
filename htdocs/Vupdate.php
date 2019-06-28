@@ -183,7 +183,7 @@ if (!isset($_SESSION['VENDER'])) {
 <form method="post" action="Vupdate.php" enctype="multipart/form-data">
     <table  style="width: 50vw;">
         <tr><td><label for="number">ID*</label>
-            <td><input id="number" type="number" name="number" value="0">
+            <td><input id="number" type="number" name="number" value="0" min="0" max="100000">
             <tr><td><label for="view">販売表示</label>
             <td><select id="view" name="view">
                     <option value="">選択</option>
@@ -191,13 +191,13 @@ if (!isset($_SESSION['VENDER'])) {
                     <option value="0">未公開</option>
                 </select>
         <label for="name"><tr><td>弁当名</label>
-            <td><input id="name" type="text" name="name">
+            <td><input id="name" type="text" name="name" maxlength="16">
         <tr><td><label for="date">販売日</label>
             <td><input id="date" type="date" name="date">
         <tr><td><label for="price">価格</label>
-            <td><input id="price" type="number" name="price">
+            <td><input id="price" type="number" name="price" min="0" max="100000">
         <tr><td><label for="stocks">販売数</label>
-            <td><input id="stocks" type="number" name="stocks">
+            <td><input id="stocks" type="number" name="stocks" min="0" max="100000">
         <tr><td><label for="image">jpg画像<br>1.6MBまで</label>
             <td><input id="image" type="file" name="image" accept="image/*.jpg">
         <tr><td colspan="2"><input class="btn-sticky" type="submit" name="update" value="登録・更新" style="width: 100%;">
