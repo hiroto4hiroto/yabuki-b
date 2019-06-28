@@ -115,7 +115,7 @@ if (!isset($_SESSION['VENDER'])) {
         //SQL作成・実行
         $db = new PDO($dsn, $dbUser, $dbPass);
         //$sql = 'SELECT * FROM bentotable ORDER BY id;';
-        $sql = 'select bento.id, bento.view, bento.date, bento.name, bento.price, bento.stocks, img.image from bentotable as bento left join imagetable as `img` on bento.id = img.id';
+        $sql = 'select bento.id, bento.view, bento.date, bento.name, bento.price, bento.stocks, img.image from bentotable as bento left join imagetable as `img` on bento.id = img.id order by bento.date';
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
