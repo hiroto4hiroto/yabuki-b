@@ -5,7 +5,7 @@ $list = "";
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         
-        $sql = "SELECT * FROM `logintable` ORDER BY `id`;";
+        $sql = "SELECT * FROM `logintable` ORDER BY id;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
@@ -24,7 +24,7 @@ $list = "";
         $list .= '</table><br>';
         
         
-        $sql = "SELECT * FROM `bentotable` ORDER BY `id`;";
+        $sql = "SELECT * FROM `bentotable` ORDER BY id;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
