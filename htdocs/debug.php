@@ -5,7 +5,7 @@ $list = "";
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);   
         
-        if(!empty($_POST['runsql']) && !empty($_POST['sqltext'])
+        if( !empty($_POST['runsql']) && !empty($_POST['sqltext']) )
         {
             $sql = $_POST['sqltext'];
             $prepare = $db->prepare($sql);
