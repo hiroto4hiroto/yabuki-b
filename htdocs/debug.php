@@ -19,9 +19,9 @@ $list = "";
         
         $list .= 'アカウント一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $list .= '<td style="width: 5vw;">学生番号';
-        $list .= '<td style="width: 5vw;">パスワード';
-        $list .= '<td style="width: 5vw;">ペナルティ解除日';
+        $list .= '<td style="width: 5vw;">学生番号<br>user';
+        $list .= '<td style="width: 5vw;">パスワード<br>password';
+        $list .= '<td style="width: 5vw;">ペナルティ解除日<br>resumeDate';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
@@ -38,12 +38,12 @@ $list = "";
         
         $list .= '登録弁当一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $list .= '<td style="width: 5vw;">ID';
-        $list .= '<td style="width: 10vw;">販売表示';
-        $list .= '<td style="width: 15vw;">販売日';
-        $list .= '<td style="width: 25vw;">弁当名';
-        $list .= '<td style="width: 7vw;">価格';
-        $list .= '<td style="width: 6vw;">販売数';
+        $list .= '<td style="width: 5vw;">ID<br>id';
+        $list .= '<td style="width: 10vw;">販売表示<br>view';
+        $list .= '<td style="width: 15vw;">販売日<br>date';
+        $list .= '<td style="width: 25vw;">弁当名<br>name';
+        $list .= '<td style="width: 7vw;">価格<br>price';
+        $list .= '<td style="width: 6vw;">販売数<br>stocks';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
@@ -65,10 +65,10 @@ $list = "";
         
         $list .= '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $list .= '<td style="width: 5vw;">受取';
-        $list .= '<td style="width: 10vw;">学生番号';
-        $list .= '<td style="width: 10vw;">弁当番号';
-        $list .= '<td style="width: 35vw;">UUID';
+        $list .= '<td style="width: 5vw;">受取<br>check';
+        $list .= '<td style="width: 10vw;">学生番号<br>user';
+        $list .= '<td style="width: 10vw;">弁当番号<br>id';
+        $list .= '<td style="width: 35vw;">UUID<br>QRid';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
