@@ -95,8 +95,8 @@ $list = "";
 <body style="background-color: #000; color:#fff;">
 <p>弁当事前予約サービス デバッグ用　テーブル一覧</p>
 <br>
-<p>SQL</p>
 <form method="post" action="debug.php">
+    SQL：
     <input type="text" id="sqltext" name="sqltext">
     <input class="btn-sticky" type="submit" name="runsql" value="SQLを実行">
 </form>
