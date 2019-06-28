@@ -6,9 +6,9 @@
         //この""の中にSQL文を打つと反映される
         //ただし"を使ってはいけない
         $sql = "
-    
-SELECT * FROM `ordertable` LEFT OUTER JOIN `bentotable` ON `bentotable`.id = `ordertable`.id  WHERE `ordertable`.user = '1742120' AND `bentotable`.date = '2019-07-19' + INTERVAL 1 DAY limit 1;
 
+
+update `ordertable` set `check` = 1;
 
         ";
         $prepare = $db->prepare($sql);
