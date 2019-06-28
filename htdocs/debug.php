@@ -9,11 +9,11 @@ $list = "";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
-        $list .= '予約一覧';
+        $list .= 'アカウント一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $list .= '<td style="width: 10vw;">学生番号';
-        $list .= '<td style="width: 10vw;">password';
-        $list .= '<td style="width: 10vw;">ペナルティ解除日';
+        $list .= '<td style="width: 5vw;">学生番号';
+        $list .= '<td style="width: 5vw;">パスワード';
+        $list .= '<td style="width: 5vw;">ペナルティ解除日';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
@@ -21,7 +21,36 @@ $list = "";
             $list .= '<td>'. $result["password"];
             $list .= '<td>'. $result["resumeDate"];
         }
-        $list .= '</table>';
+        $list .= '</table><br>';
+        
+        
+        $sql = "SELECT * FROM `bentotable`;";
+        $prepare = $db->prepare($sql);
+        $prepare->execute();
+        
+        $list .= '登録弁当一覧';
+        $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+        $list .= '<td style="width: 5vw;">ID';
+        $list .= '<td style="width: 10vw;">販売表示';
+        $list .= '<td style="width: 15vw;">販売日';
+        $list .= '<td style="width: 25vw;">弁当名';
+        $list .= '<td style="width: 7vw;">価格';
+        $list .= '<td style="width: 6vw;">販売数';
+        $list .= '<td style="width: 10vw;">画像';
+        $list .= '<td style="width: 7vw;">削除';
+        foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
+        {
+            $list .= '<tr>';
+            $list .= '<td>'. $result["id"];
+            if ($result["view"] == 1)
+                $list .= '<td style="color:blue;">公開';
+            else $list .= '<td style="color:red;">未公開';
+            $list .= '<td>'. $result["date"];
+            $list .= '<td>'. $result["name"];
+            $list .= '<td>'. $result["price"];
+            $list .= '<td>'. $result["stocks"];
+        }
+        $list .= '</table><br>';
         
         
         $sql = "SELECT * FROM `ordertable`;";
@@ -44,7 +73,7 @@ $list = "";
             $list .= '<td>'. $result["id"];
             $list .= '<td>'. $result["QRid"];
         }
-        $list .= '</table>';
+        $list .= '</table><br>';
     } catch(PDOException $e) {
         echo $e->getMessage();
         die();
