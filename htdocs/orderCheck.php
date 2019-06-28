@@ -49,7 +49,7 @@ if (!isset($_SESSION['USER'])) {
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>弁当事前予約サービス 予約確認・キャンセル</title>
+    <title>弁当事前予約サービス 予約確認</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
  
@@ -73,7 +73,7 @@ if (!isset($_SESSION['USER'])) {
     
 <body>
 <p>弁当事前予約サービス</p>
-<h1>予約確認・キャンセル</h1>
+<h1>予約確認</h1>
 <p>あなたの予約した弁当はこちらになります。</p>
 <?php echo $list; ?>
 <hr>
