@@ -32,7 +32,6 @@ if (!isset($_SESSION['USER'])) {
             if ($result["check"] == 0)
             {
                 $list .= '<td style="color:red;">未了';
-                $sum += $result["price"];
             }  
             else 
             {
@@ -41,6 +40,7 @@ if (!isset($_SESSION['USER'])) {
             $list .= '<td>'. $result["date"];
             $list .= '<td>'. $result["name"];
             $list .= '<td>'. $result["price"] .'円';
+                            $sum += $result["price"];
         }
         $list .= '<tr><td colspan="3" style="border-style:none;">';
         $list .= '<td style="color:blue;">未了合計金額<br>'.$sum.'円';
