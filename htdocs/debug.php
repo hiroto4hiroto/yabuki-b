@@ -100,7 +100,7 @@ $list = "";
     <!--
         <input type="text" name="sqltext" style="width:80vw; height:25vh;">
     -->
-    <TEXTAREA rows="5" cols="100" id="sqltext" name="sqltext"></TEXTAREA>
+    <input type="text" rows="5" cols="100" id="sqltext" name="sqltext"></input>
     <input class="btn-sticky" type="submit" name="runsql" value="SQLを実行">
 </form>
 <br>
