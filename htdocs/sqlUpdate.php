@@ -8,7 +8,8 @@
         $sql = "
 
 
-update `ordertable` set `check` = 0;
+delete * from `ordertable`;
+
 
         ";
         $prepare = $db->prepare($sql);
