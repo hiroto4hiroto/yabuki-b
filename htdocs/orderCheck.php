@@ -34,7 +34,8 @@ if (!isset($_SESSION['USER'])) {
                 $list .= '<td style="color:red;">未了';
                 $sum += $result["price"];
             }  
-            else {
+            else 
+            {
                 $list .= '<td style="color:blue;">完了';
             }
             $list .= '<td>'. $result["date"];
