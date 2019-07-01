@@ -17,7 +17,7 @@ $list = "";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
-        $list .= 'アカウント一覧';
+        $list .= 'アカウント一覧<br>logintable';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 5vw;">学生番号<br>user';
         $list .= '<td style="width: 5vw;">パスワード<br>password';
@@ -36,7 +36,7 @@ $list = "";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
-        $list .= '登録弁当一覧';
+        $list .= '登録弁当一覧<br>bentotable';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 5vw;">ID<br>id';
         $list .= '<td style="width: 10vw;">販売表示<br>view';
@@ -63,7 +63,7 @@ $list = "";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
-        $list .= '予約一覧';
+        $list .= '予約一覧<br>ordertable';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 5vw;">受取<br>check';
         $list .= '<td style="width: 10vw;">学生番号<br>user';
