@@ -62,7 +62,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         //一覧作成
         //SQL作成・実行
         $sql = 'select bento.id as `id`, bento.view as `view`, bento.date as `date`, bento.name as `name`, bento.price as `price`, bento.stocks as `stocks`, img.image as `image`';
-        $sql .= 'from bentotable as bento right join imagetable as `img` on bento.id = img.id where bento.view = 1 OREDER BY `date`;';
+        $sql .= 'from bentotable as bento right join imagetable as `img` on bento.id = img.id where bento.view = 1 ORDER BY `date`;';
         $prepare = $db->prepare($sql);
         $list = "";
         $prepare->execute();
