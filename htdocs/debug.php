@@ -49,8 +49,8 @@ $list = "";
             $list .= '<tr>';
             $list .= '<td>'. $result["id"];
             if ($result["view"] == 1)
-                $list .= '<td style="color:blue;">'. $result["check"];
-            else $list .= '<td style="color:red;">'. $result["check"];
+                $list .= '<td style="color:blue;">'. $result["view"];
+            else $list .= '<td style="color:red;">'. $result["view"];
             $list .= '<td>'. $result["date"];
             $list .= '<td>'. $result["name"];
             $list .= '<td>'. $result["price"];
