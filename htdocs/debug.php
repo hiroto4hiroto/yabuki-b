@@ -49,8 +49,8 @@ $list = "";
             $list .= '<tr>';
             $list .= '<td>'. $result["id"];
             if ($result["view"] == 1)
-                $list .= '<td style="color:blue;">公開';
-            else $list .= '<td style="color:red;">未公開';
+                $list .= '<td style="color:blue;">'. $result["check"];
+            else $list .= '<td style="color:red;">'. $result["check"];
             $list .= '<td>'. $result["date"];
             $list .= '<td>'. $result["name"];
             $list .= '<td>'. $result["price"];
@@ -73,8 +73,8 @@ $list = "";
         {
             $list .= '<tr>';
             if ($result["check"] == 1)
-                $list .= '<td style="color:blue;">完了';
-            else $list .= '<td style="color:red;">未了';
+                $list .= '<td style="color:blue;">'. $result["check"] ;
+            else $list .= '<td style="color:red;">'. $result["check"] ;
             $list .= '<td>'. $result["user"];
             $list .= '<td>'. $result["id"];
             $list .= '<td>'. $result["QRid"];
