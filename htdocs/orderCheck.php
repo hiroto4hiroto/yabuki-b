@@ -42,7 +42,7 @@ if (!isset($_SESSION['USER'])) {
                 $list .= '<td style="color:blue;">'. $result["price"] .'円';
             
             //15時前で前日であれば取り消し可能にする
-            if ($debug || date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) )
+            if ($debug || date("G") < $getclosetime && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) )
             {
                 $list .= '<td><input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
                 $list .= 'value="取消" style="width: 100%; height: 100%"></input>';
@@ -70,15 +70,14 @@ if (!isset($_SESSION['USER'])) {
 </head>
  
 <script language="javascript" type="text/javascript">
-    function OnButtonClick(name) {
+    function OnButtonClick(id) {
         var res = confirm('予約を取り消しますか？');
         if(res) {
             //予約可能時間前か
-            if (new Date().getHours() < 15){
-                window.location.href =　location.href + '?order=' + name;
+            if (new Date().getHours() < <?php echo $getclosetime; ?>){
+                window.location.href = location.href + '?cancel=' + id;
             }else{
-                alert('取り消し可能時間を過ぎたため予約できませんでした。');
-                window.location.href =　location.href + '?order=' + name;
+                window.location.href = 'http://yabukib.pm-chiba.tech/index.php?message=取り消し可能時間を過ぎたため予約できませんでした。';
             }
         }
         else {
@@ -90,9 +89,9 @@ if (!isset($_SESSION['USER'])) {
 <body>
 <p>弁当事前予約サービス</p>
 <h1>予約確認</h1>
-<p>あなたの予約した弁当はこちらになります。</p>
+<p>あなたの予約した弁当は下記の通りです。</p>
 <?php echo $list; ?>
 <hr>
-<p>取り消し可能時間は前日の15:00までとなります。</p>
+<p>取り消し可能時間は前日の<?php echo $getclosetime; ?>:00までとなります。</p>
 </body>
 </html>
