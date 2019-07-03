@@ -101,6 +101,15 @@ $list = "";
     <input class="btn-sticky" type="submit" name="runsql" value="画面の更新 and SQLを実行">
 </form>
 <br>
+    <?php
+        echo $getdate .'<br>';
+    
+        if ($debug == 1) echo 'デバッグ状態<br>';
+        else echo '本番状態<br>';
+    
+        echo '<a herf="https://github.com/yabukilab/yabuki-b/blob/master/htdocs/database_conf.php">変更</a>';
+    ?>    
+<br>
     <?php echo $list; ?>
 <br>
 </body>
