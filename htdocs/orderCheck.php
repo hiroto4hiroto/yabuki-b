@@ -53,7 +53,7 @@ if (!isset($_SESSION['USER'])) {
             
         }
         $list .= '<tr><td colspan="3" style="border-style:none;">';
-        $list .= '<td style="width:20vw; color:red;">未了合計金額<br>'.$sum.'円';
+        $list .= '<td style="ecolor:red;">未了合計金額<br>'.$sum.'円';
         $list .= '</table>';
     }
     catch(PDOException $e) {
@@ -71,7 +71,7 @@ if (!isset($_SESSION['USER'])) {
  
 <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
-        var res = confirm('「' + name + '」の予約を取り消しますか？');
+        var res = confirm('予約を取り消しますか？');
         if(res) {
             //予約可能時間前か
             if (new Date().getHours() < 15){
