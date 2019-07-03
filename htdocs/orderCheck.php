@@ -33,7 +33,7 @@ if (!isset($_SESSION['USER'])) {
             if ($result["check"] == 0)
             {
                 $list .= '<td style="color:red;">未了';
-                $sum += 2;//$result["price"];
+                $sum += $result["price"];
             }  
             else $list .= '<td style="color:blue;">完了';
             $list .= '<td>'. $result["date"];
@@ -47,7 +47,7 @@ if (!isset($_SESSION['USER'])) {
             
             $list .= '<td'. $plusClass .'>';
             //15時前で前日であれば取り消し可能にする
-            if ($debug || (date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) )
+            if ($debug || date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) )
             {
                 $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
                 $list .= 'value="取消" style="width: 100%; height: 100%"></input>';
