@@ -24,23 +24,38 @@ if (!isset($_SESSION['USER'])) {
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 10vw;">受取';
         $list .= '<td style="width: 15vw;">日付';
-        $list .= '<td style="width: 35vw;">弁当名';
-        $list .= '<td style="width: 20vw;">値段';
+        $list .= '<td style="width: 30vw;">弁当名';
+        $list .= '<td style="width: 15vw;">値段';
+        $list .= '<td style="width: 10vw;">取消';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $list .= '<tr>';
             if ($result["check"] == 0)
             {
                 $list .= '<td style="color:red;">未了';
-                                $sum += $result["price"];
+               　$sum += $result["price"];
             }  
-            else 
-            {
-                $list .= '<td style="color:blue;">完了';
-            }
+            else $list .= '<td style="color:blue;">完了';
             $list .= '<td>'. $result["date"];
             $list .= '<td>'. $result["name"];
-            $list .= '<td>'. $result["price"] .'円';
+            if ($result["check"] == 0)
+                $list .= '<td style="color:red;">'. $result["price"] .'円';
+            else
+                $list .= '<td style="color:blue;">'. $result["price"] .'円';
+            
+            $list .= '<td>'. $result["name"];
+            
+            $list .= '<td'. $plusClass .'>';
+            //15時前で前日であれば取り消し可能にする
+            if ($debug || (date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) )
+            {
+                $list .= '<input type="button" class="btn-sticky" onclick="OnButtonClick(\''.$result["id"].'\');" ';
+                $list .= 'value="取消" style="width: 100%; height: 100%"></input>';
+            } else {
+                $list .= '<input type="button" class="btn-sticky" disabled);" ';
+                $list .= 'value="不可" style="width: 100%; height: 100%"></input>';
+            }
+            
         }
         $list .= '<tr><td colspan="3" style="border-style:none;">';
         $list .= '<td style="color:red;">未了合計金額<br>'.$sum.'円';
@@ -61,18 +76,18 @@ if (!isset($_SESSION['USER'])) {
  
 <script language="javascript" type="text/javascript">
     function OnButtonClick(name) {
-        var res = confirm('「' + name + '」を予約しますか？');
+        var res = confirm('「' + name + '」の予約を取り消しますか？');
         if(res) {
             //予約可能時間前か
             if (new Date().getHours() < 15){
                 window.location.href =　location.href + '?order=' + name;
             }else{
-                alert('予約可能時間を過ぎたため予約できませんでした。');
+                alert('取り消し可能時間を過ぎたため予約できませんでした。');
                 window.location.href =　location.href + '?order=' + name;
             }
         }
         else {
-            alert('予約はされませんでした。');
+            alert('取り消しはされませんでした。');
         }
     }
 </script>
@@ -83,6 +98,6 @@ if (!isset($_SESSION['USER'])) {
 <p>あなたの予約した弁当はこちらになります。</p>
 <?php echo $list; ?>
 <hr>
-<p>キャンセル可能時間は前日の15:00までとなります．</p>
+<p>取り消し可能時間は前日の15:00までとなります。</p>
 </body>
 </html>
