@@ -52,7 +52,7 @@ if (!isset($_SESSION['USER'])) {
             }
             
         }
-        $list .= '<tr><td colspan="3" style="border-style:none;">';
+        $list .= '</table><table><tr><td style="border-style:none;">';
         $list .= '<td style="color:red;">未了合計金額<br>'.$sum.'円';
         $list .= '</table>';
     }
