@@ -75,7 +75,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             //15時前で前日で在庫があれば注文可能にする
             $canOrder = 0;
             if ($debug || (date("G") < $getclosetime &&
-                date( "Y-m-d", strtotime( $getdate ." + 1 day" )) < $result["date"] &&
+                strtotime($getdate) < strtotime($result["date"]) &&
                 $result["stocks"] > 0)
             )
                $canOrder = 1;
