@@ -102,12 +102,12 @@ $list = "";
 </form>
 <br>
     <?php
-        echo $getdate .'<br>';
+        echo $getdate .'　｜';
     
-        if ($debug == 1) echo 'デバッグ状態<br>';
-        else echo '本番状態<br>';
+        if ($debug == 1) echo 'デバッグ状態　｜';
+        else echo '本番状態　｜';
     
-        echo '<a herf="https://github.com/yabukilab/yabuki-b/blob/master/htdocs/database_conf.php">変更</a>';
+        echo '<a href="https://github.com/yabukilab/yabuki-b/blob/master/htdocs/database_conf.php">変更</a>';
     ?>    
 <br>
     <?php echo $list; ?>
