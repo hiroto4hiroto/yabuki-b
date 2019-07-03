@@ -26,7 +26,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             $resultCheckStock = $prepare->fetch(PDO::FETCH_ASSOC);
             if ( $resultCheckStock['stocks'] <= 0 && 
                     (
-                        date("G") >= 1 || strtotime($result["date"]) >= strtotime(date( "Y-m-d", strtotime($getdate ." + 1 day")) )
+                        date("G") >= 17 || strtotime($result["date"]) >= strtotime(date( "Y-m-d", strtotime($getdate ." + 1 day")) )
                     )
                ){
                 //トップページに移動
