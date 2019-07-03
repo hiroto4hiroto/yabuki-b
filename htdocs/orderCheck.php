@@ -53,7 +53,7 @@ if (!isset($_SESSION['USER'])) {
             
         }
         $list .= '</table><table><tr><td style="border-style:none;">';
-        $list .= '<td style="color:red;">未了合計金額<br>'.$sum.'円';
+        $list .= '<td style="width:30vw; color:red;">未了合計金額<br>'.$sum.'円';
         $list .= '</table>';
     }
     catch(PDOException $e) {
