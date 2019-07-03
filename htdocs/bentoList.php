@@ -19,14 +19,18 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         
         //注文を受けたら
         if (isset($_GET['order'])) {
-            //在庫があるか確認
+            //在庫がない、15時以降、日付が明日でない　場合は注文できない
             $sql = "SELECT * FROM bentotable WHERE id = '".$_GET['order']."' limit 1;";
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $resultCheckStock = $prepare->fetch(PDO::FETCH_ASSOC);
-            if ($resultCheckStock['stocks'] <= 0){
+            if ( $resultCheckStock['stocks'] <= 0 && 
+                    (
+                        $debug == 0 || date("G") >= 15 && strtotime($result["date"]) >= strtotime(date( "Y-m-d", strtotime($getdate ." + 1 day")) )
+                    )
+               ){
                 //トップページに移動
-                header('Location: index.php?message=「'. $resultCheckStock['name'] .'」は品切れのため注文できませんでした。');
+                header('Location: index.php?message=「'. $resultCheckStock['name'] .'」は品切れや予約時間外等の理由により注文できませんでした。');
                 exit;
             }
             //既に注文しているか確認
