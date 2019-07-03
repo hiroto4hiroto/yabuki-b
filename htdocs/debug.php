@@ -107,7 +107,7 @@ $list = "";
         if ($debug == 1) echo 'デバッグ状態　｜';
         else echo '本番状態　｜';
     
-        echo '<a href="https://github.com/yabukilab/yabuki-b/blob/master/htdocs/database_conf.php">変更</a>';
+        echo '<a href="https://github.com/yabukilab/yabuki-b/blob/master/htdocs/database_conf.php">変更</a><br>';
     ?>    
 <br>
     <?php echo $list; ?>
