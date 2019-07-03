@@ -25,7 +25,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             $prepare->execute();
             $resultCheckStock = $prepare->fetch(PDO::FETCH_ASSOC);
             if ( $resultCheckStock['stocks'] <= 0 ||
-                date("G") >= 15 ||
+                date("G") >= $getclosetime ||
                 strtotime($result["date"]) >= strtotime(date( "Y-m-d", strtotime($getdate ." + 1 day")) )
                ){
                 //トップページに移動
@@ -74,7 +74,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         {
             //15時前で前日で在庫があれば注文可能にする
             $canOrder = 0;
-            if ($debug || (date("G") < 15 && $result["date"] <= date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) && $result["stocks"] > 0) )
+            if ($debug || (date("G") < $getclosetime && $result["date"] <= date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) && $result["stocks"] > 0) )
                 $canOrder = 1;
 
             $plusStyle = '';
@@ -128,7 +128,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             var res = confirm('予約を確定しますか？');
             if(res) {
                 //予約可能時間前か
-                if (<?php echo $isDebug; ?> || new Date().getHours() < 15){
+                if (<?php echo $isDebug; ?> || new Date().getHours() < <?php echo $getclosetime; ?>){
                     window.location.href =　location.href + '?order=' + name;
                 }else{
                     alert('予約可能時間を過ぎたため予約できませんでした。');
@@ -146,7 +146,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
 <body <?php if (isset($_SESSION['VENDER'])) echo 'class="vender"' ?>
 <p>弁当事前予約サービス</p>
 <h1>弁当一覧と予約</h1>
-<p>予約は前日の15:00まで可能です。</p>
+<p>予約は前日の<?php echo $getclosetime; ?>:00まで可能です。</p>
 <?php echo $list; ?>
     
 </body>
