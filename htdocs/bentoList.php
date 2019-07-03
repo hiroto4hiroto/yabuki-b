@@ -24,10 +24,9 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $resultCheckStock = $prepare->fetch(PDO::FETCH_ASSOC);
-            if ( $resultCheckStock['stocks'] <= 0 && 
-                    (
-                        date("G") >= 17 || strtotime($result["date"]) >= strtotime(date( "Y-m-d", strtotime($getdate ." + 1 day")) )
-                    )
+            if ( $resultCheckStock['stocks'] <= 0 ||
+                date("G") >= 15 ||
+                strtotime($result["date"]) >= strtotime(date( "Y-m-d", strtotime($getdate ." + 1 day")) )
                ){
                 //トップページに移動
                 header('Location: index.php?message=「'. $resultCheckStock['name'] .'」は品切れや予約時間外等の理由により注文できませんでした。');
@@ -75,7 +74,7 @@ if (isset($_SESSION['VENDER'])) $isVENDER = 'true';
         {
             //15時前で前日で在庫があれば注文可能にする
             $canOrder = 0;
-            if ($debug || (date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) && $result["stocks"] > 0) )
+            if ($debug || (date("G") < 15 && $result["date"] <= date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) && $result["stocks"] > 0) )
                 $canOrder = 1;
 
             $plusStyle = '';
