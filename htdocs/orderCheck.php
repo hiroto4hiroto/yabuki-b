@@ -41,8 +41,6 @@ if (!isset($_SESSION['USER'])) {
             else
                 $list .= '<td style="color:blue;">'. $result["price"] .'円';
             
-            $list .= '<td>'. $result["name"];
-            
             //15時前で前日であれば取り消し可能にする
             if ($debug || date("G") < 15 && $result["date"] == date( "Y-m-d", strtotime( $getdate ." + 1 day" ) ) )
             {
