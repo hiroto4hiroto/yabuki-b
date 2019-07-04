@@ -31,7 +31,7 @@ if (isset($_GET['cansel'])) {
     $result->execute();
     //弁当の在庫を増やす
     $db = new PDO($dsn, $dbUser, $dbPass);
-    $sql = "UPDATE `bentotable` SET stocks = stocks + 1 WHERE id = ". $_GET['cansel']."';";
+    $sql = "UPDATE `bentotable` SET stocks = stocks + 1 WHERE id = '". $_GET['cansel']."';";
     $result = $db->prepare($sql);
     $result->execute();
 
