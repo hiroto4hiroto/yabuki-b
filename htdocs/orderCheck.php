@@ -43,7 +43,7 @@ if (isset($_GET['cansel'])) {
         //予約一覧作成
         //SQL作成・実行
         $sql = "SELECT order.check, bento.date, bento.name, bento.price, bento.id FROM ordertable as `order` ";
-        $sql .= "LEFT OUTER JOIN bentotable as `bento` ON order.id = bento.id WHERE user = ". $_SESSION['USER'] .' ORTER BY `date`;
+        $sql .= "LEFT OUTER JOIN bentotable as `bento` ON order.id = bento.id WHERE user = ". $_SESSION['USER'] .' ORTER BY `date`;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
