@@ -106,11 +106,17 @@ $list = "";
     
         if ($debug == 1) echo 'デバッグ状態　｜';
         else echo '本番状態　｜';
-    
+        
         echo '<a href="https://github.com/yabukilab/yabuki-b/blob/master/htdocs/database_conf.php">変更</a><br>';
     ?>    
-<br>
+    <br>
     <?php echo $list; ?>
-<br>
+    <br>
+    //更新<br>
+    UPDATE テーブル名 SET price = 400 WHERE name = 'B弁当';<br>
+    //追加<br>
+    INSERT INTO `ordertable` (`check`, `user`, `id`, `QRid`) VALUES (0, '1742120', 1, 'hogeeee');<br>
+    //削除<br>
+    DELETE FROM `テーブル名` WHERE name = 'B弁当';<br>
 </body>
 </html>
