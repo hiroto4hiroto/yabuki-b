@@ -9,11 +9,41 @@ if (!isset($_SESSION['USER'])) {
     try {
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
-        
+
+//取消を受けたら
+if (isset($_GET['cansel'])) {
+    //15時以降、日付が明日でない　場合は取消できない
+    $sql = "SELECT * FROM `ordertable` WHERE id = '".$_GET['cansel']."' limit 1;";
+    $prepare = $db->prepare($sql);
+    $prepare->execute();
+    $resultCheckStock = $prepare->fetch(PDO::FETCH_ASSOC);
+    if (date("G") >= $getclosetime ||
+        strtotime($result["date"]) >= strtotime(date( "Y-m-d", strtotime($getdate ." + 1 day")) )
+       ){
+        //トップページに移動
+        header('Location: index.php?message=取消時間外等の理由により取り消しできませんでした。');
+        exit;
+    }
+    
+    //注文リストを一件削除
+    $sql = "DELETE FROM `ordertable` WHERE id = '". $_GET['cansel'] ."' limit 1;";
+    $result = $db->prepare($sql);
+    $result->execute();
+    //弁当の在庫を増やす
+    $db = new PDO($dsn, $dbUser, $dbPass);
+    $sql = "UPDATE `bentotable` SET stocks = stocks + 1 WHERE id = ". $_GET['cansel']."';";
+    $result = $db->prepare($sql);
+    $result->execute();
+
+    //トップページに移動
+    header('Location: index.php?message=1件の予約を取り消しました。');
+    exit;
+}
+
         //予約一覧作成
         //SQL作成・実行
         $sql = "SELECT order.check, bento.date, bento.name, bento.price, bento.id FROM ordertable as `order` ";
-        $sql .= "LEFT OUTER JOIN bentotable as `bento` ON order.id = bento.id WHERE user = ". $_SESSION['USER'];
+        $sql .= "LEFT OUTER JOIN bentotable as `bento` ON order.id = bento.id WHERE user = ". $_SESSION['USER'] .' ORTER BY `date`;
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
