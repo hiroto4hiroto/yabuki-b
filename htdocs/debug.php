@@ -102,7 +102,7 @@ $list = "";
 </form>
     <br>状態<br>
     <?php
-        echo $getclosetime .'　｜'.$getdate .'　｜';
+        echo $getdate .'　｜'.$getclosetime .'時まで予約・取消可能　｜';
         if ($debug == 1) echo 'デバッグ状態　｜';
         else echo '本番状態　｜';    
         echo '<a href="https://github.com/yabukilab/yabuki-b/blob/master/htdocs/database_conf.php">変更</a><br>';
