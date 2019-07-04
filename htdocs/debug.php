@@ -100,21 +100,19 @@ $list = "";
     <input type="text" id="sqltext" name="sqltext">
     <input class="btn-sticky" type="submit" name="runsql" value="画面の更新 and SQLを実行">
 </form>
-<br>
+    <br>状態<br>
     <?php
-        echo $getdate .'　｜';
-    
+        echo $getclosetime .'　｜'.$getdate .'　｜';
         if ($debug == 1) echo 'デバッグ状態　｜';
-        else echo '本番状態　｜';
-        
+        else echo '本番状態　｜';    
         echo '<a href="https://github.com/yabukilab/yabuki-b/blob/master/htdocs/database_conf.php">変更</a><br>';
     ?>    
     <br>
     <?php echo $list; ?>
     <br>
-    //更新<br>
+    //更新の例<br>
     UPDATE テーブル名 SET price = 400 WHERE name = 'B弁当';<br>
-    //追加<br>
+    //追加の例<br>
     INSERT INTO `ordertable` (`check`, `user`, `id`, `QRid`) VALUES (0, '1742120', 1, 'hogeeee');<br>
     //削除<br>
     DELETE FROM `テーブル名` WHERE name = 'B弁当';<br>
