@@ -105,7 +105,7 @@ if (isset($_GET['cansel'])) {
         if(res) {
             //予約可能時間前か
             if (new Date().getHours() < <?php echo $getclosetime; ?>){
-                window.location.href = location.href + '?cancel=' + id;
+                window.location.href = location.href + '?cansel=' + id;
             }else{
                 window.location.href = 'http://yabukib.pm-chiba.tech/index.php?message=取り消し可能時間を過ぎたため予約できませんでした。';
             }
