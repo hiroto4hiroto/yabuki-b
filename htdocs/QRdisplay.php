@@ -65,11 +65,11 @@ if (!isset($_SESSION['USER'])) {
 	
 <script type="text/javascript">
 	
-	try {
-		document.getElementById("QRview").innerHTML =
+	if (<?php echo $uuid; ?> != null){
+	    	document.getElementById("QRview").innerHTML =
 			'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';
-	}
-	catch (e) {
+	    }
+	else{
 		document.getElementById("QRview").innerHTML = '本日受取可能な弁当はありません';
 	}
 
