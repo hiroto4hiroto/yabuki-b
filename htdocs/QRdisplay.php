@@ -54,7 +54,7 @@ if (!isset($_SESSION['USER'])) {
 <br>
 
 <div id="QRview"></div>
-<?php $list; ?>
+<?php echo $list; ?>
 
 </body>
 <script type="text/javascript">
