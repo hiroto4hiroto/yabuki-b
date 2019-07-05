@@ -43,6 +43,6 @@ if (!isset($_SESSION['USER'])) {
 </body>
 <script type="text/javascript">
 	document.getElementById("QRview").innerHTML =
-		'<img src="https://chart.apis.google.com/chart?chs=256x256&cht=qr&chl=<?php echo $result["QRid"];?>" width="80%">';
+		'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $result["QRid"];?>" width="80%">';
 </script>
 </html>
