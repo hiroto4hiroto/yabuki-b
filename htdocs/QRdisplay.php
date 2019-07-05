@@ -35,7 +35,7 @@ if (!isset($_SESSION['USER'])) {
         $list .= '<tr><td colspan="2" style="color:red; 50vw;">未了合計金額<br>'.$sum.'円';
         $list .= '</table>';
 	    
-	if ($uuid == '')$list = '<p>受取可能な弁当はありません。</p>';
+	if ($uuid == '')$list = '';
 	
 	//QRコード表示
 	$viewQR = '<p>受取可能な弁当はありません。</p>';
