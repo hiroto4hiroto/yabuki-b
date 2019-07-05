@@ -36,7 +36,15 @@ if (!isset($_SESSION['USER'])) {
         $list .= '</table>';
 	    
 	if ($uuid == '')$list = '<p>受取可能な弁当はありません。</p>';
-		
+	
+	//QRコード表示
+	$viewQR = '<p>受取可能な弁当はありません。</p>';
+	if ($uuid != ''){
+		$viewQR = '<div id="QRview"></div>';
+		$viewQR .= '<script type="text/javascript">';
+		$viewQR .= 'document.getElementById("QRview").innerHTML = ';
+		$viewQR .= '<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';
+	}
         
     } catch(PDOException $e) {
         echo $e->getMessage();
@@ -59,17 +67,9 @@ if (!isset($_SESSION['USER'])) {
 <h1>QRコード表示</h1>
 <br>
 
-<div id="QRview"></div>
+<?php echo $viewQR; ?>
 <?php echo $list; ?>
 <br>
 </body>
 
-	
-	
-<script type="text/javascript">
-	var uuid = <?php echo $uuid;?>;
-	document.getElementById("QRview").innerHTML = 
-		'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=' + uuid + '" width="80%">';
-	if (uuid == '') document.getElementById("QRview").innerHTML = '';
-</script>
 </html>
