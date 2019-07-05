@@ -64,7 +64,7 @@ if (!isset($_SESSION['USER'])) {
 	
 	
 <script type="text/javascript">
-	if (<?php echo $uuid;?> != null) {
+	if (<?php echo $uuid;?> == null) {
 		document.getElementById("QRview").innerHTML =
 			'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';	
 	}
