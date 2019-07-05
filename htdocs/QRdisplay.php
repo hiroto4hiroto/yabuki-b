@@ -64,11 +64,12 @@ if (!isset($_SESSION['USER'])) {
 	
 	
 <script type="text/javascript">
-	if (<?php echo $uuid;?> == null) {
+	
+	try {
 		document.getElementById("QRview").innerHTML =
-			'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';	
+			'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';
 	}
-	else{
+	catch (e) {
 		document.getElementById("QRview").innerHTML = '本日受取可能な弁当はありません';
 	}
 
