@@ -37,7 +37,7 @@ if(!empty($_GET['message']))
     echo "<p style='color:red;'>". $_GET['message'] ."</p>";
 ?>
 
-<input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="弁当閲覧・予約" style="height: calc(var(--fontRatio) * 7.5);"><br>
+<input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="弁当一覧・予約" style="height: calc(var(--fontRatio) * 7.5);"><br>
 <input type="button" class="btn-sticky" onclick="location.href='./orderCheck.php'" value="予約確認・取消"><br>
 <input type="button" class="btn-sticky" onclick="location.href='./QRdisplay.php'" value="QRコード表示" style="height: calc(var(--fontRatio) * 7.5);"><br>
 <br>
