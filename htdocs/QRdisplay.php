@@ -38,7 +38,7 @@ if (!isset($_SESSION['USER'])) {
 <h1>QRコード表示</h1>
 <br>
 
-<div id="QRview" style="height:50vh;"></div>
+<div id="QRview"></div>
 
 </body>
 <script type="text/javascript">
