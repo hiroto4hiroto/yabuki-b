@@ -48,6 +48,6 @@ if (!isset($_SESSION['USER'])) {
 <h1>QRコード表示</h1>
 <br>
 <?php echo $QRimage; ?>
-<div id="QRview"></div>
+
 </body>
 </html>
