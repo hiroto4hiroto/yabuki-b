@@ -34,7 +34,7 @@ if (!isset($_SESSION['USER'])) {
     <link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript">
 		document.getElementById("QRview").innerHTML =
-		'<img src="https://chart.apis.google.com/chart?chs=' + (string)(window.innerHeight * 0.8) + 'x' + (string)(window.innerHeight * 0.8) + '&cht=qr&chl="<?php echo $result["QRid"];?>">';
+			'<img src="https://chart.apis.google.com/chart?chs=' + (string)(window.innerHeight * 0.8) + 'x' + (string)(window.innerHeight * 0.8) + '&cht=qr&chl="<?php echo $result["QRid"];?>">';
 	</script>
 </head>
  
@@ -43,6 +43,6 @@ if (!isset($_SESSION['USER'])) {
 <h1>QRコード表示</h1>
 <br>
 <?php echo $QRimage; ?>
-<div id="QRview"></div>
+<div id="QRview" style="height:50vh;"></div>
 </body>
 </html>
