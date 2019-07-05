@@ -34,6 +34,9 @@ if (!isset($_SESSION['USER'])) {
         }
         $list .= '<tr><td colspan="2" style="color:red; 50vw;">未了合計金額<br>'.$sum.'円';
         $list .= '</table>';
+	    
+	if ($uuid == '')$list = '<p>受取可能な弁当はありません。</p>';
+		
         
     } catch(PDOException $e) {
         echo $e->getMessage();
@@ -64,14 +67,7 @@ if (!isset($_SESSION['USER'])) {
 	
 	
 <script type="text/javascript">
-	
-	if (<?php echo $uuid;?> != ''){
-	    	document.getElementById("QRview").innerHTML =
-			'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';
-	    }
-	else{
-		document.getElementById("QRview").innerHTML = '本日受取可能な弁当はありません';
-	}
-
+  	document.getElementById("QRview").innerHTML =
+		'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';
 </script>
 </html>
