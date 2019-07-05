@@ -31,10 +31,6 @@ if (!isset($_SESSION['USER'])) {
     <meta charset="utf-8"/>
     <title>弁当事前予約サービス トップページ</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-	<script type="text/javascript">
-		document.getElementById("QRview").innerHTML = 'ほげほげ';
-		//document.getElementById("QRview").innerHTML = '<img src="https://chart.apis.google.com/chart?chs=' + (string)(window.innerHeight * 0.8) + 'x' + (string)(window.innerHeight * 0.8) + '&cht=qr&chl=<?php echo $result["QRid"];?>>';
-	</script>
 </head>
  
 <body>
@@ -43,5 +39,9 @@ if (!isset($_SESSION['USER'])) {
 <br>
 
 <div id="QRview" style="height:50vh;"></div>
+		<script type="text/javascript">
+		document.getElementById("QRview").innerHTML = 'ほげほげ';
+		//document.getElementById("QRview").innerHTML = '<img src="https://chart.apis.google.com/chart?chs=' + (string)(window.innerHeight * 0.8) + 'x' + (string)(window.innerHeight * 0.8) + '&cht=qr&chl=<?php echo $result["QRid"];?>>';
+	</script>
 </body>
 </html>
