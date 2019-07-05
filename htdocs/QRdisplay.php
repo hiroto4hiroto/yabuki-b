@@ -42,7 +42,7 @@ if (!isset($_SESSION['USER'])) {
 
 </body>
 <script type="text/javascript">
-	var qrHeight = String(Math.round(512.5));
+	var qrHeight = String(Math.round(window.innerWidth));
 	document.getElementById("QRview").innerHTML =
 		'<img src="https://chart.apis.google.com/chart?chs=' + 
 		qrHeight + 'x' + qrHeight +
