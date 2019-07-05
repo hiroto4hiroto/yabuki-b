@@ -29,10 +29,10 @@ if (!isset($_SESSION['USER'])) {
 	    $uuid = $result["QRid"];
             $list .= '<tr>';
             $list .= '<td>'. $result["name"];
-	    $list .= '<td>'. $result["price"];
+	    $list .= '<td>'. $result["price"] .'円';
 	    $sum += $result["price"];
         }
-        $list .= '<tr><td style="color:red; 50vw;">未了合計金額<br>'.$sum.'円';
+        $list .= '<tr><td colspan="" style="color:red; 50vw;">未了合計金額<br>'.$sum.'円';
         $list .= '</table>';
         
     } catch(PDOException $e) {
