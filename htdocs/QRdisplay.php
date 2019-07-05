@@ -22,17 +22,15 @@ if (!isset($_SESSION['USER'])) {
         $sum = 0;
         $list = '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $list .= '<td style="width: 30vw;">弁当名';
-	$list .= '<td style="width: 50vw;">UUID';
+        $list .= '<td style="width: 50vw;">弁当名';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
-		$uuid = $result["QRid"];
+	    $uuid = $result["QRid"];
             $list .= '<tr>';
             $list .= '<td>'. $result["name"];
-	    $list .= '<td>'. $result["QRid"];
+	    $sum += $result["price"];
         }
-        $list .= '<tr><td colspan="3" style="border-style:none;">';
-        $list .= '<td style="color:red;">未了合計金額<br>'.$sum.'円';
+        $list .= '<tr><td style="color:red; 50vw;">未了合計金額<br>'.$sum.'円';
         $list .= '</table>';
         
     } catch(PDOException $e) {
