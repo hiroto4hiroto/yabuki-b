@@ -33,18 +33,14 @@ if (!isset($_SESSION['USER'])) {
     <title>弁当事前予約サービス トップページ</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript">
-getWindowSize();
-
-//ウィンドウサイズを取得する
-function getWindowSize() {
 	var sW,sH,s;
 	sW = window.innerWidth;
 	sH = window.innerHeight;
 
 	s = "横幅 = " + sW + " / 高さ = " + sH;
  
-	document.getElementById("QRview").innerHTML = '<img src="https://chart.apis.google.com/chart?chs=' + window.innerHeight * 0.8 + 'x' + window.innerHeight * 0.8 + '&cht=qr&chl="'<?php echo $result["QRid"];?> + '">';
-}
+	document.getElementById("QRview").innerHTML =
+		'<img src="https://chart.apis.google.com/chart?chs=' + (string)(window.innerHeight * 0.8) + 'x' + (string)(window.innerHeight * 0.8) + '&cht=qr&chl="<?php echo $result["QRid"];?>">';
 </head>
  
 <body>
