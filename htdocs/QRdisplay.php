@@ -67,8 +67,10 @@ if (!isset($_SESSION['USER'])) {
 	
 	
 <script type="text/javascript">
+	var uuid = <?php echo $uuid;?>;
+	if (<?php echo $uuid;?> != '') {
 	      	document.getElementById("QRview").innerHTML = 
-			'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';
-	if (<?php echo $uuid;?> == '') document.getElementById("QRview").innerHTML = '';
+			'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=' + uuid + '" width="80%">';
+	}
 </script>
 </html>
