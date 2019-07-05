@@ -23,11 +23,13 @@ if (!isset($_SESSION['USER'])) {
         $list = '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 50vw;">弁当名';
+	$list .= '<td style="width: 30vw;">値段';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
 	    $uuid = $result["QRid"];
             $list .= '<tr>';
             $list .= '<td>'. $result["name"];
+	    $list .= '<td>'. $result["price"];
 	    $sum += $result["price"];
         }
         $list .= '<tr><td style="color:red; 50vw;">未了合計金額<br>'.$sum.'円';
