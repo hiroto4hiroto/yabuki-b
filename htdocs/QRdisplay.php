@@ -32,15 +32,10 @@ if (!isset($_SESSION['USER'])) {
     <meta charset="utf-8"/>
     <title>弁当事前予約サービス トップページ</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script type="text/javascript">
-	var sW,sH,s;
-	sW = window.innerWidth;
-	sH = window.innerHeight;
-
-	s = "横幅 = " + sW + " / 高さ = " + sH;
- 
-	document.getElementById("QRview").innerHTML =
+	<script type="text/javascript">
+		document.getElementById("QRview").innerHTML =
 		'<img src="https://chart.apis.google.com/chart?chs=' + (string)(window.innerHeight * 0.8) + 'x' + (string)(window.innerHeight * 0.8) + '&cht=qr&chl="<?php echo $result["QRid"];?>">';
+	</script>
 </head>
  
 <body>
@@ -48,6 +43,6 @@ if (!isset($_SESSION['USER'])) {
 <h1>QRコード表示</h1>
 <br>
 <?php echo $QRimage; ?>
-
+<div id="QRview"></div>
 </body>
 </html>
