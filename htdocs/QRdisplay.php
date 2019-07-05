@@ -38,7 +38,9 @@ if (!isset($_SESSION['USER'])) {
         die();
     }
 ?>
- 
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +48,7 @@ if (!isset($_SESSION['USER'])) {
     <title>弁当事前予約サービス トップページ</title>
     <link rel="stylesheet" type="text/css" href="style.css">	
 </head>
- 
+
 <body>
 <p>弁当事前予約サービス</p>
 <h1>QRコード表示</h1>
@@ -54,8 +56,11 @@ if (!isset($_SESSION['USER'])) {
 
 <div id="QRview"></div>
 <?php echo $list; ?>
-
+<br>
 </body>
+
+	
+	
 <script type="text/javascript">
 	document.getElementById("QRview").innerHTML =
 		'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';
