@@ -63,8 +63,8 @@ if (!isset($_SESSION['VENDER'])) {
 <body class="vender">
 <p>弁当事前予約サービス</p>
 <h1>引き渡し操作</h1>
-<br>
 <form method="post" action="Vdelivery.php">
+<input type="button" class="btn-sticky" onclick="location.href='./index.php'" value="トップページ"><br>
     <table>
         <tr><td><label for="user">学生番号</label>
             <td><input id="user" type="text" name="user">
