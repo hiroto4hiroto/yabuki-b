@@ -64,7 +64,7 @@ if (!isset($_SESSION['VENDER'])) {
 <p>弁当事前予約サービス</p>
 <h1>引き渡し操作</h1>
 <form method="post" action="Vdelivery.php">
-<input type="button" class="btn-sticky" onclick="location.href='./index.php'" value="トップページ"><br><br>
+<input type="button" class="btn-sticky" onclick="location.href='./index.php'" value="トップページに戻る"><br><br>
     <table>
         <tr><td><label for="user">学生番号</label>
             <td><input id="user" type="text" name="user">
