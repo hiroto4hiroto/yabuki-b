@@ -13,7 +13,7 @@ if (!isset($_SESSION['USER'])) {
 //取消を受けたら
 if (isset($_GET['cansel'])) {
     //15時以降、日付が明日でない　場合は取消できない
-    $sql = "SELECT * FROM `ordertable` WHERE id = '".$_GET['cansel']."' limit 1;";
+    $sql = "SELECT * FROM `ordertable` WHERE id = ". (string)$_GET['cansel'] ." limit 1;";
     $prepare = $db->prepare($sql);
     $prepare->execute();
     $resultCheckStock = $prepare->fetch(PDO::FETCH_ASSOC);
@@ -26,12 +26,12 @@ if (isset($_GET['cansel'])) {
     }
     
     //注文リストを一件削除
-    $sql = "DELETE FROM `ordertable` WHERE id = '". $_GET['cansel'] ."' limit 1;";
+    $sql = "DELETE FROM `ordertable` WHERE id = ". (string)$_GET['cansel'] ." limit 1;";
     $result = $db->prepare($sql);
     $result->execute();
     //弁当の在庫を増やす
     $db = new PDO($dsn, $dbUser, $dbPass);
-    $sql = "UPDATE `bentotable` SET stocks = stocks + 1 WHERE id = '". $_GET['cansel']."';";
+    $sql = "UPDATE `bentotable` SET stocks = stocks + 1 WHERE id = ". (string)$_GET['cansel'];
     $result = $db->prepare($sql);
     $result->execute();
 
@@ -118,7 +118,7 @@ if (isset($_GET['cansel'])) {
     
 <body>
 <p>弁当事前予約サービス</p>
-<h1>予約確認</h1>
+<h1>予約確認・取消</h1>
 <p>あなたの予約した弁当は下記の通りです。</p>
 <?php echo $list; ?>
 <hr>
