@@ -18,9 +18,6 @@ if (!isset($_SESSION['USER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        //$QRimage = '<img src="https://chart.apis.google.com/chart?chs=150x150&cht=qr&chl='. $result['QRid'] .'">';
-	//$QRimage = '<div style="height:80vw; background-image:\'https://chart.apis.google.com/chart?chs=150x150&cht=qr&chl='. $result['QRid'] .'\; ">';
-	$QRimage = '<div style="height:80vw; background-image:\'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp\'; ">';
         
     } catch(PDOException $e) {
         echo $e->getMessage();
@@ -35,7 +32,7 @@ if (!isset($_SESSION['USER'])) {
     <title>弁当事前予約サービス トップページ</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 	<script type="text/javascript">
-		document.getElementById("QRview").innerHTML = '<img src="https://chart.apis.google.com/chart?chs=' + (string)(window.innerHeight * 0.8) + 'x' + (string)(window.innerHeight * 0.8) + '&cht=qr&chl="<?php echo $result["QRid"];?>">';
+		document.getElementById("QRview").innerHTML = '<img src="https://chart.apis.google.com/chart?chs=' + (string)(window.innerHeight * 0.8) + 'x' + (string)(window.innerHeight * 0.8) + '&cht=qr&chl=<?php echo $result["QRid"];?>>';
 	</script>
 </head>
  
