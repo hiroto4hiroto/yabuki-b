@@ -40,7 +40,7 @@ if (!isset($_SESSION['USER'])) {
 <p>弁当事前予約サービス</p>
 <h1>QRコード表示</h1>
 <br>
-<?php echo $QRimage; ?>
+
 <div id="QRview" style="height:50vh;"></div>
 </body>
 </html>
