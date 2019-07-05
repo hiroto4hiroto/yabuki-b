@@ -20,7 +20,7 @@ if (!isset($_SESSION['USER'])) {
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
         //$QRimage = '<img src="https://chart.apis.google.com/chart?chs=150x150&cht=qr&chl='. $result['QRid'] .'">';
 	//$QRimage = '<div style="height:80vw; background-image:\'https://chart.apis.google.com/chart?chs=150x150&cht=qr&chl='. $result['QRid'] .'\; ">';
-	$QRimage = '<div style="height:80vw; background-image:\'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png\'; ">';
+	$QRimage = '<div style="height:80vw; background-image:\'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp\'; ">';
         
     } catch(PDOException $e) {
         echo $e->getMessage();
