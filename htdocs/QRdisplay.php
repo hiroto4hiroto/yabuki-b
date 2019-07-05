@@ -33,12 +33,10 @@ if (!isset($_SESSION['USER'])) {
     <link rel="stylesheet" type="text/css" href="style.css">
 	
 		<script type="text/javascript">
-		var temp = '';
-		temp = '<img src="https://chart.apis.google.com/chart?chs=' +
-		    window.innerHeight * 0.8 + 'x' + window.innerHeight * 0.8 +
-		    '&cht=qr&chl=<?php echo $result["QRid"];?>>';
-
-		document.getElementById("QRview").innerHTML = temp;
+		document.getElementById("QRview").innerHTML = 
+			'<img src="https://chart.apis.google.com/chart?chs=' +
+			window.innerHeight * 0.8 + 'x' + window.innerHeight * 0.8 +
+			'&cht=qr&chl=<?php echo $result["QRid"];?>>';
 	</script>
 	
 </head>
