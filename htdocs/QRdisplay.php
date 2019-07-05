@@ -23,6 +23,7 @@ if (!isset($_SESSION['USER'])) {
         $list = '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 30vw;">弁当名';
+	$list .= '<td style="width: 50vw;">UUID';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
 		$uuid = $result["QRid"];
