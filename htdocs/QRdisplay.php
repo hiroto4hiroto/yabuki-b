@@ -42,10 +42,10 @@ if (!isset($_SESSION['USER'])) {
 
 </body>
 <script type="text/javascript">
-	var qrHeight = String(Math.round(window.innerWidth * 0.8));
+	var qrWidth = String(Math.round(window.innerWidth * 0.8));
 	document.getElementById("QRview").innerHTML =
 		'<img src="https://chart.apis.google.com/chart?chs=' + 
-		qrHeight + 'x' + qrHeight +
+		qrWidth + 'x' + qrWidth +
 		'&cht=qr&chl=<?php echo $result["QRid"];?>">';
 </script>
 </html>
