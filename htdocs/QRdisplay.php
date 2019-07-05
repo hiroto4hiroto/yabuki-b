@@ -18,7 +18,7 @@ if (!isset($_SESSION['USER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
-	$uuid = 'null';
+	$uuid = '';
         $sum = 0;
         $list = '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
@@ -65,7 +65,7 @@ if (!isset($_SESSION['USER'])) {
 	
 <script type="text/javascript">
 	
-	if (<?php echo $uuid; ?> != 'null'){
+	if (<?php echo $uuid; ?> != ''){
 	    	document.getElementById("QRview").innerHTML =
 			'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';
 	    }
