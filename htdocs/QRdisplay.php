@@ -18,7 +18,7 @@ if (!isset($_SESSION['USER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
-	$uuid = '';
+	$uuid = null;
         $sum = 0;
         $list = '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
@@ -64,7 +64,13 @@ if (!isset($_SESSION['USER'])) {
 	
 	
 <script type="text/javascript">
-	document.getElementById("QRview").innerHTML =
-		'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';
+	if (!<?php echo $uuid;?>) {
+		document.getElementById("QRview").innerHTML =
+			'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';	
+	}
+	else{
+		document.getElementById("QRview").innerHTML = '本日受取可能な弁当はありません';
+	}
+
 </script>
 </html>
