@@ -18,7 +18,8 @@ if (!isset($_SESSION['USER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         $result = $prepare->fetch(PDO::FETCH_ASSOC);
-        $QRimage = '<img src="https://chart.apis.google.com/chart?chs=150x150&cht=qr&chl='. $result['QRid'] .'">';
+        //$QRimage = '<img src="https://chart.apis.google.com/chart?chs=150x150&cht=qr&chl='. $result['QRid'] .'">';
+        $QRimage = '<div style="height:80vw; background-image:\'https://chart.apis.google.com/chart?chs=150x150&cht=qr&chl='. $result['QRid'] .'\'; ">';
         
     } catch(PDOException $e) {
         echo $e->getMessage();
