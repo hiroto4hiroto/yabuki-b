@@ -72,7 +72,7 @@
 <p style="color: red"><?php echo $message ?></p>
 <form method="post" action="login.php">
     <table>
-        <tr><td><label for="user">学生番号</label>
+        <tr><td><label for="user">番号</label>
             <td><input id="user" type="text" name="user">
         <tr><td><label for="password">パスワード</label>
             <td><input id="password" type="password" name="password">
