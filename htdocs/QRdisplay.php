@@ -18,12 +18,14 @@ if (!isset($_SESSION['USER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
+	$uuid = '';
         $sum = 0;
         $list = '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 30vw;">弁当名';
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
+		$uuid = $result["QRid"];
             $list .= '<tr>';
             $list .= '<td>'. $result["name"];
 	    $list .= '<td>'. $result["QRid"];
@@ -57,6 +59,6 @@ if (!isset($_SESSION['USER'])) {
 </body>
 <script type="text/javascript">
 	document.getElementById("QRview").innerHTML =
-		'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $result[0]["QRid"];?>" width="80%">';
+		'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';
 </script>
 </html>
