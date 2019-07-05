@@ -43,7 +43,8 @@ if (!isset($_SESSION['USER'])) {
 		$viewQR = '<div id="QRview"></div>';
 		$viewQR .= '<script type="text/javascript">';
 		$viewQR .= 'document.getElementById("QRview").innerHTML = ';
-		$viewQR .= '<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">';
+		$viewQR .= '<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl=<?php echo $uuid;?>" width="80%">;';
+		$viewQR .= '</script>';
 	}
         
     } catch(PDOException $e) {
