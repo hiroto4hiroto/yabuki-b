@@ -40,7 +40,8 @@ if (!isset($_SESSION['USER'])) {
 
 <div id="QRview" style="height:50vh;"></div>
 	<script type="text/javascript">
-		var temp = '<img src="https://chart.apis.google.com/chart?chs=' +
+		var temp = '';
+		temp = '<img src="https://chart.apis.google.com/chart?chs=' +
 		    (string)(window.innerHeight * 0.8) + 'x' + (string)(window.innerHeight * 0.8) +
 		    '&cht=qr&chl=<?php echo $result["QRid"];?>>';
 		temp = '<img src="https://chart.apis.google.com/chart?chs=' +
