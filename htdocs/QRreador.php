@@ -67,9 +67,17 @@ if (!isset($_SESSION['VENDER'])) {
     <body class="vender">
         <p>弁当事前予約サービス</p>
         <h1>引き渡し操作</h1>
+	<input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る"><br><br>
         <br>
-<label class="qrcode-text-btn">
-<input type=file accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-"1">
+	<label class="btn-sticky">
+	<input style="display:none;" value="QRコードを撮影&送信" type="file" accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-"1">
+	<table>
+        	<tr><td><label for="user">学生番号を入力</label>
+        	<td><input id="user" type="text" name="user">
+    </table>
+    <br>
+    <input class="btn-sticky" type="submit" name="delivery" value="引き渡し">
+</form>
 </label> 
 
 <script type="text/javascript" charset="utf-8">
