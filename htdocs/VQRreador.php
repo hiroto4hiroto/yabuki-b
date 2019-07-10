@@ -57,7 +57,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $list .= '<td style="width: 10vw;">学生番号';
                 $list .= '<td style="width: 20vw;">弁当名';
                 //$list .= '<td style="width: 35vw;">UUID';
-                foreach (fetchAll(PDO::FETCH_ASSOC) as $result)
+                foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
                 {
                     $list .= '<tr>';
                     $list .= '<td class="todayOrder" style="color:blue;">完了';
