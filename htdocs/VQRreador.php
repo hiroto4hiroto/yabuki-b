@@ -46,23 +46,29 @@ if (!isset($_SESSION['VENDER'])) {
             $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
             $prepare = $db->prepare($sql);
             $prepare->execute();
-            
-            $list .= '下記の注文を引き渡し完了にしました';
-            $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-            $list .= '<td style="width: 5vw;">受取';
-            $list .= '<td style="width: 10vw;">日付';
-            $list .= '<td style="width: 10vw;">学生番号';
-            $list .= '<td style="width: 20vw;">弁当名';
-            //$list .= '<td style="width: 35vw;">UUID';
-            foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
+            //念のため、更新数が1以上か確認
+            if (mysqli_num_rows($prepare->fetchAll(PDO::FETCH_ASSOC)) > 0)
             {
-                $list .= '<tr>';
-                $list .= '<td class="todayOrder" style="color:blue;">完了';
-                $list .= '<td class="todayOrder">'. $result["date"];
-                $list .= '<td class="todayOrder">'. $result["user"];
-                $list .= '<td class="todayOrder">'. $result["name"];
+                $list .= '下記の注文を引き渡し完了にしました';
+                $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+                $list .= '<td style="width: 5vw;">受取';
+                $list .= '<td style="width: 10vw;">日付';
+                $list .= '<td style="width: 10vw;">学生番号';
+                $list .= '<td style="width: 20vw;">弁当名';
+                //$list .= '<td style="width: 35vw;">UUID';
+                foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
+                {
+                    $list .= '<tr>';
+                    $list .= '<td class="todayOrder" style="color:blue;">完了';
+                    $list .= '<td class="todayOrder">'. $result["date"];
+                    $list .= '<td class="todayOrder">'. $result["user"];
+                    $list .= '<td class="todayOrder">'. $result["name"];
+                }
+                $list .= '</table>';
             }
-            $list .= '</table>';
+            else {
+                $list .= '入力に対応する予約がありませんでした。<br>入力内容が正しいか確認してください。<br>';
+            }
         }
         
         
