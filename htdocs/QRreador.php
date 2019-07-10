@@ -10,11 +10,11 @@ if (!isset($_SESSION['VENDER'])) {
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         
-        if( !empty($_POST['delivery']) ){
+        if( !empty($_GET['QRid']) ){
             //予約一覧作成
             //SQL作成・実行
             $sql = 'UPDATE `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
-            $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
+            $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.QRid = "'. $_GET["QRid"] .'";';
             $prepare = $db->prepare($sql);
             $prepare->execute();
         }
@@ -82,7 +82,6 @@ function openQRCamera(node) {
         alert("QRコードを認識できませんでした。");
       } else {
 	//QR読み込み成功
-	alert("QRコードを認識できたよ！！！！！！！");
 	window.location.href =　location.href + '?QRid=' + res;
       }
     };
