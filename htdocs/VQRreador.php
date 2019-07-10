@@ -42,8 +42,8 @@ if (!isset($_SESSION['VENDER'])) {
             //SQL作成・実行
             $sql = "SELECT `order`.QRid as `QRid`, `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
             $sql .= " FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id";
-            $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
             $sql .= " WHERE `ordertable`.QRid = '". $QRid ."';";
+            $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
             $prepare = $db->prepare($sql);
             $prepare->execute();
             
