@@ -36,8 +36,11 @@ if(!empty($_GET['message']))
 <input type="button" class="btn-sticky" onclick="location.href='./Vupdate.php'" value="弁当情報の登録・更新" style="height: calc(var(--fontRatio) * 7.5);"><br>
 <input type="button" class="btn-sticky" onclick="location.href='./bentoList.php'" value="実際の弁当一覧を見る"><br>
 <input type="button" class="btn-sticky" onclick="location.href='./VorderCheck.php'" value="予約数の確認" style="height: calc(var(--fontRatio) * 7.5);"><br>
-<input type="button" class="btn-sticky" onclick="location.href='./Vdelivery.php'" value="引き渡し操作" style="height: calc(var(--fontRatio) * 7.5);"><br>
-<br>
+<input type="button" class="btn-sticky" onclick="location.href='./VQRreador.php'" value="引き渡し操作" style="height: calc(var(--fontRatio) * 7.5);"><br>
+<!--
+    <input type="button" class="btn-sticky" onclick="location.href='./Vdelivery.php'" value="引き渡し操作" style="height: calc(var(--fontRatio) * 7.5);"><br>
+-->
+    <br>
 <!--
     <input type="button" class="btn-sticky" onclick="location.href='./VPenalty.php'" value="ペナルティ操作"><br>
 -->
