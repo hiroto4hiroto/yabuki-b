@@ -60,6 +60,8 @@ if (!isset($_SESSION['VENDER'])) {
         <meta charset="utf-8" />
         <title>弁当事前予約サービス 引き渡し操作</title>
         <link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js">
+</script>
     </head>
 
     <body class="vender">
