@@ -66,6 +66,8 @@ if (!isset($_SESSION['VENDER'])) {
         <p>弁当事前予約サービス</p>
         <h1>引き渡し操作</h1>
         <br>
+	    
+	    <a id="barcode">バーコードリーダを起動</a>
 
 <script type="text/javascript" charset="utf-8"><!--
 (function() {
