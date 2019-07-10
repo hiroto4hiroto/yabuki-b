@@ -13,7 +13,7 @@ if (!isset($_SESSION['VENDER'])) {
 	//引き渡し処理
         $isCheck = 0;
         $QRid = "";
-        if( !empty($_GET['QRid']) || !isset($_POST['delivery']) ){
+        if( !empty($_GET['QRid']) || isset($_POST['delivery']) ){
             $isCheck = 1;
 
             //引き渡し完了に更新
