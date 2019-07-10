@@ -48,7 +48,7 @@ if (!isset($_SESSION['VENDER'])) {
 	    $rowsCheck = $prepare->execute();
 		
             //更新数が1以上か確認
-            if ($rowsCheck !== null)
+            if (!$rowsCheck === null)
             {
                 $list .= '下記の注文を引き渡し完了にしました';
                 $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
