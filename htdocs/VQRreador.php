@@ -126,6 +126,9 @@ if (!isset($_SESSION['VENDER'])) {
     </table>
     </form>
     </label>
+	    
+	    <label class="btn-sticky" style="height: calc(var(--fontRatio) * 7.5);"><br>QRコードを撮影&引渡<br>
+                    <input style="display:none;" type="file" accept="image/*" capture="environment" onchange="openQRCamera(this);" /><br>
 
     <script type="text/javascript" charset="utf-8">
         function openQRCamera(node) {
