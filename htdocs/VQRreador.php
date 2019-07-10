@@ -24,18 +24,17 @@ if (!isset($_SESSION['VENDER'])) {
                 $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
             $prepare = $db->prepare($sql);
             $prepare->execute();
-
             $db = new PDO($dsn, $dbUser, $dbPass);
-            //引き渡し完了に更新
-            $sql = 'SELECT QRid FROM `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
-            if (!empty($_GET['QRid']) )
-                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.QRid = "'. $_GET["QRid"] .'" limit 1;';
-            else
+            
+            //表示するレコードのQRidを設定
+            if (!empty($_GET['QRid']) ) $QRid = $_GET['QRid'];
+            else{
+                $sql = 'SELECT QRid FROM `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
                 $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'" limit 1;';
-            $prepare = $db->prepare($sql);
-            $prepare->execute();
-
-            $QRid = $prepare->fetch(PDO::FETCH_ASSOC);
+                $prepare = $db->prepare($sql);
+                $prepare->execute();
+                $QRid = $prepare->fetch(PDO::FETCH_ASSOC);
+            }
         }
 	
 	    if ($isCheck){
@@ -44,7 +43,7 @@ if (!isset($_SESSION['VENDER'])) {
             $sql = "SELECT `order`.QRid as `QRid`, `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
             $sql .= " FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id";
             $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
-            $sql .= " WHERE `ordertable`.QRid = '". $_GET["QRid"] ."';";
+            $sql .= " WHERE `ordertable`.QRid = '". $QRid ."';";
             $prepare = $db->prepare($sql);
             $prepare->execute();
             
@@ -57,16 +56,11 @@ if (!isset($_SESSION['VENDER'])) {
             //$list .= '<td style="width: 35vw;">UUID';
             foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
             {
-                $plusClass = '';
-                if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
-
                 $list .= '<tr>';
-                if ($result["check"] == 1)
-                    $list .= '<td'. $plusClass .' style="color:blue;">完了';
-                else $list .= '<td'. $plusClass .' style="color:red;">未了';
-                $list .= '<td'. $plusClass .'>'. $result["date"];
-                $list .= '<td'. $plusClass .'>'. $result["user"];
-                $list .= '<td'. $plusClass .'>'. $result["name"];
+                $list .= '<td class="todayOrder" style="color:blue;">完了';
+                $list .= '<td class="todayOrder">'. $result["date"];
+                $list .= '<td class="todayOrder">'. $result["user"];
+                $list .= '<td class="todayOrder">'. $result["name"];
             }
             $list .= '</table>';
         }
