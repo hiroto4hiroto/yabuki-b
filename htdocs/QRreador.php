@@ -72,10 +72,10 @@ if (!isset($_SESSION['VENDER'])) {
 		<input style="display:none;"
 	       type="file" accept="image/*" capture="environment" onchange="openQRCamera(this);" /><br>
         <tr>
-	<td><label for="user">学生番号</label>
-        <td><input id="user" type="text" name="user" maxlength="7">
-	<td><input class="btn-sticky" style="width: 25vw;" type="submit" name="delivery" value="引き渡し">
-    </table>
+	<td style="width: 15vw;"><label for="user">学生番号</label>
+        <td style="width: 25vw;"><input id="user" style="width: 25vw;" type="text" name="user" maxlength="7">
+	<td style="width: 40vw;"><input class="btn-sticky" type="submit" name="delivery" value="引き渡し">
+    </table> 
 </form>
 </label> 
 
