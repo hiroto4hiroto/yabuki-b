@@ -45,10 +45,10 @@ if (!isset($_SESSION['VENDER'])) {
             $sql .= " WHERE `order`.QRid = '". $QRid ."'";
             $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
             $prepare = $db->prepare($sql);
-	    $rowCheck = $prepare->execute();
-
+	    $rowsCheck = $prepare->execute();
+		
             //更新数が1以上か確認
-            if ($rowCheck->rowCount() > 0)
+            if ($rowsCheck !== null)
             {
                 $list .= '下記の注文を引き渡し完了にしました';
                 $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
