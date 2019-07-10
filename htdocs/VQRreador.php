@@ -119,7 +119,7 @@ if (!isset($_SESSION['VENDER'])) {
     <p>弁当事前予約サービス</p>
     <h1>引き渡し操作</h1>
     <input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る"><br><br>
-    <form method="post" action="Vdelivery.php">
+    <form method="post" action="VQRreador.php">
     <table>
         <tr>
             <td colspan="3">
