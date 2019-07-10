@@ -114,6 +114,7 @@ if (!isset($_SESSION['VENDER'])) {
     <meta charset="utf-8" />
     <title>弁当事前予約サービス 引き渡し操作</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js"></script>
 </head>
 
 <body class="vender">
@@ -133,7 +134,6 @@ if (!isset($_SESSION['VENDER'])) {
     </table>
     </form>
     </label>
-	    
 	    <label class="btn-sticky" style="height: calc(var(--fontRatio) * 7.5);"><br>QRコードを撮影&引渡<br>
                     <input style="display:none;" type="file" accept="image/*" capture="environment" onchange="openQRCamera(this);" /><br>
 
