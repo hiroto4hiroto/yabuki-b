@@ -60,8 +60,6 @@ if (!isset($_SESSION['VENDER'])) {
         <meta charset="utf-8" />
         <title>弁当事前予約サービス 引き渡し操作</title>
         <link rel="stylesheet" type="text/css" href="style.css">
-	<script src="https://rawgit.com/sitepoint-editors/jsqrcode/master/src/qr_packed.js">
-</script>
     </head>
 
     <body class="vender">
@@ -76,7 +74,7 @@ if (!isset($_SESSION['VENDER'])) {
         <tr>
 	<td><label for="user">学生番号を入力</label>
         <td><input id="user" type="text" name="user">
-	<td><input class="btn-sticky" type="submit" name="delivery" value="引き渡し">
+	<td><input class="btn-sticky" style="width: 25vw;" type="submit" name="delivery" value="引き渡し">
     </table>
     <br>
 </form>
@@ -101,7 +99,7 @@ function openQRCamera(node) {
 }
 </script>
         
-        <br><br>
+        <br>
         <?php echo $list; ?>     
     </body>
 
