@@ -137,6 +137,7 @@ if (!isset($_SESSION['VENDER'])) {
                         alert("QRコードを認識できませんでした。");
                     } else {
                         //QR読み込み成功
+                        alert("QRコードを認識しました。");
                         window.location.href = location.href + '?QRid=' + res;
                     }
                 };
