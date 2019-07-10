@@ -47,7 +47,7 @@ if (!isset($_SESSION['VENDER'])) {
             $prepare = $db->prepare($sql);
             $prepare->execute();
             //念のため、更新数が1以上か確認
-            if (mysqli_num_rows($prepare->fetchAll(PDO::FETCH_ASSOC)) > 0)
+            if (!empty($prepare->fetchAll(PDO::FETCH_ASSOC)))
             {
                 $list .= '下記の注文を引き渡し完了にしました';
                 $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
@@ -67,7 +67,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $list .= '</table>';
             }
             else {
-                $list .= '入力に対応する予約がありませんでした。<br>入力内容が正しいか確認してください。<br>';
+                $list .= '入力に対応する予約がありませんでした。<br>';
             }
         }
         
