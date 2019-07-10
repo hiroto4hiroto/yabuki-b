@@ -60,85 +60,35 @@ if (!isset($_SESSION['VENDER'])) {
         <meta charset="utf-8" />
         <title>弁当事前予約サービス 引き渡し操作</title>
         <link rel="stylesheet" type="text/css" href="style.css">
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webrtc-adapter/3.3.3/adapter.min.js"></script>
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
-        <script type="text/javascript" src="instascan.min.js"></script>
     </head>
 
     <body class="vender">
         <p>弁当事前予約サービス</p>
         <h1>引き渡し操作</h1>
 
-        <div id="app">
-            <div class="sidebar">
-                <section class="cameras">
-                    <h2>Cameras</h2>
-                    <ul>
-                        <li v-if="cameras.length === 0" class="empty">No cameras found</li>
-                        <li v-for="camera in cameras">
-                            <span v-if="camera.id == activeCameraId" :title="formatName(camera.name)" class="active">{{ formatName(camera.name) }}</span>
-                            <span v-if="camera.id != activeCameraId" :title="formatName(camera.name)">
-                                <a @click.stop="selectCamera(camera)">{{ formatName(camera.name) }}</a>
-                            </span>
-                        </li>
-                    </ul>
-                </section>
-                <section class="scans">
-                    <h2>Scans</h2>
-                    <ul v-if="scans.length === 0">
-                        <li class="empty">No scans yet</li>
-                    </ul>
-                    <transition-group name="scans" tag="ul">
-                        <li v-for="scan in scans" :key="scan.date" :title="scan.content">{{ scan.content }}</li>
-                    </transition-group>
-                </section>
-            </div>
-            <div class="preview-container">
-                <video id="preview"></video>
-            </div>
-        </div>
-
-        <br>
-        <?php echo $list; ?>
-
+        <input type=text size=16 placeholder="Tracking Code" class=qrcode-text>
+            <label class=qrcode-text-btn><input type=file accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-1></label> 
+        <input type=button value="Go" disabled>
         <script>
-            var app = new Vue({
-                el: '#app',
-                data: {
-                    scanner: null,
-                    activeCameraId: null,
-                    cameras: [],
-                    scans: []
-                },
-                mounted: function () {
-                    var self = this;
-                    self.scanner = new Instascan.Scanner({ video: document.getElementById('preview'), scanPeriod: 5 });
-                    self.scanner.addListener('scan', function (content, image) {
-                        self.scans.unshift({ date: +(Date.now()), content: content });
-                    });
-                    Instascan.Camera.getCameras().then(function (cameras) {
-                        self.cameras = cameras;
-                        if (cameras.length > 0) {
-                            self.activeCameraId = cameras[0].id;
-                            self.scanner.start(cameras[0]);
-                        } else {
-                            console.error('No cameras found.');
-                        }
-                    }).catch(function (e) {
-                        console.error(e);
-                    });
-                },
-                methods: {
-                    formatName: function (name) {
-                        return name || '(unknown)';
-                    },
-                    selectCamera: function (camera) {
-                        this.activeCameraId = camera.id;
-                        this.scanner.start(camera);
-                    }
-                }
-            });
+            function openQRCamera(node) {
+  var reader = new FileReader();
+  reader.onload = function() {
+    node.value = "";
+    qrcode.callback = function(res) {
+      if(res instanceof Error) {
+        alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
+      } else {
+        node.parentNode.previousElementSibling.value = res;
+      }
+    };
+    qrcode.decode(reader.result);
+  };
+  reader.readAsDataURL(node.files[0]);
+}
         </script>
+        
+        <br>
+        <?php echo $list; ?>     
     </body>
 
     </html>
