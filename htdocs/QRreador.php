@@ -68,7 +68,10 @@ if (!isset($_SESSION['VENDER'])) {
         <p>弁当事前予約サービス</p>
         <h1>引き渡し操作</h1>
         <br>
-	<input type=file accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-1></label> 
+<input type="text" size="16" placeholder="Tracking Code" class="qrcode-text">
+<label class="qrcode-text-btn">
+<input type=file accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-"1">
+</label> 
 
 <script type="text/javascript" charset="utf-8">
 function openQRCamera(node) {
