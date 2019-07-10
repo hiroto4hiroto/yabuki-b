@@ -80,6 +80,7 @@ function openQRCamera(node) {
         alert("QRコードを認識できませんでした。");
       } else {
 	//QR読み込み成功
+	alert("QRコードを認識できたよ！！！！！！！");
 	window.location.href =　location.href + '?QRid=' + res;
       }
     };
