@@ -69,30 +69,26 @@ if (!isset($_SESSION['VENDER'])) {
         <h1>引き渡し操作</h1>
         <br>
 	    
-	    <a id="barcode">バーコードリーダを起動</a>
+<input type=text size=16 placeholder="Tracking Code" class=qrcode-text><label class=qrcode-text-btn><input type=file accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-1></label> 
+<input type=button value="Go" disabled>
+	    
 
-<script type="text/javascript" charset="utf-8"><!--
-(function() {
-	//barcode
-	barcode = function barcode() {
-		applican.barcode.captureBarcode(captureBarcodeSuccess, captureBarcodeError);
-	};
-
-	function captureBarcodeSuccess(res){
-		alert(res);
-	}
-
-	function captureBarcodeError(e){
-		alert(e);
-	}
-
-	/********************* イベント登録 *********************/
-	document.addEventListener("deviceready", function() {
-		//「barcode」ボタン押下処理
-		document.getElementById("barcode").addEventListener("touchend", barcode, false);
-	}, false);
-})();
-// -->
+<script type="text/javascript" charset="utf-8">
+function openQRCamera(node) {
+  var reader = new FileReader();
+  reader.onload = function() {
+    node.value = "";
+    qrcode.callback = function(res) {
+      if(res instanceof Error) {
+        alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
+      } else {
+        node.parentNode.previousElementSibling.value = res;
+      }
+    };
+    qrcode.decode(reader.result);
+  };
+  reader.readAsDataURL(node.files[0]);
+}
 </script>
         
         <br><br>
