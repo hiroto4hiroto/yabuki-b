@@ -13,6 +13,29 @@ if (!isset($_SESSION['VENDER'])) {
 	//引き渡し処理
         $isCheck = 0;
         $QRid = "";
+        if( !empty($_GET['QRid']) || !isset($_POST['delivery']) ){
+            $isCheck = 1;
+
+            //引き渡し完了に更新
+            $sql = 'UPDATE `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
+            if (!empty($_GET['QRid']) )
+                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.QRid = "'. $_GET["QRid"] .'";';
+            else
+                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
+            $prepare = $db->prepare($sql);
+            $prepare->execute();
+            $db = new PDO($dsn, $dbUser, $dbPass);
+            
+            //表示するレコードのQRidを設定
+            if (!empty($_GET['QRid']) ) $QRid = $_GET['QRid'];
+            else{
+                $sql = 'SELECT QRid FROM `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
+                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'" limit 1;';
+                $prepare = $db->prepare($sql);
+                $prepare->execute();
+                $QRid = $prepare->fetch(PDO::FETCH_ASSOC);
+            }
+        }
 	
 	    if ($isCheck == 1){
             //引き渡し完了一覧作成
