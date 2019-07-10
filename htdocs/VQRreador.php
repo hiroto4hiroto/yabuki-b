@@ -48,7 +48,7 @@ if (!isset($_SESSION['VENDER'])) {
 	    $rowCheck = $prepare->execute();
 
             //更新数が1以上か確認
-            if ($rowCheck->fetchAll(PDO::FETCH_ASSOC)->rowCount() > 0)
+            if ($prepare->execute()->fetchAll(PDO::FETCH_ASSOC)->rowCount() > 0)
             {
                 $list .= '下記の注文を引き渡し完了にしました';
                 $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
@@ -57,7 +57,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $list .= '<td style="width: 10vw;">学生番号';
                 $list .= '<td style="width: 20vw;">弁当名';
                 //$list .= '<td style="width: 35vw;">UUID';
-                foreach ( as $result)
+                foreach (fetchAll(PDO::FETCH_ASSOC) as $result)
                 {
                     $list .= '<tr>';
                     $list .= '<td class="todayOrder" style="color:blue;">完了';
