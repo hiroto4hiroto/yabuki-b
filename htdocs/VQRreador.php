@@ -27,8 +27,8 @@ if (!isset($_SESSION['VENDER'])) {
             $db = new PDO($dsn, $dbUser, $dbPass);
             
             //表示するレコードのQRidを設定
-            if (!empty($_GET['QRid']) ) $QRid = $_GET['QRid'];
-            else{
+            if (!empty($_GET['QRid'])) $QRid = $_GET['QRid'];
+            else {
                 $sql = 'SELECT QRid FROM `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
                 $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'" limit 1;';
                 $prepare = $db->prepare($sql);
@@ -48,7 +48,7 @@ if (!isset($_SESSION['VENDER'])) {
             $prepare->execute();
 		    
             //念のため、更新数が1以上か確認
-            if ($prepare->fetchAll(PDO::FETCH_ASSOC)))
+            if ($prepare->fetchAll(PDO::FETCH_ASSOC))
             {
                 $list .= '下記の注文を引き渡し完了にしました';
                 $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
