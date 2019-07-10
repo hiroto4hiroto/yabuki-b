@@ -69,7 +69,7 @@ if (!isset($_SESSION['VENDER'])) {
         <h1>引き渡し操作</h1>
 	<input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る">
     <table>
-	<tr><td>
+	<tr><td colspan="3">
 	<label class="btn-sticky">QRコードを撮影&送信
 	<input style="display:none;"
 	       type="file" accept="image/*" capture="environment" onchange="openQRCamera(this);" /><br>
