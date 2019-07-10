@@ -10,11 +10,18 @@ if (!isset($_SESSION['VENDER'])) {
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         
+	//引き渡し処理
         if( !empty($_GET['QRid']) ){
-            //予約一覧作成
             //SQL作成・実行
             $sql = 'UPDATE `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
             $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.QRid = "'. $_GET["QRid"] .'";';
+            $prepare = $db->prepare($sql);
+            $prepare->execute();
+        }	    
+	if( !empty($_POST['delivery']) ){
+            //SQL作成・実行
+            $sql = 'UPDATE `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
+            $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
             $prepare = $db->prepare($sql);
             $prepare->execute();
         }
