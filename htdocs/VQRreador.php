@@ -48,7 +48,7 @@ if (!isset($_SESSION['VENDER'])) {
             $emptyCheck = $prepare->execute();
 		    
             //念のため、更新数が1以上か確認
-            if (mysql_num_rows($emptyCheck) > 0)
+            if (mysql_num_rows($prepare->execute()->fetchAll(PDO::FETCH_ASSOC)) > 0)
             {
                 $list .= '下記の注文を引き渡し完了にしました';
                 $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
