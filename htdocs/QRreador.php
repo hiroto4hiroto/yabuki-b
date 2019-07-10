@@ -68,10 +68,7 @@ if (!isset($_SESSION['VENDER'])) {
         <p>弁当事前予約サービス</p>
         <h1>引き渡し操作</h1>
         <br>
-	    
-<input type=text size=16 placeholder="Tracking Code" class=qrcode-text><label class=qrcode-text-btn><input type=file accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-1></label> 
-<input type=button value="Go" disabled>
-	    
+	<input type=file accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-1></label> 
 
 <script type="text/javascript" charset="utf-8">
 function openQRCamera(node) {
@@ -80,14 +77,13 @@ function openQRCamera(node) {
     node.value = "";
     qrcode.callback = function(res) {
       if(res instanceof Error) {
-        alert("No QR code found. Please make sure the QR code is within the camera's frame and try again.");
+        alert("QRコードを認識できませんでした。");
       } else {
-        node.parentNode.previousElementSibling.value = res;
+	//QR読み込み成功
+	window.location.href =　location.href + '?QRid=' + res;
       }
     };
-    qrcode.decode(reader.result);
   };
-  reader.readAsDataURL(node.files[0]);
 }
 </script>
         
