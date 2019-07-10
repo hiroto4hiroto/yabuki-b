@@ -64,12 +64,3 @@ h1 {
   box-shadow: inset 0 0 0.1vh rgba(128, 128, 128, 0.1);
   transform: translateY(0.1vh);
 }
-
-.btn-tall {
-  height: calc(var(--fontRatio) * 7.5);
-}
-
-.btn-maximum {
-  width: 100%;
-  height: 100%;
-}
