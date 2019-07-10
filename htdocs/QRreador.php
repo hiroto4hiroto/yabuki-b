@@ -67,9 +67,9 @@ if (!isset($_SESSION['VENDER'])) {
         <h1>引き渡し操作</h1>
         <br>
 
-        <input type=text size=16 placeholder="Tracking Code" class=qrcode-text>
-            <label class=qrcode-text-btn><input type=file accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-1></label> 
-        <input type=button value="Go" disabled>
+        <input type="text" size="16" placeholder="Tracking Code" class="qrcode-text">
+            <label class="qrcode-text-btn"><input type="file" accept="image/*" capture="environment" onchange="openQRCamera(this);" tabindex="-1"></label> 
+        <input type="button" value="Go" disabled>
         
 <script>
     function openQRCamera(node) {
