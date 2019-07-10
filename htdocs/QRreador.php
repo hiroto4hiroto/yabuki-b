@@ -70,10 +70,10 @@ if (!isset($_SESSION['VENDER'])) {
 	<input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る"><br><br>
         <br>
 	<label class="btn-sticky">
-	<input style="display:none;" value="QRコードを撮影&送信" type="file" accept="image/*" capture=environment onchange="openQRCamera(this);" tabindex=-"1">
-	<table>
-        	<tr><td><label for="user">学生番号を入力</label>
-        	<td><input id="user" type="text" name="user">
+	<input style="display:none;" value="QRコードを撮影&送信"
+	       type="file" accept="image/*" capture="environment" onchange="openQRCamera(this);"></label>
+        <tr><td><label for="user">学生番号を入力</label>
+        <td><input id="user" type="text" name="user">
     </table>
     <br>
     <input class="btn-sticky" type="submit" name="delivery" value="引き渡し">
