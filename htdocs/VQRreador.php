@@ -42,27 +42,34 @@ if (!isset($_SESSION['VENDER'])) {
             //SQL作成・実行
             $sql = "SELECT `order`.QRid as `QRid`, `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
             $sql .= " FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id";
-            $sql .= " WHERE `ordertable`.QRid = '". $QRid ."'";
+            $sql .= " WHERE `order`.QRid = '". $QRid ."'";
             $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
             $prepare = $db->prepare($sql);
             $prepare->execute();
 		    
-            $list .= '入力に対応する予約一覧';
-            $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-            $list .= '<td style="width: 5vw;">受取';
-            $list .= '<td style="width: 10vw;">日付';
-            $list .= '<td style="width: 10vw;">学生番号';
-            $list .= '<td style="width: 20vw;">弁当名';
-            //$list .= '<td style="width: 35vw;">UUID';
-            foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
+            //念のため、更新数が1以上か確認
+            if ($prepare->fetchAll(PDO::FETCH_ASSOC)))
             {
-                $list .= '<tr>';
-                $list .= '<td class="todayOrder" style="color:blue;">完了';
-                $list .= '<td class="todayOrder">'. $result["date"];
-                $list .= '<td class="todayOrder">'. $result["user"];
-                $list .= '<td class="todayOrder">'. $result["name"];
+                $list .= '下記の注文を引き渡し完了にしました';
+                $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+                $list .= '<td style="width: 5vw;">受取';
+                $list .= '<td style="width: 10vw;">日付';
+                $list .= '<td style="width: 10vw;">学生番号';
+                $list .= '<td style="width: 20vw;">弁当名';
+                //$list .= '<td style="width: 35vw;">UUID';
+                foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
+                {
+                    $list .= '<tr>';
+                    $list .= '<td class="todayOrder" style="color:blue;">完了';
+                    $list .= '<td class="todayOrder">'. $result["date"];
+                    $list .= '<td class="todayOrder">'. $result["user"];
+                    $list .= '<td class="todayOrder">'. $result["name"];
+                }
+                $list .= '</table>';
             }
-            $list .= '</table>';
+            else {
+                $list .= '入力に対応する予約がありませんでした。<br>入力内容が正しいか確認してください。<br>';
+            }
         }
         
         
