@@ -37,7 +37,7 @@ if (!isset($_SESSION['VENDER'])) {
             }
         }
 	
-	    if ($isCheck){
+	    if ($isCheck == 1){
             //引き渡し完了一覧作成
             //SQL作成・実行
             $sql = "SELECT `order`.QRid as `QRid`, `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
