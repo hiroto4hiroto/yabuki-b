@@ -119,12 +119,12 @@ if (!isset($_SESSION['VENDER'])) {
     <p>弁当事前予約サービス</p>
     <h1>引き渡し操作</h1>
     <input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る"><br><br>
+    <form method="post" action="Vdelivery.php">
     <table>
         <tr>
             <td colspan="3">
                 <label class="btn-sticky" style="height: calc(var(--fontRatio) * 7.5);"><br>QRコードを撮影&引渡<br>
-                    <input style="display:none;" type="file" accept="image/*" capture="environment"
-                        onchange="openQRCamera(this);" /><br>
+                    <input style="display:none;" type="file" accept="image/*" capture="environment" onchange="openQRCamera(this);" /><br>
         <tr>
             <td><label style="width: 15vw;" for="user">学生番号</label>
             <td><input style="width: 25vw;" id="user" style="width: 25vw;" type="text" name="user" maxlength="7">
