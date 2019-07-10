@@ -65,10 +65,10 @@ if (!isset($_SESSION['VENDER'])) {
     <body class="vender">
         <p>弁当事前予約サービス</p>
         <h1>引き渡し操作</h1>
-	<input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る">
+	<input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る"><br>
     <table>
 	<tr><td colspan="3">
-	<label class="btn-sticky">QRコードを撮影&送信
+	<label class="btn-sticky btn-tall">QRコードを撮影&送信
 	<input style="display:none;"
 	       type="file" accept="image/*" capture="environment" onchange="openQRCamera(this);" /><br>
         <tr>
@@ -76,7 +76,6 @@ if (!isset($_SESSION['VENDER'])) {
         <td><input id="user" type="text" name="user">
 	<td><input class="btn-sticky" style="width: 25vw;" type="submit" name="delivery" value="引き渡し">
     </table>
-    <br>
 </form>
 </label> 
 
