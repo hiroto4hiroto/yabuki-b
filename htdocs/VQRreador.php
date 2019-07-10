@@ -45,6 +45,7 @@ if (!isset($_SESSION['VENDER'])) {
             $sql .= " WHERE `order`.QRid = '". $QRid ."'";
             $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
             $prepare = $db->prepare($sql);
+	    $prepare->execute();
 
             //更新数が1以上か確認
             if ($prepare->fetchAll(PDO::FETCH_ASSOC)->rowCount() > 0)
@@ -56,7 +57,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $list .= '<td style="width: 10vw;">学生番号';
                 $list .= '<td style="width: 20vw;">弁当名';
                 //$list .= '<td style="width: 35vw;">UUID';
-                foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
+                foreach ( as $result)
                 {
                     $list .= '<tr>';
                     $list .= '<td class="todayOrder" style="color:blue;">完了';
