@@ -1,6 +1,7 @@
 <?php
 session_start();
 $list = "";
+$checkList = "";
     //業者でなければ弾く
 if (!isset($_SESSION['VENDER'])) {
     header('Location: login.php');
@@ -75,12 +76,12 @@ if (!isset($_SESSION['VENDER'])) {
 	                $tempForeachList .= '<td class="todayOrder">'. $result["price"].'円';
 	                $sum += $result["price"];
                 }
-                $list .= $tempList;
-                $list .= $tempForeachList;
-                $list .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 4);">'. $sum .'</b>円</table>';
+                $checkList .= $tempList;
+                $checkList .= $tempForeachList;
+                $checkList .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 4);">'. $sum .'</b>円</table>';
             }
             else{
-                $list .= '入力に対応する未了予約がありませんでした。<br>入力内容が正しいかご確認ください。<br>';
+                $checkList .= '入力に対応する未了予約がありませんでした。<br>入力内容が正しいかご確認ください。<br>';
             }
         } 
 
@@ -132,23 +133,21 @@ if (!isset($_SESSION['VENDER'])) {
     <h1>引き渡し操作</h1>
     <input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る"><br>
     <br>
-    <?php echo $list; ?>
+    <?php echo $checkList; ?>
     <br>
     <form method="post" action="VQRreador.php">
     <table>
         <tr>
             <td colspan="3">
-                <label class="btn-sticky" style="height: calc(var(--fontRatio) * 7.5);"><br>QRコードで引き渡し<br>
-                    <input style="display:none;" type="file" accept="image/*" capture="environment" onchange="openQRCamera(this);" /><br>
+            <label class="btn-sticky" style="height: calc(var(--fontRatio) * 7.5);"><br>QRコードで引き渡し<br>
+            <input style="display:none;" type="file" accept="image/*" capture="environment" onchange="openQRCamera(this);" /><br>
         <tr>
             <td><label style="width: 15vw;" for="user">学生番号</label>
             <td><input style="width: 25vw;" id="user" style="width: 25vw;" type="text" name="user" maxlength="7">
             <td><input style="width: 40vw;" class="btn-sticky" type="submit" name="delivery" value="引き渡し">
     </table>
     </form>
-    </label>
-<br>
-	    
+    </label>	    
     <script type="text/javascript" charset="utf-8">
         function openQRCamera(node) {
             var reader = new FileReader();
@@ -167,6 +166,9 @@ if (!isset($_SESSION['VENDER'])) {
             reader.readAsDataURL(node.files[0]);
         }
     </script>
+    <br>
+    <?php echo $list; ?>
+    <br>
 </body>
 
 </html>
