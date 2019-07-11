@@ -14,16 +14,17 @@ if (!isset($_SESSION['VENDER'])) {
         $isCheck = 0;
         $QRid = "";
         if( !empty($_GET['QRid']) || isset($_POST['delivery']) ){
-            $isCheck = 1;
 
             //引き渡し完了に更新
             $sql = 'UPDATE `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
             if (!empty($_GET['QRid']) )
-                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 AND `ordertable`.QRid = "'. $_GET["QRid"] .'";';
+                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 `ordertable`.QRid = "'. $_GET["QRid"] .'";';
             else
-                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 AND `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
+                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
             $prepare = $db->prepare($sql);
             $prepare->execute();
+            if (mysqli_affected_rows( $prepare ) > 0) $isCheck = 1;
+            else  $isCheck = 0;
             $db = new PDO($dsn, $dbUser, $dbPass);
             
             //表示するレコードのQRidを設定
@@ -45,17 +46,17 @@ if (!isset($_SESSION['VENDER'])) {
         $sql .= " WHERE `order`.QRid = '". $QRid ."'";
         $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
         $prepare = $db->prepare($sql);
-	$prepare->execute();
+	    $prepare->execute();
 
-	$tempList = "";
+	    $tempList = "";
         $tempList .= '下記の注文を引き渡し完了にしました。';
         $tempList .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $tempList .= '<td style="width: 10vw;">受取';
         $tempList .= '<td style="width: 20vw;">学生番号';
         $tempList .= '<td style="width: 25vw;"><b>弁当名</b>';
-	$tempList .= '<td style="width: 15vw;">値段';
-	$tempForeachList = "";
-	$sum = 0;
+	    $tempList .= '<td style="width: 15vw;">値段';
+	    $tempForeachList = "";
+	    $sum = 0;
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $tempForeachList .= '<tr>';
