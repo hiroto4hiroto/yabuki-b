@@ -30,7 +30,7 @@ if (!isset($_SESSION['VENDER'])) {
             if (!empty($_GET['QRid'])) $QRid = $_GET['QRid'];
             else {
                 $sql = 'SELECT QRid FROM `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
-                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'" limit 1;';
+                $sql .= ' WHERE `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'" limit 1;';
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
                 $QRid = $prepare->fetch(PDO::FETCH_ASSOC);
