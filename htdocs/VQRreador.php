@@ -10,7 +10,7 @@ if (!isset($_SESSION['VENDER'])) {
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
         
-	//引き渡し処理
+	    //引き渡し処理
         $isCheck = 0;
         $QRid = "";
         if( !empty($_GET['QRid']) || isset($_POST['delivery']) ){
@@ -24,7 +24,7 @@ if (!isset($_SESSION['VENDER'])) {
             //$prepare = $db->prepare($sql);
             //$prepare->execute();
             $prepare = $db->exec($sql);
-            
+
             if ($prepare > 0) $isCheck = 1;
             else $isCheck = 0;
             $db = new PDO($dsn, $dbUser, $dbPass);
@@ -40,48 +40,47 @@ if (!isset($_SESSION['VENDER'])) {
             }
         }
 	
-	if ($isCheck == 1){
-        //引き渡し完了一覧作成
-        //SQL作成・実行
-        $sql = "SELECT `order`.QRid as `QRid`, `order`.check as `check`, `bento`.price as `price`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
-        $sql .= " FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id";
-        $sql .= " WHERE `order`.QRid = '". $QRid ."'";
-        $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
-        $prepare = $db->prepare($sql);
-	$prepare->execute();
+	    if ($isCheck == 1){
+            //引き渡し完了一覧作成
+            //SQL作成・実行
+            $sql = "SELECT `order`.QRid as `QRid`, `order`.check as `check`, `bento`.price as `price`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
+            $sql .= " FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id";
+            $sql .= " WHERE `order`.QRid = '". $QRid ."'";
+            $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
+            $prepare = $db->prepare($sql);
+	        $prepare->execute();
 
-	$tempList = "";
-        $tempList .= '下記の注文を引き渡し完了にしました。';
-        $tempList .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $tempList .= '<td style="width: 10vw;">受取';
-        $tempList .= '<td style="width: 20vw;">学生番号';
-        $tempList .= '<td style="width: 25vw;"><b>弁当名</b>';
-	$tempList .= '<td style="width: 15vw;">値段';
-	$tempForeachList = "";
-	$sum = 0;
-        foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
-        {
-            $tempForeachList .= '<tr>';
-            $tempForeachList .= '<td class="todayOrder" style="color:blue;">完了';
-            $tempForeachList .= '<td class="todayOrder">'. $result["user"];
-            $tempForeachList .= '<td class="todayOrder">'. $result["name"];
-	    $tempForeachList .= '<td class="todayOrder">'. $result["price"].'円';
-	    $sum += $result["price"];
-        }
+	        $tempList = "";
+            $tempList .= '下記の注文を引き渡し完了にしました。';
+            $tempList .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+            $tempList .= '<td style="width: 10vw;">受取';
+            $tempList .= '<td style="width: 20vw;">学生番号';
+            $tempList .= '<td style="width: 25vw;"><b>弁当名</b>';
+	        $tempList .= '<td style="width: 15vw;">値段';
+	        $tempForeachList = "";
+	        $sum = 0;
+            foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
+            {
+                $tempForeachList .= '<tr>';
+                $tempForeachList .= '<td class="todayOrder" style="color:blue;">完了';
+                $tempForeachList .= '<td class="todayOrder">'. $result["user"];
+                $tempForeachList .= '<td class="todayOrder">'. $result["name"];
+	        $tempForeachList .= '<td class="todayOrder">'. $result["price"].'円';
+	        $sum += $result["price"];
+            }
 
-        //foreach文を通ったら代入
-        if ($tempForeachList != ""){
-            $list .= $tempList;
-            $list .= $tempForeachList;
-	    $list .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 2);">'. $sum .'</b>円</table>';
-        }
-        else
-        {   //foreach文を通っていなかったらエラー文
-            $list .= '入力に対応する未了予約がありませんでした。<br>入力内容が正しいか確認してください。<br>';
-        }
-    }
-        
-        
+            //foreach文を通ったら代入
+            if ($tempForeachList != ""){
+                $list .= $tempList;
+                $list .= $tempForeachList;
+	            $list .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 2);">'. $sum .'</b>円</table>';
+            }
+            else
+            {   //foreach文を通っていなかったらエラー文
+                $list .= '入力に対応する未了予約がありませんでした。<br>入力内容が正しいか確認してください。<br>';
+            }
+        }   
+
         //予約一覧作成
         //SQL作成・実行
         $sql = "SELECT `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
@@ -89,7 +88,6 @@ if (!isset($_SESSION['VENDER'])) {
         $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
-        
         $list .= '<br>予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 5vw;">受取';
@@ -101,7 +99,6 @@ if (!isset($_SESSION['VENDER'])) {
         {
             $plusClass = '';
             if ($result["date"] == $getdate) $plusClass = ' class="todayOrder" ';
-                
             $list .= '<tr>';
             if ($result["check"] == 1)
                 $list .= '<td'. $plusClass .' style="color:blue;">完了';
@@ -111,6 +108,7 @@ if (!isset($_SESSION['VENDER'])) {
             $list .= '<td'. $plusClass .'>'. $result["name"];
         }
         $list .= '</table>';
+        
     } catch(PDOException $e) {
         echo $e->getMessage();
         die();
