@@ -70,7 +70,7 @@ if (!isset($_SESSION['VENDER'])) {
         if ($tempForeachList != ""){
             $list .= $tempList;
             $list .= $tempForeachList;
-	    $list .= '<tr><td colspan="4">'. $sum .'</table>';
+	    $list .= '<tr><td colspan="4"><b style="font-size: calc(var(--fontRatio) * 1.5);">'. $sum .'</b></table>';
         }
         else
         {   //foreach文を通っていなかったらエラー文
