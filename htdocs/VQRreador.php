@@ -38,39 +38,43 @@ if (!isset($_SESSION['VENDER'])) {
         }
 	
 	if ($isCheck == 1){
-            //引き渡し完了一覧作成
-            //SQL作成・実行
-            $sql = "SELECT `order`.QRid as `QRid`, `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
-            $sql .= " FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id";
-            $sql .= " WHERE `order`.QRid = '". $QRid ."'";
-            $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
-            $prepare = $db->prepare($sql);
-	    $rowsCheck = $prepare->execute();
-		
-            //更新数が1以上か確認
-            if (!$rowsCheck === null)
-            {
-                $list .= '下記の注文を引き渡し完了にしました';
-                $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-                $list .= '<td style="width: 5vw;">受取';
-                $list .= '<td style="width: 10vw;">日付';
-                $list .= '<td style="width: 10vw;">学生番号';
-                $list .= '<td style="width: 20vw;">弁当名';
-                //$list .= '<td style="width: 35vw;">UUID';
-                foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
-                {
-                    $list .= '<tr>';
-                    $list .= '<td class="todayOrder" style="color:blue;">完了';
-                    $list .= '<td class="todayOrder">'. $result["date"];
-                    $list .= '<td class="todayOrder">'. $result["user"];
-                    $list .= '<td class="todayOrder">'. $result["name"];
-                }
-                $list .= '</table>';
-            }
-            else {
-                $list .= '入力に対応する予約がありませんでした。<br>入力内容が正しいか確認してください。<br>';
-            }
+        //引き渡し完了一覧作成
+        //SQL作成・実行
+        $sql = "SELECT `order`.QRid as `QRid`, `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
+        $sql .= " FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id";
+        $sql .= " WHERE `order`.QRid = '". $QRid ."'";
+        $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
+        $prepare = $db->prepare($sql);
+	    $prepare->execute();
+
+	    $tempList = "";
+        $tempList .= '下記の注文を引き渡し完了にしました';
+        $tempList .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+        $tempList .= '<td style="width: 5vw;">受取';
+        $tempList .= '<td style="width: 10vw;">日付';
+        $tempList .= '<td style="width: 10vw;">学生番号';
+        $tempList .= '<td style="width: 20vw;">弁当名';
+		$tempForeachList = "";
+        foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
+        {
+            $tempForeachList .= '<tr>';
+            $tempForeachList .= '<td class="todayOrder" style="color:blue;">完了';
+            $tempForeachList .= '<td class="todayOrder">'. $result["date"];
+            $tempForeachList .= '<td class="todayOrder">'. $result["user"];
+            $tempForeachList .= '<td class="todayOrder">'. $result["name"];
         }
+
+        //foreach文を通ったら代入
+        if ($tempForeachList != ""){
+            $tempForeachList .= '</table>';
+            $list .= $tempList;
+            $list .= $tempForeachList;
+        }
+        else
+        {   //foreach文を通っていなかったらエラー文
+            $list .= '入力に対応する予約がありませんでした。<br>入力内容が正しいか確認してください。<br>';
+        }
+    }
         
         
         //予約一覧作成
