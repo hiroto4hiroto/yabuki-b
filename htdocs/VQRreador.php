@@ -78,7 +78,7 @@ if (!isset($_SESSION['VENDER'])) {
                 }
                 $checkList .= $tempList;
                 $checkList .= $tempForeachList;
-                $checkList .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 4);">'. $sum .'</b>円</table><br>';
+                $checkList .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 4);">'. $sum .'</b>円</table>';
             }
             else{
                 $checkList .= '<br>入力に対応する未了予約がありませんでした。<br>入力内容が正しいかご確認ください。<br>';
