@@ -134,6 +134,7 @@ if (!isset($_SESSION['VENDER'])) {
     <input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る">
     <br>
     <?php echo $checkList; ?>
+    <br>
     <form method="post" action="VQRreador.php">
     <table>
         <tr>
