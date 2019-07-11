@@ -130,7 +130,10 @@ if (!isset($_SESSION['VENDER'])) {
 <body class="vender">
     <p>弁当事前予約サービス</p>
     <h1>引き渡し操作</h1>
-    <input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る"><br><br>
+    <input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る"><br>
+    <br>
+    <?php echo $list; ?>
+    <br>
     <form method="post" action="VQRreador.php">
     <table>
         <tr>
@@ -144,6 +147,7 @@ if (!isset($_SESSION['VENDER'])) {
     </table>
     </form>
     </label>
+<br>
 	    
     <script type="text/javascript" charset="utf-8">
         function openQRCamera(node) {
@@ -163,10 +167,6 @@ if (!isset($_SESSION['VENDER'])) {
             reader.readAsDataURL(node.files[0]);
         }
     </script>
-
-    <br>
-    <?php echo $list; ?>
-    <br>
 </body>
 
 </html>
