@@ -15,7 +15,7 @@ if (!isset($_SESSION['VENDER'])) {
 	$isPassed = 1;
         $QRid = "";
         if( !empty($_GET['QRid']) || isset($_POST['delivery']) ){
-
+	    $isCheck = 1;
             //引き渡し完了に更新
             $sql = 'UPDATE `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
             if (!empty($_GET['QRid']))
