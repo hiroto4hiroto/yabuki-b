@@ -25,7 +25,7 @@ if (!isset($_SESSION['VENDER'])) {
             //$prepare->execute();
             $prepare = $db->exec($sql);
 
-            echo "{$prepare}";
+            echo $prepare;
 
             if ($prepare > 0) $isCheck = 1;
             else $isCheck = 0;
