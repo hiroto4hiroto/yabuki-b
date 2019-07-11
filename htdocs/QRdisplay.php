@@ -59,13 +59,13 @@ if (!isset($_SESSION['USER'])) {
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>弁当事前予約サービス トップページ</title>
+    <title>弁当事前予約サービス 受取QRコード表示</title>
     <link rel="stylesheet" type="text/css" href="style.css">	
 </head>
 
 <body>
 <p>弁当事前予約サービス</p>
-<h1>QRコード表示</h1>
+<h1>受取QRコード表示</h1>
 <br>
 
 <?php echo $viewQR; ?>
