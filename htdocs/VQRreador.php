@@ -63,7 +63,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $tempList .= '下記の注文を引き渡し完了にしました。';
                 $tempList .= '<br><table style="width: 80vw; height: 2em;"><tr>';
                 $tempList .= '<td style="width: 20vw;">学生番号';
-                $tempList .= '<td style="width: 45vw;"><b style="font-size: calc(var(--fontRatio) * 2);">弁当名</b>';
+                $tempList .= '<td style="width: 45vw;"><br>弁当名</b>';
 	            $tempList .= '<td style="width: 15vw;">値段';
 	            $tempForeachList = "";
 	            $sum = 0;
@@ -71,7 +71,7 @@ if (!isset($_SESSION['VENDER'])) {
                 {
                     $tempForeachList .= '<tr>';
                     $tempForeachList .= '<td class="todayOrder">'. $result["user"];
-                    $tempForeachList .= '<td class="todayOrder"><b>'. $result["name"] .'</b>';
+                    $tempForeachList .= '<td class="todayOrder"><b style="font-size: calc(var(--fontRatio) * 2);">'. $result["name"] .'</b>';
 	                $tempForeachList .= '<td class="todayOrder">'. $result["price"].'円';
 	                $sum += $result["price"];
                 }
