@@ -23,7 +23,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
             $prepare = $db->prepare($sql);
             $prepare->execute();
-            if (mysqli_affected_rows( $prepare ) > 0) $isCheck = 1;
+            if (mysqli_affected_rows( $prepare->fetchAll(PDO::FETCH_ASSOC) ) > 0) $isCheck = 1;
             else  $isCheck = 0;
             $db = new PDO($dsn, $dbUser, $dbPass);
             
