@@ -40,7 +40,8 @@ if (!isset($_SESSION['USER'])) {
 	//QRコード表示
 	$viewQR = '<p>受取可能な弁当はありません。</p>';
 	if ($uuid != ''){
-		$viewQR = '<div id="QRview"></div>';
+		$viewQR = '11:40~12:40の間に食堂前で<br>こちらのQRコードをご提示ください。<br>'; 
+		$viewQR .= '<div id="QRview"></div>';
 		$viewQR .= '<script type="text/javascript">';
 		$viewQR .= 'document.getElementById("QRview").innerHTML = ';
 		$viewQR .= '\'<img src="https://chart.apis.google.com/chart?chs=512x512&cht=qr&chl='.$uuid.'" width="80%">\'';
