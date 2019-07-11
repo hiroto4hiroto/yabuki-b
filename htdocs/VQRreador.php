@@ -9,7 +9,7 @@ if (!isset($_SESSION['VENDER'])) {
     try {
         require_once 'database_conf.php';
         $db = new PDO($dsn, $dbUser, $dbPass);
-        
+        $db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true); 
 	    //引き渡し処理
         $isCheck = 0;
         $QRid = "";
@@ -21,13 +21,10 @@ if (!isset($_SESSION['VENDER'])) {
                 $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 `ordertable`.QRid = "'. $_GET["QRid"] .'";';
             else
                 $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
-            //$prepare = $db->prepare($sql);
-            //$prepare->execute();
-            $prepare = $db->exec($sql);
+            $prepare = $db->prepare($sql);
+            $prepare->execute();
 
-            echo $prepare;
-
-            if ($prepare > 0) $isCheck = 1;
+            if ($prepare->rowCount() > 0) $isCheck = 1;
             else $isCheck = 0;
             $db = new PDO($dsn, $dbUser, $dbPass);
             
