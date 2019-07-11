@@ -23,9 +23,11 @@ if (!isset($_SESSION['VENDER'])) {
                 $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
             $prepare = $db->prepare($sql);
             $prepare->execute();
-
-            if ($prepare->rowCount() > 0) $isCheck = 1;
-            else $isCheck = 0;
+            foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result) {
+                $isCheck = 1;
+                break;
+            }
+            
             $db = new PDO($dsn, $dbUser, $dbPass);
             
             //表示するレコードのQRidを設定
@@ -64,8 +66,8 @@ if (!isset($_SESSION['VENDER'])) {
                 $tempForeachList .= '<td class="todayOrder" style="color:blue;">完了';
                 $tempForeachList .= '<td class="todayOrder">'. $result["user"];
                 $tempForeachList .= '<td class="todayOrder">'. $result["name"];
-	        $tempForeachList .= '<td class="todayOrder">'. $result["price"].'円';
-	        $sum += $result["price"];
+	            $tempForeachList .= '<td class="todayOrder">'. $result["price"].'円';
+	            $sum += $result["price"];
             }
 
             //foreach文を通ったら代入
