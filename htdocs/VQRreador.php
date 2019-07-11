@@ -12,19 +12,21 @@ if (!isset($_SESSION['VENDER'])) {
         
 	//引き渡し処理
         $isCheck = 0;
-	$isPassed = 1;
         $QRid = "";
         if( !empty($_GET['QRid']) || isset($_POST['delivery']) ){
-	    $isCheck = 1;
+
             //引き渡し完了に更新
             $sql = 'UPDATE `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
-            if (!empty($_GET['QRid']))
-                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 AND `ordertable`.QRid = "'. $_GET["QRid"] .'";';
+            if (!empty($_GET['QRid']) )
+                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 `ordertable`.QRid = "'. $_GET["QRid"] .'";';
             else
-                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 AND `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
-            $prepare = $db->prepare($sql);
-            $prepare->execute();
-            if ($prepare->execute()) $isPassed = 0;
+                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
+            //$prepare = $db->prepare($sql);
+            //$prepare->execute();
+            $prepare = $db->exec($sql);
+            
+            if ($prepare > 0) $isCheck = 1;
+            else $isCheck = 0;
             $db = new PDO($dsn, $dbUser, $dbPass);
             
             //表示するレコードのQRidを設定
@@ -68,7 +70,7 @@ if (!isset($_SESSION['VENDER'])) {
         }
 
         //foreach文を通ったら代入
-        if ($tempForeachList != "" || $isPassed == 0){
+        if ($tempForeachList != ""){
             $list .= $tempList;
             $list .= $tempForeachList;
 	    $list .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 2);">'. $sum .'</b>円</table>';
@@ -88,7 +90,7 @@ if (!isset($_SESSION['VENDER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
-        $list .= '予約一覧';
+        $list .= '<br>予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 5vw;">受取';
         $list .= '<td style="width: 10vw;">日付';
