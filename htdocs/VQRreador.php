@@ -19,9 +19,9 @@ if (!isset($_SESSION['VENDER'])) {
             //引き渡し完了に更新
             $sql = 'UPDATE `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
             if (!empty($_GET['QRid']) )
-                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.QRid = "'. $_GET["QRid"] .'";';
+                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 AND `ordertable`.QRid = "'. $_GET["QRid"] .'";';
             else
-                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
+                $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 AND `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
             $prepare = $db->prepare($sql);
             $prepare->execute();
             $db = new PDO($dsn, $dbUser, $dbPass);
@@ -50,9 +50,9 @@ if (!isset($_SESSION['VENDER'])) {
 	$tempList = "";
         $tempList .= '下記の注文を引き渡し完了にしました。';
         $tempList .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $tempList .= '<td style="width: 15vw;">受取';
+        $tempList .= '<td style="width: 10vw;">受取';
         $tempList .= '<td style="width: 20vw;">学生番号';
-        $tempList .= '<td style="width: 20vw;">弁当名';
+        $tempList .= '<td style="width: 25vw;"><b>弁当名</b>';
 	$tempList .= '<td style="width: 15vw;">値段';
 	$tempForeachList = "";
 	$sum = 0;
@@ -74,7 +74,7 @@ if (!isset($_SESSION['VENDER'])) {
         }
         else
         {   //foreach文を通っていなかったらエラー文
-            $list .= '入力に対応する予約がありませんでした。<br>入力内容が正しいか確認してください。<br>';
+            $list .= '入力に対応する未了予約がありませんでした。<br>入力内容が正しいか確認してください。<br>';
         }
     }
         
