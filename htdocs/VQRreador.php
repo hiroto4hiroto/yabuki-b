@@ -33,7 +33,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $sql .= ' WHERE `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'" limit 1;';
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
-                $QRid = $prepare->fetch(PDO::FETCH_ASSOC);
+                $QRid = $prepare->fetch(PDO::FETCH_ASSOC)["QRid"];
             }
         }
 	
