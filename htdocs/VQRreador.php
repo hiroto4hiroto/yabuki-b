@@ -85,7 +85,7 @@ if (!isset($_SESSION['VENDER'])) {
         $prepare = $db->prepare($sql);
         $prepare->execute();
         
-        $list .= '予約一覧';
+        $list .= '<br>予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 5vw;">受取';
         $list .= '<td style="width: 10vw;">日付';
