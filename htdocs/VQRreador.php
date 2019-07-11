@@ -61,8 +61,8 @@ if (!isset($_SESSION['VENDER'])) {
 	            $prepare->execute();
 
 	            $tempList = "";
-                $tempList .= '下記の注文を引き渡し完了にしました。';
-                $tempList .= '<br><table style="width: 80vw; height: 2em;"><tr>';
+                $tempList .= '<br>下記の注文を引き渡し完了にしました。<br>';
+                $tempList .= '<table style="width: 80vw; height: 2em;"><tr>';
                 $tempList .= '<td style="width: 20vw;">学生番号';
                 $tempList .= '<td style="width: 45vw;"><b>弁当名</b>';
 	            $tempList .= '<td style="width: 15vw;">値段';
@@ -81,7 +81,7 @@ if (!isset($_SESSION['VENDER'])) {
                 $checkList .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 4);">'. $sum .'</b>円</table><br>';
             }
             else{
-                $checkList .= '入力に対応する未了予約がありませんでした。<br>入力内容が正しいかご確認ください。<br>';
+                $checkList .= '<br>入力に対応する未了予約がありませんでした。<br>入力内容が正しいかご確認ください。<br>';
             }
         } 
 
@@ -134,7 +134,6 @@ if (!isset($_SESSION['VENDER'])) {
     <input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る">
     <br>
     <?php echo $checkList; ?>
-    <br>
     <form method="post" action="VQRreador.php">
     <table>
         <tr>
