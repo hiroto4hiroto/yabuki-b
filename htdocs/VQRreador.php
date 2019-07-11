@@ -25,6 +25,8 @@ if (!isset($_SESSION['VENDER'])) {
             //$prepare->execute();
             $prepare = $db->exec($sql);
 
+            echo "{$prepare}";
+
             if ($prepare > 0) $isCheck = 1;
             else $isCheck = 0;
             $db = new PDO($dsn, $dbUser, $dbPass);
@@ -108,7 +110,7 @@ if (!isset($_SESSION['VENDER'])) {
             $list .= '<td'. $plusClass .'>'. $result["name"];
         }
         $list .= '</table>';
-        
+
     } catch(PDOException $e) {
         echo $e->getMessage();
         die();
