@@ -50,10 +50,10 @@ if (!isset($_SESSION['VENDER'])) {
 	$tempList = "";
         $tempList .= '下記の注文を引き渡し完了にしました。';
         $tempList .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-        $tempList .= '<td style="width: 5vw;">受取';
+        $tempList .= '<td style="width: 15vw;">受取';
         $tempList .= '<td style="width: 20vw;">学生番号';
-        $tempList .= '<td style="width: 25vw;">弁当名';
-	$tempList .= '<td style="width: 20vw;">値段';
+        $tempList .= '<td style="width: 20vw;">弁当名';
+	$tempList .= '<td style="width: 15vw;">値段';
 	$tempForeachList = "";
 	$sum = 0;
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
