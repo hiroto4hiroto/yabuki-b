@@ -62,7 +62,7 @@ if (!isset($_SESSION['VENDER'])) {
             $tempForeachList .= '<td class="todayOrder" style="color:blue;">完了';
             $tempForeachList .= '<td class="todayOrder">'. $result["user"];
             $tempForeachList .= '<td class="todayOrder">'. $result["name"];
-	    $tempForeachList .= '<td class="todayOrder">'. $result["price"];
+	    $tempForeachList .= '<td class="todayOrder">'. $result["price"].'円';
 	    $sum += $result["price"];
         }
 
@@ -70,7 +70,7 @@ if (!isset($_SESSION['VENDER'])) {
         if ($tempForeachList != ""){
             $list .= $tempList;
             $list .= $tempForeachList;
-	    $list .= '<tr><td colspan="4"><b style="font-size: calc(var(--fontRatio) * 1.5);">'. $sum .'</b></table>';
+	    $list .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 2);">'. $sum .'</b>円</table>';
         }
         else
         {   //foreach文を通っていなかったらエラー文
