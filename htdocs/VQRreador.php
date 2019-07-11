@@ -40,35 +40,37 @@ if (!isset($_SESSION['VENDER'])) {
 	if ($isCheck == 1){
         //引き渡し完了一覧作成
         //SQL作成・実行
-        $sql = "SELECT `order`.QRid as `QRid`, `order`.check as `check`, `bento`.date as `date`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
+        $sql = "SELECT `order`.QRid as `QRid`, `order`.check as `check`, `bento`.price as `price`, `order`.user as `user`, `order`.id as `id`, `bento`.name as `name`";
         $sql .= " FROM `ordertable` as `order` LEFT JOIN `bentotable` as `bento` ON `order`.id = `bento`.id";
         $sql .= " WHERE `order`.QRid = '". $QRid ."'";
         $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
         $prepare = $db->prepare($sql);
-	    $prepare->execute();
+	$prepare->execute();
 
-	    $tempList = "";
+	$tempList = "";
         $tempList .= '下記の注文を引き渡し完了にしました。';
         $tempList .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $tempList .= '<td style="width: 5vw;">受取';
-        $tempList .= '<td style="width: 10vw;">日付';
-        $tempList .= '<td style="width: 10vw;">学生番号';
-        $tempList .= '<td style="width: 20vw;">弁当名';
-		$tempForeachList = "";
+        $tempList .= '<td style="width: 20vw;">学生番号';
+        $tempList .= '<td style="width: 25vw;">弁当名';
+	$tempList .= '<td style="width: 20vw;">値段';
+	$tempForeachList = "";
+	$sum = 0;
         foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
         {
             $tempForeachList .= '<tr>';
             $tempForeachList .= '<td class="todayOrder" style="color:blue;">完了';
-            $tempForeachList .= '<td class="todayOrder">'. $result["date"];
             $tempForeachList .= '<td class="todayOrder">'. $result["user"];
             $tempForeachList .= '<td class="todayOrder">'. $result["name"];
+	    $tempForeachList .= '<td class="todayOrder">'. $result["price"];
+	    $sum += $result["price"];
         }
 
         //foreach文を通ったら代入
         if ($tempForeachList != ""){
-            $tempForeachList .= '</table>';
             $list .= $tempList;
             $list .= $tempForeachList;
+	    $list .= '<tr><td colspan="4">'. $sum .'</table>';
         }
         else
         {   //foreach文を通っていなかったらエラー文
@@ -129,7 +131,7 @@ if (!isset($_SESSION['VENDER'])) {
     <table>
         <tr>
             <td colspan="3">
-                <label class="btn-sticky" style="height: calc(var(--fontRatio) * 7.5);"><br>QRコードを撮影&引渡<br>
+                <label class="btn-sticky" style="height: calc(var(--fontRatio) * 7.5);"><br>QRコードで引き渡し<br>
                     <input style="display:none;" type="file" accept="image/*" capture="environment" onchange="openQRCamera(this);" /><br>
         <tr>
             <td><label style="width: 15vw;" for="user">学生番号</label>
@@ -160,6 +162,7 @@ if (!isset($_SESSION['VENDER'])) {
 
     <br>
     <?php echo $list; ?>
+    <br>
 </body>
 
 </html>
