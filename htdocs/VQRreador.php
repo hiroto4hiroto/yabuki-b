@@ -73,7 +73,7 @@ if (!isset($_SESSION['VENDER'])) {
                     $tempForeachList .= '<tr>';
                     $tempForeachList .= '<td class="todayOrder" style="color:blue;">完了';
                     $tempForeachList .= '<td class="todayOrder">'. $result["user"];
-                    $tempForeachList .= '<td class="todayOrder">'. $result["name"];
+                    $tempForeachList .= '<td class="todayOrder"><b>'. $result["name"] .'</b>';
 	                $tempForeachList .= '<td class="todayOrder">'. $result["price"].'円';
 	                $sum += $result["price"];
                 }
@@ -157,7 +157,7 @@ if (!isset($_SESSION['VENDER'])) {
                         alert("QRコードを認識できませんでした。");
                     } else {
                         //QR読み込み成功
-                        window.location.href = location.href + '?QRid=' + res;
+                        window.location.href = 'http://yabukib.pm-chiba.tech/VQRreador.php' + '?QRid=' + res;
                     }
                 };
                 qrcode.decode(reader.result);
