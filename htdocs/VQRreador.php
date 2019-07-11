@@ -31,9 +31,9 @@ if (!isset($_SESSION['VENDER'])) {
                 //引き渡し完了に更新
                 $sql = 'UPDATE `ordertable` LEFT JOIN bentotable ON `ordertable`.id = bentotable.id';
                 if (!empty($_GET['QRid']) )
-                    $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 `ordertable`.QRid = "'. $_GET["QRid"] .'";';
+                    $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 AND `ordertable`.QRid = "'. $_GET["QRid"] .'";';
                 else
-                    $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
+                    $sql .= ' SET `ordertable`.check = 1 WHERE `ordertable`.check = 0 AND `ordertable`.user = "'. $_POST["user"] .'" and bentotable.date = "'. $getdate .'";';
                 $prepare = $db->prepare($sql);
                 $prepare->execute();
 
