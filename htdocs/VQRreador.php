@@ -78,7 +78,7 @@ if (!isset($_SESSION['VENDER'])) {
                 }
                 $checkList .= $tempList;
                 $checkList .= $tempForeachList;
-                $checkList .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 4);">'. $sum .'</b>円</table>';
+                $checkList .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 4);">'. $sum .'</b>円</table><br>';
             }
             else{
                 $checkList .= '入力に対応する未了予約がありませんでした。<br>入力内容が正しいかご確認ください。<br>';
@@ -92,7 +92,7 @@ if (!isset($_SESSION['VENDER'])) {
         $sql .= " ORDER BY `order`.check, `bento`.date, `order`.user, `order`.id;";
         $prepare = $db->prepare($sql);
         $prepare->execute();
-        $list .= '<br>予約一覧';
+        $list .= '予約一覧';
         $list .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $list .= '<td style="width: 5vw;">受取';
         $list .= '<td style="width: 10vw;">日付';
@@ -131,7 +131,7 @@ if (!isset($_SESSION['VENDER'])) {
 <body class="vender">
     <p>弁当事前予約サービス</p>
     <h1>引き渡し操作</h1>
-    <input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る"><br>
+    <input type="button" class="btn-sticky" onclick="location.href='./Vindex.php'" value="トップページに戻る">
     <br>
     <?php echo $checkList; ?>
     <br>
