@@ -62,16 +62,14 @@ if (!isset($_SESSION['VENDER'])) {
 	            $tempList = "";
                 $tempList .= '下記の注文を引き渡し完了にしました。';
                 $tempList .= '<br><table style="width: 80vw; height: 2em;"><tr>';
-                $tempList .= '<td style="width: 10vw;">受取';
                 $tempList .= '<td style="width: 20vw;">学生番号';
-                $tempList .= '<td style="width: 25vw;"><b>弁当名</b>';
+                $tempList .= '<td style="width: 45vw;"><b style="font-size: calc(var(--fontRatio) * 2);">弁当名</b>';
 	            $tempList .= '<td style="width: 15vw;">値段';
 	            $tempForeachList = "";
 	            $sum = 0;
                 foreach ($prepare->fetchAll(PDO::FETCH_ASSOC) as $result)
                 {
                     $tempForeachList .= '<tr>';
-                    $tempForeachList .= '<td class="todayOrder" style="color:blue;">完了';
                     $tempForeachList .= '<td class="todayOrder">'. $result["user"];
                     $tempForeachList .= '<td class="todayOrder"><b>'. $result["name"] .'</b>';
 	                $tempForeachList .= '<td class="todayOrder">'. $result["price"].'円';
@@ -79,7 +77,7 @@ if (!isset($_SESSION['VENDER'])) {
                 }
                 $list .= $tempList;
                 $list .= $tempForeachList;
-                $list .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 2);">'. $sum .'</b>円</table>';
+                $list .= '<tr><td colspan="4">合計金額：<b style="font-size: calc(var(--fontRatio) * 4);">'. $sum .'</b>円</table>';
             }
             else{
                 $list .= '入力に対応する未了予約がありませんでした。<br>入力内容が正しいかご確認ください。<br>';
