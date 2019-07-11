@@ -32,7 +32,7 @@ if (!isset($_SESSION['USER'])) {
 	    $list .= '<td>'. $result["price"] .'円';
 	    $sum += $result["price"];
         }
-        $list .= '<tr><td colspan="2" style="color:red; 50vw;">未了合計金額<br>'.$sum.'円';
+        $list .= '<tr><td colspan="2" style="color:red; 50vw;">合計金額<br>'.$sum.'円';
         $list .= '</table>';
 	    
 	if ($uuid == '')$list = '';
