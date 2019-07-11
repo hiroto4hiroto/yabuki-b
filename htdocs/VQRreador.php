@@ -48,7 +48,7 @@ if (!isset($_SESSION['VENDER'])) {
 	    $prepare->execute();
 
 	    $tempList = "";
-        $tempList .= '下記の注文を引き渡し完了にしました';
+        $tempList .= '下記の注文を引き渡し完了にしました。';
         $tempList .= '<br><table style="width: 80vw; height: 2em;"><tr>';
         $tempList .= '<td style="width: 5vw;">受取';
         $tempList .= '<td style="width: 10vw;">日付';
